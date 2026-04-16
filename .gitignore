@@ -1,0 +1,36 @@
+.DS_Store
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+htmlcov/
+.coverage
+
+# frontend artifacts
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.env
+
+# runtime data
+logs/
+storage/
+data/
+
+# eval papers (large PDFs — download via scripts or keep local)
+Evaluation/papers/
+
+# old layout (cleaned up)
+Sushil's labelled Dataset/
+Human labelled dataset/
+eval_data/
+eval_papers/
+
+# linter/tool caches
+.ruff_cache/
+
+# local IDE/cache folders
+.cursor/
+.vscode/
+.idea/
