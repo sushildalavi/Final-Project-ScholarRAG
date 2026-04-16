@@ -16,7 +16,7 @@ frontend/.env
 # runtime data
 logs/
 storage/
-data/
+/data/
 
 # eval papers (large PDFs — download via scripts or keep local)
 Evaluation/papers/

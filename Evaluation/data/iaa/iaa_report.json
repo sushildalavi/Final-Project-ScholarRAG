@@ -1,0 +1,14 @@
+{
+  "n": 150,
+  "agreement_count": 145,
+  "disagreement_count": 5,
+  "agreement_pct": 96.67,
+  "cohens_kappa": 0.8203,
+  "interpretation": "almost perfect",
+  "confusion_matrix": {
+    "sup_sup": 132,
+    "sup_unsup": 4,
+    "unsup_sup": 1,
+    "unsup_unsup": 13
+  }
+}

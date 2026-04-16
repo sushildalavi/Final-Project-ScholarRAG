@@ -1,0 +1,3714 @@
+[
+  {
+    "query": "transformer attention mechanism",
+    "latency_s": 4.14,
+    "result_count": 10,
+    "results": [
+      {
+        "rank": 1,
+        "title": "Attention Mechanism, Transformers, BERT, and GPT: Tutorial and Survey",
+        "year": 2020,
+        "doi": "https://doi.org/10.31219/osf.io/m6gcn",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "This is a tutorial and survey paper on the attention mechanism, transformers, BERT, and GPT. We first explain attention mechanism, sequence-to-sequence model without and with attention, self-attention, and attention in different areas such as natural language processing and computer vision. Then, we explain transformer"
+      },
+      {
+        "rank": 2,
+        "title": "Benign Overfitting in Token Selection of Attention Mechanism",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/2409.17625v3",
+        "similarity": null,
+        "summary": "Attention mechanism is a fundamental component of the transformer model and plays a significant role in its success. However, the theoretical understanding of how attention learns to select tokens is still an emerging area of research. In this work, we study the training dynamics and generalization ability of the atten"
+      },
+      {
+        "rank": 3,
+        "title": "Advanced deep learning ensemble framework for stock price prediction using variational mode decomposition, bidirectional long short-term memory, and attention mechanism",
+        "year": 2027,
+        "doi": "10.1504/ijef.2027.10065389",
+        "source": "crossref",
+        "url": "https://doi.org/10.1504/ijef.2027.10065389",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 4,
+        "title": "Research on sentiment analysis model improved based on Transformer attention mechanism",
+        "year": 2025,
+        "doi": "10.1145/3768740.3768787",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/c8a544d0463e16cab475c8365f27b618d93bbf77",
+        "similarity": null,
+        "summary": "In response to the limitations of traditional sentiment analysis models, this paper proposes an improved sentiment analysis model based on Transformer attention mechanism. This model enhances contextual semantic modeling capability by optimizing self attention and multi head attention mechanisms; Increase the number of"
+      },
+      {
+        "rank": 5,
+        "title": "A novel bearing fault diagnosis method using a hybrid TCN-transformer architecture: A deep learning approach",
+        "year": 2025,
+        "doi": "10.1007/s12206-025-0607-5",
+        "source": "springer",
+        "url": [
+          {
+            "format": "html",
+            "platform": "web",
+            "value": "http://link.springer.com/openurl/fulltext?id=doi:10.1007/s12206-025-0607-5"
+          },
+          {
+            "format": "pdf",
+            "platform": "web",
+            "value": "http://link.springer.com/openurl/pdf?id=doi:10.1007/s12206-025-0607-5"
+          },
+          {
+            "format": "",
+            "platform": "",
+            "value": "http://dx.doi.org/10.1007/s12206-025-0607-5"
+          }
+        ],
+        "similarity": null,
+        "summary": "Bearings are critical components in mechanical systems, directly affecting the efficiency and safety of equipment. Existing fault diagnosis methods rely on signal processing and empirical rules, which often require manual intervention and complex feature extraction, leading to potential information loss. To overcome th"
+      },
+      {
+        "rank": 6,
+        "title": "LMSA: Low-Relation Multi-head Self-attention Mechanism in Visual Transformer",
+        "year": 2023,
+        "doi": "10.1007/978-981-99-0923-0_61",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85152627343&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 7,
+        "title": "When Shift Operation Meets Vision Transformer: An Extremely Simple Alternative to Attention Mechanism",
+        "year": 2022,
+        "doi": "https://doi.org/10.1609/aaai.v36i2.20142",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Attention mechanism has been widely believed as the key to success of vision transformers (ViTs), since it provides a flexible and powerful way to model spatial relationships. However, is the attention mechanism truly an indispensable part of ViT? Can it be replaced by some other alternatives? To demystify the role of "
+      },
+      {
+        "rank": 8,
+        "title": "Forgetting Transformer: Softmax Attention with a Forget Gate",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/2503.02130v2",
+        "similarity": null,
+        "summary": "An essential component of modern recurrent sequence models is the forget gate. While Transformers do not have an explicit recurrent form, we show that a forget gate can be naturally incorporated into Transformers by down-weighting the unnormalized attention scores in a data-dependent way. We name this attention mechani"
+      },
+      {
+        "rank": 9,
+        "title": "MLP Can Be A Good Transformer Learner",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/2404.05657v1",
+        "similarity": null,
+        "summary": "Self-attention mechanism is the key of the Transformer but often criticized for its computation demands. Previous token pruning works motivate their methods from the view of computation redundancy but still need to load the full network and require same memory costs. This paper introduces a novel strategy that simplifi"
+      },
+      {
+        "rank": 10,
+        "title": "HSA-Transformer: An Efficient Visual Transformer Model with Reduced Complexity Based on Hierarchical Sparse Self-Attention Mechanism",
+        "year": 2026,
+        "doi": "10.1145/3788910.3788930",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=105032177992&origin=inward",
+        "similarity": null,
+        "summary": ""
+      }
+    ],
+    "provider_status": {
+      "openalex": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "transformer attention mechanism",
+        "fetched": 15,
+        "selected": 2,
+        "contributed": true
+      },
+      "arxiv": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "transformer attention mechanism",
+        "fetched": 15,
+        "selected": 3,
+        "contributed": true
+      },
+      "crossref": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "transformer attention mechanism",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "semanticscholar": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "transformer attention mechanism",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "springer": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "transformer attention mechanism",
+        "fetched": 4,
+        "selected": 1,
+        "contributed": true
+      },
+      "elsevier": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "transformer attention mechanism",
+        "fetched": 10,
+        "selected": 2,
+        "contributed": true
+      },
+      "ieee": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "transformer attention mechanism",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      }
+    },
+    "providers_found": [
+      "semanticscholar",
+      "arxiv",
+      "elsevier",
+      "openalex",
+      "crossref",
+      "springer"
+    ]
+  },
+  {
+    "query": "retrieval augmented generation",
+    "latency_s": 6.0,
+    "result_count": 10,
+    "results": [
+      {
+        "rank": 1,
+        "title": "Evaluation of\u00a0Retrieval-Augmented Generation: A Survey",
+        "year": 2025,
+        "doi": "https://doi.org/10.1007/978-981-96-1024-2_8",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 2,
+        "title": "Ragas: Automated Evaluation of Retrieval Augmented Generation",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/2309.15217v2",
+        "similarity": null,
+        "summary": "We introduce Ragas (Retrieval Augmented Generation Assessment), a framework for reference-free evaluation of Retrieval Augmented Generation (RAG) pipelines. RAG systems are composed of a retrieval and an LLM based generation module, and provide LLMs with knowledge from a reference textual database, which enables them t"
+      },
+      {
+        "rank": 3,
+        "title": "\u0641\u0627\u0639\u0644\u064a\u0629 \u0628\u0631\u0646\u0627\u0645\u062c \u0628\u0627\u0633\u062a\u062e\u062f\u0627\u0645 \u0627\u0644\u0648\u0627\u0642\u0639 \u0627\u0644\u0645\u0639\u0632\u0632 \u0644\u062a\u0646\u0645\u064a\u0629 \u0645\u0647\u0627\u0631\u0627\u062a \u0627\u0644\u0642\u0631\u0627\u0621\u0629 \u0644\u062f\u0649 \u0639\u064a\u0646\u0629 \u0645\u0646 \u0623\u0637\u0641\u0627\u0644 \u0627\u0644\u0631\u0648\u0636\u0629 \u0627\u0644\u0645\u062a\u0623\u062e\u0631\u064a\u0646 \u0644\u063a\u0648\u064a\u064b\u0627 The Effectiveness of an Augmented Reality\u2013Based Program for Enhancing Reading Skills among Language-Delayed Kindergarten Children",
+        "year": 2027,
+        "doi": "10.21608/rsch.2027.496468",
+        "source": "crossref",
+        "url": "https://doi.org/10.21608/rsch.2027.496468",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 4,
+        "title": "Retrieval-Augmented Generation for Large Language Models: A Survey",
+        "year": 2023,
+        "doi": null,
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/46f9f7b8f88f72e12cbdb21e3311f995eb6e65c5",
+        "similarity": null,
+        "summary": "Large Language Models (LLMs) showcase impressive capabilities but encounter challenges like hallucination, outdated knowledge, and non-transparent, untraceable reasoning processes. Retrieval-Augmented Generation (RAG) has emerged as a promising solution by incorporating knowledge from external databases. This enhances "
+      },
+      {
+        "rank": 5,
+        "title": "TM-RAG: a transformer-mamba model for long-text evidence aggregation in retrieval-augmented generation",
+        "year": 2026,
+        "doi": "10.1007/s44443-026-00723-5",
+        "source": "springer",
+        "url": [
+          {
+            "format": "pdf",
+            "platform": "web",
+            "value": "http://link.springer.com/openurl/pdf?id=doi:10.1007/s44443-026-00723-5"
+          },
+          {
+            "format": "",
+            "platform": "",
+            "value": "http://dx.doi.org/10.1007/s44443-026-00723-5"
+          }
+        ],
+        "similarity": null,
+        "summary": "Retrieval-Augmented Generation (RAG) incorporates externally retrieved evidence to support generation and has been widely used to mitigate hallucinations in large language models (LLMs). In real-world settings, long-form evidence makes it difficult to jointly encode global semantics and salient elements, leading retrie"
+      },
+      {
+        "rank": 6,
+        "title": "Recent Advances in Retrieval-Augmented Text Generation",
+        "year": 2022,
+        "doi": "10.1145/3477495.3532682",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85135046056&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 7,
+        "title": "Corrective Retrieval Augmented Generation",
+        "year": 2025,
+        "doi": "https://doi.org/10.2139/ssrn.5267341",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 8,
+        "title": "RAGAs: Automated Evaluation of Retrieval Augmented Generation",
+        "year": 2024,
+        "doi": "https://doi.org/10.18653/v1/2024.eacl-demo.16",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Shahul Es, Jithin James, Luis Espinosa Anke, Steven Schockaert. Proceedings of the 18th Conference of the European Chapter of the Association for Computational Linguistics: System Demonstrations. 2024."
+      },
+      {
+        "rank": 9,
+        "title": "URAG:Unified Retrieval-Augmented Generation",
+        "year": 2025,
+        "doi": "10.1145/3708657.3708763",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=105010682031&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 10,
+        "title": "Adaptive iterative retrieval for enhanced retrieval-augmented generation",
+        "year": 2026,
+        "doi": "10.1016/j.neucom.2025.132272",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=105024201129&origin=inward",
+        "similarity": null,
+        "summary": ""
+      }
+    ],
+    "provider_status": {
+      "openalex": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "retrieval augmented generation",
+        "fetched": 15,
+        "selected": 3,
+        "contributed": true
+      },
+      "arxiv": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "retrieval augmented generation",
+        "fetched": 15,
+        "selected": 1,
+        "contributed": true
+      },
+      "crossref": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "retrieval augmented generation",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "semanticscholar": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "retrieval augmented generation",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "springer": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "retrieval augmented generation",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "elsevier": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "retrieval augmented generation",
+        "fetched": 10,
+        "selected": 3,
+        "contributed": true
+      },
+      "ieee": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "retrieval augmented generation",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      }
+    },
+    "providers_found": [
+      "semanticscholar",
+      "arxiv",
+      "elsevier",
+      "openalex",
+      "crossref",
+      "springer"
+    ]
+  },
+  {
+    "query": "dense passage retrieval",
+    "latency_s": 4.43,
+    "result_count": 10,
+    "results": [
+      {
+        "rank": 1,
+        "title": "PAIR: Leveraging Passage-Centric Similarity Relation for Improving Dense Passage Retrieval",
+        "year": 2021,
+        "doi": "https://doi.org/10.18653/v1/2021.findings-acl.191",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Recently, dense passage retrieval has become a mainstream approach to finding relevant information in various natural language processing tasks. A number of studies have been devoted to improving the widely adopted dual-encoder architecture. However, most of the previous studies only consider query-centric similarity r"
+      },
+      {
+        "rank": 2,
+        "title": "Improving Dense Passage Retrieval with Multiple Positive Passages",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/2508.09534v1",
+        "similarity": null,
+        "summary": "By leveraging a dual encoder architecture, Dense Passage Retrieval (DPR) has outperformed traditional sparse retrieval algorithms such as BM25 in terms of passage retrieval accuracy. Recently proposed methods have further enhanced DPR's performance. However, these models typically pair each question with only one posit"
+      },
+      {
+        "rank": 3,
+        "title": "F3-SD: Focal feature fusion with self-distillation on large vision-language models for cross-modal retrieval",
+        "year": 2026,
+        "doi": "10.1016/j.patcog.2026.113664",
+        "source": "crossref",
+        "url": "https://doi.org/10.1016/j.patcog.2026.113664",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 4,
+        "title": "Data augmentation for dense passage retrieval using corpus-passage frequency-based token deletion",
+        "year": 2025,
+        "doi": "10.1186/s40537-025-01257-9",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=105013272115&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 5,
+        "title": "Lora for dense passage retrieval of ConTextual masked auto-encoding",
+        "year": 2024,
+        "doi": "10.1007/s11760-024-03593-4",
+        "source": "springer",
+        "url": [
+          {
+            "format": "html",
+            "platform": "web",
+            "value": "http://link.springer.com/openurl/fulltext?id=doi:10.1007/s11760-024-03593-4"
+          },
+          {
+            "format": "pdf",
+            "platform": "web",
+            "value": "http://link.springer.com/openurl/pdf?id=doi:10.1007/s11760-024-03593-4"
+          },
+          {
+            "format": "",
+            "platform": "",
+            "value": "http://dx.doi.org/10.1007/s11760-024-03593-4"
+          }
+        ],
+        "similarity": null,
+        "summary": "Dense Passage Retrieval (DPR) serves as a crucial initial step in improving the performance of the Retrieval Augmented Generation paradigm for large language models. While DPRs are challenging to train and typically involve fine-tuning (FT) on pre-trained models to enhance embedding similarity between queries and assoc"
+      },
+      {
+        "rank": 6,
+        "title": "LIDER: An Efficient High-dimensional Learned Index foLarge-scale Dense Passage Retrieval",
+        "year": 2022,
+        "doi": "10.14778/3565816.3565819",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85143399246&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 7,
+        "title": "Stratified Ranking for Dense Passage Retrieval",
+        "year": 2023,
+        "doi": "10.1145/3628797.3628810",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85180548486&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 8,
+        "title": "PAIR: Leveraging Passage-Centric Similarity Relation for Improving Dense Passage Retrieval",
+        "year": 2021,
+        "doi": "10.18653/v1/2021.findings-acl.191",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/4097ae9aca6444fd7536bfbed1e62560521b70d3",
+        "similarity": null,
+        "summary": "Recently, dense passage retrieval has become a mainstream approach to finding relevant information in various natural language processing tasks. A number of studies have been devoted to improving the widely adopted dual-encoder architecture. However, most of the previous studies only consider query-centric similarity r"
+      },
+      {
+        "rank": 9,
+        "title": "Recovering Gold from Black Sand: Multilingual Dense Passage Retrieval with Hard and False Negative Samples",
+        "year": 2022,
+        "doi": "10.18653/v1/2022.emnlp-main.730",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85149444162&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 10,
+        "title": "Topic-DPR: Topic-based Prompts for Dense Passage Retrieval",
+        "year": 2023,
+        "doi": "10.18653/v1/2023.findings-emnlp.480",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85183311532&origin=inward",
+        "similarity": null,
+        "summary": ""
+      }
+    ],
+    "provider_status": {
+      "openalex": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "dense passage retrieval",
+        "fetched": 15,
+        "selected": 1,
+        "contributed": true
+      },
+      "arxiv": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "dense passage retrieval",
+        "fetched": 15,
+        "selected": 1,
+        "contributed": true
+      },
+      "crossref": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "dense passage retrieval",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "semanticscholar": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "dense passage retrieval",
+        "fetched": 10,
+        "selected": 2,
+        "contributed": true
+      },
+      "springer": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "dense passage retrieval",
+        "fetched": 1,
+        "selected": 1,
+        "contributed": true
+      },
+      "elsevier": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "dense passage retrieval",
+        "fetched": 10,
+        "selected": 5,
+        "contributed": true
+      },
+      "ieee": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "dense passage retrieval",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      }
+    },
+    "providers_found": [
+      "semanticscholar",
+      "arxiv",
+      "elsevier",
+      "openalex",
+      "crossref",
+      "springer"
+    ]
+  },
+  {
+    "query": "graph neural networks",
+    "latency_s": 5.56,
+    "result_count": 10,
+    "results": [
+      {
+        "rank": 1,
+        "title": "A Comprehensive Survey on Graph Neural Networks",
+        "year": 2020,
+        "doi": "https://doi.org/10.1109/tnnls.2020.2978386",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Deep learning has revolutionized many machine learning tasks in recent years, ranging from image classification and video processing to speech recognition and natural language understanding. The data in these tasks are typically represented in the Euclidean space. However, there is an increasing number of applications,"
+      },
+      {
+        "rank": 2,
+        "title": "Fast and Deep Graph Neural Networks",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/1911.08941v1",
+        "similarity": null,
+        "summary": "We address the efficiency issue for the construction of a deep graph neural network (GNN). The approach exploits the idea of representing each input graph as a fixed point of a dynamical system (implemented through a recurrent neural network), and leverages a deep architectural organization of the recurrent units. Effi"
+      },
+      {
+        "rank": 3,
+        "title": "Uncertainty Quantification for Large-Scale Deep Neural Networks via Post-StoNet Modeling",
+        "year": 2028,
+        "doi": "10.5705/ss.202024.0294",
+        "source": "crossref",
+        "url": "https://doi.org/10.5705/ss.202024.0294",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 4,
+        "title": "Graph Neural Networks: A Review of Methods and Applications",
+        "year": 2018,
+        "doi": "10.1016/J.AIOPEN.2021.01.001",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/ea5dd6a3d8f210d05e53a7b6fa5e16f1b115f693",
+        "similarity": null,
+        "summary": "Lots of learning tasks require dealing with graph data which contains rich relation information among elements. Modeling physics system, learning molecular fingerprints, predicting protein interface, and classifying diseases require a model to learn from graph inputs. In other domains such as learning from non-structur"
+      },
+      {
+        "rank": 5,
+        "title": "MoELLA-GNN: a hybrid graph neural framework with reinforcement learning path sampling and expert mixtures",
+        "year": 2026,
+        "doi": "10.1007/s40747-026-02322-3",
+        "source": "springer",
+        "url": [
+          {
+            "format": "pdf",
+            "platform": "web",
+            "value": "http://link.springer.com/openurl/pdf?id=doi:10.1007/s40747-026-02322-3"
+          },
+          {
+            "format": "",
+            "platform": "",
+            "value": "http://dx.doi.org/10.1007/s40747-026-02322-3"
+          }
+        ],
+        "similarity": null,
+        "summary": "Real-world graph data is characterized by heterogeneous structure and evolutionary semantics, thus making learning over complex networks a multi-objective learning problem with a trade-off between accuracy and efficiency. Traditional GNNs lack the intelligent and adaptive mechanisms to model this complexity. We propose"
+      },
+      {
+        "rank": 6,
+        "title": "Introduction to graph neural network: A systematic review of trends, methods, and applications",
+        "year": 2025,
+        "doi": "10.1016/B978-0-443-29654-3.00017-X",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=105012700546&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 7,
+        "title": "A Comprehensive Survey on Graph Neural Networks",
+        "year": 2019,
+        "doi": "10.1109/TNNLS.2020.2978386",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/81a4fd3004df0eb05d6c1cef96ad33d5407820df",
+        "similarity": null,
+        "summary": "Deep learning has revolutionized many machine learning tasks in recent years, ranging from image classification and video processing to speech recognition and natural language understanding. The data in these tasks are typically represented in the Euclidean space. However, there is an increasing number of applications,"
+      },
+      {
+        "rank": 8,
+        "title": "How Powerful are Graph Neural Networks?",
+        "year": 2018,
+        "doi": null,
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/62ed9bf1d83c8db1f9cbf92ea2f57ea90ef683d9",
+        "similarity": null,
+        "summary": "Graph Neural Networks (GNNs) are an effective framework for representation learning of graphs. GNNs follow a neighborhood aggregation scheme, where the representation vector of a node is computed by recursively aggregating and transforming representation vectors of its neighboring nodes. Many GNN variants have been pro"
+      },
+      {
+        "rank": 9,
+        "title": "A Comprehensive Survey on Graph Neural Networks",
+        "year": 2021,
+        "doi": null,
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Deep learning has revolutionized many machine learning tasks in recent years, ranging from image classification and video processing to speech recognition and natural language understanding. The data in these tasks are typically represented in the Euclidean space. However, there is an increasing number of applications,"
+      },
+      {
+        "rank": 10,
+        "title": "Graph neural networks: A review of methods and applications",
+        "year": 2020,
+        "doi": "https://doi.org/10.1016/j.aiopen.2021.01.001",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Lots of learning tasks require dealing with graph data which contains rich relation information among elements. Modeling physics systems, learning molecular fingerprints, predicting protein interface, and classifying diseases demand a model to learn from graph inputs. In other domains such as learning from non-structur"
+      }
+    ],
+    "provider_status": {
+      "openalex": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "graph neural networks",
+        "fetched": 15,
+        "selected": 3,
+        "contributed": true
+      },
+      "arxiv": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "graph neural networks",
+        "fetched": 15,
+        "selected": 1,
+        "contributed": true
+      },
+      "crossref": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "graph neural networks",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "semanticscholar": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "graph neural networks",
+        "fetched": 10,
+        "selected": 3,
+        "contributed": true
+      },
+      "springer": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "graph neural networks",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "elsevier": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "graph neural networks",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "ieee": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "graph neural networks",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      }
+    },
+    "providers_found": [
+      "semanticscholar",
+      "arxiv",
+      "elsevier",
+      "openalex",
+      "crossref",
+      "springer"
+    ]
+  },
+  {
+    "query": "generative adversarial networks",
+    "latency_s": 4.96,
+    "result_count": 10,
+    "results": [
+      {
+        "rank": 1,
+        "title": "Generative adversarial networks",
+        "year": 2020,
+        "doi": "https://doi.org/10.1145/3422622",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Generative adversarial networks are a kind of artificial intelligence algorithm designed to solve the generative modeling problem. The goal of a generative model is to study a collection of training examples and learn the probability distribution that generated them. Generative Adversarial Networks (GANs) are then able"
+      },
+      {
+        "rank": 2,
+        "title": "Inverting The Generator Of A Generative Adversarial Network",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/1611.05644v1",
+        "similarity": null,
+        "summary": "Generative adversarial networks (GANs) learn to synthesise new samples from a high-dimensional distribution by passing samples drawn from a latent space through a generative network. When the high-dimensional distribution describes images of a particular data set, the network should learn to generate visually similar i"
+      },
+      {
+        "rank": 3,
+        "title": "Minimax Rates of Convergence for Nonparametric Regression Under Adversarial Attacks",
+        "year": 2028,
+        "doi": "10.5705/ss.202024.0298",
+        "source": "crossref",
+        "url": "https://doi.org/10.5705/ss.202024.0298",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 4,
+        "title": "Generative Adversarial Networks",
+        "year": 2021,
+        "doi": "10.1109/ICCCNT56998.2023.10306417",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/6296aa7cab06eaf058f7291040b320b5a83c0091",
+        "similarity": null,
+        "summary": "Generative Adversarial Networks (GANs) are a type of deep learning techniques that have shown remarkable success in generating realistic images, videos, and other types of data. This paper provides a comprehensive guide to GANs, covering their architecture, loss functions, training methods, applications, evaluation met"
+      },
+      {
+        "rank": 5,
+        "title": "Graphic design style transfer and aesthetic optimization algorithm based on a generative adversarial network",
+        "year": 2026,
+        "doi": "10.1038/s41598-026-46316-0",
+        "source": "springer",
+        "url": [
+          {
+            "format": "pdf",
+            "platform": "web",
+            "value": "https://www.nature.com/articles/s41598-026-46316-0.pdf"
+          },
+          {
+            "format": "",
+            "platform": "",
+            "value": "http://dx.doi.org/10.1038/s41598-026-46316-0"
+          }
+        ],
+        "similarity": null,
+        "summary": "Current graphic design style transfer technology mainly focuses on geometric or texture features, while ignoring overall beauty and artistic expression, resulting in a mismatch between style and content, poor detail processing, and a lack of artistic appeal and true style presentation in the generated design. To this e"
+      },
+      {
+        "rank": 6,
+        "title": "ARGAN: Adversarially Robust Generative Adversarial Networks for Deep Neural Networks Against Adversarial Examples",
+        "year": 2022,
+        "doi": "10.1109/ACCESS.2022.3160283",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85126521818&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 7,
+        "title": "Generative Adversarial Networks",
+        "year": 2022,
+        "doi": "https://doi.org/10.1017/9781108891530.013",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "The Science of Deep Learning emerged from courses taught by the author that have provided thousands of students with training and experience for their academic studies, and prepared them for careers in deep learning, machine learning, and artificial intelligence in top companies in industry and academia. The book begin"
+      },
+      {
+        "rank": 8,
+        "title": "Generative Adversarial Networks: An Overview",
+        "year": 2017,
+        "doi": "10.1109/MSP.2017.2765202",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/6e36fc1485ee735796a6ac39ff8155bb2c4f7017",
+        "similarity": null,
+        "summary": "Generative adversarial networks (GANs) provide a way to learn deep representations without extensively annotated training data. They achieve this by deriving backpropagation signals through a competitive process involving a pair of networks. The representations that can be learned by GANs may be used in a variety of ap"
+      },
+      {
+        "rank": 9,
+        "title": "Generative Adversarial Networks: An Overview",
+        "year": 2018,
+        "doi": "https://doi.org/10.1109/msp.2017.2765202",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Generative adversarial networks (GANs) provide a way to learn deep representations without extensively annotated training data. They achieve this by deriving backpropagation signals through a competitive process involving a pair of networks. The representations that can be learned by GANs may be used in a variety of ap"
+      },
+      {
+        "rank": 10,
+        "title": "Generative Adversarial Networks",
+        "year": 2014,
+        "doi": "https://doi.org/10.48550/arxiv.1406.2661",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "We propose a new framework for estimating generative models via an adversarial process, in which we simultaneously train two models: a generative model G that captures the data distribution, and a discriminative model D that estimates the probability that a sample came from the training data rather than G. The training"
+      }
+    ],
+    "provider_status": {
+      "openalex": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "generative adversarial networks",
+        "fetched": 15,
+        "selected": 4,
+        "contributed": true
+      },
+      "arxiv": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "generative adversarial networks",
+        "fetched": 15,
+        "selected": 1,
+        "contributed": true
+      },
+      "crossref": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "generative adversarial networks",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "semanticscholar": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "generative adversarial networks",
+        "fetched": 10,
+        "selected": 2,
+        "contributed": true
+      },
+      "springer": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "generative adversarial networks",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "elsevier": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "generative adversarial networks",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "ieee": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "generative adversarial networks",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      }
+    },
+    "providers_found": [
+      "semanticscholar",
+      "arxiv",
+      "elsevier",
+      "openalex",
+      "crossref",
+      "springer"
+    ]
+  },
+  {
+    "query": "reinforcement learning Atari",
+    "latency_s": 3.96,
+    "result_count": 10,
+    "results": [
+      {
+        "rank": 1,
+        "title": "Playing Atari with Deep Reinforcement Learning",
+        "year": 2013,
+        "doi": "https://doi.org/10.48550/arxiv.1312.5602",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "We present the first deep learning model to successfully learn control policies directly from high-dimensional sensory input using reinforcement learning. The model is a convolutional neural network, trained with a variant of Q-learning, whose input is raw pixels and whose output is a value function estimating future r"
+      },
+      {
+        "rank": 2,
+        "title": "Playing Atari with Deep Reinforcement Learning",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/1312.5602v1",
+        "similarity": null,
+        "summary": "We present the first deep learning model to successfully learn control policies directly from high-dimensional sensory input using reinforcement learning. The model is a convolutional neural network, trained with a variant of Q-learning, whose input is raw pixels and whose output is a value function estimating future r"
+      },
+      {
+        "rank": 3,
+        "title": "WEB-BASED COLLABORATIVE LEARNING AND KNOWLEDGE SHARING IN INFORMAL BUSINESS NETWORKS",
+        "year": 2114,
+        "doi": "10.15556/ijiim.01.02.002",
+        "source": "crossref",
+        "url": "https://doi.org/10.15556/ijiim.01.02.002",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 4,
+        "title": "Playing Atari with Deep Reinforcement Learning",
+        "year": 2013,
+        "doi": null,
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/2319a491378867c7049b3da055c5df60e1671158",
+        "similarity": null,
+        "summary": "We present the first deep learning model to successfully learn control policies directly from high-dimensional sensory input using reinforcement learning. The model is a convolutional neural network, trained with a variant of Q-learning, whose input is raw pixels and whose output is a value function estimating future r"
+      },
+      {
+        "rank": 5,
+        "title": "Competitive reinforcement learning in Atari games",
+        "year": 2017,
+        "doi": "10.1007/978-3-319-63004-5_2",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85026736707&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 6,
+        "title": "Competitive Reinforcement Learning in Atari Games",
+        "year": 2017,
+        "doi": "https://doi.org/10.1007/978-3-319-63004-5_2",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 7,
+        "title": "MinAtar: An Atari-Inspired Testbed for Thorough and Reproducible Reinforcement Learning Experiments",
+        "year": 2019,
+        "doi": "https://doi.org/10.48550/arxiv.1903.03176",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "The Arcade Learning Environment (ALE) is a popular platform for evaluating reinforcement learning agents. Much of the appeal comes from the fact that Atari games demonstrate aspects of competency we expect from an intelligent agent and are not biased toward any particular solution approach. The challenge of the ALE inc"
+      },
+      {
+        "rank": 8,
+        "title": "Optimizing Deep Reinforcement Learning for Atari Games: A Study on Preprocessing Techniques and Neural Network Architecture",
+        "year": 2025,
+        "doi": "10.1109/ICOIACT67584.2025.11344980",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=105033343142&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 9,
+        "title": "Playing Atari Games with Deep Reinforcement Learning and Human Checkpoint Replay",
+        "year": 2016,
+        "doi": "https://doi.org/10.48550/arxiv.1607.05077",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "This paper introduces a novel method for learning how to play the most difficult Atari 2600 games from the Arcade Learning Environment using deep reinforcement learning. The proposed method, human checkpoint replay, consists in using checkpoints sampled from human gameplay as starting points for the learning process. T"
+      },
+      {
+        "rank": 10,
+        "title": "Model-Based Reinforcement Learning for Atari",
+        "year": 2019,
+        "doi": null,
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/1fd4694e7c2d9c872a427d50e81b5475056de6bc",
+        "similarity": null,
+        "summary": "Model-free reinforcement learning (RL) can be used to learn effective policies for complex tasks, such as Atari games, even from image observations. However, this typically requires very large amounts of interaction -- substantially more, in fact, than a human would need to learn the same games. How can people learn so"
+      }
+    ],
+    "provider_status": {
+      "openalex": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "reinforcement learning atari",
+        "fetched": 15,
+        "selected": 4,
+        "contributed": true
+      },
+      "arxiv": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "reinforcement learning atari",
+        "fetched": 15,
+        "selected": 1,
+        "contributed": true
+      },
+      "crossref": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "reinforcement learning atari",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "semanticscholar": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "reinforcement learning atari",
+        "fetched": 10,
+        "selected": 2,
+        "contributed": true
+      },
+      "springer": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "reinforcement learning atari",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      },
+      "elsevier": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "reinforcement learning atari",
+        "fetched": 10,
+        "selected": 2,
+        "contributed": true
+      },
+      "ieee": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "reinforcement learning atari",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      }
+    },
+    "providers_found": [
+      "semanticscholar",
+      "arxiv",
+      "elsevier",
+      "openalex",
+      "crossref"
+    ]
+  },
+  {
+    "query": "BERT pretraining NLP",
+    "latency_s": 3.26,
+    "result_count": 10,
+    "results": [
+      {
+        "rank": 1,
+        "title": "BERT for Arabic NLP Applications: Pretraining and Finetuning MSA and Arabic Dialects",
+        "year": 2023,
+        "doi": "https://doi.org/10.1007/978-3-031-47366-1_5",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 2,
+        "title": "EstBERT: A Pretrained Language-Specific BERT for Estonian",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/2011.04784v3",
+        "similarity": null,
+        "summary": "This paper presents EstBERT, a large pretrained transformer-based language-specific BERT model for Estonian. Recent work has evaluated multilingual BERT models on Estonian tasks and found them to outperform the baselines. Still, based on existing studies on other languages, a language-specific BERT model is expected to"
+      },
+      {
+        "rank": 3,
+        "title": "Automated identification of pilot failures in aviation accidents using a BERT-based classifier and topic modeling",
+        "year": 2026,
+        "doi": "10.1016/j.ress.2026.112284",
+        "source": "crossref",
+        "url": "https://doi.org/10.1016/j.ress.2026.112284",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 4,
+        "title": "LEBERT :Lite and Efficiently Optimized BERT PRetraining Approach",
+        "year": 2024,
+        "doi": "10.48175/ijarsct-15219",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/186f5a9987cd1ad148bf23f31b93b80f2706d41f",
+        "similarity": null,
+        "summary": "The extensive generalization of these models can lead to overfitting, causing the model to perform poorly on unseen data and thereby not realizing its full potential. To address this challenge systematically, we propose a novel approach for lightweight and efficient fine-tuning of BERT (Bidirectional Encoder Representa"
+      },
+      {
+        "rank": 5,
+        "title": "BERT for Arabic NLP Applications: Pretraining and Finetuning MSA and Arabic Dialects",
+        "year": 2024,
+        "doi": "10.1007/978-3-031-47366-1_5",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85178510205&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 6,
+        "title": "Improving BERT Pretraining with Syntactic Supervision",
+        "year": 2021,
+        "doi": null,
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/5d3562312a3b6b5ba0f4f1fb3500041df2ffcf20",
+        "similarity": null,
+        "summary": "Bidirectional masked Transformers have become the core theme in the current NLP landscape. Despite their impressive benchmarks, a recurring theme in recent research has been to question such models\u2019 capacity for syntactic generalization. In this work, we seek to address this question by adding a supervised, token-level"
+      },
+      {
+        "rank": 7,
+        "title": "Comparative Analysis of Improved Versions of BERT Models on Chinese NLP Tasks",
+        "year": 2025,
+        "doi": "10.54254/2755-2721/2024.20851",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/3b308b5f7ea3cdb7b42cfc07bed34fe55957c335",
+        "similarity": null,
+        "summary": "BERT is a pre-trained language representation model that has received a lot of attention for its impressive results in Natural Language Processing (NLP) tasks, such as sentiment analysis and text classification. This inspired many BERT-based models to be created that improved on the original in different ways. Examples"
+      },
+      {
+        "rank": 8,
+        "title": "Multi-node Bert-pretraining: Cost-efficient Approach",
+        "year": 2020,
+        "doi": null,
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/198b42dcc3a6dbd254fa25ab6dd23f3e32592950",
+        "similarity": null,
+        "summary": "Recently, large scale Transformer-based language models such as BERT, GPT-2, and XLNet have brought about exciting leaps in state-of-the-art results for many Natural Language Processing (NLP) tasks. One of the common trends in these recent models is a significant increase in model complexity, which introduces both more"
+      },
+      {
+        "rank": 9,
+        "title": "An Optimised BERT Pretraining Approach for Identification of Targeted Offensive Language: Data Imbalance and Potential Solutions",
+        "year": 2023,
+        "doi": "10.1109/I3CS58314.2023.10127515",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/47fab4ec114fb616c707fcff6c098fcfbc2bfba7",
+        "similarity": null,
+        "summary": "Targeted offensive comments and hate speech on online media platforms are on the rise, with evidential mental health consequences including suicide. Several NLP techniques have been proposed and in use. However, data imbalance in the training dataset is stopping them from performing at full potential. Solutions include"
+      },
+      {
+        "rank": 10,
+        "title": "Enhancing Financial NLP with Supercomputing: Spell Correction and Domain-Specific BERT Pretraining",
+        "year": 2025,
+        "doi": "10.1016/j.procs.2025.08.244",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/19582941350fe18d412a828bd028e70449b211d4",
+        "similarity": null,
+        "summary": ""
+      }
+    ],
+    "provider_status": {
+      "openalex": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "bert pretraining nlp",
+        "fetched": 1,
+        "selected": 1,
+        "contributed": true
+      },
+      "arxiv": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "bert pretraining nlp",
+        "fetched": 15,
+        "selected": 1,
+        "contributed": true
+      },
+      "crossref": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "bert pretraining nlp",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "semanticscholar": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "bert pretraining nlp",
+        "fetched": 10,
+        "selected": 6,
+        "contributed": true
+      },
+      "springer": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "bert pretraining nlp",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      },
+      "elsevier": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "bert pretraining nlp",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "ieee": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "bert pretraining nlp",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      }
+    },
+    "providers_found": [
+      "semanticscholar",
+      "arxiv",
+      "elsevier",
+      "openalex",
+      "crossref"
+    ]
+  },
+  {
+    "query": "object detection YOLO",
+    "latency_s": 4.77,
+    "result_count": 10,
+    "results": [
+      {
+        "rank": 1,
+        "title": "Object detection using YOLO: challenges, architectural successors, datasets and applications",
+        "year": 2022,
+        "doi": "https://doi.org/10.1007/s11042-022-13644-y",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 2,
+        "title": "YOLO-World: Real-Time Open-Vocabulary Object Detection",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/2401.17270v3",
+        "similarity": null,
+        "summary": "The You Only Look Once (YOLO) series of detectors have established themselves as efficient and practical tools. However, their reliance on predefined and trained object categories limits their applicability in open scenarios. Addressing this limitation, we introduce YOLO-World, an innovative approach that enhances YOLO"
+      },
+      {
+        "rank": 3,
+        "title": "Contour Based Real Time Multiple Object Tracking",
+        "year": 2106,
+        "doi": "10.18535/ijetst/v3i08.10",
+        "source": "crossref",
+        "url": "https://doi.org/10.18535/ijetst/v3i08.10",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 4,
+        "title": "OBJECT DETECTION: YOLO VS FASTER R-CNN",
+        "year": 2022,
+        "doi": "10.56726/irjmets30226",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/92b3ead82c80eb98470205108de66e927c3ead27",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 5,
+        "title": "Hardware acceleration for object detection using YOLOv4 algorithm on Xilinx Zynq platform",
+        "year": 2022,
+        "doi": "10.1007/s11554-022-01234-y",
+        "source": "springer",
+        "url": [
+          {
+            "format": "html",
+            "platform": "web",
+            "value": "http://link.springer.com/openurl/fulltext?id=doi:10.1007/s11554-022-01234-y"
+          },
+          {
+            "format": "pdf",
+            "platform": "web",
+            "value": "http://link.springer.com/openurl/pdf?id=doi:10.1007/s11554-022-01234-y"
+          },
+          {
+            "format": "",
+            "platform": "",
+            "value": "http://dx.doi.org/10.1007/s11554-022-01234-y"
+          }
+        ],
+        "similarity": null,
+        "summary": "With the technological improvement in artificial intelligence, particularly deep learning is providing effective outcomes along with hardware platforms such as field-programmable gate arrays (FPGAs) and graphics processing units in various domains. FPGAs with their reconfigurable architectures provide flexibility, bett"
+      },
+      {
+        "rank": 6,
+        "title": "YOLO-based Object Detection Models: A Review and its Applications",
+        "year": 2024,
+        "doi": "10.1007/s11042-024-18872-y",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85187638665&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 7,
+        "title": "YOLO-based Object Detection Models: A Review and its Applications",
+        "year": 2024,
+        "doi": "https://doi.org/10.1007/s11042-024-18872-y",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 8,
+        "title": "A Review of YOLO Algorithm and Its Applications in Autonomous Driving Object Detection",
+        "year": 2025,
+        "doi": "10.1109/ACCESS.2025.3573376",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=105006931401&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 9,
+        "title": "Enhancing Real-time Object Detection with YOLO Algorithm",
+        "year": 2024,
+        "doi": "10.4108/eetiot.4541",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85179967039&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 10,
+        "title": "YOLO with adaptive frame control for real-time object detection applications",
+        "year": 2022,
+        "doi": "10.1007/s11042-021-11480-0",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85115052282&origin=inward",
+        "similarity": null,
+        "summary": ""
+      }
+    ],
+    "provider_status": {
+      "openalex": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "object detection yolo",
+        "fetched": 15,
+        "selected": 2,
+        "contributed": true
+      },
+      "arxiv": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "object detection yolo",
+        "fetched": 15,
+        "selected": 1,
+        "contributed": true
+      },
+      "crossref": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "object detection yolo",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "semanticscholar": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "object detection yolo",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "springer": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "object detection yolo",
+        "fetched": 1,
+        "selected": 1,
+        "contributed": true
+      },
+      "elsevier": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "object detection yolo",
+        "fetched": 10,
+        "selected": 4,
+        "contributed": true
+      },
+      "ieee": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "object detection yolo",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      }
+    },
+    "providers_found": [
+      "semanticscholar",
+      "arxiv",
+      "elsevier",
+      "openalex",
+      "crossref",
+      "springer"
+    ]
+  },
+  {
+    "query": "image segmentation U-Net",
+    "latency_s": 4.89,
+    "result_count": 10,
+    "results": [
+      {
+        "rank": 1,
+        "title": "U-Net and Its Variants for Medical Image Segmentation: A Review of Theory and Applications",
+        "year": 2021,
+        "doi": "https://doi.org/10.1109/access.2021.3086020",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "U-net is an image segmentation technique developed primarily for image segmentation tasks. These traits provide U-net with a high utility within the medical imaging community and have resulted in extensive adoption of U-net as the primary tool for segmentation tasks in medical imaging. The success of U-net is evident i"
+      },
+      {
+        "rank": 2,
+        "title": "Medical Image Segmentation Using a U-Net type of Architecture",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/2005.05218v1",
+        "similarity": null,
+        "summary": "Deep convolutional neural networks have been proven to be very effective in image related analysis and tasks, such as image segmentation, image classification, image generation, etc. Recently many sophisticated CNN based architectures have been proposed for the purpose of image segmentation. Some of these newly designe"
+      },
+      {
+        "rank": 3,
+        "title": "Improving Citrus Leaf Disease Segmentation and Classification with a Game Theoretical U-Net Convolutional LightGBM model",
+        "year": 2027,
+        "doi": "10.1504/ijiei.2027.10072915",
+        "source": "crossref",
+        "url": "https://doi.org/10.1504/ijiei.2027.10072915",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 4,
+        "title": "U-Net and Its Variants for Medical Image Segmentation: A Review of Theory and Applications",
+        "year": 2021,
+        "doi": "10.1109/ACCESS.2021.3086020",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85107339751&origin=inward",
+        "similarity": null,
+        "summary": "U-net is an image segmentation technique developed primarily for image segmentation tasks. These traits provide U-net with a high utility within the medical imaging community and have resulted in extensive adoption of U-net as the primary tool for segmentation tasks in medical imaging. The success of U-net is evident i"
+      },
+      {
+        "rank": 5,
+        "title": "Biomedical Image Segmentation with Modified U-Net",
+        "year": 2023,
+        "doi": "10.18280/ts.400211",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85162154250&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 6,
+        "title": "Medical Image Segmentation Review: The Success of U-Net",
+        "year": 2024,
+        "doi": "https://doi.org/10.1109/tpami.2024.3435571",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Automatic medical image segmentation is a crucial topic in the medical domain and successively a critical counterpart in the computer-aided diagnosis paradigm. U-Net is the most widespread image segmentation architecture due to its flexibility, optimized modular design, and success in all medical image modalities. Over"
+      },
+      {
+        "rank": 7,
+        "title": "UNet++: A Nested U-Net Architecture for Medical Image Segmentation",
+        "year": 2018,
+        "doi": "https://doi.org/10.1007/978-3-030-00889-5_1",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 8,
+        "title": "Medical Image Segmentation based on U-Net: A Review",
+        "year": 2020,
+        "doi": "https://doi.org/10.2352/j.imagingsci.technol.2020.64.2.020508",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Medical image analysis is performed by analyzing images obtained by medical imaging systems to solve clinical problems. The purpose is to extract effective information and improve the level of clinical diagnosis. In recent years, automatic segmentation based on deep learning (DL) methods has been widely used, where a n"
+      },
+      {
+        "rank": 9,
+        "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation",
+        "year": 2015,
+        "doi": "https://doi.org/10.1007/978-3-319-24574-4_28",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 10,
+        "title": "U-Net-Based Medical Image Segmentation",
+        "year": 2022,
+        "doi": "https://doi.org/10.1155/2022/4189781",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Deep learning has been extensively applied to segmentation in medical imaging. U-Net proposed in 2015 shows the advantages of accurate segmentation of small targets and its scalable network architecture. With the increasing requirements for the performance of segmentation in medical imaging in recent years, U-Net has b"
+      }
+    ],
+    "provider_status": {
+      "openalex": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "image segmentation u-net",
+        "fetched": 15,
+        "selected": 6,
+        "contributed": true
+      },
+      "arxiv": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "image segmentation u-net",
+        "fetched": 15,
+        "selected": 1,
+        "contributed": true
+      },
+      "crossref": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "image segmentation u-net",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "semanticscholar": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "image segmentation u-net",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "springer": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "image segmentation u-net",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      },
+      "elsevier": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "image segmentation u-net",
+        "fetched": 10,
+        "selected": 2,
+        "contributed": true
+      },
+      "ieee": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "image segmentation u-net",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      }
+    },
+    "providers_found": [
+      "arxiv",
+      "elsevier",
+      "openalex",
+      "crossref"
+    ]
+  },
+  {
+    "query": "speech recognition self-supervised",
+    "latency_s": 4.88,
+    "result_count": 10,
+    "results": [
+      {
+        "rank": 1,
+        "title": "Effectiveness of self-supervised pre-training for speech recognition",
+        "year": 2019,
+        "doi": "https://doi.org/10.48550/arxiv.1911.03912",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "We compare self-supervised representation learning algorithms which either explicitly quantize the audio data or learn representations without quantization. We find the former to be more accurate since it builds a good vocabulary of the data through vq-wav2vec [1] to enable learning of effective representations in subs"
+      },
+      {
+        "rank": 2,
+        "title": "Fine-tuning Strategies for Faster Inference using Speech Self-Supervised Models: A Comparative Study",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/2303.06740v1",
+        "similarity": null,
+        "summary": "Self-supervised learning (SSL) has allowed substantial progress in Automatic Speech Recognition (ASR) performance in low-resource settings. In this context, it has been demonstrated that larger self-supervised feature extractors are crucial for achieving lower downstream ASR error rates. Thus, better performance might "
+      },
+      {
+        "rank": 3,
+        "title": "A Self-supervised Sub-style Separation Framework for Artistic Painting Classification",
+        "year": 2028,
+        "doi": "10.1504/ijart.2028.10077162",
+        "source": "crossref",
+        "url": "https://doi.org/10.1504/ijart.2028.10077162",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 4,
+        "title": "Self-supervised Learning with Random-projection Quantizer for Speech Recognition",
+        "year": 2022,
+        "doi": null,
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/3be6e8af61c3eb022fb07aea2d6aaf8b11be510c",
+        "similarity": null,
+        "summary": "We present a simple and effective self-supervised learning approach for speech recognition. The approach learns a model to predict the masked speech signals, in the form of discrete labels generated with a random-projection quantizer. In particular the quantizer projects speech inputs with a randomly initialized matrix"
+      },
+      {
+        "rank": 5,
+        "title": "Why does Self-Supervised Learning for Speech Recognition Benefit Speaker Recognition?",
+        "year": 2022,
+        "doi": "10.21437/Interspeech.2022-10019",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85139044647&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 6,
+        "title": "Self-Supervised Learning with Random-Projection Quantizer for Speech Recognition",
+        "year": 2022,
+        "doi": null,
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85163141386&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 7,
+        "title": "Analyzing speaker information in self-supervised models to improve unsupervised speech recognition",
+        "year": 2022,
+        "doi": "10.1145/3573428.3573659",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85150482019&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 8,
+        "title": "Non-Contrastive Self-supervised Learning for Utterance-Level Information Extraction from Speech",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/2208.05445v1",
+        "similarity": null,
+        "summary": "In recent studies, self-supervised pre-trained models tend to outperform supervised pre-trained models in transfer learning. In particular, self-supervised learning (SSL) of utterance-level speech representation can be used in speech applications that require discriminative representation of consistent attributes withi"
+      },
+      {
+        "rank": 9,
+        "title": "Time matters: enhancing speech recognition with self-supervised audio reordering tasks",
+        "year": 2025,
+        "doi": "10.1117/12.3067134",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=105014190605&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 10,
+        "title": "Improving Automatic Speech Recognition Performance for Low-Resource Languages With Self-Supervised Models",
+        "year": 2022,
+        "doi": "https://doi.org/10.1109/jstsp.2022.3184480",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Speech self-supervised learning has attracted much attention due to its promising performance in multiple downstream tasks, and has become a new growth engine for speech recognition in low-resource languages. In this paper, we exploit and analyze a series of wav2vec pre-trained models for speech recognition in 15 low-r"
+      }
+    ],
+    "provider_status": {
+      "openalex": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "speech recognition self-supervised",
+        "fetched": 15,
+        "selected": 2,
+        "contributed": true
+      },
+      "arxiv": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "speech recognition self-supervised",
+        "fetched": 15,
+        "selected": 2,
+        "contributed": true
+      },
+      "crossref": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "speech recognition self-supervised",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "semanticscholar": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "speech recognition self-supervised",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "springer": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "speech recognition self-supervised",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      },
+      "elsevier": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "speech recognition self-supervised",
+        "fetched": 10,
+        "selected": 4,
+        "contributed": true
+      },
+      "ieee": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "speech recognition self-supervised",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      }
+    },
+    "providers_found": [
+      "semanticscholar",
+      "arxiv",
+      "elsevier",
+      "openalex",
+      "crossref"
+    ]
+  },
+  {
+    "query": "time series forecasting deep learning",
+    "latency_s": 4.13,
+    "result_count": 10,
+    "results": [
+      {
+        "rank": 1,
+        "title": "Deep Learning for Time Series Forecasting: A Survey",
+        "year": 2020,
+        "doi": "https://doi.org/10.1089/big.2020.0159",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Time series forecasting has become a very intensive field of research, which is even increasing in recent years. Deep neural networks have proved to be powerful and are achieving high accuracy in many application fields. For these reasons, they are one of the most widely used methods of machine learning to solve proble"
+      },
+      {
+        "rank": 2,
+        "title": "Probabilistic Hierarchical Forecasting with Deep Poisson Mixtures",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/2110.13179v8",
+        "similarity": null,
+        "summary": "Hierarchical forecasting problems arise when time series have a natural group structure, and predictions at multiple levels of aggregation and disaggregation across the groups are needed. In such problems, it is often desired to satisfy the aggregation constraints in a given hierarchy, referred to as hierarchical coher"
+      },
+      {
+        "rank": 3,
+        "title": "SPECTRAL MATRIX FOR STURM\u2013LIOUVILLE OPERATORS ON TWO-SIDED UNBOUNDED TIME SCALES",
+        "year": 2103,
+        "doi": "10.7900/jot.2011apr03.1923",
+        "source": "crossref",
+        "url": "https://doi.org/10.7900/jot.2011apr03.1923",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 4,
+        "title": "A comprehensive survey of deep learning for time series forecasting: architectural diversity and open challenges",
+        "year": 2025,
+        "doi": "10.1007/s10462-025-11223-9",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/6cf145b7a156034a4c8957c16cedabbd22be7136",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 5,
+        "title": "Deep Learning for Time Series Forecasting: Advances and Open Problems",
+        "year": 2023,
+        "doi": "10.3390/info14110598",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85178313563&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 6,
+        "title": "An Experimental Review on Deep Learning Architectures for Time Series Forecasting",
+        "year": 2020,
+        "doi": "https://doi.org/10.1142/s0129065721300011",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "In recent years, deep learning techniques have outperformed traditional models in many machine learning tasks. Deep neural networks have successfully been applied to address time series forecasting problems, which is a very important topic in data mining. They have proved to be an effective solution given their capacit"
+      },
+      {
+        "rank": 7,
+        "title": "Exploring the Benefits of Deep Learning for Forecasting Time Series Data",
+        "year": 2023,
+        "doi": "10.1109/SMARTGENCON60755.2023.10442347",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85187577261&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 8,
+        "title": "A review of time series forecasting and spatio-temporal series forecasting in deep learning",
+        "year": 2025,
+        "doi": "10.1007/s11227-025-07632-w",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/cd0ca3412d66b0eb91bda7b160acf7542fa01978",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 9,
+        "title": "Deep Learning for Time Series Forecasting: Tutorial and Literature Survey",
+        "year": 2022,
+        "doi": "https://doi.org/10.1145/3533382",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Deep learning based forecasting methods have become the methods of choice in many applications of time series prediction or forecasting often outperforming other approaches. Consequently, over the last years, these methods are now ubiquitous in large-scale industrial forecasting applications and have consistently ranke"
+      },
+      {
+        "rank": 10,
+        "title": "Long sequence time-series forecasting with deep learning: A survey",
+        "year": 2023,
+        "doi": "https://doi.org/10.1016/j.inffus.2023.101819",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": ""
+      }
+    ],
+    "provider_status": {
+      "openalex": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "time series forecasting deep learning",
+        "fetched": 15,
+        "selected": 4,
+        "contributed": true
+      },
+      "arxiv": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "time series forecasting deep learning",
+        "fetched": 15,
+        "selected": 1,
+        "contributed": true
+      },
+      "crossref": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "time series forecasting deep learning",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "semanticscholar": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "time series forecasting deep learning",
+        "fetched": 10,
+        "selected": 2,
+        "contributed": true
+      },
+      "springer": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "time series forecasting deep learning",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      },
+      "elsevier": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "time series forecasting deep learning",
+        "fetched": 10,
+        "selected": 2,
+        "contributed": true
+      },
+      "ieee": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "time series forecasting deep learning",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      }
+    },
+    "providers_found": [
+      "semanticscholar",
+      "arxiv",
+      "elsevier",
+      "openalex",
+      "crossref"
+    ]
+  },
+  {
+    "query": "collaborative filtering recommendation systems",
+    "latency_s": 4.0,
+    "result_count": 10,
+    "results": [
+      {
+        "rank": 1,
+        "title": "Collaborative Filtering Recommendation Systems Algorithms, Strengths and Open Issues",
+        "year": 2020,
+        "doi": "https://doi.org/10.1007/978-3-030-63319-6_14",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 2,
+        "title": "A multi-level collaborative filtering method that improves recommendations",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/1804.08891v1",
+        "similarity": null,
+        "summary": "Collaborative filtering is one of the most used approaches for providing recommendations in various online environments. Even though collaborative recommendation methods have been widely utilized due to their simplicity and ease of use, accuracy is still an issue. In this paper we propose a multi-level recommendation m"
+      },
+      {
+        "rank": 3,
+        "title": "WEB-BASED COLLABORATIVE LEARNING AND KNOWLEDGE SHARING IN INFORMAL BUSINESS NETWORKS",
+        "year": 2114,
+        "doi": "10.15556/ijiim.01.02.002",
+        "source": "crossref",
+        "url": "https://doi.org/10.15556/ijiim.01.02.002",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 4,
+        "title": "Current Trends in Collaborative Filtering Recommendation Systems",
+        "year": 2019,
+        "doi": "10.1007/978-3-030-23381-5_4",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/0884cc5e0f6283722c4b2a0becb3e07e64ff9e48",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 5,
+        "title": "Research on the Application of Big Data Technology and Collaborative Filtering Recommendation System in Accurately Guiding the Employment of College Students in the Context of COVID-19",
+        "year": 2023,
+        "doi": "10.2991/978-94-6463-058-9_118",
+        "source": "springer",
+        "url": [
+          {
+            "format": "html",
+            "platform": "web",
+            "value": "http://link.springer.com/openurl/fulltext?id=doi:10.2991/978-94-6463-058-9_118"
+          },
+          {
+            "format": "pdf",
+            "platform": "web",
+            "value": "http://link.springer.com/openurl/pdf?id=doi:10.2991/978-94-6463-058-9_118"
+          },
+          {
+            "format": "",
+            "platform": "",
+            "value": "http://dx.doi.org/10.2991/978-94-6463-058-9_118"
+          }
+        ],
+        "similarity": null,
+        "summary": "Under the influence of COVID-19, the employment situation of college students is severe, and the employment guidance of college students is also facing new challenges and opportunities. Based on the analysis of the difficulties faced by college students' employment guidance in the context of the epidemic, this paper ex"
+      },
+      {
+        "rank": 6,
+        "title": "A Survey on Recommendation Systems using Collaborative Filtering Techniques",
+        "year": 2023,
+        "doi": "10.1109/ICSSIT55814.2023.10060889",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85150684596&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 7,
+        "title": "Current Trends in Collaborative Filtering Recommendation Systems",
+        "year": 2019,
+        "doi": "https://doi.org/10.1007/978-3-030-23381-5_4",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 8,
+        "title": "Review of collaborative filtering recommendation systems",
+        "year": 2024,
+        "doi": "10.54254/2755-2721/43/20230811",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/4f244aa19770cfa42ed8fecd9ec298dca2de4a45",
+        "similarity": null,
+        "summary": "In the era of information overload, recommender systems develop rapidly. And because the needs of information consumers are full of diversity and the information data provided by information producers is too large, to enhance the efficiency and quality of recommendations, the research community has introduced numerous "
+      },
+      {
+        "rank": 9,
+        "title": "Survey on Collaborative Filtering, Content-based Filtering and Hybrid Recommendation System",
+        "year": 2015,
+        "doi": "https://doi.org/10.5120/19308-0760",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Recommender systems or recommendation systems are a subset of information filtering system that used to anticipate the 'evaluation' or 'preference' that user would feed to an item. In recent years E-commerce applications are widely using Recommender system. Generally the most popular Ecommerce sites are probably music,"
+      },
+      {
+        "rank": 10,
+        "title": "Pointer-Based Item-to-Item Collaborative Filtering Recommendation System Using a Machine Learning Model",
+        "year": 2021,
+        "doi": "https://doi.org/10.1142/s0219622021500619",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "The creation of digital marketing has enabled companies to adopt personalized item recommendations for their customers. This process keeps them ahead of the competition. One of the techniques used in item recommendation is known as item-based recommendation system or item\u2013item collaborative filtering. Presently, item r"
+      }
+    ],
+    "provider_status": {
+      "openalex": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "collaborative filtering recommendation systems",
+        "fetched": 15,
+        "selected": 4,
+        "contributed": true
+      },
+      "arxiv": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "collaborative filtering recommendation systems",
+        "fetched": 15,
+        "selected": 1,
+        "contributed": true
+      },
+      "crossref": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "collaborative filtering recommendation systems",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "semanticscholar": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "collaborative filtering recommendation systems",
+        "fetched": 10,
+        "selected": 2,
+        "contributed": true
+      },
+      "springer": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "collaborative filtering recommendation systems",
+        "fetched": 1,
+        "selected": 1,
+        "contributed": true
+      },
+      "elsevier": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "collaborative filtering recommendation systems",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "ieee": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "collaborative filtering recommendation systems",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      }
+    },
+    "providers_found": [
+      "semanticscholar",
+      "arxiv",
+      "elsevier",
+      "openalex",
+      "crossref",
+      "springer"
+    ]
+  },
+  {
+    "query": "vision transformer image classification",
+    "latency_s": 4.68,
+    "result_count": 10,
+    "results": [
+      {
+        "rank": 1,
+        "title": "Vision Transformers for Image Classification: A Comparative Survey",
+        "year": 2025,
+        "doi": "https://doi.org/10.3390/technologies13010032",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Transformers were initially introduced for natural language processing, leveraging the self-attention mechanism. They require minimal inductive biases in their design and can function effectively as set-based architectures. Additionally, transformers excel at capturing long-range dependencies and enabling parallel proc"
+      },
+      {
+        "rank": 2,
+        "title": "ViTAEv2: Vision Transformer Advanced by Exploring Inductive Bias for Image Recognition and Beyond",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/2202.10108v2",
+        "similarity": null,
+        "summary": "Vision transformers have shown great potential in various computer vision tasks owing to their strong capability to model long-range dependency using the self-attention mechanism. Nevertheless, they treat an image as a 1D sequence of visual tokens, lacking an intrinsic inductive bias (IB) in modeling local visual struc"
+      },
+      {
+        "rank": 3,
+        "title": "Classification Uncertainty Quantification: A Comparison Between Bootstrap and Conformal ROC Confidence Bands",
+        "year": 2028,
+        "doi": "10.5705/ss.202025.0127",
+        "source": "crossref",
+        "url": "https://doi.org/10.5705/ss.202025.0127",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 4,
+        "title": "CrossViT: Cross-Attention Multi-Scale Vision Transformer for Image Classification",
+        "year": 2021,
+        "doi": "10.1109/ICCV48922.2021.00041",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/0eff37167876356da2163b2e396df2719adf7de9",
+        "similarity": null,
+        "summary": "The recently developed vision transformer (ViT) has achieved promising results on image classification compared to convolutional neural networks. Inspired by this, in this paper, we study how to learn multi-scale feature representations in transformer models for image classification. To this end, we propose a dual-bran"
+      },
+      {
+        "rank": 5,
+        "title": "Vision Transformer for Cell Tumor Image Classification",
+        "year": 2023,
+        "doi": "10.1109/ICFEICT59519.2023.00039",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85172121827&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 6,
+        "title": "Review on Vision Transformer for Satellite Image Classification",
+        "year": 2024,
+        "doi": "10.1007/978-981-97-0892-5_16",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85201005431&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 7,
+        "title": "Vision Transformers for Remote Sensing Image Classification",
+        "year": 2021,
+        "doi": "https://doi.org/10.3390/rs13030516",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "In this paper, we propose a remote-sensing scene-classification method based on vision transformers. These types of networks, which are now recognized as state-of-the-art models in natural language processing, do not rely on convolution layers as in standard convolutional neural networks (CNNs). Instead, they use multi"
+      },
+      {
+        "rank": 8,
+        "title": "CrossViT: Cross-Attention Multi-Scale Vision Transformer for Image Classification",
+        "year": 2021,
+        "doi": "https://doi.org/10.1109/iccv48922.2021.00041",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "The recently developed vision transformer (ViT) has achieved promising results on image classification compared to convolutional neural networks. Inspired by this, in this paper, we study how to learn multi-scale feature representations in transformer models for image classification. To this end, we propose a dual-bran"
+      },
+      {
+        "rank": 9,
+        "title": "MedViT: A robust vision transformer for generalized medical image classification",
+        "year": 2023,
+        "doi": "https://doi.org/10.1016/j.compbiomed.2023.106791",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 10,
+        "title": "Image classification of electronic components based on Vision Transformer",
+        "year": 2023,
+        "doi": "10.1109/ICICML60161.2023.10424884",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85186511665&origin=inward",
+        "similarity": null,
+        "summary": ""
+      }
+    ],
+    "provider_status": {
+      "openalex": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "vision transformer image classification",
+        "fetched": 15,
+        "selected": 4,
+        "contributed": true
+      },
+      "arxiv": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "vision transformer image classification",
+        "fetched": 15,
+        "selected": 1,
+        "contributed": true
+      },
+      "crossref": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "vision transformer image classification",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "semanticscholar": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "vision transformer image classification",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "springer": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "vision transformer image classification",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      },
+      "elsevier": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "vision transformer image classification",
+        "fetched": 10,
+        "selected": 3,
+        "contributed": true
+      },
+      "ieee": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "vision transformer image classification",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      }
+    },
+    "providers_found": [
+      "semanticscholar",
+      "arxiv",
+      "elsevier",
+      "openalex",
+      "crossref"
+    ]
+  },
+  {
+    "query": "contrastive learning CLIP",
+    "latency_s": 4.64,
+    "result_count": 10,
+    "results": [
+      {
+        "rank": 1,
+        "title": "Transductive Clip with Class-Conditional Contrastive Learning",
+        "year": 2022,
+        "doi": "https://doi.org/10.1109/icassp43922.2022.9747571",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Inspired by the remarkable zero-shot generalization capacity of vision-language pre-trained model, we seek to leverage the supervision from CLIP model to alleviate the burden of data labeling. However, such supervision inevitably contains the label noise, which significantly degrades the discriminative power of the cla"
+      },
+      {
+        "rank": 2,
+        "title": "EVA-CLIP: Improved Training Techniques for CLIP at Scale",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/2303.15389v1",
+        "similarity": null,
+        "summary": "Contrastive language-image pre-training, CLIP for short, has gained increasing attention for its potential in various scenarios. In this paper, we propose EVA-CLIP, a series of models that significantly improve the efficiency and effectiveness of CLIP training. Our approach incorporates new techniques for representatio"
+      },
+      {
+        "rank": 3,
+        "title": "Learner profiles and the process of Learning in the Higher Educational Context",
+        "year": 2115,
+        "doi": "10.15556/ijiim.02.01.003",
+        "source": "crossref",
+        "url": "https://doi.org/10.15556/ijiim.02.01.003",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 4,
+        "title": "\u03b2-CLIP: Text-Conditioned Contrastive Learning for Multi-Granular Vision-Language Alignment",
+        "year": 2025,
+        "doi": "10.48550/arXiv.2512.12678",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/0c133f1a00f884fe18eb60c01c338909cd5a486b",
+        "similarity": null,
+        "summary": "CLIP achieves strong zero-shot image-text retrieval by aligning global vision and text representations, yet it falls behind on fine-grained tasks even when fine-tuned on long, detailed captions. In this work, we propose $\\beta$-CLIP, a multi-granular text-conditioned contrastive learning framework designed to achieve h"
+      },
+      {
+        "rank": 5,
+        "title": "PB-CLIP: Enhancing CLIP's Compositional Reasoning with Pixel-level Image Hard Negatives and Balanced Multi-level Contrastive Learning",
+        "year": 2025,
+        "doi": "10.1007/978-981-96-9794-6_35",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=105011353260&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 6,
+        "title": "DisCo-CLIP: A Distributed Contrastive Loss for Memory Efficient CLIP Training",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/2304.08480v1",
+        "similarity": null,
+        "summary": "We propose DisCo-CLIP, a distributed memory-efficient CLIP training approach, to reduce the memory consumption of contrastive loss when training contrastive learning models. Our approach decomposes the contrastive loss and its gradient computation into two parts, one to calculate the intra-GPU gradients and the other t"
+      },
+      {
+        "rank": 7,
+        "title": "Video Contrastive Learning with Global Context",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/2108.02722v1",
+        "similarity": null,
+        "summary": "Contrastive learning has revolutionized self-supervised image representation learning field, and recently been adapted to video domain. One of the greatest advantages of contrastive learning is that it allows us to flexibly define powerful loss objectives as long as we can find a reasonable way to formulate positive an"
+      },
+      {
+        "rank": 8,
+        "title": "Image\u2013Text (IT)-Prompt: Prompt-Based Learning Framework Empowered by the Cluster-Based Nearest Class Mean (C-NCM) for Rehearsal-Free Contrastive Language\u2013Image Pretraining (CLIP)-Based Continual Learning",
+        "year": 2025,
+        "doi": "10.3390/app15062966",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=105000866388&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 9,
+        "title": "An implementation of the \"Guess who?\" game using CLIP",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/2112.00599v1",
+        "similarity": null,
+        "summary": "CLIP (Contrastive Language-Image Pretraining) is an efficient method for learning computer vision tasks from natural language supervision that has powered a recent breakthrough in deep learning due to its zero-shot transfer capabilities. By training from image-text pairs available on the internet, the CLIP model transf"
+      },
+      {
+        "rank": 10,
+        "title": "Prototypical Contrastive Learning-based CLIP Fine-tuning for Object Re-identification",
+        "year": 2023,
+        "doi": "https://doi.org/10.48550/arxiv.2310.17218",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "This work aims to adapt large-scale pre-trained vision-language models, such as contrastive language-image pretraining (CLIP), to enhance the performance of object reidentification (Re-ID) across various supervision settings. Although prompt learning has enabled a recent work named CLIP-ReID to achieve promising perfor"
+      }
+    ],
+    "provider_status": {
+      "openalex": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "contrastive learning clip",
+        "fetched": 15,
+        "selected": 2,
+        "contributed": true
+      },
+      "arxiv": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "contrastive learning clip",
+        "fetched": 15,
+        "selected": 4,
+        "contributed": true
+      },
+      "crossref": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "contrastive learning clip",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "semanticscholar": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "contrastive learning clip",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "springer": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "contrastive learning clip",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      },
+      "elsevier": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "contrastive learning clip",
+        "fetched": 10,
+        "selected": 2,
+        "contributed": true
+      },
+      "ieee": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "contrastive learning clip",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      }
+    },
+    "providers_found": [
+      "semanticscholar",
+      "arxiv",
+      "elsevier",
+      "openalex",
+      "crossref"
+    ]
+  },
+  {
+    "query": "question answering open domain",
+    "latency_s": 4.18,
+    "result_count": 10,
+    "results": [
+      {
+        "rank": 1,
+        "title": "AmbigQA: Answering Ambiguous Open-domain Questions",
+        "year": 2020,
+        "doi": "https://doi.org/10.18653/v1/2020.emnlp-main.466",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Ambiguity is inherent to open-domain question answering; especially when exploring new topics, it can be difficult to ask questions that have a single, unambiguous answer. In this paper, we introduce AMBIGQA, a new open-domain question answering task which involves finding every plausible answer, and then rewriting the"
+      },
+      {
+        "rank": 2,
+        "title": "An Exploration of Data Augmentation and Sampling Techniques for Domain-Agnostic Question Answering",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/1912.02145v1",
+        "similarity": null,
+        "summary": "To produce a domain-agnostic question answering model for the Machine Reading Question Answering (MRQA) 2019 Shared Task, we investigate the relative benefits of large pre-trained language models, various data sampling strategies, as well as query and context paraphrases generated by back-translation. We find a simple "
+      },
+      {
+        "rank": 3,
+        "title": "Title Pending 3042",
+        "year": 2036,
+        "doi": "10.14324/111.444/ucloe.3042",
+        "source": "crossref",
+        "url": "https://doi.org/10.14324/111.444/ucloe.3042",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 4,
+        "title": "WikiQA: A Challenge Dataset for Open-Domain Question Answering",
+        "year": 2015,
+        "doi": "10.18653/v1/D15-1237",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/f53e2ae46470b89cd1ce6e3bf1d60d9c59722ce1",
+        "similarity": null,
+        "summary": "We describe the WIKIQA dataset, a new publicly available set of question and sentence pairs, collected and annotated for research on open-domain question answering. Most previous work on answer sentence selection focuses on a dataset created using the TREC-QA data, which includes editor-generated questions and candidat"
+      },
+      {
+        "rank": 5,
+        "title": "ScoQAS: A semantic-based closed and open domain question answering system",
+        "year": 2017,
+        "doi": null,
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85028844429&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 6,
+        "title": "An adaptable method for developing an Open-domain Question Answering system",
+        "year": 2023,
+        "doi": null,
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85173877548&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 7,
+        "title": "A dataset and baselines for sequential open-domain question answering",
+        "year": 2018,
+        "doi": "10.18653/v1/d18-1134",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85078891405&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 8,
+        "title": "WikiQA: A Challenge Dataset for Open-Domain Question Answering",
+        "year": 2015,
+        "doi": "https://doi.org/10.18653/v1/d15-1237",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "We describe the WIKIQA dataset, a new publicly available set of question and sentence pairs, collected and annotated for research on open-domain question answering. Most previous work on answer sentence selection focuses on a dataset created using the TREC-QA data, which includes editor-generated questions and candidat"
+      },
+      {
+        "rank": 9,
+        "title": "MSReNet: Multi-step Reformulation for Open-Domain Question Answering",
+        "year": 2020,
+        "doi": "10.1007/978-3-030-60457-8_24",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85093069364&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 10,
+        "title": "Methods for using textual entailment in open-domain question answering",
+        "year": 2006,
+        "doi": "https://doi.org/10.3115/1220175.1220289",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Work on the semantics of questions has argued that the relation between a question and its answer(s) can be cast in terms of logical entailment. In this paper, we demonstrate how computational systems designed to recognize textual entailment can be used to enhance the accuracy of current open-domain automatic question "
+      }
+    ],
+    "provider_status": {
+      "openalex": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "question answering open domain",
+        "fetched": 15,
+        "selected": 3,
+        "contributed": true
+      },
+      "arxiv": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "question answering open domain",
+        "fetched": 15,
+        "selected": 1,
+        "contributed": true
+      },
+      "crossref": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "question answering open domain",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "semanticscholar": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "question answering open domain",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "springer": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "question answering open domain",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      },
+      "elsevier": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "question answering open domain",
+        "fetched": 10,
+        "selected": 4,
+        "contributed": true
+      },
+      "ieee": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "question answering open domain",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      }
+    },
+    "providers_found": [
+      "semanticscholar",
+      "arxiv",
+      "elsevier",
+      "openalex",
+      "crossref"
+    ]
+  },
+  {
+    "query": "knowledge graph embedding",
+    "latency_s": 5.45,
+    "result_count": 10,
+    "results": [
+      {
+        "rank": 1,
+        "title": "Knowledge Graph Embedding: A Survey of Approaches and Applications",
+        "year": 2017,
+        "doi": "https://doi.org/10.1109/tkde.2017.2754499",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Knowledge graph (KG) embedding is to embed components of a KG including entities and relations into continuous vector spaces, so as to simplify the manipulation while preserving the inherent structure of the KG. It can benefit a variety of downstream tasks such as KG completion and relation extraction, and hence has qu"
+      },
+      {
+        "rank": 2,
+        "title": "Exploiting Global Semantic Similarities in Knowledge Graphs by Relational Prototype Entities",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/2206.08021v1",
+        "similarity": null,
+        "summary": "Knowledge graph (KG) embedding aims at learning the latent representations for entities and relations of a KG in continuous vector spaces. An empirical observation is that the head (tail) entities connected by the same relation often share similar semantic attributes -- specifically, they often belong to the same categ"
+      },
+      {
+        "rank": 3,
+        "title": "Knowledge discovery and computerized reasoning to assist tourist destination marketing",
+        "year": 2114,
+        "doi": "10.15556/ijsim.01.02.004",
+        "source": "crossref",
+        "url": "https://doi.org/10.15556/ijsim.01.02.004",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 4,
+        "title": "Knowledge Graph Embedding: A Survey of Approaches and Applications",
+        "year": 2017,
+        "doi": "10.1109/TKDE.2017.2754499",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/30321b036607a7936221235ea8ec7cf7c1627100",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 5,
+        "title": "TADG: topology-aware and distillation-guided framework for continual knowledge graph embedding",
+        "year": 2026,
+        "doi": "10.1007/s44443-026-00727-1",
+        "source": "springer",
+        "url": [
+          {
+            "format": "pdf",
+            "platform": "web",
+            "value": "http://link.springer.com/openurl/pdf?id=doi:10.1007/s44443-026-00727-1"
+          },
+          {
+            "format": "",
+            "platform": "",
+            "value": "http://dx.doi.org/10.1007/s44443-026-00727-1"
+          }
+        ],
+        "similarity": null,
+        "summary": "When dealing with dynamically evolving knowledge graphs, traditional knowledge graph embedding methods lack an efficient incremental update mechanism. They typically require retraining on the entire graph and cannot effectively reuse previously learned knowledge. Existing continual knowledge graph embedding (CKGE) appr"
+      },
+      {
+        "rank": 6,
+        "title": "Review of Research Progress on Knowledge Graph Embedding",
+        "year": 2025,
+        "doi": "10.19678/j.issn.1000-3428.0068386",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=105001408227&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 7,
+        "title": "TGformer: A Graph Transformer Framework for Knowledge Graph Embedding",
+        "year": 2025,
+        "doi": "10.1109/TKDE.2024.3486747",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/3f170af3566f055e758fa3bdf2bfd3a0e8787e58",
+        "similarity": null,
+        "summary": "Knowledge graph embedding is efficient method for reasoning over known facts and inferring missing links. Existing methods are mainly triplet-based or graph-based. Triplet-based approaches learn the embedding of missing entities by a single triple only. They ignore the fact that the knowledge graph is essentially a gra"
+      },
+      {
+        "rank": 8,
+        "title": "Knowledge Graph Embedding via Dynamic Mapping Matrix",
+        "year": 2015,
+        "doi": "https://doi.org/10.3115/v1/p15-1067",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Guoliang Ji, Shizhu He, Liheng Xu, Kang Liu, Jun Zhao. Proceedings of the 53rd Annual Meeting of the Association for Computational Linguistics and the 7th International Joint Conference on Natural Language Processing (Volume 1: Long Papers). 2015."
+      },
+      {
+        "rank": 9,
+        "title": "Modifier Embedding for Temporal Knowledge Graph Embedding",
+        "year": 2023,
+        "doi": "10.1109/JCICE59059.2023.00040",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85171171631&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 10,
+        "title": "Knowledge Sheaves: A Sheaf-Theoretic Framework for Knowledge Graph Embedding",
+        "year": 2023,
+        "doi": null,
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85165152214&origin=inward",
+        "similarity": null,
+        "summary": ""
+      }
+    ],
+    "provider_status": {
+      "openalex": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "knowledge graph embedding",
+        "fetched": 15,
+        "selected": 2,
+        "contributed": true
+      },
+      "arxiv": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "knowledge graph embedding",
+        "fetched": 15,
+        "selected": 1,
+        "contributed": true
+      },
+      "crossref": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "knowledge graph embedding",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "semanticscholar": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "knowledge graph embedding",
+        "fetched": 10,
+        "selected": 2,
+        "contributed": true
+      },
+      "springer": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "knowledge graph embedding",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "elsevier": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "knowledge graph embedding",
+        "fetched": 10,
+        "selected": 3,
+        "contributed": true
+      },
+      "ieee": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "knowledge graph embedding",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      }
+    },
+    "providers_found": [
+      "semanticscholar",
+      "arxiv",
+      "elsevier",
+      "openalex",
+      "crossref",
+      "springer"
+    ]
+  },
+  {
+    "query": "text summarization abstractive",
+    "latency_s": 4.13,
+    "result_count": 10,
+    "results": [
+      {
+        "rank": 1,
+        "title": "A survey on abstractive text summarization",
+        "year": 2016,
+        "doi": "https://doi.org/10.1109/iccpct.2016.7530193",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Text Summarization is the task of extracting salient information from the original text document. In this process, the extracted information is generated as a condensed report and presented as a concise summary to the user. It is very difficult for humans to understand and interpret the content of the text. In this pap"
+      },
+      {
+        "rank": 2,
+        "title": "Survey on Abstractive Text Summarization: Dataset, Models, and Metrics",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/2412.17165v1",
+        "similarity": null,
+        "summary": "The advancements in deep learning, particularly the introduction of transformers, have been pivotal in enhancing various natural language processing (NLP) tasks. These include text-to-text applications such as machine translation, text classification, and text summarization, as well as data-to-text tasks like response "
+      },
+      {
+        "rank": 3,
+        "title": "Towards a Meta-Machine Summarization System based on Voting and Selection Paradigm",
+        "year": 2027,
+        "doi": "10.1504/ijwet.2027.10076836",
+        "source": "crossref",
+        "url": "https://doi.org/10.1504/ijwet.2027.10076836",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 4,
+        "title": "Abstractive text summarization: A comprehensive survey of techniques, systems, and challenges",
+        "year": 2025,
+        "doi": "10.1016/j.cosrev.2025.100762",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/170e46a22dc4dab2746db97cfbb459317eb5e71e",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 5,
+        "title": "Current Approaches in Abstractive Text Summarization: A Comprehensive Survey and Analysis",
+        "year": 2025,
+        "doi": "10.1109/AIDE64228.2025.10987294",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=105006617855&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 6,
+        "title": "Abstractive text summarization: State of the art, challenges, and improvements",
+        "year": 2024,
+        "doi": "10.1016/j.neucom.2024.128255",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/04ce6c9e753b57991b66b9c3e1e41b7eab687023",
+        "similarity": null,
+        "summary": "Specifically focusing on the landscape of abstractive text summarization, as opposed to extractive techniques, this survey presents a comprehensive overview, delving into state-of-the-art techniques, prevailing challenges, and prospective research directions. We categorize the techniques into traditional sequence-to-se"
+      },
+      {
+        "rank": 7,
+        "title": "Survey on Abstractive Text Summarization",
+        "year": 2018,
+        "doi": "10.1109/ICCSP.2018.8524532",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85057763491&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 8,
+        "title": "A survey on abstractive text summarization",
+        "year": 2016,
+        "doi": "10.1109/ICCPCT.2016.7530193",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=84992089246&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 9,
+        "title": "Abstractive Text Summarization Challenges and Various Approaches",
+        "year": 2025,
+        "doi": "10.1007/978-3-031-84513-0_18",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=105016151891&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 10,
+        "title": "A Comprehensive Survey of Abstractive Text Summarization Techniques",
+        "year": 2024,
+        "doi": "10.1109/IC3SE62002.2024.10592874",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85200687448&origin=inward",
+        "similarity": null,
+        "summary": ""
+      }
+    ],
+    "provider_status": {
+      "openalex": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "text summarization abstractive",
+        "fetched": 15,
+        "selected": 1,
+        "contributed": true
+      },
+      "arxiv": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "text summarization abstractive",
+        "fetched": 15,
+        "selected": 1,
+        "contributed": true
+      },
+      "crossref": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "text summarization abstractive",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "semanticscholar": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "text summarization abstractive",
+        "fetched": 10,
+        "selected": 2,
+        "contributed": true
+      },
+      "springer": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "text summarization abstractive",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      },
+      "elsevier": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "text summarization abstractive",
+        "fetched": 10,
+        "selected": 5,
+        "contributed": true
+      },
+      "ieee": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "text summarization abstractive",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      }
+    },
+    "providers_found": [
+      "semanticscholar",
+      "arxiv",
+      "elsevier",
+      "openalex",
+      "crossref"
+    ]
+  },
+  {
+    "query": "federated learning privacy",
+    "latency_s": 5.54,
+    "result_count": 10,
+    "results": [
+      {
+        "rank": 1,
+        "title": "A Comprehensive Survey of Privacy-preserving Federated Learning",
+        "year": 2021,
+        "doi": "https://doi.org/10.1145/3460427",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "The past four years have witnessed the rapid development of federated learning (FL). However, new privacy concerns have also emerged during the aggregation of the distributed intermediate results. The emerging privacy-preserving FL (PPFL) has been heralded as a solution to generic privacy-preserving machine learning. H"
+      },
+      {
+        "rank": 2,
+        "title": "A Review of Privacy-preserving Federated Learning for the Internet-of-Things",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/2004.11794v2",
+        "similarity": null,
+        "summary": "The Internet-of-Things (IoT) generates vast quantities of data, much of it attributable to individuals' activity and behaviour. Gathering personal data and performing machine learning tasks on this data in a central location presents a significant privacy risk to individuals as well as challenges with communicating thi"
+      },
+      {
+        "rank": 3,
+        "title": "Learner profiles and the process of Learning in the Higher Educational Context",
+        "year": 2115,
+        "doi": "10.15556/ijiim.02.01.003",
+        "source": "crossref",
+        "url": "https://doi.org/10.15556/ijiim.02.01.003",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 4,
+        "title": "Federated Learning; Privacy Preserving Machine Learning for Decentralized Data",
+        "year": 2023,
+        "doi": "10.52783/tjjpt.v44.i1.2234",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/58844d1d12320a8af7ac5fc9c80f285121e514c5",
+        "similarity": null,
+        "summary": "\n \n \n \nFederated learning represents a compelling solution for tackling the privacy challenges inherent in decentralized and distributed environments when it comes to machine learning. This scholarly paper delves deep into the realm of federated learning, encompassing its applications and the latest privacy-preserving "
+      },
+      {
+        "rank": 5,
+        "title": "Federated Learning and Differential Privacy: Software tools analysis, the Sherpa.ai FL framework and methodological guidelines for preserving data privacy",
+        "year": 2020,
+        "doi": "10.1016/j.inffus.2020.07.009",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85089410378&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 6,
+        "title": "Trustworthy federated learning: privacy, security, and beyond",
+        "year": 2024,
+        "doi": "10.1007/s10115-024-02285-2",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/e3a4724a2826afbb3b3f57d3894ca156a213aab1",
+        "similarity": null,
+        "summary": "While recent years have witnessed the advancement in big data and artificial intelligence, it is of much importance to safeguard data privacy and security. As an innovative approach, federated learning (FL) addresses these concerns by facilitating collaborative model training across distributed data sources without tra"
+      },
+      {
+        "rank": 7,
+        "title": "Privacy and Robustness in Federated Learning: Attacks and Defenses",
+        "year": 2022,
+        "doi": "https://doi.org/10.1109/tnnls.2022.3216981",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "As data are increasingly being stored in different silos and societies becoming more aware of data privacy issues, the traditional centralized training of artificial intelligence (AI) models is facing efficiency and privacy challenges. Recently, federated learning (FL) has emerged as an alternative solution and continu"
+      },
+      {
+        "rank": 8,
+        "title": "Federated Learning Privacy Protection via Training Randomness",
+        "year": 2025,
+        "doi": "10.62762/tscc.2025.779613",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/297cd886c3acc710e269a9f5b1aed9d36beb5890",
+        "similarity": null,
+        "summary": "Federated learning is a collaborative machine learning paradigm that trains models across multiple computing nodes while aiming to preserve the privacy of local data held by participants. However, because of the open network environment, federated learning faces severe privacy and security challenges. Studies have show"
+      },
+      {
+        "rank": 9,
+        "title": "Survey of Privacy Threats and Countermeasures in Federated Learning",
+        "year": 2025,
+        "doi": "10.1109/FLTA67013.2025.11336767",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=105033529226&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 10,
+        "title": "A Hybrid Approach to Privacy-Preserving Federated Learning",
+        "year": 2019,
+        "doi": "https://doi.org/10.1145/3338501.3357370",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Federated learning facilitates the collaborative training of models without the sharing of raw data. However, recent attacks demonstrate that simply maintaining data locality during training processes does not provide sufficient privacy guarantees. Rather, we need a federated learning system capable of preventing infer"
+      }
+    ],
+    "provider_status": {
+      "openalex": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "federated learning privacy",
+        "fetched": 15,
+        "selected": 3,
+        "contributed": true
+      },
+      "arxiv": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "federated learning privacy",
+        "fetched": 15,
+        "selected": 1,
+        "contributed": true
+      },
+      "crossref": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "federated learning privacy",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "semanticscholar": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "federated learning privacy",
+        "fetched": 10,
+        "selected": 3,
+        "contributed": true
+      },
+      "springer": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "federated learning privacy",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      },
+      "elsevier": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "federated learning privacy",
+        "fetched": 10,
+        "selected": 2,
+        "contributed": true
+      },
+      "ieee": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "federated learning privacy",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      }
+    },
+    "providers_found": [
+      "semanticscholar",
+      "arxiv",
+      "elsevier",
+      "openalex",
+      "crossref"
+    ]
+  },
+  {
+    "query": "neural architecture search",
+    "latency_s": 5.94,
+    "result_count": 10,
+    "results": [
+      {
+        "rank": 1,
+        "title": "Neural Architecture Search",
+        "year": 2019,
+        "doi": "https://doi.org/10.1007/978-3-030-05318-5_3",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Deep Learning has enabled remarkable progress over the last years on a variety of tasks, such as image recognition, speech recognition, and machine translation. One crucial aspect for this progress are novel neural architectures. Currently employed architectures have mostly been developed manually by human experts, whi"
+      },
+      {
+        "rank": 2,
+        "title": "Neural Architecture Generator Optimization",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/2004.01395v3",
+        "similarity": null,
+        "summary": "Neural Architecture Search (NAS) was first proposed to achieve state-of-the-art performance through the discovery of new architecture patterns, without human intervention. An over-reliance on expert knowledge in the search space design has however led to increased performance (local optima) without significant architec"
+      },
+      {
+        "rank": 3,
+        "title": "Cyber Defense Digital Twins: A Federated Learning and Zero-Trust AI Architecture for Autonomous Threat Prediction and Response",
+        "year": 2028,
+        "doi": "10.32628/cseit251116279",
+        "source": "crossref",
+        "url": "https://doi.org/10.32628/cseit251116279",
+        "similarity": null,
+        "summary": "<jats:p>Modern enterprise networks operate under persistent threats that exploit cloud-native misconfigurations, identity sprawl, and API vulnerabilities at machine speed. Existing security operations center (SOC) architectures remain largely reactive, signature-dependent, and incapable of predicting multi-stage latera"
+      },
+      {
+        "rank": 4,
+        "title": "Systematic review on neural architecture search",
+        "year": 2025,
+        "doi": "10.1007/s10462-024-11058-w",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/663e00f53862efb273e2e53e56f5ee98807827dd",
+        "similarity": null,
+        "summary": "Machine Learning (ML) has revolutionized various fields, enabling the development of intelligent systems capable of solving complex problems. However, the process of manually designing and optimizing ML models is often time-consuming, labor-intensive, and requires specialized expertise. To address these challenges, Aut"
+      },
+      {
+        "rank": 5,
+        "title": "Efficient Multi-Objective Neural Architecture Search via Tree Search with Training-Free Metrics",
+        "year": 2026,
+        "doi": "10.1007/s42979-026-04749-4",
+        "source": "springer",
+        "url": [
+          {
+            "format": "html",
+            "platform": "web",
+            "value": "http://link.springer.com/openurl/fulltext?id=doi:10.1007/s42979-026-04749-4"
+          },
+          {
+            "format": "pdf",
+            "platform": "web",
+            "value": "http://link.springer.com/openurl/pdf?id=doi:10.1007/s42979-026-04749-4"
+          },
+          {
+            "format": "",
+            "platform": "",
+            "value": "http://dx.doi.org/10.1007/s42979-026-04749-4"
+          }
+        ],
+        "similarity": null,
+        "summary": "Neural Architecture Search (NAS) algorithms often incur huge search costs due to the performance evaluation of many candidate networks during the search. To address this challenge, we introduce a novel method in this paper that efficiently explores the architecture search space. Our approach focuses on selectively expa"
+      },
+      {
+        "rank": 6,
+        "title": "Architecture self-attention mechanism: Nonlinear optimization for neural architecture search",
+        "year": 2021,
+        "doi": "10.23952/JNVA.5.2021.1.08",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85102198077&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 7,
+        "title": "Neural Architecture Search: A Survey",
+        "year": 2018,
+        "doi": "https://doi.org/10.48550/arxiv.1808.05377",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Deep Learning has enabled remarkable progress over the last years on a variety of tasks, such as image recognition, speech recognition, and machine translation. One crucial aspect for this progress are novel neural architectures. Currently employed architectures have mostly been developed manually by human experts, whi"
+      },
+      {
+        "rank": 8,
+        "title": "Neural Architecture Search: A Survey",
+        "year": 2019,
+        "doi": null,
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Deep Learning has enabled remarkable progress over the last years on a variety of tasks, such as image recognition, speech recognition, and machine translation. One crucial aspect for this progress are novel neural architectures. Currently employed architectures have mostly been developed manually by human experts, whi"
+      },
+      {
+        "rank": 9,
+        "title": "A Comprehensive Survey of Neural Architecture Search",
+        "year": 2021,
+        "doi": "https://doi.org/10.1145/3447582",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "Deep learning has made substantial breakthroughs in many fields due to its powerful automatic representation capabilities. It has been proven that neural architecture design is crucial to the feature representation of data and the final performance. However, the design of the neural architecture heavily relies on the r"
+      },
+      {
+        "rank": 10,
+        "title": "Does unsupervised architecture representation learning help neural architecture search?",
+        "year": 2020,
+        "doi": null,
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85101861289&origin=inward",
+        "similarity": null,
+        "summary": ""
+      }
+    ],
+    "provider_status": {
+      "openalex": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "neural architecture search",
+        "fetched": 15,
+        "selected": 4,
+        "contributed": true
+      },
+      "arxiv": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "neural architecture search",
+        "fetched": 15,
+        "selected": 1,
+        "contributed": true
+      },
+      "crossref": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "neural architecture search",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "semanticscholar": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "neural architecture search",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "springer": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "neural architecture search",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "elsevier": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "neural architecture search",
+        "fetched": 10,
+        "selected": 2,
+        "contributed": true
+      },
+      "ieee": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "neural architecture search",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      }
+    },
+    "providers_found": [
+      "semanticscholar",
+      "arxiv",
+      "elsevier",
+      "openalex",
+      "crossref",
+      "springer"
+    ]
+  },
+  {
+    "query": "diffusion models image generation",
+    "latency_s": 6.0,
+    "result_count": 10,
+    "results": [
+      {
+        "rank": 1,
+        "title": "Cascaded Diffusion Models for High Fidelity Image Generation",
+        "year": 2021,
+        "doi": "https://doi.org/10.48550/arxiv.2106.15282",
+        "source": "openalex",
+        "url": null,
+        "similarity": null,
+        "summary": "We show that cascaded diffusion models are capable of generating high fidelity images on the class-conditional ImageNet generation benchmark, without any assistance from auxiliary image classifiers to boost sample quality. A cascaded diffusion model comprises a pipeline of multiple diffusion models that generate images"
+      },
+      {
+        "rank": 2,
+        "title": "Diffusion Models Generate Images Like Painters: an Analytical Theory of Outline First, Details Later",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/2303.02490v2",
+        "similarity": null,
+        "summary": "How do diffusion generative models convert pure noise into meaningful images? In a variety of pretrained diffusion models (including conditional latent space models like Stable Diffusion), we observe that the reverse diffusion process that underlies image generation has the following properties: (i) individual trajecto"
+      },
+      {
+        "rank": 3,
+        "title": "Estimation of Piecewise Continuous Regression Function in Finite Dimension using Oblique-axis Regression Tree with Applications in Image Denoising",
+        "year": 2028,
+        "doi": "10.5705/ss.202025.0120",
+        "source": "crossref",
+        "url": "https://doi.org/10.5705/ss.202025.0120",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 4,
+        "title": "Comprehensive exploration of diffusion models in image generation: a survey",
+        "year": 2025,
+        "doi": "10.1007/s10462-025-11110-3",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=86000735400&origin=inward",
+        "similarity": null,
+        "summary": "The rapid development of deep learning technology has led to the emergence of diffusion models as a promising generative model with diverse applications. These include image generation, audio and video synthesis, molecular design, and text generation. The distinctive generation mechanism and exceptional generation qual"
+      },
+      {
+        "rank": 5,
+        "title": "3D-aware Image Generation using 2D Diffusion Models",
+        "year": 2023,
+        "doi": "10.1109/ICCV51070.2023.00226",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85178443323&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 6,
+        "title": "Comparison of Image Generation methods based on Diffusion Models",
+        "year": 2023,
+        "doi": "10.1109/CVIDL58838.2023.10167336",
+        "source": "elsevier",
+        "url": "https://www.scopus.com/inward/record.uri?partnerID=HzOxMe3b&scp=85166300722&origin=inward",
+        "similarity": null,
+        "summary": ""
+      },
+      {
+        "rank": 7,
+        "title": "Compositional Visual Generation with Composable Diffusion Models",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/2206.01714v6",
+        "similarity": null,
+        "summary": "Large text-guided diffusion models, such as DALLE-2, are able to generate stunning photorealistic images given natural language descriptions. While such models are highly flexible, they struggle to understand the composition of certain concepts, such as confusing the attributes of different objects or relations between"
+      },
+      {
+        "rank": 8,
+        "title": "Controllable Generation with Text-to-Image Diffusion Models: A Survey",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/2403.04279v2",
+        "similarity": null,
+        "summary": "In the rapidly advancing realm of visual generation, diffusion models have revolutionized the landscape, marking a significant shift in capabilities with their impressive text-guided generative functions. However, relying solely on text for conditioning these models does not fully cater to the varied and complex requir"
+      },
+      {
+        "rank": 9,
+        "title": "Text-to-image Diffusion Models in Generative AI: A Survey",
+        "year": null,
+        "doi": "",
+        "source": "arxiv",
+        "url": "https://arxiv.org/abs/2303.07909v3",
+        "similarity": null,
+        "summary": "This survey reviews the progress of diffusion models in generating images from text, ~\\textit{i.e.} text-to-image diffusion models. As a self-contained work, this survey starts with a brief introduction of how diffusion models work for image synthesis, followed by the background for text-conditioned image synthesis. Ba"
+      },
+      {
+        "rank": 10,
+        "title": "High-Resolution Image Synthesis with Latent Diffusion Models",
+        "year": 2021,
+        "doi": "10.1109/CVPR52688.2022.01042",
+        "source": "semanticscholar",
+        "url": "https://www.semanticscholar.org/paper/c10075b3746a9f3dd5811970e93c8ca3ad39b39d",
+        "similarity": null,
+        "summary": "By decomposing the image formation process into a sequential application of denoising autoencoders, diffusion models (DMs) achieve state-of-the-art synthesis results on image data and beyond. Additionally, their formulation allows for a guiding mechanism to control the image generation process without retraining. Howev"
+      }
+    ],
+    "provider_status": {
+      "openalex": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "diffusion models image generation",
+        "fetched": 15,
+        "selected": 1,
+        "contributed": true
+      },
+      "arxiv": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "diffusion models image generation",
+        "fetched": 15,
+        "selected": 4,
+        "contributed": true
+      },
+      "crossref": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "diffusion models image generation",
+        "fetched": 10,
+        "selected": 1,
+        "contributed": true
+      },
+      "semanticscholar": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "diffusion models image generation",
+        "fetched": 10,
+        "selected": 2,
+        "contributed": true
+      },
+      "springer": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "diffusion models image generation",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      },
+      "elsevier": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "diffusion models image generation",
+        "fetched": 10,
+        "selected": 3,
+        "contributed": true
+      },
+      "ieee": {
+        "available": true,
+        "reason": null,
+        "queried": true,
+        "variant": "diffusion models image generation",
+        "fetched": 0,
+        "selected": 0,
+        "contributed": false
+      }
+    },
+    "providers_found": [
+      "semanticscholar",
+      "arxiv",
+      "elsevier",
+      "openalex",
+      "crossref"
+    ]
+  }
+]

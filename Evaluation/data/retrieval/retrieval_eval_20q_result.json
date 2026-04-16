@@ -1,0 +1,2599 @@
+{
+  "run_id": 3,
+  "created_at": "2026-04-16T18:18:12.295851",
+  "name": "final_retrieval_eval_20q",
+  "scope": "uploaded",
+  "k": 10,
+  "case_count": 20,
+  "metrics_retrieval_only": {
+    "count": 20,
+    "recall_at": {
+      "1": 1.0,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "mrr": 1.0,
+    "ndcg_at": {
+      "3": 2.131,
+      "5": 2.948,
+      "10": 4.544
+    }
+  },
+  "metrics_retrieval_rerank": {
+    "count": 20,
+    "recall_at": {
+      "1": 1.0,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "mrr": 1.0,
+    "ndcg_at": {
+      "3": 2.131,
+      "5": 2.766,
+      "10": 3.444
+    }
+  },
+  "latency_breakdown": {
+    "retrieve_ms_avg": 4.9,
+    "rerank_ms_avg": 0.25,
+    "generate_ms_avg": 0.0
+  },
+  "details": [
+    {
+      "query": "What is the main topic of this document?",
+      "gold_doc_id": 1,
+      "doc_id": 1,
+      "doc_ids": null,
+      "retrieval_only_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.9563351337707988,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 1,
+          "confidence": 0.04366486622920118
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 11,
+          "page": 11,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.9884735342543548,
+          "snippet": "Side-Channel Attacks: Dragonblood (2019)\nThe Attack\nVanhoef & Ronen (2019) discovered that the Hunting & Pecking \nloop in the original SAE spec had a variable number of iterations \ndepending on the password.\nBy measuring execution time or cache access patterns, an attacker \ncould determine how many iterations occurred, leaking \ninformation about the password.\nThis enabled offline dictionary attacks \u2014partially defeating SAE's \ncore security guarantee.\nAffected: CVE -2019 -9494 (timing) and CVE -2019 -9496 (cache -\nbased).\nThe Fix\nIEEE and the Wi -Fi Alliance patched the spec:\n1. Replaced the loop with a constant -time hash -to-curve \nalgorithm (using Legendre symbol computations that always \nrun a fixed number of iterations).\n2. Required constant -time ECC operations to prevent cache -\ntiming leakage.\n3. SAE -PK (SAE with public key) was introduced as an \nadditional defense for enterprise deployments.\nLesson: Cryptographic protocol security alone is insufficient \u2014\nside-channel resistance in implementation is equally critical.",
+          "initial_rank": 2,
+          "confidence": 0.011526465745645198
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 12,
+          "page": 12,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 1.0001188445996627,
+          "snippet": "References\n[1] Harkins, D. (2015). Dragonfly Key Exchange. RFC 7664. IETF.\n[2] IEEE Std 802.11 -2020. Wireless LAN Medium Access Control and Physical Layer Specifications.\n[3] Vanhoef, M., & Ronen, E. (2019). Dragonblood: Analyzing the Dragonfly Handshake of WPA3 and EAP -pwd. IEEE S&P 2020.\n[4] Wi -Fi Alliance. (2018). WPA3 Specification v1.0.\n[5] Harkins, D., & Weis, B. (2019). Security Proof for Dragonfly: Password -Authenticated Key Exchange. IETF Draft.\n[6] CVE -2019 -9494 and CVE -2019 -9496. National Vulnerability Database.",
+          "initial_rank": 3,
+          "confidence": 0.0
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 4,
+          "page": 4,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 1.0027331314703345,
+          "snippet": "What is SAE?\nDefinition\nSAE (Simultaneous Authentication of Equals) is WPA3\u2019s \nauthentication protocol, replacing WPA2\u2019s Pre -Shared Key \n(PSK) exchange.\nIt is based on the Dragonfly Key Exchange \u2014a balanced \nPassword Authenticated Key Exchange (PAKE) protocol \nstandardized in RFC 7664.\nBoth peers prove knowledge of the password \nsimultaneously, without transmitting the password or a value \nthat allows offline derivation of it.\nKey Cryptographic Properties\nPAKE Protocol\nPassword is never sent \u2014only proof of knowledge is \nexchanged.\nMutual Auth\nBoth client and AP authenticate each other \nsimultaneously.\nForward Secrecy\nSession keys are ephemeral; past sessions stay secure.\nOffline Attack Resistance\nEach auth attempt requires active interaction with the \nAP.",
+          "initial_rank": 4,
+          "confidence": 0.0
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 1.0051211712985728,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 5,
+          "confidence": 0.0
+        }
+      ],
+      "rerank_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.9563351337707988,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 1,
+          "confidence": 0.04366486622920118,
+          "rerank_raw": 0.0,
+          "rerank_norm": 0.0,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 1
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 11,
+          "page": 11,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.9884735342543548,
+          "snippet": "Side-Channel Attacks: Dragonblood (2019)\nThe Attack\nVanhoef & Ronen (2019) discovered that the Hunting & Pecking \nloop in the original SAE spec had a variable number of iterations \ndepending on the password.\nBy measuring execution time or cache access patterns, an attacker \ncould determine how many iterations occurred, leaking \ninformation about the password.\nThis enabled offline dictionary attacks \u2014partially defeating SAE's \ncore security guarantee.\nAffected: CVE -2019 -9494 (timing) and CVE -2019 -9496 (cache -\nbased).\nThe Fix\nIEEE and the Wi -Fi Alliance patched the spec:\n1. Replaced the loop with a constant -time hash -to-curve \nalgorithm (using Legendre symbol computations that always \nrun a fixed number of iterations).\n2. Required constant -time ECC operations to prevent cache -\ntiming leakage.\n3. SAE -PK (SAE with public key) was introduced as an \nadditional defense for enterprise deployments.\nLesson: Cryptographic protocol security alone is insufficient \u2014\nside-channel resistance in implementation is equally critical.",
+          "initial_rank": 2,
+          "confidence": 0.011526465745645198,
+          "rerank_raw": 0.0,
+          "rerank_norm": 0.0,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 2
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 12,
+          "page": 12,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 1.0001188445996627,
+          "snippet": "References\n[1] Harkins, D. (2015). Dragonfly Key Exchange. RFC 7664. IETF.\n[2] IEEE Std 802.11 -2020. Wireless LAN Medium Access Control and Physical Layer Specifications.\n[3] Vanhoef, M., & Ronen, E. (2019). Dragonblood: Analyzing the Dragonfly Handshake of WPA3 and EAP -pwd. IEEE S&P 2020.\n[4] Wi -Fi Alliance. (2018). WPA3 Specification v1.0.\n[5] Harkins, D., & Weis, B. (2019). Security Proof for Dragonfly: Password -Authenticated Key Exchange. IETF Draft.\n[6] CVE -2019 -9494 and CVE -2019 -9496. National Vulnerability Database.",
+          "initial_rank": 3,
+          "confidence": 0.0,
+          "rerank_raw": 0.0,
+          "rerank_norm": 0.0,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 3
+        }
+      ],
+      "latency_ms": {
+        "retrieve_ms": 14.49,
+        "rerank_ms": 0.38
+      }
+    },
+    {
+      "query": "What is SAE in the context of WPA3?",
+      "gold_doc_id": 1,
+      "doc_id": 1,
+      "doc_ids": null,
+      "retrieval_only_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 4,
+          "page": 4,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.5872011672576793,
+          "snippet": "What is SAE?\nDefinition\nSAE (Simultaneous Authentication of Equals) is WPA3\u2019s \nauthentication protocol, replacing WPA2\u2019s Pre -Shared Key \n(PSK) exchange.\nIt is based on the Dragonfly Key Exchange \u2014a balanced \nPassword Authenticated Key Exchange (PAKE) protocol \nstandardized in RFC 7664.\nBoth peers prove knowledge of the password \nsimultaneously, without transmitting the password or a value \nthat allows offline derivation of it.\nKey Cryptographic Properties\nPAKE Protocol\nPassword is never sent \u2014only proof of knowledge is \nexchanged.\nMutual Auth\nBoth client and AP authenticate each other \nsimultaneously.\nForward Secrecy\nSession keys are ephemeral; past sessions stay secure.\nOffline Attack Resistance\nEach auth attempt requires active interaction with the \nAP.",
+          "initial_rank": 1,
+          "confidence": 0.41279883274232065
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.6191701310404418,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 2,
+          "confidence": 0.38082986895955817
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.6241685820890949,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 3,
+          "confidence": 0.37583141791090513
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7444009000306425,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 4,
+          "confidence": 0.2555990999693575
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 9,
+          "page": 9,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7494409384840669,
+          "snippet": "Forward Secrecy in SAE\nWPA2 \u2014No Forward Secrecy\nThe PSK directly seeds the 4 -way handshake derivation:\nPTK = PRF(PMK, nonces, MACs)\nPMK = PSK\nIf the password is ever compromised \u2014even years later \u2014an \nattacker with recorded traffic can decrypt every past session \nretroactively.\nWPA3 SAE \u2014Perfect Forward \nSecrecy\nSAE uses fresh ephemeral random scalars (r, m) for every \nauthentication.\nThe session key K = r_A \u00b7 r_B \u00b7 PWE is derived from these \nephemeral values.\nEven if the password is later compromised, past session keys \ncannot be reconstructed \u2014the ephemeral values were never \nstored and are computationally infeasible to recover.",
+          "initial_rank": 5,
+          "confidence": 0.2505590615159331
+        }
+      ],
+      "rerank_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.6241685820890949,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 3,
+          "confidence": 0.37583141791090513,
+          "rerank_raw": 0.6667,
+          "rerank_norm": 0.6667,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 1
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 11,
+          "page": 11,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8302042068768182,
+          "snippet": "Side-Channel Attacks: Dragonblood (2019)\nThe Attack\nVanhoef & Ronen (2019) discovered that the Hunting & Pecking \nloop in the original SAE spec had a variable number of iterations \ndepending on the password.\nBy measuring execution time or cache access patterns, an attacker \ncould determine how many iterations occurred, leaking \ninformation about the password.\nThis enabled offline dictionary attacks \u2014partially defeating SAE's \ncore security guarantee.\nAffected: CVE -2019 -9494 (timing) and CVE -2019 -9496 (cache -\nbased).\nThe Fix\nIEEE and the Wi -Fi Alliance patched the spec:\n1. Replaced the loop with a constant -time hash -to-curve \nalgorithm (using Legendre symbol computations that always \nrun a fixed number of iterations).\n2. Required constant -time ECC operations to prevent cache -\ntiming leakage.\n3. SAE -PK (SAE with public key) was introduced as an \nadditional defense for enterprise deployments.\nLesson: Cryptographic protocol security alone is insufficient \u2014\nside-channel resistance in implementation is equally critical.",
+          "initial_rank": 7,
+          "confidence": 0.16979579312318183,
+          "rerank_raw": 0.6667,
+          "rerank_norm": 0.6667,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 2
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 5,
+          "page": 5,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.9755809581427138,
+          "snippet": "The Dragonfly Handshake: Overview\nClient Access Point\n1Hunting & Pecking\nBoth derive PWE (Password Element) from password using \nan elliptic curve point derivation algorithm.\n2Commit Phase \u2192\nBoth send a commit message: a scalar + elliptic curve \nelement derived from ephemeral random values + PWE.\n3Confirm Phase \nBoth compute a shared PMK (Pairwise Master Key) and \nexchange confirm messages using HMAC to prove \npossession.\nShared PMK established \u2014session keys derived via 4 -way handshake",
+          "initial_rank": 10,
+          "confidence": 0.02441904185728616,
+          "rerank_raw": 0.6667,
+          "rerank_norm": 0.6667,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 3
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 4,
+          "page": 4,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.5872011672576793,
+          "snippet": "What is SAE?\nDefinition\nSAE (Simultaneous Authentication of Equals) is WPA3\u2019s \nauthentication protocol, replacing WPA2\u2019s Pre -Shared Key \n(PSK) exchange.\nIt is based on the Dragonfly Key Exchange \u2014a balanced \nPassword Authenticated Key Exchange (PAKE) protocol \nstandardized in RFC 7664.\nBoth peers prove knowledge of the password \nsimultaneously, without transmitting the password or a value \nthat allows offline derivation of it.\nKey Cryptographic Properties\nPAKE Protocol\nPassword is never sent \u2014only proof of knowledge is \nexchanged.\nMutual Auth\nBoth client and AP authenticate each other \nsimultaneously.\nForward Secrecy\nSession keys are ephemeral; past sessions stay secure.\nOffline Attack Resistance\nEach auth attempt requires active interaction with the \nAP.",
+          "initial_rank": 1,
+          "confidence": 0.41279883274232065,
+          "rerank_raw": 0.6667,
+          "rerank_norm": 0.6667,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 4
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.6191701310404418,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 2,
+          "confidence": 0.38082986895955817,
+          "rerank_raw": 0.6667,
+          "rerank_norm": 0.6667,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 5
+        }
+      ],
+      "latency_ms": {
+        "retrieve_ms": 5.14,
+        "rerank_ms": 0.32
+      }
+    },
+    {
+      "query": "How does WPA3 improve over WPA2?",
+      "gold_doc_id": 1,
+      "doc_id": 1,
+      "doc_ids": null,
+      "retrieval_only_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7766297861955935,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 1,
+          "confidence": 0.22337021380440647
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8172796222993057,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 2,
+          "confidence": 0.18272037770069427
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 3,
+          "page": 3,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8524243953885386,
+          "snippet": "WPA2 Weaknesses: Why SAE Was Needed\n4-Way Handshake\nWPA2 uses a 4 -way handshake to \nderive PTK. The handshake can be \ncaptured passively \u2014attacker needs \nno interaction with the AP .\nOffline Dictionary \nAttack\nOnce the handshake is captured, an \nattacker runs offline brute -force or \ndictionary attacks against the PSK \nwithout any network interaction.\nNo Forward Secrecy\nThe PSK is the root of trust. If the \npassword is ever compromised, all \npreviously captured sessions can be \ndecrypted retroactively.",
+          "initial_rank": 3,
+          "confidence": 0.14757560461146135
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8672995967412341,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 4,
+          "confidence": 0.13270040325876586
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 12,
+          "page": 12,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.88551002832999,
+          "snippet": "References\n[1] Harkins, D. (2015). Dragonfly Key Exchange. RFC 7664. IETF.\n[2] IEEE Std 802.11 -2020. Wireless LAN Medium Access Control and Physical Layer Specifications.\n[3] Vanhoef, M., & Ronen, E. (2019). Dragonblood: Analyzing the Dragonfly Handshake of WPA3 and EAP -pwd. IEEE S&P 2020.\n[4] Wi -Fi Alliance. (2018). WPA3 Specification v1.0.\n[5] Harkins, D., & Weis, B. (2019). Security Proof for Dragonfly: Password -Authenticated Key Exchange. IETF Draft.\n[6] CVE -2019 -9494 and CVE -2019 -9496. National Vulnerability Database.",
+          "initial_rank": 5,
+          "confidence": 0.11448997167000996
+        }
+      ],
+      "rerank_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8672995967412341,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 4,
+          "confidence": 0.13270040325876586,
+          "rerank_raw": 0.75,
+          "rerank_norm": 0.75,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 1
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8172796222993057,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 2,
+          "confidence": 0.18272037770069427,
+          "rerank_raw": 0.5,
+          "rerank_norm": 0.5,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 2
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 3,
+          "page": 3,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8524243953885386,
+          "snippet": "WPA2 Weaknesses: Why SAE Was Needed\n4-Way Handshake\nWPA2 uses a 4 -way handshake to \nderive PTK. The handshake can be \ncaptured passively \u2014attacker needs \nno interaction with the AP .\nOffline Dictionary \nAttack\nOnce the handshake is captured, an \nattacker runs offline brute -force or \ndictionary attacks against the PSK \nwithout any network interaction.\nNo Forward Secrecy\nThe PSK is the root of trust. If the \npassword is ever compromised, all \npreviously captured sessions can be \ndecrypted retroactively.",
+          "initial_rank": 3,
+          "confidence": 0.14757560461146135,
+          "rerank_raw": 0.5,
+          "rerank_norm": 0.5,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 3
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 9,
+          "page": 9,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.905806235481593,
+          "snippet": "Forward Secrecy in SAE\nWPA2 \u2014No Forward Secrecy\nThe PSK directly seeds the 4 -way handshake derivation:\nPTK = PRF(PMK, nonces, MACs)\nPMK = PSK\nIf the password is ever compromised \u2014even years later \u2014an \nattacker with recorded traffic can decrypt every past session \nretroactively.\nWPA3 SAE \u2014Perfect Forward \nSecrecy\nSAE uses fresh ephemeral random scalars (r, m) for every \nauthentication.\nThe session key K = r_A \u00b7 r_B \u00b7 PWE is derived from these \nephemeral values.\nEven if the password is later compromised, past session keys \ncannot be reconstructed \u2014the ephemeral values were never \nstored and are computationally infeasible to recover.",
+          "initial_rank": 6,
+          "confidence": 0.094193764518407,
+          "rerank_raw": 0.5,
+          "rerank_norm": 0.5,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 4
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 4,
+          "page": 4,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.9420067229425864,
+          "snippet": "What is SAE?\nDefinition\nSAE (Simultaneous Authentication of Equals) is WPA3\u2019s \nauthentication protocol, replacing WPA2\u2019s Pre -Shared Key \n(PSK) exchange.\nIt is based on the Dragonfly Key Exchange \u2014a balanced \nPassword Authenticated Key Exchange (PAKE) protocol \nstandardized in RFC 7664.\nBoth peers prove knowledge of the password \nsimultaneously, without transmitting the password or a value \nthat allows offline derivation of it.\nKey Cryptographic Properties\nPAKE Protocol\nPassword is never sent \u2014only proof of knowledge is \nexchanged.\nMutual Auth\nBoth client and AP authenticate each other \nsimultaneously.\nForward Secrecy\nSession keys are ephemeral; past sessions stay secure.\nOffline Attack Resistance\nEach auth attempt requires active interaction with the \nAP.",
+          "initial_rank": 7,
+          "confidence": 0.05799327705741364,
+          "rerank_raw": 0.5,
+          "rerank_norm": 0.5,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 5
+        }
+      ],
+      "latency_ms": {
+        "retrieve_ms": 5.41,
+        "rerank_ms": 0.22
+      }
+    },
+    {
+      "query": "What authentication protocol does WPA3 use?",
+      "gold_doc_id": 1,
+      "doc_id": 1,
+      "doc_ids": null,
+      "retrieval_only_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.6128593500058206,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 1,
+          "confidence": 0.3871406499941794
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7041328412646511,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 2,
+          "confidence": 0.29586715873534886
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 12,
+          "page": 12,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7195501848974594,
+          "snippet": "References\n[1] Harkins, D. (2015). Dragonfly Key Exchange. RFC 7664. IETF.\n[2] IEEE Std 802.11 -2020. Wireless LAN Medium Access Control and Physical Layer Specifications.\n[3] Vanhoef, M., & Ronen, E. (2019). Dragonblood: Analyzing the Dragonfly Handshake of WPA3 and EAP -pwd. IEEE S&P 2020.\n[4] Wi -Fi Alliance. (2018). WPA3 Specification v1.0.\n[5] Harkins, D., & Weis, B. (2019). Security Proof for Dragonfly: Password -Authenticated Key Exchange. IETF Draft.\n[6] CVE -2019 -9494 and CVE -2019 -9496. National Vulnerability Database.",
+          "initial_rank": 3,
+          "confidence": 0.28044981510254063
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7347706479717665,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 4,
+          "confidence": 0.2652293520282335
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 4,
+          "page": 4,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7497722359362157,
+          "snippet": "What is SAE?\nDefinition\nSAE (Simultaneous Authentication of Equals) is WPA3\u2019s \nauthentication protocol, replacing WPA2\u2019s Pre -Shared Key \n(PSK) exchange.\nIt is based on the Dragonfly Key Exchange \u2014a balanced \nPassword Authenticated Key Exchange (PAKE) protocol \nstandardized in RFC 7664.\nBoth peers prove knowledge of the password \nsimultaneously, without transmitting the password or a value \nthat allows offline derivation of it.\nKey Cryptographic Properties\nPAKE Protocol\nPassword is never sent \u2014only proof of knowledge is \nexchanged.\nMutual Auth\nBoth client and AP authenticate each other \nsimultaneously.\nForward Secrecy\nSession keys are ephemeral; past sessions stay secure.\nOffline Attack Resistance\nEach auth attempt requires active interaction with the \nAP.",
+          "initial_rank": 5,
+          "confidence": 0.25022776406378433
+        }
+      ],
+      "rerank_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 4,
+          "page": 4,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7497722359362157,
+          "snippet": "What is SAE?\nDefinition\nSAE (Simultaneous Authentication of Equals) is WPA3\u2019s \nauthentication protocol, replacing WPA2\u2019s Pre -Shared Key \n(PSK) exchange.\nIt is based on the Dragonfly Key Exchange \u2014a balanced \nPassword Authenticated Key Exchange (PAKE) protocol \nstandardized in RFC 7664.\nBoth peers prove knowledge of the password \nsimultaneously, without transmitting the password or a value \nthat allows offline derivation of it.\nKey Cryptographic Properties\nPAKE Protocol\nPassword is never sent \u2014only proof of knowledge is \nexchanged.\nMutual Auth\nBoth client and AP authenticate each other \nsimultaneously.\nForward Secrecy\nSession keys are ephemeral; past sessions stay secure.\nOffline Attack Resistance\nEach auth attempt requires active interaction with the \nAP.",
+          "initial_rank": 5,
+          "confidence": 0.25022776406378433,
+          "rerank_raw": 0.75,
+          "rerank_norm": 0.75,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 1
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.6128593500058206,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 1,
+          "confidence": 0.3871406499941794,
+          "rerank_raw": 0.5,
+          "rerank_norm": 0.5,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 2
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7041328412646511,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 2,
+          "confidence": 0.29586715873534886,
+          "rerank_raw": 0.5,
+          "rerank_norm": 0.5,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 3
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 9,
+          "page": 9,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7660745351997058,
+          "snippet": "Forward Secrecy in SAE\nWPA2 \u2014No Forward Secrecy\nThe PSK directly seeds the 4 -way handshake derivation:\nPTK = PRF(PMK, nonces, MACs)\nPMK = PSK\nIf the password is ever compromised \u2014even years later \u2014an \nattacker with recorded traffic can decrypt every past session \nretroactively.\nWPA3 SAE \u2014Perfect Forward \nSecrecy\nSAE uses fresh ephemeral random scalars (r, m) for every \nauthentication.\nThe session key K = r_A \u00b7 r_B \u00b7 PWE is derived from these \nephemeral values.\nEven if the password is later compromised, past session keys \ncannot be reconstructed \u2014the ephemeral values were never \nstored and are computationally infeasible to recover.",
+          "initial_rank": 6,
+          "confidence": 0.2339254648002942,
+          "rerank_raw": 0.5,
+          "rerank_norm": 0.5,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 4
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 7,
+          "page": 7,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8822932108595725,
+          "snippet": "Commit & Confirm Phases: The Math\nCommit Phase\nEach peer picks random scalars r, m \u2208[1, q -1].\nCompute scalar:\nscalar = (r + m) mod q\nCompute element:\nelement = -(m \u00b7 PWE)\nSend (scalar, element) to the other peer.\nThese values are computationally bound to the password (via \nPWE) and the random values, but reveal nothing about either.\nConfirm Phase\nCompute the shared secret K:\nK = r \u00b7 (peer_scalar \u00b7 PWE + peer_element)\nDerive PMK and KCK from K using a KDF.\nCompute confirm token:\nconfirm = HMAC -SHA256(KCK,\nscalar_i || scalar_r || element_i\n|| element_r || MAC_i || MAC_r)\nExchange confirm tokens and verify. If both match, \nauthentication succeeds.",
+          "initial_rank": 9,
+          "confidence": 0.11770678914042754,
+          "rerank_raw": 0.5,
+          "rerank_norm": 0.5,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 5
+        }
+      ],
+      "latency_ms": {
+        "retrieve_ms": 5.28,
+        "rerank_ms": 0.21
+      }
+    },
+    {
+      "query": "What are the key features of WPA3?",
+      "gold_doc_id": 1,
+      "doc_id": 1,
+      "doc_ids": null,
+      "retrieval_only_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.683485229597697,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 1,
+          "confidence": 0.316514770402303
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.744039213223886,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 2,
+          "confidence": 0.255960786776114
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 12,
+          "page": 12,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7730104442645899,
+          "snippet": "References\n[1] Harkins, D. (2015). Dragonfly Key Exchange. RFC 7664. IETF.\n[2] IEEE Std 802.11 -2020. Wireless LAN Medium Access Control and Physical Layer Specifications.\n[3] Vanhoef, M., & Ronen, E. (2019). Dragonblood: Analyzing the Dragonfly Handshake of WPA3 and EAP -pwd. IEEE S&P 2020.\n[4] Wi -Fi Alliance. (2018). WPA3 Specification v1.0.\n[5] Harkins, D., & Weis, B. (2019). Security Proof for Dragonfly: Password -Authenticated Key Exchange. IETF Draft.\n[6] CVE -2019 -9494 and CVE -2019 -9496. National Vulnerability Database.",
+          "initial_rank": 3,
+          "confidence": 0.22698955573541013
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7982910141316938,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 4,
+          "confidence": 0.2017089858683062
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 3,
+          "page": 3,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8111705908094203,
+          "snippet": "WPA2 Weaknesses: Why SAE Was Needed\n4-Way Handshake\nWPA2 uses a 4 -way handshake to \nderive PTK. The handshake can be \ncaptured passively \u2014attacker needs \nno interaction with the AP .\nOffline Dictionary \nAttack\nOnce the handshake is captured, an \nattacker runs offline brute -force or \ndictionary attacks against the PSK \nwithout any network interaction.\nNo Forward Secrecy\nThe PSK is the root of trust. If the \npassword is ever compromised, all \npreviously captured sessions can be \ndecrypted retroactively.",
+          "initial_rank": 5,
+          "confidence": 0.18882940919057967
+        }
+      ],
+      "rerank_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.744039213223886,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 2,
+          "confidence": 0.255960786776114,
+          "rerank_raw": 0.6667,
+          "rerank_norm": 0.6667,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 1
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 12,
+          "page": 12,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7730104442645899,
+          "snippet": "References\n[1] Harkins, D. (2015). Dragonfly Key Exchange. RFC 7664. IETF.\n[2] IEEE Std 802.11 -2020. Wireless LAN Medium Access Control and Physical Layer Specifications.\n[3] Vanhoef, M., & Ronen, E. (2019). Dragonblood: Analyzing the Dragonfly Handshake of WPA3 and EAP -pwd. IEEE S&P 2020.\n[4] Wi -Fi Alliance. (2018). WPA3 Specification v1.0.\n[5] Harkins, D., & Weis, B. (2019). Security Proof for Dragonfly: Password -Authenticated Key Exchange. IETF Draft.\n[6] CVE -2019 -9494 and CVE -2019 -9496. National Vulnerability Database.",
+          "initial_rank": 3,
+          "confidence": 0.22698955573541013,
+          "rerank_raw": 0.6667,
+          "rerank_norm": 0.6667,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 2
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7982910141316938,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 4,
+          "confidence": 0.2017089858683062,
+          "rerank_raw": 0.6667,
+          "rerank_norm": 0.6667,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 3
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 9,
+          "page": 9,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8328001740708293,
+          "snippet": "Forward Secrecy in SAE\nWPA2 \u2014No Forward Secrecy\nThe PSK directly seeds the 4 -way handshake derivation:\nPTK = PRF(PMK, nonces, MACs)\nPMK = PSK\nIf the password is ever compromised \u2014even years later \u2014an \nattacker with recorded traffic can decrypt every past session \nretroactively.\nWPA3 SAE \u2014Perfect Forward \nSecrecy\nSAE uses fresh ephemeral random scalars (r, m) for every \nauthentication.\nThe session key K = r_A \u00b7 r_B \u00b7 PWE is derived from these \nephemeral values.\nEven if the password is later compromised, past session keys \ncannot be reconstructed \u2014the ephemeral values were never \nstored and are computationally infeasible to recover.",
+          "initial_rank": 6,
+          "confidence": 0.1671998259291707,
+          "rerank_raw": 0.6667,
+          "rerank_norm": 0.6667,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 4
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 4,
+          "page": 4,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.847231428864142,
+          "snippet": "What is SAE?\nDefinition\nSAE (Simultaneous Authentication of Equals) is WPA3\u2019s \nauthentication protocol, replacing WPA2\u2019s Pre -Shared Key \n(PSK) exchange.\nIt is based on the Dragonfly Key Exchange \u2014a balanced \nPassword Authenticated Key Exchange (PAKE) protocol \nstandardized in RFC 7664.\nBoth peers prove knowledge of the password \nsimultaneously, without transmitting the password or a value \nthat allows offline derivation of it.\nKey Cryptographic Properties\nPAKE Protocol\nPassword is never sent \u2014only proof of knowledge is \nexchanged.\nMutual Auth\nBoth client and AP authenticate each other \nsimultaneously.\nForward Secrecy\nSession keys are ephemeral; past sessions stay secure.\nOffline Attack Resistance\nEach auth attempt requires active interaction with the \nAP.",
+          "initial_rank": 7,
+          "confidence": 0.15276857113585796,
+          "rerank_raw": 0.6667,
+          "rerank_norm": 0.6667,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 5
+        }
+      ],
+      "latency_ms": {
+        "retrieve_ms": 4.88,
+        "rerank_ms": 0.25
+      }
+    },
+    {
+      "query": "How does Simultaneous Authentication of Equals work?",
+      "gold_doc_id": 1,
+      "doc_id": 1,
+      "doc_ids": null,
+      "retrieval_only_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 7,
+          "page": 7,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7870488297341498,
+          "snippet": "Commit & Confirm Phases: The Math\nCommit Phase\nEach peer picks random scalars r, m \u2208[1, q -1].\nCompute scalar:\nscalar = (r + m) mod q\nCompute element:\nelement = -(m \u00b7 PWE)\nSend (scalar, element) to the other peer.\nThese values are computationally bound to the password (via \nPWE) and the random values, but reveal nothing about either.\nConfirm Phase\nCompute the shared secret K:\nK = r \u00b7 (peer_scalar \u00b7 PWE + peer_element)\nDerive PMK and KCK from K using a KDF.\nCompute confirm token:\nconfirm = HMAC -SHA256(KCK,\nscalar_i || scalar_r || element_i\n|| element_r || MAC_i || MAC_r)\nExchange confirm tokens and verify. If both match, \nauthentication succeeds.",
+          "initial_rank": 1,
+          "confidence": 0.2129511702658502
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 8,
+          "page": 8,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7904480958627915,
+          "snippet": "Why Both Peers Compute the Same K\nAlgebraic Proof of Shared Secret\nAlice computes:\nK_A = r_A \u00b7 (scalar_B \u00b7 PWE + element_B)\n= r_A \u00b7 ((r_B + m_B) \u00b7 PWE + ( -(m_B \u00b7 PWE)))\n= r_A \u00b7 (r_B \u00b7 PWE + m_B \u00b7 PWE -m_B \u00b7 PWE)\n= r_A \u00b7 r_B \u00b7 PWEBob computes:\nK_B = r_B \u00b7 (scalar_A \u00b7 PWE + element_A)\n= r_B \u00b7 ((r_A + m_A) \u00b7 PWE + ( -(m_A \u00b7 PWE)))\n= r_B \u00b7 (r_A \u00b7 PWE + m_A \u00b7 PWE -m_A \u00b7 PWE)\n= r_B \u00b7 r_A \u00b7 PWE\nK_A = K_B = r_A \u00b7 r_B \u00b7 PWE    \u2192    Both arrive at the same shared secret!\nThe mask value m cancels out algebraically. An eavesdropper sees (scalar, element) but cannot recover r (protected by ECDLP), soK \nremains secret.",
+          "initial_rank": 2,
+          "confidence": 0.20955190413720848
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8055910759435349,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 3,
+          "confidence": 0.19440892405646515
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 4,
+          "page": 4,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8243652502818107,
+          "snippet": "What is SAE?\nDefinition\nSAE (Simultaneous Authentication of Equals) is WPA3\u2019s \nauthentication protocol, replacing WPA2\u2019s Pre -Shared Key \n(PSK) exchange.\nIt is based on the Dragonfly Key Exchange \u2014a balanced \nPassword Authenticated Key Exchange (PAKE) protocol \nstandardized in RFC 7664.\nBoth peers prove knowledge of the password \nsimultaneously, without transmitting the password or a value \nthat allows offline derivation of it.\nKey Cryptographic Properties\nPAKE Protocol\nPassword is never sent \u2014only proof of knowledge is \nexchanged.\nMutual Auth\nBoth client and AP authenticate each other \nsimultaneously.\nForward Secrecy\nSession keys are ephemeral; past sessions stay secure.\nOffline Attack Resistance\nEach auth attempt requires active interaction with the \nAP.",
+          "initial_rank": 4,
+          "confidence": 0.17563474971818926
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 5,
+          "page": 5,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8737372755725866,
+          "snippet": "The Dragonfly Handshake: Overview\nClient Access Point\n1Hunting & Pecking\nBoth derive PWE (Password Element) from password using \nan elliptic curve point derivation algorithm.\n2Commit Phase \u2192\nBoth send a commit message: a scalar + elliptic curve \nelement derived from ephemeral random values + PWE.\n3Confirm Phase \nBoth compute a shared PMK (Pairwise Master Key) and \nexchange confirm messages using HMAC to prove \npossession.\nShared PMK established \u2014session keys derived via 4 -way handshake",
+          "initial_rank": 5,
+          "confidence": 0.12626272442741338
+        }
+      ],
+      "rerank_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8055910759435349,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 3,
+          "confidence": 0.19440892405646515,
+          "rerank_raw": 0.75,
+          "rerank_norm": 0.75,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 1
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 4,
+          "page": 4,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8243652502818107,
+          "snippet": "What is SAE?\nDefinition\nSAE (Simultaneous Authentication of Equals) is WPA3\u2019s \nauthentication protocol, replacing WPA2\u2019s Pre -Shared Key \n(PSK) exchange.\nIt is based on the Dragonfly Key Exchange \u2014a balanced \nPassword Authenticated Key Exchange (PAKE) protocol \nstandardized in RFC 7664.\nBoth peers prove knowledge of the password \nsimultaneously, without transmitting the password or a value \nthat allows offline derivation of it.\nKey Cryptographic Properties\nPAKE Protocol\nPassword is never sent \u2014only proof of knowledge is \nexchanged.\nMutual Auth\nBoth client and AP authenticate each other \nsimultaneously.\nForward Secrecy\nSession keys are ephemeral; past sessions stay secure.\nOffline Attack Resistance\nEach auth attempt requires active interaction with the \nAP.",
+          "initial_rank": 4,
+          "confidence": 0.17563474971818926,
+          "rerank_raw": 0.75,
+          "rerank_norm": 0.75,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 2
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 7,
+          "page": 7,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7870488297341498,
+          "snippet": "Commit & Confirm Phases: The Math\nCommit Phase\nEach peer picks random scalars r, m \u2208[1, q -1].\nCompute scalar:\nscalar = (r + m) mod q\nCompute element:\nelement = -(m \u00b7 PWE)\nSend (scalar, element) to the other peer.\nThese values are computationally bound to the password (via \nPWE) and the random values, but reveal nothing about either.\nConfirm Phase\nCompute the shared secret K:\nK = r \u00b7 (peer_scalar \u00b7 PWE + peer_element)\nDerive PMK and KCK from K using a KDF.\nCompute confirm token:\nconfirm = HMAC -SHA256(KCK,\nscalar_i || scalar_r || element_i\n|| element_r || MAC_i || MAC_r)\nExchange confirm tokens and verify. If both match, \nauthentication succeeds.",
+          "initial_rank": 1,
+          "confidence": 0.2129511702658502,
+          "rerank_raw": 0.25,
+          "rerank_norm": 0.25,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 3
+        }
+      ],
+      "latency_ms": {
+        "retrieve_ms": 5.25,
+        "rerank_ms": 0.27
+      }
+    },
+    {
+      "query": "What security vulnerabilities does WPA3 address?",
+      "gold_doc_id": 1,
+      "doc_id": 1,
+      "doc_ids": null,
+      "retrieval_only_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.6554368749058823,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 1,
+          "confidence": 0.3445631250941177
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7169633303087727,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 2,
+          "confidence": 0.2830366696912273
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 12,
+          "page": 12,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7649329814351982,
+          "snippet": "References\n[1] Harkins, D. (2015). Dragonfly Key Exchange. RFC 7664. IETF.\n[2] IEEE Std 802.11 -2020. Wireless LAN Medium Access Control and Physical Layer Specifications.\n[3] Vanhoef, M., & Ronen, E. (2019). Dragonblood: Analyzing the Dragonfly Handshake of WPA3 and EAP -pwd. IEEE S&P 2020.\n[4] Wi -Fi Alliance. (2018). WPA3 Specification v1.0.\n[5] Harkins, D., & Weis, B. (2019). Security Proof for Dragonfly: Password -Authenticated Key Exchange. IETF Draft.\n[6] CVE -2019 -9494 and CVE -2019 -9496. National Vulnerability Database.",
+          "initial_rank": 3,
+          "confidence": 0.23506701856480183
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7861971052902059,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 4,
+          "confidence": 0.21380289470979408
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 3,
+          "page": 3,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8088685826386122,
+          "snippet": "WPA2 Weaknesses: Why SAE Was Needed\n4-Way Handshake\nWPA2 uses a 4 -way handshake to \nderive PTK. The handshake can be \ncaptured passively \u2014attacker needs \nno interaction with the AP .\nOffline Dictionary \nAttack\nOnce the handshake is captured, an \nattacker runs offline brute -force or \ndictionary attacks against the PSK \nwithout any network interaction.\nNo Forward Secrecy\nThe PSK is the root of trust. If the \npassword is ever compromised, all \npreviously captured sessions can be \ndecrypted retroactively.",
+          "initial_rank": 5,
+          "confidence": 0.19113141736138783
+        }
+      ],
+      "rerank_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.6554368749058823,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 1,
+          "confidence": 0.3445631250941177,
+          "rerank_raw": 0.5,
+          "rerank_norm": 0.5,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 1
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7169633303087727,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 2,
+          "confidence": 0.2830366696912273,
+          "rerank_raw": 0.5,
+          "rerank_norm": 0.5,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 2
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 12,
+          "page": 12,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7649329814351982,
+          "snippet": "References\n[1] Harkins, D. (2015). Dragonfly Key Exchange. RFC 7664. IETF.\n[2] IEEE Std 802.11 -2020. Wireless LAN Medium Access Control and Physical Layer Specifications.\n[3] Vanhoef, M., & Ronen, E. (2019). Dragonblood: Analyzing the Dragonfly Handshake of WPA3 and EAP -pwd. IEEE S&P 2020.\n[4] Wi -Fi Alliance. (2018). WPA3 Specification v1.0.\n[5] Harkins, D., & Weis, B. (2019). Security Proof for Dragonfly: Password -Authenticated Key Exchange. IETF Draft.\n[6] CVE -2019 -9494 and CVE -2019 -9496. National Vulnerability Database.",
+          "initial_rank": 3,
+          "confidence": 0.23506701856480183,
+          "rerank_raw": 0.5,
+          "rerank_norm": 0.5,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 3
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 11,
+          "page": 11,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.9175280872795996,
+          "snippet": "Side-Channel Attacks: Dragonblood (2019)\nThe Attack\nVanhoef & Ronen (2019) discovered that the Hunting & Pecking \nloop in the original SAE spec had a variable number of iterations \ndepending on the password.\nBy measuring execution time or cache access patterns, an attacker \ncould determine how many iterations occurred, leaking \ninformation about the password.\nThis enabled offline dictionary attacks \u2014partially defeating SAE's \ncore security guarantee.\nAffected: CVE -2019 -9494 (timing) and CVE -2019 -9496 (cache -\nbased).\nThe Fix\nIEEE and the Wi -Fi Alliance patched the spec:\n1. Replaced the loop with a constant -time hash -to-curve \nalgorithm (using Legendre symbol computations that always \nrun a fixed number of iterations).\n2. Required constant -time ECC operations to prevent cache -\ntiming leakage.\n3. SAE -PK (SAE with public key) was introduced as an \nadditional defense for enterprise deployments.\nLesson: Cryptographic protocol security alone is insufficient \u2014\nside-channel resistance in implementation is equally critical.",
+          "initial_rank": 8,
+          "confidence": 0.08247191272040044,
+          "rerank_raw": 0.5,
+          "rerank_norm": 0.5,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 4
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7861971052902059,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 4,
+          "confidence": 0.21380289470979408,
+          "rerank_raw": 0.25,
+          "rerank_norm": 0.25,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 5
+        }
+      ],
+      "latency_ms": {
+        "retrieve_ms": 5.14,
+        "rerank_ms": 0.24
+      }
+    },
+    {
+      "query": "What is the Dragonfly handshake?",
+      "gold_doc_id": 1,
+      "doc_id": 1,
+      "doc_ids": null,
+      "retrieval_only_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 5,
+          "page": 5,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7192381983780927,
+          "snippet": "The Dragonfly Handshake: Overview\nClient Access Point\n1Hunting & Pecking\nBoth derive PWE (Password Element) from password using \nan elliptic curve point derivation algorithm.\n2Commit Phase \u2192\nBoth send a commit message: a scalar + elliptic curve \nelement derived from ephemeral random values + PWE.\n3Confirm Phase \nBoth compute a shared PMK (Pairwise Master Key) and \nexchange confirm messages using HMAC to prove \npossession.\nShared PMK established \u2014session keys derived via 4 -way handshake",
+          "initial_rank": 1,
+          "confidence": 0.28076180162190734
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 12,
+          "page": 12,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8067603218735183,
+          "snippet": "References\n[1] Harkins, D. (2015). Dragonfly Key Exchange. RFC 7664. IETF.\n[2] IEEE Std 802.11 -2020. Wireless LAN Medium Access Control and Physical Layer Specifications.\n[3] Vanhoef, M., & Ronen, E. (2019). Dragonblood: Analyzing the Dragonfly Handshake of WPA3 and EAP -pwd. IEEE S&P 2020.\n[4] Wi -Fi Alliance. (2018). WPA3 Specification v1.0.\n[5] Harkins, D., & Weis, B. (2019). Security Proof for Dragonfly: Password -Authenticated Key Exchange. IETF Draft.\n[6] CVE -2019 -9494 and CVE -2019 -9496. National Vulnerability Database.",
+          "initial_rank": 2,
+          "confidence": 0.19323967812648168
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.9619781317892052,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 3,
+          "confidence": 0.038021868210794785
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.9809222445436466,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 4,
+          "confidence": 0.019077755456353374
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 4,
+          "page": 4,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.9921462883988521,
+          "snippet": "What is SAE?\nDefinition\nSAE (Simultaneous Authentication of Equals) is WPA3\u2019s \nauthentication protocol, replacing WPA2\u2019s Pre -Shared Key \n(PSK) exchange.\nIt is based on the Dragonfly Key Exchange \u2014a balanced \nPassword Authenticated Key Exchange (PAKE) protocol \nstandardized in RFC 7664.\nBoth peers prove knowledge of the password \nsimultaneously, without transmitting the password or a value \nthat allows offline derivation of it.\nKey Cryptographic Properties\nPAKE Protocol\nPassword is never sent \u2014only proof of knowledge is \nexchanged.\nMutual Auth\nBoth client and AP authenticate each other \nsimultaneously.\nForward Secrecy\nSession keys are ephemeral; past sessions stay secure.\nOffline Attack Resistance\nEach auth attempt requires active interaction with the \nAP.",
+          "initial_rank": 5,
+          "confidence": 0.007853711601147895
+        }
+      ],
+      "rerank_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 5,
+          "page": 5,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7192381983780927,
+          "snippet": "The Dragonfly Handshake: Overview\nClient Access Point\n1Hunting & Pecking\nBoth derive PWE (Password Element) from password using \nan elliptic curve point derivation algorithm.\n2Commit Phase \u2192\nBoth send a commit message: a scalar + elliptic curve \nelement derived from ephemeral random values + PWE.\n3Confirm Phase \nBoth compute a shared PMK (Pairwise Master Key) and \nexchange confirm messages using HMAC to prove \npossession.\nShared PMK established \u2014session keys derived via 4 -way handshake",
+          "initial_rank": 1,
+          "confidence": 0.28076180162190734,
+          "rerank_raw": 1.0,
+          "rerank_norm": 1.0,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 1
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 12,
+          "page": 12,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8067603218735183,
+          "snippet": "References\n[1] Harkins, D. (2015). Dragonfly Key Exchange. RFC 7664. IETF.\n[2] IEEE Std 802.11 -2020. Wireless LAN Medium Access Control and Physical Layer Specifications.\n[3] Vanhoef, M., & Ronen, E. (2019). Dragonblood: Analyzing the Dragonfly Handshake of WPA3 and EAP -pwd. IEEE S&P 2020.\n[4] Wi -Fi Alliance. (2018). WPA3 Specification v1.0.\n[5] Harkins, D., & Weis, B. (2019). Security Proof for Dragonfly: Password -Authenticated Key Exchange. IETF Draft.\n[6] CVE -2019 -9494 and CVE -2019 -9496. National Vulnerability Database.",
+          "initial_rank": 2,
+          "confidence": 0.19323967812648168,
+          "rerank_raw": 1.0,
+          "rerank_norm": 1.0,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 2
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.9809222445436466,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 4,
+          "confidence": 0.019077755456353374,
+          "rerank_raw": 1.0,
+          "rerank_norm": 1.0,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 3
+        }
+      ],
+      "latency_ms": {
+        "retrieve_ms": 4.8,
+        "rerank_ms": 0.3
+      }
+    },
+    {
+      "query": "What are the differences between WPA3-Personal and WPA3-Enterprise?",
+      "gold_doc_id": 1,
+      "doc_id": 1,
+      "doc_ids": null,
+      "retrieval_only_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8602545658645586,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 1,
+          "confidence": 0.13974543413544138
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8784495883952628,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 2,
+          "confidence": 0.12155041160473723
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 12,
+          "page": 12,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.891970037089663,
+          "snippet": "References\n[1] Harkins, D. (2015). Dragonfly Key Exchange. RFC 7664. IETF.\n[2] IEEE Std 802.11 -2020. Wireless LAN Medium Access Control and Physical Layer Specifications.\n[3] Vanhoef, M., & Ronen, E. (2019). Dragonblood: Analyzing the Dragonfly Handshake of WPA3 and EAP -pwd. IEEE S&P 2020.\n[4] Wi -Fi Alliance. (2018). WPA3 Specification v1.0.\n[5] Harkins, D., & Weis, B. (2019). Security Proof for Dragonfly: Password -Authenticated Key Exchange. IETF Draft.\n[6] CVE -2019 -9494 and CVE -2019 -9496. National Vulnerability Database.",
+          "initial_rank": 3,
+          "confidence": 0.10802996291033695
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8939136221971253,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 4,
+          "confidence": 0.10608637780287467
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 4,
+          "page": 4,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.9319434483524867,
+          "snippet": "What is SAE?\nDefinition\nSAE (Simultaneous Authentication of Equals) is WPA3\u2019s \nauthentication protocol, replacing WPA2\u2019s Pre -Shared Key \n(PSK) exchange.\nIt is based on the Dragonfly Key Exchange \u2014a balanced \nPassword Authenticated Key Exchange (PAKE) protocol \nstandardized in RFC 7664.\nBoth peers prove knowledge of the password \nsimultaneously, without transmitting the password or a value \nthat allows offline derivation of it.\nKey Cryptographic Properties\nPAKE Protocol\nPassword is never sent \u2014only proof of knowledge is \nexchanged.\nMutual Auth\nBoth client and AP authenticate each other \nsimultaneously.\nForward Secrecy\nSession keys are ephemeral; past sessions stay secure.\nOffline Attack Resistance\nEach auth attempt requires active interaction with the \nAP.",
+          "initial_rank": 5,
+          "confidence": 0.06805655164751334
+        }
+      ],
+      "rerank_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8602545658645586,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 1,
+          "confidence": 0.13974543413544138,
+          "rerank_raw": 0.2,
+          "rerank_norm": 0.2,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 1
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8784495883952628,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 2,
+          "confidence": 0.12155041160473723,
+          "rerank_raw": 0.2,
+          "rerank_norm": 0.2,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 2
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 12,
+          "page": 12,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.891970037089663,
+          "snippet": "References\n[1] Harkins, D. (2015). Dragonfly Key Exchange. RFC 7664. IETF.\n[2] IEEE Std 802.11 -2020. Wireless LAN Medium Access Control and Physical Layer Specifications.\n[3] Vanhoef, M., & Ronen, E. (2019). Dragonblood: Analyzing the Dragonfly Handshake of WPA3 and EAP -pwd. IEEE S&P 2020.\n[4] Wi -Fi Alliance. (2018). WPA3 Specification v1.0.\n[5] Harkins, D., & Weis, B. (2019). Security Proof for Dragonfly: Password -Authenticated Key Exchange. IETF Draft.\n[6] CVE -2019 -9494 and CVE -2019 -9496. National Vulnerability Database.",
+          "initial_rank": 3,
+          "confidence": 0.10802996291033695,
+          "rerank_raw": 0.2,
+          "rerank_norm": 0.2,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 3
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8939136221971253,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 4,
+          "confidence": 0.10608637780287467,
+          "rerank_raw": 0.2,
+          "rerank_norm": 0.2,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 4
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 4,
+          "page": 4,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.9319434483524867,
+          "snippet": "What is SAE?\nDefinition\nSAE (Simultaneous Authentication of Equals) is WPA3\u2019s \nauthentication protocol, replacing WPA2\u2019s Pre -Shared Key \n(PSK) exchange.\nIt is based on the Dragonfly Key Exchange \u2014a balanced \nPassword Authenticated Key Exchange (PAKE) protocol \nstandardized in RFC 7664.\nBoth peers prove knowledge of the password \nsimultaneously, without transmitting the password or a value \nthat allows offline derivation of it.\nKey Cryptographic Properties\nPAKE Protocol\nPassword is never sent \u2014only proof of knowledge is \nexchanged.\nMutual Auth\nBoth client and AP authenticate each other \nsimultaneously.\nForward Secrecy\nSession keys are ephemeral; past sessions stay secure.\nOffline Attack Resistance\nEach auth attempt requires active interaction with the \nAP.",
+          "initial_rank": 5,
+          "confidence": 0.06805655164751334,
+          "rerank_raw": 0.2,
+          "rerank_norm": 0.2,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 5
+        }
+      ],
+      "latency_ms": {
+        "retrieve_ms": 5.16,
+        "rerank_ms": 0.21
+      }
+    },
+    {
+      "query": "How does WPA3 protect against offline dictionary attacks?",
+      "gold_doc_id": 1,
+      "doc_id": 1,
+      "doc_ids": null,
+      "retrieval_only_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.6895983923874501,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 1,
+          "confidence": 0.31040160761254987
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7291059377903311,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 2,
+          "confidence": 0.27089406220966894
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 3,
+          "page": 3,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7395344749394874,
+          "snippet": "WPA2 Weaknesses: Why SAE Was Needed\n4-Way Handshake\nWPA2 uses a 4 -way handshake to \nderive PTK. The handshake can be \ncaptured passively \u2014attacker needs \nno interaction with the AP .\nOffline Dictionary \nAttack\nOnce the handshake is captured, an \nattacker runs offline brute -force or \ndictionary attacks against the PSK \nwithout any network interaction.\nNo Forward Secrecy\nThe PSK is the root of trust. If the \npassword is ever compromised, all \npreviously captured sessions can be \ndecrypted retroactively.",
+          "initial_rank": 3,
+          "confidence": 0.26046552506051257
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7896461971759742,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 4,
+          "confidence": 0.21035380282402583
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 9,
+          "page": 9,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.795561736798855,
+          "snippet": "Forward Secrecy in SAE\nWPA2 \u2014No Forward Secrecy\nThe PSK directly seeds the 4 -way handshake derivation:\nPTK = PRF(PMK, nonces, MACs)\nPMK = PSK\nIf the password is ever compromised \u2014even years later \u2014an \nattacker with recorded traffic can decrypt every past session \nretroactively.\nWPA3 SAE \u2014Perfect Forward \nSecrecy\nSAE uses fresh ephemeral random scalars (r, m) for every \nauthentication.\nThe session key K = r_A \u00b7 r_B \u00b7 PWE is derived from these \nephemeral values.\nEven if the password is later compromised, past session keys \ncannot be reconstructed \u2014the ephemeral values were never \nstored and are computationally infeasible to recover.",
+          "initial_rank": 5,
+          "confidence": 0.204438263201145
+        }
+      ],
+      "rerank_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 3,
+          "page": 3,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7395344749394874,
+          "snippet": "WPA2 Weaknesses: Why SAE Was Needed\n4-Way Handshake\nWPA2 uses a 4 -way handshake to \nderive PTK. The handshake can be \ncaptured passively \u2014attacker needs \nno interaction with the AP .\nOffline Dictionary \nAttack\nOnce the handshake is captured, an \nattacker runs offline brute -force or \ndictionary attacks against the PSK \nwithout any network interaction.\nNo Forward Secrecy\nThe PSK is the root of trust. If the \npassword is ever compromised, all \npreviously captured sessions can be \ndecrypted retroactively.",
+          "initial_rank": 3,
+          "confidence": 0.26046552506051257,
+          "rerank_raw": 0.8333,
+          "rerank_norm": 0.8333,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 1
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 11,
+          "page": 11,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8957032767227916,
+          "snippet": "Side-Channel Attacks: Dragonblood (2019)\nThe Attack\nVanhoef & Ronen (2019) discovered that the Hunting & Pecking \nloop in the original SAE spec had a variable number of iterations \ndepending on the password.\nBy measuring execution time or cache access patterns, an attacker \ncould determine how many iterations occurred, leaking \ninformation about the password.\nThis enabled offline dictionary attacks \u2014partially defeating SAE's \ncore security guarantee.\nAffected: CVE -2019 -9494 (timing) and CVE -2019 -9496 (cache -\nbased).\nThe Fix\nIEEE and the Wi -Fi Alliance patched the spec:\n1. Replaced the loop with a constant -time hash -to-curve \nalgorithm (using Legendre symbol computations that always \nrun a fixed number of iterations).\n2. Required constant -time ECC operations to prevent cache -\ntiming leakage.\n3. SAE -PK (SAE with public key) was introduced as an \nadditional defense for enterprise deployments.\nLesson: Cryptographic protocol security alone is insufficient \u2014\nside-channel resistance in implementation is equally critical.",
+          "initial_rank": 9,
+          "confidence": 0.1042967232772084,
+          "rerank_raw": 0.6667,
+          "rerank_norm": 0.6667,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 2
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7291059377903311,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 2,
+          "confidence": 0.27089406220966894,
+          "rerank_raw": 0.5,
+          "rerank_norm": 0.5,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 3
+        }
+      ],
+      "latency_ms": {
+        "retrieve_ms": 4.77,
+        "rerank_ms": 0.26
+      }
+    },
+    {
+      "query": "What is forward secrecy in WPA3?",
+      "gold_doc_id": 1,
+      "doc_id": 1,
+      "doc_ids": null,
+      "retrieval_only_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 9,
+          "page": 9,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.6767079388625326,
+          "snippet": "Forward Secrecy in SAE\nWPA2 \u2014No Forward Secrecy\nThe PSK directly seeds the 4 -way handshake derivation:\nPTK = PRF(PMK, nonces, MACs)\nPMK = PSK\nIf the password is ever compromised \u2014even years later \u2014an \nattacker with recorded traffic can decrypt every past session \nretroactively.\nWPA3 SAE \u2014Perfect Forward \nSecrecy\nSAE uses fresh ephemeral random scalars (r, m) for every \nauthentication.\nThe session key K = r_A \u00b7 r_B \u00b7 PWE is derived from these \nephemeral values.\nEven if the password is later compromised, past session keys \ncannot be reconstructed \u2014the ephemeral values were never \nstored and are computationally infeasible to recover.",
+          "initial_rank": 1,
+          "confidence": 0.32329206113746745
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7023633434375929,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 2,
+          "confidence": 0.2976366565624071
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7548465695384767,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 3,
+          "confidence": 0.24515343046152327
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 3,
+          "page": 3,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7909621232388815,
+          "snippet": "WPA2 Weaknesses: Why SAE Was Needed\n4-Way Handshake\nWPA2 uses a 4 -way handshake to \nderive PTK. The handshake can be \ncaptured passively \u2014attacker needs \nno interaction with the AP .\nOffline Dictionary \nAttack\nOnce the handshake is captured, an \nattacker runs offline brute -force or \ndictionary attacks against the PSK \nwithout any network interaction.\nNo Forward Secrecy\nThe PSK is the root of trust. If the \npassword is ever compromised, all \npreviously captured sessions can be \ndecrypted retroactively.",
+          "initial_rank": 4,
+          "confidence": 0.2090378767611185
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7998178781392818,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 5,
+          "confidence": 0.20018212186071815
+        }
+      ],
+      "rerank_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 9,
+          "page": 9,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.6767079388625326,
+          "snippet": "Forward Secrecy in SAE\nWPA2 \u2014No Forward Secrecy\nThe PSK directly seeds the 4 -way handshake derivation:\nPTK = PRF(PMK, nonces, MACs)\nPMK = PSK\nIf the password is ever compromised \u2014even years later \u2014an \nattacker with recorded traffic can decrypt every past session \nretroactively.\nWPA3 SAE \u2014Perfect Forward \nSecrecy\nSAE uses fresh ephemeral random scalars (r, m) for every \nauthentication.\nThe session key K = r_A \u00b7 r_B \u00b7 PWE is derived from these \nephemeral values.\nEven if the password is later compromised, past session keys \ncannot be reconstructed \u2014the ephemeral values were never \nstored and are computationally infeasible to recover.",
+          "initial_rank": 1,
+          "confidence": 0.32329206113746745,
+          "rerank_raw": 1.0,
+          "rerank_norm": 1.0,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 1
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 3,
+          "page": 3,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7909621232388815,
+          "snippet": "WPA2 Weaknesses: Why SAE Was Needed\n4-Way Handshake\nWPA2 uses a 4 -way handshake to \nderive PTK. The handshake can be \ncaptured passively \u2014attacker needs \nno interaction with the AP .\nOffline Dictionary \nAttack\nOnce the handshake is captured, an \nattacker runs offline brute -force or \ndictionary attacks against the PSK \nwithout any network interaction.\nNo Forward Secrecy\nThe PSK is the root of trust. If the \npassword is ever compromised, all \npreviously captured sessions can be \ndecrypted retroactively.",
+          "initial_rank": 4,
+          "confidence": 0.2090378767611185,
+          "rerank_raw": 1.0,
+          "rerank_norm": 1.0,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 2
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 4,
+          "page": 4,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8426948943950713,
+          "snippet": "What is SAE?\nDefinition\nSAE (Simultaneous Authentication of Equals) is WPA3\u2019s \nauthentication protocol, replacing WPA2\u2019s Pre -Shared Key \n(PSK) exchange.\nIt is based on the Dragonfly Key Exchange \u2014a balanced \nPassword Authenticated Key Exchange (PAKE) protocol \nstandardized in RFC 7664.\nBoth peers prove knowledge of the password \nsimultaneously, without transmitting the password or a value \nthat allows offline derivation of it.\nKey Cryptographic Properties\nPAKE Protocol\nPassword is never sent \u2014only proof of knowledge is \nexchanged.\nMutual Auth\nBoth client and AP authenticate each other \nsimultaneously.\nForward Secrecy\nSession keys are ephemeral; past sessions stay secure.\nOffline Attack Resistance\nEach auth attempt requires active interaction with the \nAP.",
+          "initial_rank": 7,
+          "confidence": 0.15730510560492872,
+          "rerank_raw": 1.0,
+          "rerank_norm": 1.0,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 3
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7548465695384767,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 3,
+          "confidence": 0.24515343046152327,
+          "rerank_raw": 0.6667,
+          "rerank_norm": 0.6667,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 4
+        }
+      ],
+      "latency_ms": {
+        "retrieve_ms": 4.71,
+        "rerank_ms": 0.29
+      }
+    },
+    {
+      "query": "What role does the PMKSA play in WPA3?",
+      "gold_doc_id": 1,
+      "doc_id": 1,
+      "doc_ids": null,
+      "retrieval_only_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.773965250928178,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 1,
+          "confidence": 0.22603474907182197
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 3,
+          "page": 3,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8053125712905752,
+          "snippet": "WPA2 Weaknesses: Why SAE Was Needed\n4-Way Handshake\nWPA2 uses a 4 -way handshake to \nderive PTK. The handshake can be \ncaptured passively \u2014attacker needs \nno interaction with the AP .\nOffline Dictionary \nAttack\nOnce the handshake is captured, an \nattacker runs offline brute -force or \ndictionary attacks against the PSK \nwithout any network interaction.\nNo Forward Secrecy\nThe PSK is the root of trust. If the \npassword is ever compromised, all \npreviously captured sessions can be \ndecrypted retroactively.",
+          "initial_rank": 2,
+          "confidence": 0.1946874287094248
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 9,
+          "page": 9,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.819716864004289,
+          "snippet": "Forward Secrecy in SAE\nWPA2 \u2014No Forward Secrecy\nThe PSK directly seeds the 4 -way handshake derivation:\nPTK = PRF(PMK, nonces, MACs)\nPMK = PSK\nIf the password is ever compromised \u2014even years later \u2014an \nattacker with recorded traffic can decrypt every past session \nretroactively.\nWPA3 SAE \u2014Perfect Forward \nSecrecy\nSAE uses fresh ephemeral random scalars (r, m) for every \nauthentication.\nThe session key K = r_A \u00b7 r_B \u00b7 PWE is derived from these \nephemeral values.\nEven if the password is later compromised, past session keys \ncannot be reconstructed \u2014the ephemeral values were never \nstored and are computationally infeasible to recover.",
+          "initial_rank": 3,
+          "confidence": 0.180283135995711
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8212601773402188,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 4,
+          "confidence": 0.17873982265978117
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8327148208448162,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 5,
+          "confidence": 0.16728517915518382
+        }
+      ],
+      "rerank_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.773965250928178,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 1,
+          "confidence": 0.22603474907182197,
+          "rerank_raw": 0.25,
+          "rerank_norm": 0.25,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 1
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 3,
+          "page": 3,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8053125712905752,
+          "snippet": "WPA2 Weaknesses: Why SAE Was Needed\n4-Way Handshake\nWPA2 uses a 4 -way handshake to \nderive PTK. The handshake can be \ncaptured passively \u2014attacker needs \nno interaction with the AP .\nOffline Dictionary \nAttack\nOnce the handshake is captured, an \nattacker runs offline brute -force or \ndictionary attacks against the PSK \nwithout any network interaction.\nNo Forward Secrecy\nThe PSK is the root of trust. If the \npassword is ever compromised, all \npreviously captured sessions can be \ndecrypted retroactively.",
+          "initial_rank": 2,
+          "confidence": 0.1946874287094248,
+          "rerank_raw": 0.25,
+          "rerank_norm": 0.25,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 2
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 9,
+          "page": 9,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.819716864004289,
+          "snippet": "Forward Secrecy in SAE\nWPA2 \u2014No Forward Secrecy\nThe PSK directly seeds the 4 -way handshake derivation:\nPTK = PRF(PMK, nonces, MACs)\nPMK = PSK\nIf the password is ever compromised \u2014even years later \u2014an \nattacker with recorded traffic can decrypt every past session \nretroactively.\nWPA3 SAE \u2014Perfect Forward \nSecrecy\nSAE uses fresh ephemeral random scalars (r, m) for every \nauthentication.\nThe session key K = r_A \u00b7 r_B \u00b7 PWE is derived from these \nephemeral values.\nEven if the password is later compromised, past session keys \ncannot be reconstructed \u2014the ephemeral values were never \nstored and are computationally infeasible to recover.",
+          "initial_rank": 3,
+          "confidence": 0.180283135995711,
+          "rerank_raw": 0.25,
+          "rerank_norm": 0.25,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 3
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8212601773402188,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 4,
+          "confidence": 0.17873982265978117,
+          "rerank_raw": 0.25,
+          "rerank_norm": 0.25,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 4
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8327148208448162,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 5,
+          "confidence": 0.16728517915518382,
+          "rerank_raw": 0.25,
+          "rerank_norm": 0.25,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 5
+        }
+      ],
+      "latency_ms": {
+        "retrieve_ms": 4.48,
+        "rerank_ms": 0.2
+      }
+    },
+    {
+      "query": "How does WPA3 handle key exchange?",
+      "gold_doc_id": 1,
+      "doc_id": 1,
+      "doc_ids": null,
+      "retrieval_only_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.6717920473921004,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 1,
+          "confidence": 0.3282079526078996
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7146274260178991,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 2,
+          "confidence": 0.2853725739821009
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 12,
+          "page": 12,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7179421570411739,
+          "snippet": "References\n[1] Harkins, D. (2015). Dragonfly Key Exchange. RFC 7664. IETF.\n[2] IEEE Std 802.11 -2020. Wireless LAN Medium Access Control and Physical Layer Specifications.\n[3] Vanhoef, M., & Ronen, E. (2019). Dragonblood: Analyzing the Dragonfly Handshake of WPA3 and EAP -pwd. IEEE S&P 2020.\n[4] Wi -Fi Alliance. (2018). WPA3 Specification v1.0.\n[5] Harkins, D., & Weis, B. (2019). Security Proof for Dragonfly: Password -Authenticated Key Exchange. IETF Draft.\n[6] CVE -2019 -9494 and CVE -2019 -9496. National Vulnerability Database.",
+          "initial_rank": 3,
+          "confidence": 0.2820578429588261
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7276011600491429,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 4,
+          "confidence": 0.2723988399508571
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 9,
+          "page": 9,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7531259877052003,
+          "snippet": "Forward Secrecy in SAE\nWPA2 \u2014No Forward Secrecy\nThe PSK directly seeds the 4 -way handshake derivation:\nPTK = PRF(PMK, nonces, MACs)\nPMK = PSK\nIf the password is ever compromised \u2014even years later \u2014an \nattacker with recorded traffic can decrypt every past session \nretroactively.\nWPA3 SAE \u2014Perfect Forward \nSecrecy\nSAE uses fresh ephemeral random scalars (r, m) for every \nauthentication.\nThe session key K = r_A \u00b7 r_B \u00b7 PWE is derived from these \nephemeral values.\nEven if the password is later compromised, past session keys \ncannot be reconstructed \u2014the ephemeral values were never \nstored and are computationally infeasible to recover.",
+          "initial_rank": 5,
+          "confidence": 0.24687401229479966
+        }
+      ],
+      "rerank_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7146274260178991,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 2,
+          "confidence": 0.2853725739821009,
+          "rerank_raw": 0.75,
+          "rerank_norm": 0.75,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 1
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 12,
+          "page": 12,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7179421570411739,
+          "snippet": "References\n[1] Harkins, D. (2015). Dragonfly Key Exchange. RFC 7664. IETF.\n[2] IEEE Std 802.11 -2020. Wireless LAN Medium Access Control and Physical Layer Specifications.\n[3] Vanhoef, M., & Ronen, E. (2019). Dragonblood: Analyzing the Dragonfly Handshake of WPA3 and EAP -pwd. IEEE S&P 2020.\n[4] Wi -Fi Alliance. (2018). WPA3 Specification v1.0.\n[5] Harkins, D., & Weis, B. (2019). Security Proof for Dragonfly: Password -Authenticated Key Exchange. IETF Draft.\n[6] CVE -2019 -9494 and CVE -2019 -9496. National Vulnerability Database.",
+          "initial_rank": 3,
+          "confidence": 0.2820578429588261,
+          "rerank_raw": 0.75,
+          "rerank_norm": 0.75,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 2
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 4,
+          "page": 4,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7709042069784855,
+          "snippet": "What is SAE?\nDefinition\nSAE (Simultaneous Authentication of Equals) is WPA3\u2019s \nauthentication protocol, replacing WPA2\u2019s Pre -Shared Key \n(PSK) exchange.\nIt is based on the Dragonfly Key Exchange \u2014a balanced \nPassword Authenticated Key Exchange (PAKE) protocol \nstandardized in RFC 7664.\nBoth peers prove knowledge of the password \nsimultaneously, without transmitting the password or a value \nthat allows offline derivation of it.\nKey Cryptographic Properties\nPAKE Protocol\nPassword is never sent \u2014only proof of knowledge is \nexchanged.\nMutual Auth\nBoth client and AP authenticate each other \nsimultaneously.\nForward Secrecy\nSession keys are ephemeral; past sessions stay secure.\nOffline Attack Resistance\nEach auth attempt requires active interaction with the \nAP.",
+          "initial_rank": 7,
+          "confidence": 0.2290957930215145,
+          "rerank_raw": 0.75,
+          "rerank_norm": 0.75,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 3
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 5,
+          "page": 5,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8103661760882171,
+          "snippet": "The Dragonfly Handshake: Overview\nClient Access Point\n1Hunting & Pecking\nBoth derive PWE (Password Element) from password using \nan elliptic curve point derivation algorithm.\n2Commit Phase \u2192\nBoth send a commit message: a scalar + elliptic curve \nelement derived from ephemeral random values + PWE.\n3Confirm Phase \nBoth compute a shared PMK (Pairwise Master Key) and \nexchange confirm messages using HMAC to prove \npossession.\nShared PMK established \u2014session keys derived via 4 -way handshake",
+          "initial_rank": 8,
+          "confidence": 0.18963382391178285,
+          "rerank_raw": 0.75,
+          "rerank_norm": 0.75,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 4
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7276011600491429,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 4,
+          "confidence": 0.2723988399508571,
+          "rerank_raw": 0.5,
+          "rerank_norm": 0.5,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 5
+        }
+      ],
+      "latency_ms": {
+        "retrieve_ms": 4.37,
+        "rerank_ms": 0.22
+      }
+    },
+    {
+      "query": "What are the cryptographic primitives used in WPA3-SAE?",
+      "gold_doc_id": 1,
+      "doc_id": 1,
+      "doc_ids": null,
+      "retrieval_only_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.5109961263170127,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 1,
+          "confidence": 0.48900387368298726
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.566524098731342,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 2,
+          "confidence": 0.433475901268658
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 9,
+          "page": 9,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.6162025705002234,
+          "snippet": "Forward Secrecy in SAE\nWPA2 \u2014No Forward Secrecy\nThe PSK directly seeds the 4 -way handshake derivation:\nPTK = PRF(PMK, nonces, MACs)\nPMK = PSK\nIf the password is ever compromised \u2014even years later \u2014an \nattacker with recorded traffic can decrypt every past session \nretroactively.\nWPA3 SAE \u2014Perfect Forward \nSecrecy\nSAE uses fresh ephemeral random scalars (r, m) for every \nauthentication.\nThe session key K = r_A \u00b7 r_B \u00b7 PWE is derived from these \nephemeral values.\nEven if the password is later compromised, past session keys \ncannot be reconstructed \u2014the ephemeral values were never \nstored and are computationally infeasible to recover.",
+          "initial_rank": 3,
+          "confidence": 0.3837974294997766
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.6357486566311125,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 4,
+          "confidence": 0.36425134336888754
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 4,
+          "page": 4,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.642703846978141,
+          "snippet": "What is SAE?\nDefinition\nSAE (Simultaneous Authentication of Equals) is WPA3\u2019s \nauthentication protocol, replacing WPA2\u2019s Pre -Shared Key \n(PSK) exchange.\nIt is based on the Dragonfly Key Exchange \u2014a balanced \nPassword Authenticated Key Exchange (PAKE) protocol \nstandardized in RFC 7664.\nBoth peers prove knowledge of the password \nsimultaneously, without transmitting the password or a value \nthat allows offline derivation of it.\nKey Cryptographic Properties\nPAKE Protocol\nPassword is never sent \u2014only proof of knowledge is \nexchanged.\nMutual Auth\nBoth client and AP authenticate each other \nsimultaneously.\nForward Secrecy\nSession keys are ephemeral; past sessions stay secure.\nOffline Attack Resistance\nEach auth attempt requires active interaction with the \nAP.",
+          "initial_rank": 5,
+          "confidence": 0.357296153021859
+        }
+      ],
+      "rerank_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.566524098731342,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 2,
+          "confidence": 0.433475901268658,
+          "rerank_raw": 0.6,
+          "rerank_norm": 0.6,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 1
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.6357486566311125,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 4,
+          "confidence": 0.36425134336888754,
+          "rerank_raw": 0.6,
+          "rerank_norm": 0.6,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 2
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 4,
+          "page": 4,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.642703846978141,
+          "snippet": "What is SAE?\nDefinition\nSAE (Simultaneous Authentication of Equals) is WPA3\u2019s \nauthentication protocol, replacing WPA2\u2019s Pre -Shared Key \n(PSK) exchange.\nIt is based on the Dragonfly Key Exchange \u2014a balanced \nPassword Authenticated Key Exchange (PAKE) protocol \nstandardized in RFC 7664.\nBoth peers prove knowledge of the password \nsimultaneously, without transmitting the password or a value \nthat allows offline derivation of it.\nKey Cryptographic Properties\nPAKE Protocol\nPassword is never sent \u2014only proof of knowledge is \nexchanged.\nMutual Auth\nBoth client and AP authenticate each other \nsimultaneously.\nForward Secrecy\nSession keys are ephemeral; past sessions stay secure.\nOffline Attack Resistance\nEach auth attempt requires active interaction with the \nAP.",
+          "initial_rank": 5,
+          "confidence": 0.357296153021859,
+          "rerank_raw": 0.6,
+          "rerank_norm": 0.6,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 3
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 11,
+          "page": 11,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7800976838175171,
+          "snippet": "Side-Channel Attacks: Dragonblood (2019)\nThe Attack\nVanhoef & Ronen (2019) discovered that the Hunting & Pecking \nloop in the original SAE spec had a variable number of iterations \ndepending on the password.\nBy measuring execution time or cache access patterns, an attacker \ncould determine how many iterations occurred, leaking \ninformation about the password.\nThis enabled offline dictionary attacks \u2014partially defeating SAE's \ncore security guarantee.\nAffected: CVE -2019 -9494 (timing) and CVE -2019 -9496 (cache -\nbased).\nThe Fix\nIEEE and the Wi -Fi Alliance patched the spec:\n1. Replaced the loop with a constant -time hash -to-curve \nalgorithm (using Legendre symbol computations that always \nrun a fixed number of iterations).\n2. Required constant -time ECC operations to prevent cache -\ntiming leakage.\n3. SAE -PK (SAE with public key) was introduced as an \nadditional defense for enterprise deployments.\nLesson: Cryptographic protocol security alone is insufficient \u2014\nside-channel resistance in implementation is equally critical.",
+          "initial_rank": 8,
+          "confidence": 0.2199023161824829,
+          "rerank_raw": 0.6,
+          "rerank_norm": 0.6,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 4
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.5109961263170127,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 1,
+          "confidence": 0.48900387368298726,
+          "rerank_raw": 0.4,
+          "rerank_norm": 0.4,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 5
+        }
+      ],
+      "latency_ms": {
+        "retrieve_ms": 3.68,
+        "rerank_ms": 0.25
+      }
+    },
+    {
+      "query": "What transition modes exist between WPA2 and WPA3?",
+      "gold_doc_id": 1,
+      "doc_id": 1,
+      "doc_ids": null,
+      "retrieval_only_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7655660645514599,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 1,
+          "confidence": 0.23443393544854008
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8017056595709957,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 2,
+          "confidence": 0.1982943404290043
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 12,
+          "page": 12,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8222757733006474,
+          "snippet": "References\n[1] Harkins, D. (2015). Dragonfly Key Exchange. RFC 7664. IETF.\n[2] IEEE Std 802.11 -2020. Wireless LAN Medium Access Control and Physical Layer Specifications.\n[3] Vanhoef, M., & Ronen, E. (2019). Dragonblood: Analyzing the Dragonfly Handshake of WPA3 and EAP -pwd. IEEE S&P 2020.\n[4] Wi -Fi Alliance. (2018). WPA3 Specification v1.0.\n[5] Harkins, D., & Weis, B. (2019). Security Proof for Dragonfly: Password -Authenticated Key Exchange. IETF Draft.\n[6] CVE -2019 -9494 and CVE -2019 -9496. National Vulnerability Database.",
+          "initial_rank": 3,
+          "confidence": 0.17772422669935262
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 3,
+          "page": 3,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8377431459616079,
+          "snippet": "WPA2 Weaknesses: Why SAE Was Needed\n4-Way Handshake\nWPA2 uses a 4 -way handshake to \nderive PTK. The handshake can be \ncaptured passively \u2014attacker needs \nno interaction with the AP .\nOffline Dictionary \nAttack\nOnce the handshake is captured, an \nattacker runs offline brute -force or \ndictionary attacks against the PSK \nwithout any network interaction.\nNo Forward Secrecy\nThe PSK is the root of trust. If the \npassword is ever compromised, all \npreviously captured sessions can be \ndecrypted retroactively.",
+          "initial_rank": 4,
+          "confidence": 0.16225685403839207
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8423018567184931,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 5,
+          "confidence": 0.1576981432815069
+        }
+      ],
+      "rerank_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8017056595709957,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 2,
+          "confidence": 0.1982943404290043,
+          "rerank_raw": 0.3333,
+          "rerank_norm": 0.3333,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 1
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 3,
+          "page": 3,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8377431459616079,
+          "snippet": "WPA2 Weaknesses: Why SAE Was Needed\n4-Way Handshake\nWPA2 uses a 4 -way handshake to \nderive PTK. The handshake can be \ncaptured passively \u2014attacker needs \nno interaction with the AP .\nOffline Dictionary \nAttack\nOnce the handshake is captured, an \nattacker runs offline brute -force or \ndictionary attacks against the PSK \nwithout any network interaction.\nNo Forward Secrecy\nThe PSK is the root of trust. If the \npassword is ever compromised, all \npreviously captured sessions can be \ndecrypted retroactively.",
+          "initial_rank": 4,
+          "confidence": 0.16225685403839207,
+          "rerank_raw": 0.3333,
+          "rerank_norm": 0.3333,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 2
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8423018567184931,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 5,
+          "confidence": 0.1576981432815069,
+          "rerank_raw": 0.3333,
+          "rerank_norm": 0.3333,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 3
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 9,
+          "page": 9,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8687900479094455,
+          "snippet": "Forward Secrecy in SAE\nWPA2 \u2014No Forward Secrecy\nThe PSK directly seeds the 4 -way handshake derivation:\nPTK = PRF(PMK, nonces, MACs)\nPMK = PSK\nIf the password is ever compromised \u2014even years later \u2014an \nattacker with recorded traffic can decrypt every past session \nretroactively.\nWPA3 SAE \u2014Perfect Forward \nSecrecy\nSAE uses fresh ephemeral random scalars (r, m) for every \nauthentication.\nThe session key K = r_A \u00b7 r_B \u00b7 PWE is derived from these \nephemeral values.\nEven if the password is later compromised, past session keys \ncannot be reconstructed \u2014the ephemeral values were never \nstored and are computationally infeasible to recover.",
+          "initial_rank": 6,
+          "confidence": 0.13120995209055453,
+          "rerank_raw": 0.3333,
+          "rerank_norm": 0.3333,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 4
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 4,
+          "page": 4,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.887254124820738,
+          "snippet": "What is SAE?\nDefinition\nSAE (Simultaneous Authentication of Equals) is WPA3\u2019s \nauthentication protocol, replacing WPA2\u2019s Pre -Shared Key \n(PSK) exchange.\nIt is based on the Dragonfly Key Exchange \u2014a balanced \nPassword Authenticated Key Exchange (PAKE) protocol \nstandardized in RFC 7664.\nBoth peers prove knowledge of the password \nsimultaneously, without transmitting the password or a value \nthat allows offline derivation of it.\nKey Cryptographic Properties\nPAKE Protocol\nPassword is never sent \u2014only proof of knowledge is \nexchanged.\nMutual Auth\nBoth client and AP authenticate each other \nsimultaneously.\nForward Secrecy\nSession keys are ephemeral; past sessions stay secure.\nOffline Attack Resistance\nEach auth attempt requires active interaction with the \nAP.",
+          "initial_rank": 7,
+          "confidence": 0.11274587517926205,
+          "rerank_raw": 0.3333,
+          "rerank_norm": 0.3333,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 5
+        }
+      ],
+      "latency_ms": {
+        "retrieve_ms": 3.04,
+        "rerank_ms": 0.23
+      }
+    },
+    {
+      "query": "How does WPA3 protect open networks?",
+      "gold_doc_id": 1,
+      "doc_id": 1,
+      "doc_ids": null,
+      "retrieval_only_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7222687790813661,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 1,
+          "confidence": 0.2777312209186339
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8106956253520965,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 2,
+          "confidence": 0.1893043746479035
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 12,
+          "page": 12,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8205207560353043,
+          "snippet": "References\n[1] Harkins, D. (2015). Dragonfly Key Exchange. RFC 7664. IETF.\n[2] IEEE Std 802.11 -2020. Wireless LAN Medium Access Control and Physical Layer Specifications.\n[3] Vanhoef, M., & Ronen, E. (2019). Dragonblood: Analyzing the Dragonfly Handshake of WPA3 and EAP -pwd. IEEE S&P 2020.\n[4] Wi -Fi Alliance. (2018). WPA3 Specification v1.0.\n[5] Harkins, D., & Weis, B. (2019). Security Proof for Dragonfly: Password -Authenticated Key Exchange. IETF Draft.\n[6] CVE -2019 -9494 and CVE -2019 -9496. National Vulnerability Database.",
+          "initial_rank": 3,
+          "confidence": 0.17947924396469572
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 3,
+          "page": 3,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8285261657993944,
+          "snippet": "WPA2 Weaknesses: Why SAE Was Needed\n4-Way Handshake\nWPA2 uses a 4 -way handshake to \nderive PTK. The handshake can be \ncaptured passively \u2014attacker needs \nno interaction with the AP .\nOffline Dictionary \nAttack\nOnce the handshake is captured, an \nattacker runs offline brute -force or \ndictionary attacks against the PSK \nwithout any network interaction.\nNo Forward Secrecy\nThe PSK is the root of trust. If the \npassword is ever compromised, all \npreviously captured sessions can be \ndecrypted retroactively.",
+          "initial_rank": 4,
+          "confidence": 0.17147383420060558
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.838736758234185,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 5,
+          "confidence": 0.16126324176581497
+        }
+      ],
+      "rerank_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7222687790813661,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 1,
+          "confidence": 0.2777312209186339,
+          "rerank_raw": 0.25,
+          "rerank_norm": 0.25,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 1
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8106956253520965,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 2,
+          "confidence": 0.1893043746479035,
+          "rerank_raw": 0.25,
+          "rerank_norm": 0.25,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 2
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 12,
+          "page": 12,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8205207560353043,
+          "snippet": "References\n[1] Harkins, D. (2015). Dragonfly Key Exchange. RFC 7664. IETF.\n[2] IEEE Std 802.11 -2020. Wireless LAN Medium Access Control and Physical Layer Specifications.\n[3] Vanhoef, M., & Ronen, E. (2019). Dragonblood: Analyzing the Dragonfly Handshake of WPA3 and EAP -pwd. IEEE S&P 2020.\n[4] Wi -Fi Alliance. (2018). WPA3 Specification v1.0.\n[5] Harkins, D., & Weis, B. (2019). Security Proof for Dragonfly: Password -Authenticated Key Exchange. IETF Draft.\n[6] CVE -2019 -9494 and CVE -2019 -9496. National Vulnerability Database.",
+          "initial_rank": 3,
+          "confidence": 0.17947924396469572,
+          "rerank_raw": 0.25,
+          "rerank_norm": 0.25,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 3
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 3,
+          "page": 3,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8285261657993944,
+          "snippet": "WPA2 Weaknesses: Why SAE Was Needed\n4-Way Handshake\nWPA2 uses a 4 -way handshake to \nderive PTK. The handshake can be \ncaptured passively \u2014attacker needs \nno interaction with the AP .\nOffline Dictionary \nAttack\nOnce the handshake is captured, an \nattacker runs offline brute -force or \ndictionary attacks against the PSK \nwithout any network interaction.\nNo Forward Secrecy\nThe PSK is the root of trust. If the \npassword is ever compromised, all \npreviously captured sessions can be \ndecrypted retroactively.",
+          "initial_rank": 4,
+          "confidence": 0.17147383420060558,
+          "rerank_raw": 0.25,
+          "rerank_norm": 0.25,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 4
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.838736758234185,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 5,
+          "confidence": 0.16126324176581497,
+          "rerank_raw": 0.25,
+          "rerank_norm": 0.25,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 5
+        }
+      ],
+      "latency_ms": {
+        "retrieve_ms": 3.05,
+        "rerank_ms": 0.21
+      }
+    },
+    {
+      "query": "What is OWE in the context of WiFi security?",
+      "gold_doc_id": 1,
+      "doc_id": 1,
+      "doc_ids": null,
+      "retrieval_only_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8158912311878038,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 1,
+          "confidence": 0.18410876881219618
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8579614631539302,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 2,
+          "confidence": 0.14203853684606982
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 3,
+          "page": 3,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8652312750147274,
+          "snippet": "WPA2 Weaknesses: Why SAE Was Needed\n4-Way Handshake\nWPA2 uses a 4 -way handshake to \nderive PTK. The handshake can be \ncaptured passively \u2014attacker needs \nno interaction with the AP .\nOffline Dictionary \nAttack\nOnce the handshake is captured, an \nattacker runs offline brute -force or \ndictionary attacks against the PSK \nwithout any network interaction.\nNo Forward Secrecy\nThe PSK is the root of trust. If the \npassword is ever compromised, all \npreviously captured sessions can be \ndecrypted retroactively.",
+          "initial_rank": 3,
+          "confidence": 0.1347687249852726
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 12,
+          "page": 12,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8678025822249601,
+          "snippet": "References\n[1] Harkins, D. (2015). Dragonfly Key Exchange. RFC 7664. IETF.\n[2] IEEE Std 802.11 -2020. Wireless LAN Medium Access Control and Physical Layer Specifications.\n[3] Vanhoef, M., & Ronen, E. (2019). Dragonblood: Analyzing the Dragonfly Handshake of WPA3 and EAP -pwd. IEEE S&P 2020.\n[4] Wi -Fi Alliance. (2018). WPA3 Specification v1.0.\n[5] Harkins, D., & Weis, B. (2019). Security Proof for Dragonfly: Password -Authenticated Key Exchange. IETF Draft.\n[6] CVE -2019 -9494 and CVE -2019 -9496. National Vulnerability Database.",
+          "initial_rank": 4,
+          "confidence": 0.1321974177750399
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 9,
+          "page": 9,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8867906717717444,
+          "snippet": "Forward Secrecy in SAE\nWPA2 \u2014No Forward Secrecy\nThe PSK directly seeds the 4 -way handshake derivation:\nPTK = PRF(PMK, nonces, MACs)\nPMK = PSK\nIf the password is ever compromised \u2014even years later \u2014an \nattacker with recorded traffic can decrypt every past session \nretroactively.\nWPA3 SAE \u2014Perfect Forward \nSecrecy\nSAE uses fresh ephemeral random scalars (r, m) for every \nauthentication.\nThe session key K = r_A \u00b7 r_B \u00b7 PWE is derived from these \nephemeral values.\nEven if the password is later compromised, past session keys \ncannot be reconstructed \u2014the ephemeral values were never \nstored and are computationally infeasible to recover.",
+          "initial_rank": 5,
+          "confidence": 0.11320932822825558
+        }
+      ],
+      "rerank_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 11,
+          "page": 11,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.9363104903335348,
+          "snippet": "Side-Channel Attacks: Dragonblood (2019)\nThe Attack\nVanhoef & Ronen (2019) discovered that the Hunting & Pecking \nloop in the original SAE spec had a variable number of iterations \ndepending on the password.\nBy measuring execution time or cache access patterns, an attacker \ncould determine how many iterations occurred, leaking \ninformation about the password.\nThis enabled offline dictionary attacks \u2014partially defeating SAE's \ncore security guarantee.\nAffected: CVE -2019 -9494 (timing) and CVE -2019 -9496 (cache -\nbased).\nThe Fix\nIEEE and the Wi -Fi Alliance patched the spec:\n1. Replaced the loop with a constant -time hash -to-curve \nalgorithm (using Legendre symbol computations that always \nrun a fixed number of iterations).\n2. Required constant -time ECC operations to prevent cache -\ntiming leakage.\n3. SAE -PK (SAE with public key) was introduced as an \nadditional defense for enterprise deployments.\nLesson: Cryptographic protocol security alone is insufficient \u2014\nside-channel resistance in implementation is equally critical.",
+          "initial_rank": 9,
+          "confidence": 0.06368950966646525,
+          "rerank_raw": 0.25,
+          "rerank_norm": 0.25,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 1
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8579614631539302,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 2,
+          "confidence": 0.14203853684606982,
+          "rerank_raw": 0.0,
+          "rerank_norm": 0.0,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 2
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8158912311878038,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 1,
+          "confidence": 0.18410876881219618,
+          "rerank_raw": 0.25,
+          "rerank_norm": 0.25,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 3
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 12,
+          "page": 12,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8678025822249601,
+          "snippet": "References\n[1] Harkins, D. (2015). Dragonfly Key Exchange. RFC 7664. IETF.\n[2] IEEE Std 802.11 -2020. Wireless LAN Medium Access Control and Physical Layer Specifications.\n[3] Vanhoef, M., & Ronen, E. (2019). Dragonblood: Analyzing the Dragonfly Handshake of WPA3 and EAP -pwd. IEEE S&P 2020.\n[4] Wi -Fi Alliance. (2018). WPA3 Specification v1.0.\n[5] Harkins, D., & Weis, B. (2019). Security Proof for Dragonfly: Password -Authenticated Key Exchange. IETF Draft.\n[6] CVE -2019 -9494 and CVE -2019 -9496. National Vulnerability Database.",
+          "initial_rank": 4,
+          "confidence": 0.1321974177750399,
+          "rerank_raw": 0.25,
+          "rerank_norm": 0.25,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 4
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 5,
+          "page": 5,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.92875374455679,
+          "snippet": "The Dragonfly Handshake: Overview\nClient Access Point\n1Hunting & Pecking\nBoth derive PWE (Password Element) from password using \nan elliptic curve point derivation algorithm.\n2Commit Phase \u2192\nBoth send a commit message: a scalar + elliptic curve \nelement derived from ephemeral random values + PWE.\n3Confirm Phase \nBoth compute a shared PMK (Pairwise Master Key) and \nexchange confirm messages using HMAC to prove \npossession.\nShared PMK established \u2014session keys derived via 4 -way handshake",
+          "initial_rank": 8,
+          "confidence": 0.07124625544320995,
+          "rerank_raw": 0.0,
+          "rerank_norm": 0.0,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 5
+        }
+      ],
+      "latency_ms": {
+        "retrieve_ms": 5.16,
+        "rerank_ms": 0.3
+      }
+    },
+    {
+      "query": "What are the implementation challenges of WPA3?",
+      "gold_doc_id": 1,
+      "doc_id": 1,
+      "doc_ids": null,
+      "retrieval_only_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7165996061783394,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 1,
+          "confidence": 0.2834003938216606
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7759070226281445,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 2,
+          "confidence": 0.22409297737185552
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 12,
+          "page": 12,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8126933894722539,
+          "snippet": "References\n[1] Harkins, D. (2015). Dragonfly Key Exchange. RFC 7664. IETF.\n[2] IEEE Std 802.11 -2020. Wireless LAN Medium Access Control and Physical Layer Specifications.\n[3] Vanhoef, M., & Ronen, E. (2019). Dragonblood: Analyzing the Dragonfly Handshake of WPA3 and EAP -pwd. IEEE S&P 2020.\n[4] Wi -Fi Alliance. (2018). WPA3 Specification v1.0.\n[5] Harkins, D., & Weis, B. (2019). Security Proof for Dragonfly: Password -Authenticated Key Exchange. IETF Draft.\n[6] CVE -2019 -9494 and CVE -2019 -9496. National Vulnerability Database.",
+          "initial_rank": 3,
+          "confidence": 0.1873066105277461
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8667543721447732,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 4,
+          "confidence": 0.13324562785522676
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 3,
+          "page": 3,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8858633410651563,
+          "snippet": "WPA2 Weaknesses: Why SAE Was Needed\n4-Way Handshake\nWPA2 uses a 4 -way handshake to \nderive PTK. The handshake can be \ncaptured passively \u2014attacker needs \nno interaction with the AP .\nOffline Dictionary \nAttack\nOnce the handshake is captured, an \nattacker runs offline brute -force or \ndictionary attacks against the PSK \nwithout any network interaction.\nNo Forward Secrecy\nThe PSK is the root of trust. If the \npassword is ever compromised, all \npreviously captured sessions can be \ndecrypted retroactively.",
+          "initial_rank": 5,
+          "confidence": 0.1141366589348437
+        }
+      ],
+      "rerank_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 11,
+          "page": 11,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.9553656272104,
+          "snippet": "Side-Channel Attacks: Dragonblood (2019)\nThe Attack\nVanhoef & Ronen (2019) discovered that the Hunting & Pecking \nloop in the original SAE spec had a variable number of iterations \ndepending on the password.\nBy measuring execution time or cache access patterns, an attacker \ncould determine how many iterations occurred, leaking \ninformation about the password.\nThis enabled offline dictionary attacks \u2014partially defeating SAE's \ncore security guarantee.\nAffected: CVE -2019 -9494 (timing) and CVE -2019 -9496 (cache -\nbased).\nThe Fix\nIEEE and the Wi -Fi Alliance patched the spec:\n1. Replaced the loop with a constant -time hash -to-curve \nalgorithm (using Legendre symbol computations that always \nrun a fixed number of iterations).\n2. Required constant -time ECC operations to prevent cache -\ntiming leakage.\n3. SAE -PK (SAE with public key) was introduced as an \nadditional defense for enterprise deployments.\nLesson: Cryptographic protocol security alone is insufficient \u2014\nside-channel resistance in implementation is equally critical.",
+          "initial_rank": 10,
+          "confidence": 0.04463437278960003,
+          "rerank_raw": 0.6667,
+          "rerank_norm": 0.6667,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 1
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7165996061783394,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 1,
+          "confidence": 0.2834003938216606,
+          "rerank_raw": 0.3333,
+          "rerank_norm": 0.3333,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 2
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7759070226281445,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 2,
+          "confidence": 0.22409297737185552,
+          "rerank_raw": 0.3333,
+          "rerank_norm": 0.3333,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 3
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 12,
+          "page": 12,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8126933894722539,
+          "snippet": "References\n[1] Harkins, D. (2015). Dragonfly Key Exchange. RFC 7664. IETF.\n[2] IEEE Std 802.11 -2020. Wireless LAN Medium Access Control and Physical Layer Specifications.\n[3] Vanhoef, M., & Ronen, E. (2019). Dragonblood: Analyzing the Dragonfly Handshake of WPA3 and EAP -pwd. IEEE S&P 2020.\n[4] Wi -Fi Alliance. (2018). WPA3 Specification v1.0.\n[5] Harkins, D., & Weis, B. (2019). Security Proof for Dragonfly: Password -Authenticated Key Exchange. IETF Draft.\n[6] CVE -2019 -9494 and CVE -2019 -9496. National Vulnerability Database.",
+          "initial_rank": 3,
+          "confidence": 0.1873066105277461,
+          "rerank_raw": 0.3333,
+          "rerank_norm": 0.3333,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 4
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8667543721447732,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 4,
+          "confidence": 0.13324562785522676,
+          "rerank_raw": 0.3333,
+          "rerank_norm": 0.3333,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 5
+        }
+      ],
+      "latency_ms": {
+        "retrieve_ms": 3.01,
+        "rerank_ms": 0.22
+      }
+    },
+    {
+      "query": "How does the 4-way handshake work in WPA3?",
+      "gold_doc_id": 1,
+      "doc_id": 1,
+      "doc_ids": null,
+      "retrieval_only_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 3,
+          "page": 3,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.6738445777543008,
+          "snippet": "WPA2 Weaknesses: Why SAE Was Needed\n4-Way Handshake\nWPA2 uses a 4 -way handshake to \nderive PTK. The handshake can be \ncaptured passively \u2014attacker needs \nno interaction with the AP .\nOffline Dictionary \nAttack\nOnce the handshake is captured, an \nattacker runs offline brute -force or \ndictionary attacks against the PSK \nwithout any network interaction.\nNo Forward Secrecy\nThe PSK is the root of trust. If the \npassword is ever compromised, all \npreviously captured sessions can be \ndecrypted retroactively.",
+          "initial_rank": 1,
+          "confidence": 0.32615542224569916
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7290207489786599,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 2,
+          "confidence": 0.27097925102134013
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 9,
+          "page": 9,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7662909589215937,
+          "snippet": "Forward Secrecy in SAE\nWPA2 \u2014No Forward Secrecy\nThe PSK directly seeds the 4 -way handshake derivation:\nPTK = PRF(PMK, nonces, MACs)\nPMK = PSK\nIf the password is ever compromised \u2014even years later \u2014an \nattacker with recorded traffic can decrypt every past session \nretroactively.\nWPA3 SAE \u2014Perfect Forward \nSecrecy\nSAE uses fresh ephemeral random scalars (r, m) for every \nauthentication.\nThe session key K = r_A \u00b7 r_B \u00b7 PWE is derived from these \nephemeral values.\nEven if the password is later compromised, past session keys \ncannot be reconstructed \u2014the ephemeral values were never \nstored and are computationally infeasible to recover.",
+          "initial_rank": 3,
+          "confidence": 0.2337090410784063
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 12,
+          "page": 12,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7974330967311346,
+          "snippet": "References\n[1] Harkins, D. (2015). Dragonfly Key Exchange. RFC 7664. IETF.\n[2] IEEE Std 802.11 -2020. Wireless LAN Medium Access Control and Physical Layer Specifications.\n[3] Vanhoef, M., & Ronen, E. (2019). Dragonblood: Analyzing the Dragonfly Handshake of WPA3 and EAP -pwd. IEEE S&P 2020.\n[4] Wi -Fi Alliance. (2018). WPA3 Specification v1.0.\n[5] Harkins, D., & Weis, B. (2019). Security Proof for Dragonfly: Password -Authenticated Key Exchange. IETF Draft.\n[6] CVE -2019 -9494 and CVE -2019 -9496. National Vulnerability Database.",
+          "initial_rank": 4,
+          "confidence": 0.2025669032688654
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8014974229358309,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 5,
+          "confidence": 0.19850257706416907
+        }
+      ],
+      "rerank_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 3,
+          "page": 3,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.6738445777543008,
+          "snippet": "WPA2 Weaknesses: Why SAE Was Needed\n4-Way Handshake\nWPA2 uses a 4 -way handshake to \nderive PTK. The handshake can be \ncaptured passively \u2014attacker needs \nno interaction with the AP .\nOffline Dictionary \nAttack\nOnce the handshake is captured, an \nattacker runs offline brute -force or \ndictionary attacks against the PSK \nwithout any network interaction.\nNo Forward Secrecy\nThe PSK is the root of trust. If the \npassword is ever compromised, all \npreviously captured sessions can be \ndecrypted retroactively.",
+          "initial_rank": 1,
+          "confidence": 0.32615542224569916,
+          "rerank_raw": 0.75,
+          "rerank_norm": 0.75,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 1
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 9,
+          "page": 9,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7662909589215937,
+          "snippet": "Forward Secrecy in SAE\nWPA2 \u2014No Forward Secrecy\nThe PSK directly seeds the 4 -way handshake derivation:\nPTK = PRF(PMK, nonces, MACs)\nPMK = PSK\nIf the password is ever compromised \u2014even years later \u2014an \nattacker with recorded traffic can decrypt every past session \nretroactively.\nWPA3 SAE \u2014Perfect Forward \nSecrecy\nSAE uses fresh ephemeral random scalars (r, m) for every \nauthentication.\nThe session key K = r_A \u00b7 r_B \u00b7 PWE is derived from these \nephemeral values.\nEven if the password is later compromised, past session keys \ncannot be reconstructed \u2014the ephemeral values were never \nstored and are computationally infeasible to recover.",
+          "initial_rank": 3,
+          "confidence": 0.2337090410784063,
+          "rerank_raw": 0.75,
+          "rerank_norm": 0.75,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 2
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8014974229358309,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 5,
+          "confidence": 0.19850257706416907,
+          "rerank_raw": 0.75,
+          "rerank_norm": 0.75,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 3
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 5,
+          "page": 5,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8021886228011877,
+          "snippet": "The Dragonfly Handshake: Overview\nClient Access Point\n1Hunting & Pecking\nBoth derive PWE (Password Element) from password using \nan elliptic curve point derivation algorithm.\n2Commit Phase \u2192\nBoth send a commit message: a scalar + elliptic curve \nelement derived from ephemeral random values + PWE.\n3Confirm Phase \nBoth compute a shared PMK (Pairwise Master Key) and \nexchange confirm messages using HMAC to prove \npossession.\nShared PMK established \u2014session keys derived via 4 -way handshake",
+          "initial_rank": 6,
+          "confidence": 0.19781137719881225,
+          "rerank_raw": 0.75,
+          "rerank_norm": 0.75,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 4
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 12,
+          "page": 12,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7974330967311346,
+          "snippet": "References\n[1] Harkins, D. (2015). Dragonfly Key Exchange. RFC 7664. IETF.\n[2] IEEE Std 802.11 -2020. Wireless LAN Medium Access Control and Physical Layer Specifications.\n[3] Vanhoef, M., & Ronen, E. (2019). Dragonblood: Analyzing the Dragonfly Handshake of WPA3 and EAP -pwd. IEEE S&P 2020.\n[4] Wi -Fi Alliance. (2018). WPA3 Specification v1.0.\n[5] Harkins, D., & Weis, B. (2019). Security Proof for Dragonfly: Password -Authenticated Key Exchange. IETF Draft.\n[6] CVE -2019 -9494 and CVE -2019 -9496. National Vulnerability Database.",
+          "initial_rank": 4,
+          "confidence": 0.2025669032688654,
+          "rerank_raw": 0.5,
+          "rerank_norm": 0.5,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 5
+        }
+      ],
+      "latency_ms": {
+        "retrieve_ms": 3.29,
+        "rerank_ms": 0.25
+      }
+    },
+    {
+      "query": "What are the known attacks against WPA3?",
+      "gold_doc_id": 1,
+      "doc_id": 1,
+      "doc_ids": null,
+      "retrieval_only_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.6294261134283137,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 1,
+          "confidence": 0.37057388657168633
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.742897216369676,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 2,
+          "confidence": 0.257102783630324
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 12,
+          "page": 12,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.7715172096701406,
+          "snippet": "References\n[1] Harkins, D. (2015). Dragonfly Key Exchange. RFC 7664. IETF.\n[2] IEEE Std 802.11 -2020. Wireless LAN Medium Access Control and Physical Layer Specifications.\n[3] Vanhoef, M., & Ronen, E. (2019). Dragonblood: Analyzing the Dragonfly Handshake of WPA3 and EAP -pwd. IEEE S&P 2020.\n[4] Wi -Fi Alliance. (2018). WPA3 Specification v1.0.\n[5] Harkins, D., & Weis, B. (2019). Security Proof for Dragonfly: Password -Authenticated Key Exchange. IETF Draft.\n[6] CVE -2019 -9494 and CVE -2019 -9496. National Vulnerability Database.",
+          "initial_rank": 3,
+          "confidence": 0.2284827903298594
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 10,
+          "page": 10,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8015717117345394,
+          "snippet": "SAE vs WPA2 -PSK: Cryptographic Comparison\nProperty WPA2 -PSK WPA3 -SAE\nKey Exchange4-Way Handshake\n(static PMK = PSK)Dragonfly PAKE\n(ephemeral values)\nPassword ExposureHandshake captured\nfor offline crackingNo offline cracking \u2014\nactive interaction required\nForward SecrecyNone \u2014past sessions\ndecryptable if PSK leakedFull \u2014ephemeral session\nkeys per connection\nMutual AuthAP authenticated,\nclient weaklyBoth authenticated\nsimultaneously (equals)\nCrypto PrimitivePRF over PSK + nonces\n(PBKDF2)Elliptic Curve DLP\n(ECDH variant) + HMAC -SHA256\nDictionary Resistance Vulnerable offlineEach guess requires\nonline interaction with AP",
+          "initial_rank": 4,
+          "confidence": 0.19842828826546055
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 3,
+          "page": 3,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8185314279836508,
+          "snippet": "WPA2 Weaknesses: Why SAE Was Needed\n4-Way Handshake\nWPA2 uses a 4 -way handshake to \nderive PTK. The handshake can be \ncaptured passively \u2014attacker needs \nno interaction with the AP .\nOffline Dictionary \nAttack\nOnce the handshake is captured, an \nattacker runs offline brute -force or \ndictionary attacks against the PSK \nwithout any network interaction.\nNo Forward Secrecy\nThe PSK is the root of trust. If the \npassword is ever compromised, all \npreviously captured sessions can be \ndecrypted retroactively.",
+          "initial_rank": 5,
+          "confidence": 0.18146857201634925
+        }
+      ],
+      "rerank_top": [
+        {
+          "doc_id": 1,
+          "chunk_id": 3,
+          "page": 3,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.8185314279836508,
+          "snippet": "WPA2 Weaknesses: Why SAE Was Needed\n4-Way Handshake\nWPA2 uses a 4 -way handshake to \nderive PTK. The handshake can be \ncaptured passively \u2014attacker needs \nno interaction with the AP .\nOffline Dictionary \nAttack\nOnce the handshake is captured, an \nattacker runs offline brute -force or \ndictionary attacks against the PSK \nwithout any network interaction.\nNo Forward Secrecy\nThe PSK is the root of trust. If the \npassword is ever compromised, all \npreviously captured sessions can be \ndecrypted retroactively.",
+          "initial_rank": 5,
+          "confidence": 0.18146857201634925,
+          "rerank_raw": 0.75,
+          "rerank_norm": 0.75,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 1
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 1,
+          "page": 1,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.6294261134283137,
+          "snippet": "WPA3 Security\nSimultaneous Authentication of Equals (SAE)\nThe Cryptography Behind WPA3's Resistance to Password Attacks\nT e a m  M e m b e r s\nPranav Shankar\nSurin Shah\nCSCI 531 \u2022 Applied Cryptography",
+          "initial_rank": 1,
+          "confidence": 0.37057388657168633,
+          "rerank_raw": 0.5,
+          "rerank_norm": 0.5,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 2
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 2,
+          "page": 2,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.742897216369676,
+          "snippet": "Agenda\n01WPA2 Weaknesses\nWhy a new protocol was needed\n02What is SAE?\nDragonfly key exchange overview\n03Hunting & Pecking\nDeriving the Password Element\n04Commit & Confirm Phases\nThe core cryptographic math\n05Forward Secrecy\nEphemeral keys and session protection\n06SAE vs WPA2 Comparison\nCryptographic property comparison\n07Dragonblood Attacks\nSide -channel vulnerabilities and fixes\nCryptographic\nDeep Dive\nInto WPA3's SAE Protocol",
+          "initial_rank": 2,
+          "confidence": 0.257102783630324,
+          "rerank_raw": 0.5,
+          "rerank_norm": 0.5,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 3
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 11,
+          "page": 11,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.9186403455626933,
+          "snippet": "Side-Channel Attacks: Dragonblood (2019)\nThe Attack\nVanhoef & Ronen (2019) discovered that the Hunting & Pecking \nloop in the original SAE spec had a variable number of iterations \ndepending on the password.\nBy measuring execution time or cache access patterns, an attacker \ncould determine how many iterations occurred, leaking \ninformation about the password.\nThis enabled offline dictionary attacks \u2014partially defeating SAE's \ncore security guarantee.\nAffected: CVE -2019 -9494 (timing) and CVE -2019 -9496 (cache -\nbased).\nThe Fix\nIEEE and the Wi -Fi Alliance patched the spec:\n1. Replaced the loop with a constant -time hash -to-curve \nalgorithm (using Legendre symbol computations that always \nrun a fixed number of iterations).\n2. Required constant -time ECC operations to prevent cache -\ntiming leakage.\n3. SAE -PK (SAE with public key) was introduced as an \nadditional defense for enterprise deployments.\nLesson: Cryptographic protocol security alone is insufficient \u2014\nside-channel resistance in implementation is equally critical.",
+          "initial_rank": 8,
+          "confidence": 0.08135965443730675,
+          "rerank_raw": 0.5,
+          "rerank_norm": 0.5,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 4
+        },
+        {
+          "doc_id": 1,
+          "chunk_id": 6,
+          "page": 6,
+          "title": "WPA3_SAE_Presentation.pdf",
+          "distance": 0.9313801655270925,
+          "snippet": "Hunting & Pecking: Deriving the Password \nElement (PWE)\nAlgorithm (using NIST P -256 / Group 19)\n\u2022 Input: password, MAC addresses of client and AP.\n\u2022 Compute seed = H(max(MAC_A, MAC_B) || min(MAC_A, MAC_B) || \npassword || counter) where H = SHA -256.\n\u2022 Derive a candidate x -coordinate on the elliptic curve from the seed.\n\u2022 Check if x is a valid point on the curve (i.e., x\u00b3 + ax + b is a quadratic \nresidue mod p).\n\u2022 If valid, set PWE = point on curve. If not, increment counter and \nrepeat.\n\u2022 PWE is deterministic and computationally indistinguishable from \nrandom.\nWhy This Matters\nThe PWE is a shared secret derived from the \npassword. It is a point on an elliptic curve \u2014an \nadversary who does not know the password cannot \ncompute PWE, making offline attacks impossible.\nTiming Side -Channel Risk\nThe number of loop iterations depends on the \npassword and MAC addresses. Variable iteration \ncounts can leak timing information \u2014this was the \nbasis of Dragonblood attacks (CVE -2019 -9494).",
+          "initial_rank": 9,
+          "confidence": 0.06861983447290754,
+          "rerank_raw": 0.5,
+          "rerank_norm": 0.5,
+          "reranker_type": "lexical_overlap",
+          "rank_after": 5
+        }
+      ],
+      "latency_ms": {
+        "retrieve_ms": 2.86,
+        "rerank_ms": 0.23
+      }
+    }
+  ]
+}
