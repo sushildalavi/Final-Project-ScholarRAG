@@ -120,22 +120,32 @@ Evaluated on a corpus of **15 landmark NLP/ML papers** (DPR, ColBERT, RAG, BEIR,
 
 ### MSA Calibration & Ablation Study
 
-Calibration dataset: **1,272 labeled claims** (634 human-annotated + 638 LLM-judged), 70/30 train/test split.
+Calibration dataset: **1,272 labeled claims** (634 human-annotated + 638 LLM-judged), 70/30 train/test split (grouped by query to prevent leakage).
 
-| Model | Test Accuracy | Test Brier | Test ECE |
-|-------|--------------|------------|----------|
-| **M+S+A (full)** | **1.000** | **0.001** | **0.019** |
-| M+A | 1.000 | 0.001 | 0.020 |
-| M+S | 0.996 | 0.007 | 0.041 |
-| S+A | 1.000 | 0.002 | 0.025 |
-| M-only | 0.996 | 0.009 | 0.046 |
-| A-only | 1.000 | 0.002 | 0.027 |
-| S-only | 0.877 | 0.069 | 0.101 |
-| Heuristic baseline | 0.852 | 0.122 | 0.338 |
-
-> The full M+S+A logistic model achieves near-perfect calibration (Brier 0.001, ECE 0.019) on held-out data, outperforming the heuristic baseline by 17.4% accuracy and 94.4% lower ECE. Agreement (A) is the strongest single signal; Stability (S) alone is weakest but improves the blend.
+| Model | Test Accuracy | Test Brier | Test ECE | Macro F1 |
+|-------|--------------|------------|----------|----------|
+| **M+S+A (full)** | **1.000** | **0.001** | **0.019** | **1.000** |
+| M+A | 1.000 | 0.001 | 0.020 | 1.000 |
+| M+S | 0.996 | 0.007 | 0.041 | 0.993 |
+| S+A | 1.000 | 0.002 | 0.025 | 1.000 |
+| M-only | 0.996 | 0.009 | 0.046 | 0.993 |
+| A-only | 1.000 | 0.002 | 0.027 | 1.000 |
+| S-only | 0.877 | 0.069 | 0.101 | 0.821 |
+| Heuristic baseline | 0.852 | 0.122 | 0.338 | 0.783 |
 
 **Learned logistic weights:** `sigmoid(-3.43 + 3.76·M + 1.01·S + 4.89·A)`
+
+**Why is accuracy so high?** The MSA features are by design highly discriminative. Feature separability analysis shows zero overlap between classes:
+
+| Feature | Supported Range | Unsupported Range | Overlap |
+|---------|----------------|-------------------|---------|
+| M (entailment) | [0.66, 0.96] | [0.04, 0.20] | None |
+| S (stability) | [0.58, 1.00] | [0.19, 0.82] | Partial |
+| A (agreement) | [1.00, 1.00] | [0.00, 0.00] | None |
+
+M and A are near-perfectly separable because they directly measure evidence quality — M captures whether evidence entails the claim, A captures cross-source corroboration. The real contribution of the logistic calibration is not just binary classification (trivially solvable) but **well-calibrated probability estimates** (Brier 0.001, ECE 0.019) for the user-facing confidence display.
+
+> **Class imbalance note:** The dataset is 90.4% supported / 9.6% unsupported (9.4:1 ratio). Despite this, the minority-class (unsupported) F1 is 1.000 for M+S+A, confirming the model is not simply predicting the majority class. The heuristic baseline drops to 0.783 macro F1 under the same imbalance.
 
 ### Inter-Annotator Agreement
 
@@ -312,11 +322,6 @@ ScholarRAG/
 │   ├── open_eval_fit_calibration.py        # Fit M/S/A logistic calibration
 │   ├── open_eval_eval_calibration.py       # Evaluate calibration quality
 │   └── open_eval_annotation_agreement.py   # Inter-annotator agreement
-├── docs/
-│   ├── ARCHITECTURE.md          # Deep-dive system design
-│   ├── EVALUATION.md            # Evaluation methodology
-│   ├── EMBEDDING_MODEL_COMPARISON.md
-│   └── RETRIEVAL_DESIGN.md      # Chunking + retrieval design
 ├── Evaluation/
 │   ├── ScholarRAG_Evaluation.ipynb  # All metrics visualization notebook
 │   ├── data/
@@ -349,15 +354,13 @@ pgvector provides ANN search as a first-class PostgreSQL extension, enabling:
 - Co-location of vector and relational data in one query
 - HNSW indexes for sub-millisecond approximate search at scale
 
-See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for details.
-
 ### Why hybrid scoring?
 
-Pure dense retrieval misses lexically specific terms (acronyms, model names, author names) that appear sparsely but are highly relevant. Pure sparse retrieval misses semantic synonymy. The hybrid score `(1-α) × cosine_sim + α × sparse_overlap` with tunable `α` captures both. See [`docs/RETRIEVAL_DESIGN.md`](docs/RETRIEVAL_DESIGN.md).
+Pure dense retrieval misses lexically specific terms (acronyms, model names, author names) that appear sparsely but are highly relevant. Pure sparse retrieval misses semantic synonymy. The hybrid score `(1-α) × cosine_sim + α × sparse_overlap` with tunable `α` (default 0.25) captures both. Most research queries are semantic, so dense retrieval dominates; sparse overlap is a correction signal for named-entity-heavy queries.
 
 ### Why M/S/A confidence vs. a single similarity score?
 
-Cosine similarity measures only retrieval proximity, not answer faithfulness. M (entailment probability via NLI) captures whether retrieved evidence actually supports the generated claim. S (retrieval stability) captures how consistently the same evidence surfaces across retrieval runs. A (multi-source agreement) captures cross-provider corroboration. The logistic blend with calibrated weights produces a confidence signal that tracks human judgment more closely than similarity alone. See [`docs/EVALUATION.md`](docs/EVALUATION.md).
+Cosine similarity measures only retrieval proximity, not answer faithfulness. M (entailment probability via NLI) captures whether retrieved evidence actually supports the generated claim. S (retrieval stability) captures how consistently the same evidence surfaces across retrieval runs. A (multi-source agreement) captures cross-provider corroboration. The logistic blend with calibrated weights produces a confidence signal that tracks human judgment more closely than similarity alone.
 
 ---
 
@@ -392,7 +395,7 @@ cd Evaluation
 jupyter nbconvert --to notebook --execute ScholarRAG_Evaluation.ipynb
 ```
 
-See [`docs/EVALUATION.md`](docs/EVALUATION.md) for full methodology, [`docs/EVAL_RUNBOOK.md`](docs/EVAL_RUNBOOK.md) for step-by-step instructions, and [`docs/OPEN_EVAL_RUNBOOK.md`](docs/OPEN_EVAL_RUNBOOK.md) for the open-corpus evaluation protocol.
+See [`Evaluation/README.md`](Evaluation/README.md) for the full directory layout and detailed results.
 
 ---
 
@@ -466,7 +469,17 @@ Returns Ollama reachability, embedding shape, active provider/model/version, and
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for local setup, testing, and code style guidelines.
+```bash
+make lint       # check code style (ruff)
+make lint-fix   # auto-fix
+make test       # run full test suite
+make eval       # run retrieval evaluation
+```
+
+- Python 3.11+ type hints on all public functions
+- No bare `except:` — always catch specific exceptions
+- Run `make lint && make test` before submitting changes
+- Report Recall@5, MRR, and nDCG@10 in PRs that affect retrieval
 
 ---
 
