@@ -31,47 +31,19 @@ It aggregates **7 live scholarly APIs** (OpenAlex, arXiv, Semantic Scholar, Cros
 
 ## Architecture
 
-```
-┌───────────────────────────────────────────────────────────────┐
-│                    React + TypeScript SPA                      │
-│         (Search · Upload · Chat · Evidence Panel)             │
-└───────────────────────┬───────────────────────────────────────┘
-                        │ HTTPS / REST
-                        ▼
-┌───────────────────────────────────────────────────────────────┐
-│                  FastAPI Backend  (Python 3.11)                │
-│                                                               │
-│  POST /assistant/answer                                       │
-│  ┌─────────────────────────────────────────────────────────┐  │
-│  │  Scope Router  ──────►  [uploaded] pgvector ANN         │  │
-│  │                              ↓  Reranker                │  │
-│  │                 ──────►  [public]  Multi-Provider Fan-out│  │
-│  │                              ↓  Hybrid Scorer           │  │
-│  │                 ──────►  [web]     Fallback Search      │  │
-│  │                                                         │  │
-│  │  Sense Resolver → Generator (GPT-4o-mini) → M/S/A       │  │
-│  └─────────────────────────────────────────────────────────┘  │
-└──────────┬──────────────────────┬─────────────────────────────┘
-           │                      │
-  ┌────────▼────────┐   ┌─────────▼──────────┐   ┌────────────┐
-  │  Local Postgres │   │  Local Ollama       │   │ OpenAI API │
-  │  PostgreSQL 16  │   │  mxbai-embed-large  │   │ GPT-4o-mini│
-  │  + pgvector     │   │  (1024-d embeddings)│   │ generation │
-  └─────────────────┘   └─────────────────────┘   └────────────┘
-                                    │
-              ┌─────────────────────┼──────────────────────┐
-              ▼                     ▼                      ▼
-         OpenAlex               arXiv              Semantic Scholar
-         Crossref               Springer           Elsevier / IEEE
-```
+![System Architecture](images/system_architecture.png)
 
-**Data flow for a query:**
+### Dual Retrieval Pipeline
 
-1. Embed query via Ollama (`mxbai-embed-large`, `Represent this sentence for searching…` prefix)
-2. ANN retrieval from pgvector (uploaded) **or** parallel fan-out to 7 scholarly APIs (public)
-3. Hybrid re-score: `(1-α) × cosine_sim + α × sparse_BM25_overlap`, α tunable
-4. Sense disambiguation → citation-grounded generation (GPT-4o-mini)
-5. Per-citation M/S/A confidence scoring → structured response with evidence panel
+![Dual Retrieval Pipeline](images/dual_retrieval_pipeline.png)
+
+### MSA Confidence Scoring Pipeline
+
+![MSA Confidence Pipeline](images/msa_confidence_pipeline.png)
+
+### Database Schema (ER Diagram)
+
+![ER Diagram](images/er_diagram.png)
 
 ---
 
@@ -322,6 +294,12 @@ ScholarRAG/
 │   ├── open_eval_fit_calibration.py        # Fit M/S/A logistic calibration
 │   ├── open_eval_eval_calibration.py       # Evaluate calibration quality
 │   └── open_eval_annotation_agreement.py   # Inter-annotator agreement
+├── images/                          # Architecture and pipeline diagrams
+│   ├── system_architecture.png
+│   ├── dual_retrieval_pipeline.png
+│   ├── msa_confidence_pipeline.png
+│   ├── er_diagram.png
+│   └── evaluation_framework.png
 ├── Evaluation/
 │   ├── ScholarRAG_Evaluation.ipynb  # All metrics visualization notebook
 │   ├── data/
@@ -365,6 +343,8 @@ Cosine similarity measures only retrieval proximity, not answer faithfulness. M 
 ---
 
 ## Evaluation
+
+![Evaluation Framework](images/evaluation_framework.png)
 
 All evaluation data, scripts, and generated figures live in the [`Evaluation/`](Evaluation/) directory. See [`Evaluation/README.md`](Evaluation/README.md) for the full directory layout.
 
