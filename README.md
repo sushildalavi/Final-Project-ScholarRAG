@@ -91,37 +91,97 @@ It aggregates **7 live scholarly APIs** (OpenAlex, arXiv, Semantic Scholar, Cros
 
 ## Benchmark Results
 
-Results from `scripts/eval_retrieval.py` on a 120-query evaluation set built from uploaded research papers.
+Evaluated on a corpus of **15 landmark NLP/ML papers** (DPR, ColBERT, RAG, BEIR, SQuAD, BERT, Attention Is All You Need, etc.) with **120 expert-crafted queries** spanning factual recall, cross-document synthesis, and methodology comparison.
 
-### Retrieval Metrics
+### Retrieval (Cross-Document, No doc_id Constraint)
 
-| Metric         | Retrieval Only | + Reranker | Δ        |
-|----------------|---------------|------------|----------|
-| Recall@1       | 0.51          | 0.62       | +21.6%   |
-| Recall@5       | 0.73          | 0.81       | +11.0%   |
-| Recall@10      | 0.84          | 0.89       | +6.0%    |
-| MRR            | 0.55          | 0.67       | +21.8%   |
-| nDCG@3         | 0.58          | 0.69       | +19.0%   |
-| nDCG@10        | 0.61          | 0.72       | +18.0%   |
+| Metric | Retrieval Only | + Reranker | Δ |
+|--------|---------------|------------|---|
+| **Recall@1** | 0.900 | 0.883 | -1.9% |
+| **Recall@5** | 0.917 | 0.933 | +1.7% |
+| **Recall@10** | 0.942 | 0.933 | -0.9% |
+| **MRR** | 0.908 | 0.907 | -0.1% |
 
-### Answer Quality
+> High baseline recall indicates strong embedding quality from `mxbai-embed-large` + pgvector HNSW. Reranker provides marginal gains on Recall@5 while maintaining near-equivalent MRR, suggesting the dense retriever already surfaces highly relevant chunks.
 
-| Metric                                        | Score |
-|-----------------------------------------------|-------|
-| LLM Judge Faithfulness (citation coverage)    | 0.78  |
-| Mean NLI entailment score (M) across claims   | 0.71  |
-| % answers labeled High confidence             | 62%   |
-| % answers labeled Med confidence              | 27%   |
+### Faithfulness (LLM-as-Judge)
+
+| Metric | Value |
+|--------|-------|
+| Total claims extracted | 638 |
+| Queries evaluated | 113 |
+| Claims per query (avg) | 5.6 |
+| **Supported claims** | **580 (90.9%)** |
+| Unsupported claims | 58 (9.1%) |
+| Mean M-score (supported) | 0.806 |
+| Mean M-score (unsupported) | 0.090 |
+
+> LLM judge decomposes each generated answer into atomic claims, then verifies each against retrieved evidence. The 90.9% support rate indicates strong citation grounding.
+
+### MSA Calibration & Ablation Study
+
+Calibration dataset: **1,272 labeled claims** (634 human-annotated + 638 LLM-judged), 70/30 train/test split.
+
+| Model | Test Accuracy | Test Brier | Test ECE |
+|-------|--------------|------------|----------|
+| **M+S+A (full)** | **1.000** | **0.001** | **0.019** |
+| M+A | 1.000 | 0.001 | 0.020 |
+| M+S | 0.996 | 0.007 | 0.041 |
+| S+A | 1.000 | 0.002 | 0.025 |
+| M-only | 0.996 | 0.009 | 0.046 |
+| A-only | 1.000 | 0.002 | 0.027 |
+| S-only | 0.877 | 0.069 | 0.101 |
+| Heuristic baseline | 0.852 | 0.122 | 0.338 |
+
+> The full M+S+A logistic model achieves near-perfect calibration (Brier 0.001, ECE 0.019) on held-out data, outperforming the heuristic baseline by 17.4% accuracy and 94.4% lower ECE. Agreement (A) is the strongest single signal; Stability (S) alone is weakest but improves the blend.
+
+**Learned logistic weights:** `sigmoid(-3.43 + 3.76·M + 1.01·S + 4.89·A)`
+
+### Inter-Annotator Agreement
+
+| Metric | Value |
+|--------|-------|
+| Sample size | 150 claims |
+| Observed agreement | 96.7% |
+| **Cohen's Kappa** | **0.820** |
+| Interpretation | Almost perfect |
+
+> Cohen's Kappa of 0.82 indicates almost perfect agreement between annotators on claim support labels, validating the labeling methodology.
+
+### Public Research Mode (7-API Aggregation)
+
+Evaluated on 20 diverse ML/NLP queries with live API calls.
+
+| Metric | Value |
+|--------|-------|
+| Queries tested | 20 |
+| Total results returned | 200 |
+| Avg results per query | 10.0 |
+| Mean search latency | 4.78s |
+| Median search latency | 4.77s |
+
+**Provider Distribution:**
+
+| Provider | Results | Share |
+|----------|---------|-------|
+| OpenAlex | 56 | 28.0% |
+| Elsevier/Scopus | 52 | 26.0% |
+| Semantic Scholar | 34 | 17.0% |
+| arXiv | 29 | 14.5% |
+| Crossref | 20 | 10.0% |
+| Springer | 9 | 4.5% |
+
+> Round-robin selection ensures provider diversity. 6 of 7 APIs contribute results (IEEE requires a separate API key). Latency is dominated by the slowest API in the concurrent fan-out.
 
 ### System Latency (p50 / p95 / p99 ms)
 
-| Stage        | p50  | p95  | p99   |
-|--------------|------|------|-------|
-| Embed query  | 28   | 62   | 115   |
-| Retrieve     | 95   | 210  | 380   |
-| Rerank       | 18   | 45   | 90    |
-| Generate     | 310  | 720  | 1240  |
-| **Total**    | **420** | **980** | **1600** |
+| Stage | p50 | p95 | p99 |
+|-------|-----|-----|-----|
+| Embed query | 28 | 62 | 115 |
+| Retrieve | 95 | 210 | 380 |
+| Rerank | 18 | 45 | 90 |
+| Generate | 310 | 720 | 1240 |
+| **Total** | **420** | **980** | **1600** |
 
 > Latency measured on a 3-chunk context window, GPT-4o-mini, local Postgres pgvector, and local Ollama.
 
@@ -217,13 +277,23 @@ ScholarRAG/
 │   │   ├── nli.py               # NLI entailment scoring with lru_cache
 │   │   ├── research_feed.py     # Latest research aggregation
 │   │   └── assistant_utils.py   # Answer generation utilities
-│   └── tests/                   # pytest test suite
+│   ├── utils/
+│   │   ├── config.py            # Environment variable management
+│   │   ├── logging_utils.py     # Structured logging setup
+│   │   ├── arxiv_utils.py       # arXiv API client
+│   │   ├── crossref_utils.py    # Crossref API client
+│   │   ├── elsevier_utils.py    # Elsevier/Scopus API client
+│   │   ├── ieee_utils.py        # IEEE Xplore API client
+│   │   ├── openalex_utils.py    # OpenAlex API client
+│   │   ├── semanticscholar_utils.py  # Semantic Scholar API client
+│   │   ├── springer_utils.py    # Springer API client
+│   │   └── embedding_utils.py   # Embedding helper functions
+│   └── tests/                   # pytest test suite (12 modules)
 ├── frontend/
 │   └── src/
 │       ├── App.tsx              # Main React app with all UI state
 │       ├── components/ui/       # Prompt input box, shared UI primitives
 │       └── api/                 # HTTP client + TypeScript types
-├── utils/                       # 7 scholarly API integrations (one per provider)
 ├── db/
 │   ├── init.sql                 # PostgreSQL + pgvector schema
 │   └── migrations/              # Schema migrations
@@ -247,6 +317,17 @@ ScholarRAG/
 │   ├── EVALUATION.md            # Evaluation methodology
 │   ├── EMBEDDING_MODEL_COMPARISON.md
 │   └── RETRIEVAL_DESIGN.md      # Chunking + retrieval design
+├── Evaluation/
+│   ├── ScholarRAG_Evaluation.ipynb  # All metrics visualization notebook
+│   ├── data/
+│   │   ├── retrieval/           # Golden set + retrieval eval results
+│   │   ├── calibration/         # M/S/A calibration + ablation reports
+│   │   ├── llm_judge/           # Faithfulness claims + judge runs
+│   │   ├── iaa/                 # Inter-annotator agreement
+│   │   ├── public_search/       # Public API eval results
+│   │   └── human_labels/        # Human annotation datasets
+│   ├── figures/                 # Generated plots (PNG)
+│   └── queries/                 # Query templates + master sets
 ├── docker-compose.yml
 ├── Dockerfile
 ├── requirements.txt
@@ -282,29 +363,36 @@ Cosine similarity measures only retrieval proximity, not answer faithfulness. M 
 
 ## Evaluation
 
+All evaluation data, scripts, and generated figures live in the [`Evaluation/`](Evaluation/) directory. See [`Evaluation/README.md`](Evaluation/README.md) for the full directory layout.
+
+### Evaluation Components
+
+| Component | Script / Data | Description |
+|-----------|--------------|-------------|
+| **Retrieval** | `scripts/eval_retrieval.py` → `Evaluation/data/retrieval/` | Recall@K, MRR, nDCG@K on 120-query golden set across 15 papers |
+| **Faithfulness** | `/eval/judge` endpoint → `Evaluation/data/llm_judge/` | LLM-as-judge claim extraction and verification (638 claims) |
+| **Calibration** | `scripts/open_eval_fit_calibration.py` → `Evaluation/data/calibration/` | Logistic M/S/A model fitting on 1,272 labeled claims, ablation study |
+| **IAA** | `scripts/open_eval_annotation_agreement.py` → `Evaluation/data/iaa/` | Inter-annotator agreement (Cohen's Kappa = 0.82) |
+| **Public Search** | Live API eval → `Evaluation/data/public_search/` | Provider diversity, latency, and keyword precision across 20 queries |
+| **Visualization** | `Evaluation/ScholarRAG_Evaluation.ipynb` | Jupyter notebook with all charts, tables, and summary dashboard |
+
 ### Running the retrieval eval harness
 
 ```bash
 python scripts/eval_retrieval.py \
   --eval-set Evaluation/data/retrieval/golden_set.json \
   --k 10 \
-  --output eval_results/run_$(date +%Y%m%d).json
+  --output Evaluation/data/retrieval/run_$(date +%Y%m%d).json
 ```
 
-Expected eval set format:
+### Running the full evaluation notebook
 
-```json
-[
-  {
-    "query": "What are the main contributions of this paper?",
-    "doc_ids": [1, 2],
-    "relevant_chunk_ids": [10, 14, 22],
-    "relevant_doc_ids": [1]
-  }
-]
+```bash
+cd Evaluation
+jupyter nbconvert --to notebook --execute ScholarRAG_Evaluation.ipynb
 ```
 
-See [`docs/EVALUATION.md`](docs/EVALUATION.md) for full methodology, including the LLM judge protocol and confidence calibration procedure.
+See [`docs/EVALUATION.md`](docs/EVALUATION.md) for full methodology, [`docs/EVAL_RUNBOOK.md`](docs/EVAL_RUNBOOK.md) for step-by-step instructions, and [`docs/OPEN_EVAL_RUNBOOK.md`](docs/OPEN_EVAL_RUNBOOK.md) for the open-corpus evaluation protocol.
 
 ---
 
