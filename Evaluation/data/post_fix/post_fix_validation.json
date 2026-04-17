@@ -1,0 +1,678 @@
+{
+  "mode": "post_fix_validation",
+  "created_at": "2026-04-17T06:14:47+00:00",
+  "k": 8,
+  "document_count": 16,
+  "documents": [
+    {
+      "doc_id": 16,
+      "title": "15_LLMasJudge.pdf"
+    },
+    {
+      "doc_id": 15,
+      "title": "14_InstructGPT.pdf"
+    },
+    {
+      "doc_id": 14,
+      "title": "13_ChainOfThought.pdf"
+    },
+    {
+      "doc_id": 13,
+      "title": "12_Attention.pdf"
+    },
+    {
+      "doc_id": 12,
+      "title": "11_BERT.pdf"
+    },
+    {
+      "doc_id": 11,
+      "title": "10_FActScore.pdf"
+    },
+    {
+      "doc_id": 10,
+      "title": "09_BART.pdf"
+    },
+    {
+      "doc_id": 9,
+      "title": "08_PEGASUS.pdf"
+    },
+    {
+      "doc_id": 8,
+      "title": "07_DrQA.pdf"
+    },
+    {
+      "doc_id": 7,
+      "title": "06_NaturalQuestions.pdf"
+    },
+    {
+      "doc_id": 6,
+      "title": "05_SQuAD.pdf"
+    },
+    {
+      "doc_id": 5,
+      "title": "04_BEIR.pdf"
+    },
+    {
+      "doc_id": 4,
+      "title": "03_RAG.pdf"
+    },
+    {
+      "doc_id": 3,
+      "title": "02_ColBERT.pdf"
+    },
+    {
+      "doc_id": 2,
+      "title": "01_DPR.pdf"
+    },
+    {
+      "doc_id": 1,
+      "title": "WPA3_SAE_Presentation.pdf"
+    }
+  ],
+  "adversarial": {
+    "description": "Adversarial retrieval queries: terminology deliberately overlaps between 2+ papers in the 15-paper corpus. A naive dense retriever that scores on topic similarity alone will retrieve the wrong paper. Each query has an explicit gold target and named distractor papers; the evaluator should check both document-level accuracy and whether the wrong-paper distractors appear in the top-k.",
+    "notes": "paper keys reference the file names in Evaluation/papers/. doc_id fields must be populated by Evaluation/queries/fill_doc_ids.py after ingest.",
+    "count": 20,
+    "passed": 20,
+    "pass_rate": 1.0,
+    "results": [
+      {
+        "id": "adv1",
+        "query": "Which paper introduces late interaction between query and passage token embeddings?",
+        "gold_paper_key": "02_ColBERT",
+        "rank1_title": "02_ColBERT.pdf",
+        "top_titles": [
+          "02_ColBERT.pdf",
+          "02_ColBERT.pdf",
+          "02_ColBERT.pdf",
+          "02_ColBERT.pdf",
+          "04_BEIR.pdf"
+        ],
+        "answer_preview": "Validation answer . [S1]",
+        "retrieval_mode": "uploaded-first",
+        "passed": true,
+        "checks": {
+          "rank1_matches_gold": true,
+          "rank1_excludes_blocked_keys": true,
+          "abstained": false
+        }
+      },
+      {
+        "id": "adv2",
+        "query": "Which paper first uses a dual encoder with in-batch negatives for open-domain QA retrieval?",
+        "gold_paper_key": "01_DPR",
+        "rank1_title": "01_DPR.pdf",
+        "top_titles": [
+          "01_DPR.pdf",
+          "01_DPR.pdf",
+          "01_DPR.pdf",
+          "01_DPR.pdf",
+          "01_DPR.pdf"
+        ],
+        "answer_preview": "Validation answer . [S1]",
+        "retrieval_mode": "uploaded-first",
+        "passed": true,
+        "checks": {
+          "rank1_matches_gold": true,
+          "rank1_excludes_blocked_keys": true,
+          "abstained": false
+        }
+      },
+      {
+        "id": "adv3",
+        "query": "Which paper proposes a parametric + non-parametric memory for knowledge-intensive generation?",
+        "gold_paper_key": "03_RAG",
+        "rank1_title": "03_RAG.pdf",
+        "top_titles": [
+          "03_RAG.pdf",
+          "03_RAG.pdf",
+          "03_RAG.pdf",
+          "03_RAG.pdf",
+          "03_RAG.pdf"
+        ],
+        "answer_preview": "Validation answer . [S1]",
+        "retrieval_mode": "uploaded-first",
+        "passed": true,
+        "checks": {
+          "rank1_matches_gold": true,
+          "rank1_excludes_blocked_keys": true,
+          "abstained": false
+        }
+      },
+      {
+        "id": "adv4",
+        "query": "Which benchmark evaluates retrieval models across 18 heterogeneous IR tasks without supervised training on each?",
+        "gold_paper_key": "04_BEIR",
+        "rank1_title": "04_BEIR.pdf",
+        "top_titles": [
+          "04_BEIR.pdf",
+          "04_BEIR.pdf",
+          "04_BEIR.pdf",
+          "04_BEIR.pdf",
+          "04_BEIR.pdf"
+        ],
+        "answer_preview": "Validation answer . [S1]",
+        "retrieval_mode": "uploaded-first",
+        "passed": true,
+        "checks": {
+          "rank1_matches_gold": true,
+          "rank1_excludes_blocked_keys": true,
+          "abstained": false
+        }
+      },
+      {
+        "id": "adv5",
+        "query": "Which paper introduces a reading comprehension dataset built from Wikipedia articles with crowd-sourced questions?",
+        "gold_paper_key": "05_SQuAD",
+        "rank1_title": "05_SQuAD.pdf",
+        "top_titles": [
+          "05_SQuAD.pdf",
+          "05_SQuAD.pdf",
+          "05_SQuAD.pdf",
+          "07_DrQA.pdf",
+          "07_DrQA.pdf"
+        ],
+        "answer_preview": "Validation answer . [S1]",
+        "retrieval_mode": "uploaded-first",
+        "passed": true,
+        "checks": {
+          "rank1_matches_gold": true,
+          "rank1_excludes_blocked_keys": true,
+          "abstained": false
+        }
+      },
+      {
+        "id": "adv6",
+        "query": "Which dataset pairs real Google search queries with long-form answers from Wikipedia?",
+        "gold_paper_key": "06_NaturalQuestions",
+        "rank1_title": "06_NaturalQuestions.pdf",
+        "top_titles": [
+          "06_NaturalQuestions.pdf",
+          "06_NaturalQuestions.pdf",
+          "06_NaturalQuestions.pdf",
+          "06_NaturalQuestions.pdf",
+          "06_NaturalQuestions.pdf"
+        ],
+        "answer_preview": "Validation answer . [S1]",
+        "retrieval_mode": "uploaded-first",
+        "passed": true,
+        "checks": {
+          "rank1_matches_gold": true,
+          "rank1_excludes_blocked_keys": true,
+          "abstained": false
+        }
+      },
+      {
+        "id": "adv7",
+        "query": "Which paper proposes a gap-sentence objective for abstractive summarization pretraining?",
+        "gold_paper_key": "08_PEGASUS",
+        "rank1_title": "08_PEGASUS.pdf",
+        "top_titles": [
+          "08_PEGASUS.pdf",
+          "08_PEGASUS.pdf",
+          "08_PEGASUS.pdf",
+          "08_PEGASUS.pdf",
+          "08_PEGASUS.pdf"
+        ],
+        "answer_preview": "Validation answer . [S1]",
+        "retrieval_mode": "uploaded-first",
+        "passed": true,
+        "checks": {
+          "rank1_matches_gold": true,
+          "rank1_excludes_blocked_keys": true,
+          "abstained": false
+        }
+      },
+      {
+        "id": "adv8",
+        "query": "Which paper trains an encoder-decoder by corrupting text and reconstructing it?",
+        "gold_paper_key": "09_BART",
+        "rank1_title": "09_BART.pdf",
+        "top_titles": [
+          "09_BART.pdf",
+          "09_BART.pdf",
+          "09_BART.pdf",
+          "09_BART.pdf",
+          "09_BART.pdf"
+        ],
+        "answer_preview": "Validation answer . [S1]",
+        "retrieval_mode": "uploaded-first",
+        "passed": true,
+        "checks": {
+          "rank1_matches_gold": true,
+          "rank1_excludes_blocked_keys": true,
+          "abstained": false
+        }
+      },
+      {
+        "id": "adv9",
+        "query": "Which paper decomposes long-form generations into atomic facts and scores each against a knowledge source?",
+        "gold_paper_key": "10_FActScore",
+        "rank1_title": "10_FActScore.pdf",
+        "top_titles": [
+          "10_FActScore.pdf",
+          "10_FActScore.pdf",
+          "10_FActScore.pdf",
+          "10_FActScore.pdf",
+          "10_FActScore.pdf"
+        ],
+        "answer_preview": "Validation answer . [S1]",
+        "retrieval_mode": "uploaded-first",
+        "passed": true,
+        "checks": {
+          "rank1_matches_gold": true,
+          "rank1_excludes_blocked_keys": true,
+          "abstained": false
+        }
+      },
+      {
+        "id": "adv10",
+        "query": "Which paper introduces masked language modeling as a pretraining objective?",
+        "gold_paper_key": "11_BERT",
+        "rank1_title": "11_BERT.pdf",
+        "top_titles": [
+          "11_BERT.pdf",
+          "11_BERT.pdf",
+          "11_BERT.pdf",
+          "14_InstructGPT.pdf",
+          "08_PEGASUS.pdf"
+        ],
+        "answer_preview": "Validation answer . [S1]",
+        "retrieval_mode": "uploaded-first",
+        "passed": true,
+        "checks": {
+          "rank1_matches_gold": true,
+          "rank1_excludes_blocked_keys": true,
+          "abstained": false
+        }
+      },
+      {
+        "id": "adv11",
+        "query": "Which paper dispenses with recurrence entirely in favor of scaled dot-product attention?",
+        "gold_paper_key": "12_Attention",
+        "rank1_title": "12_Attention.pdf",
+        "top_titles": [
+          "12_Attention.pdf",
+          "12_Attention.pdf",
+          "12_Attention.pdf",
+          "12_Attention.pdf",
+          "12_Attention.pdf"
+        ],
+        "answer_preview": "Validation answer . [S1]",
+        "retrieval_mode": "uploaded-first",
+        "passed": true,
+        "checks": {
+          "rank1_matches_gold": true,
+          "rank1_excludes_blocked_keys": true,
+          "abstained": false
+        }
+      },
+      {
+        "id": "adv12",
+        "query": "Which paper elicits multi-step reasoning by asking the model to produce intermediate reasoning steps before the final answer?",
+        "gold_paper_key": "13_ChainOfThought",
+        "rank1_title": "13_ChainOfThought.pdf",
+        "top_titles": [
+          "13_ChainOfThought.pdf",
+          "13_ChainOfThought.pdf",
+          "13_ChainOfThought.pdf",
+          "13_ChainOfThought.pdf",
+          "13_ChainOfThought.pdf"
+        ],
+        "answer_preview": "Validation answer . [S1]",
+        "retrieval_mode": "uploaded-first",
+        "passed": true,
+        "checks": {
+          "rank1_matches_gold": true,
+          "rank1_excludes_blocked_keys": true,
+          "abstained": false
+        }
+      },
+      {
+        "id": "adv13",
+        "query": "Which paper aligns a language model using reinforcement learning from human feedback and demonstrations?",
+        "gold_paper_key": "14_InstructGPT",
+        "rank1_title": "14_InstructGPT.pdf",
+        "top_titles": [
+          "14_InstructGPT.pdf",
+          "14_InstructGPT.pdf",
+          "14_InstructGPT.pdf",
+          "14_InstructGPT.pdf",
+          "14_InstructGPT.pdf"
+        ],
+        "answer_preview": "Validation answer . [S1]",
+        "retrieval_mode": "uploaded-first",
+        "passed": true,
+        "checks": {
+          "rank1_matches_gold": true,
+          "rank1_excludes_blocked_keys": true,
+          "abstained": false
+        }
+      },
+      {
+        "id": "adv14",
+        "query": "Which paper shows that strong LLMs can approximate human judgment on open-ended model evaluations?",
+        "gold_paper_key": "15_LLMasJudge",
+        "rank1_title": "15_LLMasJudge.pdf",
+        "top_titles": [
+          "15_LLMasJudge.pdf",
+          "15_LLMasJudge.pdf",
+          "15_LLMasJudge.pdf",
+          "15_LLMasJudge.pdf",
+          "15_LLMasJudge.pdf"
+        ],
+        "answer_preview": "Validation answer . [S1]",
+        "retrieval_mode": "uploaded-first",
+        "passed": true,
+        "checks": {
+          "rank1_matches_gold": true,
+          "rank1_excludes_blocked_keys": true,
+          "abstained": false
+        }
+      },
+      {
+        "id": "adv15",
+        "query": "Which paper builds an open-domain QA system from Wikipedia with a TF-IDF retriever and a neural reader?",
+        "gold_paper_key": "07_DrQA",
+        "rank1_title": "07_DrQA.pdf",
+        "top_titles": [
+          "07_DrQA.pdf",
+          "07_DrQA.pdf",
+          "07_DrQA.pdf",
+          "04_BEIR.pdf",
+          "04_BEIR.pdf"
+        ],
+        "answer_preview": "Validation answer . [S1]",
+        "retrieval_mode": "uploaded-first",
+        "passed": true,
+        "checks": {
+          "rank1_matches_gold": true,
+          "rank1_excludes_blocked_keys": true,
+          "abstained": false
+        }
+      },
+      {
+        "id": "adv16",
+        "query": "Which paper's retrieval step relies on sparse BM25-style term matching rather than dense vectors?",
+        "gold_paper_key": "07_DrQA",
+        "rank1_title": "07_DrQA.pdf",
+        "top_titles": [
+          "07_DrQA.pdf",
+          "07_DrQA.pdf",
+          "07_DrQA.pdf",
+          "07_DrQA.pdf",
+          "07_DrQA.pdf"
+        ],
+        "answer_preview": "Validation answer . [S1]",
+        "retrieval_mode": "uploaded-first",
+        "passed": true,
+        "checks": {
+          "rank1_matches_gold": true,
+          "rank1_excludes_blocked_keys": true,
+          "abstained": false
+        }
+      },
+      {
+        "id": "adv17",
+        "query": "Which retrieval paper argues that a single fine-tuned dual encoder beats BM25 across open-domain QA benchmarks?",
+        "gold_paper_key": "01_DPR",
+        "rank1_title": "01_DPR.pdf",
+        "top_titles": [
+          "01_DPR.pdf",
+          "01_DPR.pdf",
+          "01_DPR.pdf",
+          "01_DPR.pdf",
+          "01_DPR.pdf"
+        ],
+        "answer_preview": "Validation answer . [S1]",
+        "retrieval_mode": "uploaded-first",
+        "passed": true,
+        "checks": {
+          "rank1_matches_gold": true,
+          "rank1_excludes_blocked_keys": true,
+          "abstained": false
+        }
+      },
+      {
+        "id": "adv18",
+        "query": "Which paper demonstrates that BM25 is surprisingly competitive with dense models under zero-shot evaluation?",
+        "gold_paper_key": "04_BEIR",
+        "rank1_title": "04_BEIR.pdf",
+        "top_titles": [
+          "04_BEIR.pdf",
+          "04_BEIR.pdf",
+          "04_BEIR.pdf",
+          "04_BEIR.pdf",
+          "04_BEIR.pdf"
+        ],
+        "answer_preview": "Validation answer . [S1]",
+        "retrieval_mode": "uploaded-first",
+        "passed": true,
+        "checks": {
+          "rank1_matches_gold": true,
+          "rank1_excludes_blocked_keys": true,
+          "abstained": false
+        }
+      },
+      {
+        "id": "adv19",
+        "query": "Which paper verifies generated claims by decomposing answers into atomic facts and checking each against Wikipedia?",
+        "gold_paper_key": "10_FActScore",
+        "rank1_title": "10_FActScore.pdf",
+        "top_titles": [
+          "10_FActScore.pdf",
+          "10_FActScore.pdf",
+          "10_FActScore.pdf",
+          "10_FActScore.pdf",
+          "10_FActScore.pdf"
+        ],
+        "answer_preview": "Validation answer . [S1]",
+        "retrieval_mode": "uploaded-first",
+        "passed": true,
+        "checks": {
+          "rank1_matches_gold": true,
+          "rank1_excludes_blocked_keys": true,
+          "abstained": false
+        }
+      },
+      {
+        "id": "adv20",
+        "query": "Which paper proposes chain-of-thought as a prompting technique, rather than as model training?",
+        "gold_paper_key": "13_ChainOfThought",
+        "rank1_title": "13_ChainOfThought.pdf",
+        "top_titles": [
+          "13_ChainOfThought.pdf",
+          "13_ChainOfThought.pdf",
+          "13_ChainOfThought.pdf",
+          "13_ChainOfThought.pdf",
+          "13_ChainOfThought.pdf"
+        ],
+        "answer_preview": "Validation answer . [S1]",
+        "retrieval_mode": "uploaded-first",
+        "passed": true,
+        "checks": {
+          "rank1_matches_gold": true,
+          "rank1_excludes_blocked_keys": true,
+          "abstained": false
+        }
+      }
+    ]
+  },
+  "abstention": {
+    "description": "Abstention queries: the corpus does NOT contain enough evidence to answer these. A well-calibrated system must return a low confidence and either refuse or clearly flag insufficient evidence. Scoring: the system 'passes' if confidence < 0.5 OR the answer contains an explicit insufficient-evidence marker. The system 'fails' if it produces a confident, citation-backed answer anyway (hallucination).",
+    "notes": "Three kinds of traps: (a) topic outside the 15-paper corpus, (b) plausible-sounding but never-defined terminology, (c) counterfactual/paper-attribution flips.",
+    "count": 12,
+    "passed": 12,
+    "pass_rate": 1.0,
+    "results": [
+      {
+        "id": "abs1",
+        "query": "What are the main findings of the paper 'Sparse Attention for Protein Folding' from 2024?",
+        "trap_type": "nonexistent_paper",
+        "answer_preview": "I couldn't find reliable matching evidence in your uploaded documents for that query. If you meant **sparse retrieval (BM25/TF-IDF)**, try asking with more context (for example the paper title, model architecture, or a related term like 'retrieval', 'BERT', or 'dual encoder'). Rather than guess, I'l",
+        "retrieval_mode": "abstention",
+        "citations_count": 0,
+        "top_titles": [],
+        "passed": true,
+        "checks": {
+          "abstained": true,
+          "returned_no_citations": true
+        }
+      },
+      {
+        "id": "abs2",
+        "query": "What F1 score does ColBERT report on the MS MARCO dev set?",
+        "trap_type": "out_of_scope_number",
+        "answer_preview": "I couldn't find reliable matching evidence in your uploaded documents for that query. If you meant **ColBERT retrieval model**, try asking with more context (for example the paper title, model architecture, or a related term like 'retrieval', 'BERT', or 'dual encoder'). Rather than guess, I'll wait ",
+        "retrieval_mode": "abstention",
+        "citations_count": 0,
+        "top_titles": [],
+        "passed": true,
+        "checks": {
+          "abstained": true,
+          "returned_no_citations": true
+        }
+      },
+      {
+        "id": "abs3",
+        "query": "Describe the contrastive loss formulation used in the ScholarRAG retriever.",
+        "trap_type": "self_reference_trap",
+        "answer_preview": "I couldn't find reliable matching evidence in your uploaded documents for that query. Rather than guess, I'll wait for a clearer question.",
+        "retrieval_mode": "abstention",
+        "citations_count": 0,
+        "top_titles": [],
+        "passed": true,
+        "checks": {
+          "abstained": true,
+          "returned_no_citations": true
+        }
+      },
+      {
+        "id": "abs4",
+        "query": "What does the 'Chain of Density' paper recommend for hierarchical summarization?",
+        "trap_type": "nonexistent_paper",
+        "answer_preview": "I couldn't find reliable matching evidence in your uploaded documents for that query. If you meant **chain-of-thought prompting**, try asking with more context (for example the paper title, model architecture, or a related term like 'retrieval', 'BERT', or 'dual encoder'). Rather than guess, I'll wa",
+        "retrieval_mode": "abstention",
+        "citations_count": 0,
+        "top_titles": [],
+        "passed": true,
+        "checks": {
+          "abstained": true,
+          "returned_no_citations": true
+        }
+      },
+      {
+        "id": "abs5",
+        "query": "How does the 2023 paper by Vaswani et al. update the original Transformer architecture?",
+        "trap_type": "counterfactual",
+        "answer_preview": "I couldn't find reliable matching evidence in your uploaded documents for that query. If you meant **ML Transformer models**, try asking with more context (for example the paper title, model architecture, or a related term like 'retrieval', 'BERT', or 'dual encoder'). Rather than guess, I'll wait fo",
+        "retrieval_mode": "abstention",
+        "citations_count": 0,
+        "top_titles": [],
+        "passed": true,
+        "checks": {
+          "abstained": true,
+          "returned_no_citations": true
+        }
+      },
+      {
+        "id": "abs6",
+        "query": "What benchmark score does BERT achieve on BIG-Bench Hard?",
+        "trap_type": "anachronism",
+        "answer_preview": "I couldn't find reliable matching evidence in your uploaded documents for that query. If you meant **BERT language model**, try asking with more context (for example the paper title, model architecture, or a related term like 'retrieval', 'BERT', or 'dual encoder'). Rather than guess, I'll wait for ",
+        "retrieval_mode": "abstention",
+        "citations_count": 0,
+        "top_titles": [],
+        "passed": true,
+        "checks": {
+          "abstained": true,
+          "returned_no_citations": true
+        }
+      },
+      {
+        "id": "abs7",
+        "query": "In DPR, what is the exact value of the top-20 retrieval accuracy on the WebQuestions benchmark?",
+        "trap_type": "specific_number_trap",
+        "answer_preview": "I couldn't find reliable matching evidence in your uploaded documents for that query. If you meant **DPR (Dense Passage Retrieval)**, try asking with more context (for example the paper title, model architecture, or a related term like 'retrieval', 'BERT', or 'dual encoder'). Rather than guess, I'll",
+        "retrieval_mode": "abstention",
+        "citations_count": 0,
+        "top_titles": [],
+        "passed": true,
+        "checks": {
+          "abstained": true,
+          "returned_no_citations": true
+        }
+      },
+      {
+        "id": "abs8",
+        "query": "What is the difference between Alpha-LoRA and Beta-LoRA as described in the corpus?",
+        "trap_type": "fabricated_terms",
+        "answer_preview": "I couldn't find reliable matching evidence in your uploaded documents for that query. Rather than guess, I'll wait for a clearer question.",
+        "retrieval_mode": "abstention",
+        "citations_count": 0,
+        "top_titles": [],
+        "passed": true,
+        "checks": {
+          "abstained": true,
+          "returned_no_citations": true
+        }
+      },
+      {
+        "id": "abs9",
+        "query": "How does the corpus describe mixture-of-experts training of GPT-4?",
+        "trap_type": "out_of_scope_topic",
+        "answer_preview": "I couldn't find reliable matching evidence in your uploaded documents for that query. If you meant **GPT language model**, try asking with more context (for example the paper title, model architecture, or a related term like 'retrieval', 'BERT', or 'dual encoder'). Rather than guess, I'll wait for a",
+        "retrieval_mode": "abstention",
+        "citations_count": 0,
+        "top_titles": [],
+        "passed": true,
+        "checks": {
+          "abstained": true,
+          "returned_no_citations": true
+        }
+      },
+      {
+        "id": "abs10",
+        "query": "What is the fine-grained factuality score threshold recommended by the InstructGPT paper?",
+        "trap_type": "cross_paper_confusion",
+        "answer_preview": "I couldn't find reliable matching evidence in your uploaded documents for that query. If you meant **InstructGPT (RLHF-tuned GPT)**, try asking with more context (for example the paper title, model architecture, or a related term like 'retrieval', 'BERT', or 'dual encoder'). Rather than guess, I'll ",
+        "retrieval_mode": "abstention",
+        "citations_count": 0,
+        "top_titles": [],
+        "passed": true,
+        "checks": {
+          "abstained": true,
+          "returned_no_citations": true
+        }
+      },
+      {
+        "id": "abs11",
+        "query": "Quote the exact sentence where the Attention Is All You Need paper introduces rotary positional embeddings.",
+        "trap_type": "anachronism",
+        "answer_preview": "I couldn't find reliable matching evidence in your uploaded documents for that query. If you meant **attention mechanism (neural networks)**, try asking with more context (for example the paper title, model architecture, or a related term like 'retrieval', 'BERT', or 'dual encoder'). Rather than gue",
+        "retrieval_mode": "abstention",
+        "citations_count": 0,
+        "top_titles": [],
+        "passed": true,
+        "checks": {
+          "abstained": true,
+          "returned_no_citations": true
+        }
+      },
+      {
+        "id": "abs12",
+        "query": "What does the PEGASUS paper conclude about in-context learning with few-shot exemplars?",
+        "trap_type": "topic_mismatch",
+        "answer_preview": "I couldn't find reliable matching evidence in your uploaded documents for that query. If you meant **PEGASUS summarization model**, try asking with more context (for example the paper title, model architecture, or a related term like 'retrieval', 'BERT', or 'dual encoder'). Rather than guess, I'll w",
+        "retrieval_mode": "abstention",
+        "citations_count": 0,
+        "top_titles": [],
+        "passed": true,
+        "checks": {
+          "abstained": true,
+          "returned_no_citations": true
+        }
+      }
+    ]
+  }
+}

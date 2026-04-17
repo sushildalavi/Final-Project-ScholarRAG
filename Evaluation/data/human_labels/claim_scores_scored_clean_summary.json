@@ -1,0 +1,43 @@
+{
+  "mode": "regenerate_human_claim_scores_clean",
+  "source_csv": "Evaluation/data/human_labels/claim_scores_scored.csv",
+  "output_csv": "Evaluation/data/human_labels/claim_scores_scored_clean.csv",
+  "n_rows": 634,
+  "msa_A_old_by_label": {
+    "mean": {
+      "supported": 1.0,
+      "unsupported": 0.0
+    },
+    "std": {
+      "supported": 0.0,
+      "unsupported": 0.0
+    },
+    "min": {
+      "supported": 1.0,
+      "unsupported": 0.0
+    },
+    "max": {
+      "supported": 1.0,
+      "unsupported": 0.0
+    }
+  },
+  "msa_A_clean_by_label": {
+    "mean": {
+      "supported": 0.9789473684210527,
+      "unsupported": 0.265625
+    },
+    "std": {
+      "supported": 0.14368590293178637,
+      "unsupported": 0.4451569190068627
+    },
+    "min": {
+      "supported": 0.0,
+      "unsupported": 0.0
+    },
+    "max": {
+      "supported": 1.0,
+      "unsupported": 1.0
+    }
+  },
+  "delta_abs_mean": 0.04574132492113565
+}

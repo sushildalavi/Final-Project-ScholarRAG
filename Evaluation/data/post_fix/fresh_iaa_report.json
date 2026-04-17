@@ -1,0 +1,28 @@
+{
+  "mode": "fresh_iaa_report",
+  "claim_sheet": {
+    "rows_used": 50,
+    "cohen_kappa": 0.7173,
+    "agreement": 0.86,
+    "label_counts_a": {
+      "supported": 28,
+      "unsupported": 22
+    },
+    "label_counts_b": {
+      "supported": 27,
+      "unsupported": 23
+    }
+  },
+  "retrieval_sheet": {
+    "rows_used": 1200,
+    "cohen_kappa_3class": 0.4613,
+    "cohen_kappa_binary": 0.5294,
+    "agreement_3class": 0.7242
+  },
+  "files": {
+    "judge_a": "Evaluation/data/post_fix/benchmark_56/judge_human_validation_sample.csv",
+    "judge_b": "Evaluation/data/post_fix/benchmark_56/judge_human_validation_sample_annotator_b.csv",
+    "retrieval_a": "Evaluation/data/post_fix/retrieval_120q_human_template/retrieval_annotations.csv",
+    "retrieval_b": "Evaluation/data/post_fix/retrieval_120q_human_template/retrieval_annotations_annotator_b.csv"
+  }
+}

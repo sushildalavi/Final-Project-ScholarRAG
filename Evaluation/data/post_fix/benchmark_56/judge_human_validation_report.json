@@ -1,0 +1,25 @@
+{
+  "mode": "judge_human_validation_score",
+  "sample_csv": "Evaluation/data/post_fix/benchmark_56/judge_human_validation_sample.csv",
+  "n_rows_total": 50,
+  "n_rows_scored": 50,
+  "n_rows_missing_human_label": 0,
+  "confusion_matrix": {
+    "tp": 23,
+    "tn": 20,
+    "fp": 2,
+    "fn": 5
+  },
+  "metrics": {
+    "accuracy": 0.86,
+    "accuracy_ci_95": {
+      "mean": 0.86,
+      "lo": 0.76,
+      "hi": 0.94
+    },
+    "precision_supported": 0.92,
+    "recall_supported": 0.8214285714285714,
+    "f1_supported": 0.8679245283018867,
+    "cohen_kappa": 0.72
+  }
+}

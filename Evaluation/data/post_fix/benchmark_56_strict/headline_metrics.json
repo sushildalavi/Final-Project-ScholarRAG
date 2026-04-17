@@ -1,0 +1,214 @@
+{
+  "targeted_validation": {
+    "adversarial_pass_rate": 1.0,
+    "adversarial_passed": 20,
+    "adversarial_total": 20,
+    "abstention_pass_rate": 1.0,
+    "abstention_passed": 12,
+    "abstention_total": 12,
+    "remaining_failures": []
+  },
+  "post_fix_faithfulness": {
+    "queries_scored": 56,
+    "queries_with_sentence_claims": 55,
+    "n_claims": 202,
+    "claim_support_rate": 0.8564356435643564,
+    "query_level_mean": 0.6159013605442177,
+    "query_level_ci_95": {
+      "lo": 0.4889392006802721,
+      "hi": 0.7319727891156462
+    },
+    "query_level_median": 0.8333333333333334,
+    "worst_decile_queries": [
+      {
+        "query_id": "q1",
+        "query": "What is the main idea introduced in Attention Is All You Need?",
+        "support_rate": 0.0,
+        "n_claims": 1
+      },
+      {
+        "query_id": "q12",
+        "query": "How does RAG differ from a standard seq2seq model without retrieval?",
+        "support_rate": 0.0,
+        "n_claims": 1
+      },
+      {
+        "query_id": "q15",
+        "query": "Why does CLIP not need a fixed label set during pretraining?",
+        "support_rate": 0.0,
+        "n_claims": 1
+      },
+      {
+        "query_id": "q23",
+        "query": "Why do deeper plain networks suffer from degradation according to the paper?",
+        "support_rate": 0.0,
+        "n_claims": 1
+      },
+      {
+        "query_id": "q26",
+        "query": "What is the purpose of the skip connections in U-Net?",
+        "support_rate": 0.0,
+        "n_claims": 1
+      },
+      {
+        "query_id": "q29",
+        "query": "How does YOLOv3 perform object detection in a single-stage manner?",
+        "support_rate": 0.0,
+        "n_claims": 1
+      },
+      {
+        "query_id": "q31",
+        "query": "How does YOLOv3 balance speed and detection accuracy?",
+        "support_rate": 0.0,
+        "n_claims": 1
+      },
+      {
+        "query_id": "q32",
+        "query": "Why does YOLOv3 predict at multiple scales?",
+        "support_rate": 0.0,
+        "n_claims": 1
+      },
+      {
+        "query_id": "q34",
+        "query": "Why does the ViT paper argue that convolutions are not strictly necessary for image classification?",
+        "support_rate": 0.0,
+        "n_claims": 1
+      },
+      {
+        "query_id": "q38",
+        "query": "What role does Q-learning play in the DQN paper?",
+        "support_rate": 0.0,
+        "n_claims": 1
+      }
+    ]
+  },
+  "post_fix_calibration": {
+    "claims_raw": 247,
+    "claims_labeled": 192,
+    "claims_complete": 187,
+    "claims_skipped_incomplete_features": 5,
+    "supported_complete": 163,
+    "unsupported_complete": 24,
+    "group_by_paper_M+S": {
+      "accuracy": 0.7733077905491699,
+      "f1_macro": 0.431873977086743,
+      "brier": 0.2202046535021213,
+      "ece": 0.21325111878278225,
+      "roc_auc": 0.41521464646464645,
+      "pr_auc": 0.7789739207570718
+    },
+    "group_by_query_M+S": {
+      "accuracy": 0.8718349928876246,
+      "f1_macro": 0.4656231506687182,
+      "brier": 0.11203649745347755,
+      "ece": 0.03223901013132049,
+      "roc_auc": 0.6068725023000404,
+      "pr_auc": 0.90086272397101
+    }
+  },
+  "retrieval_ablation_120q": {
+    "dense": {
+      "recall@1": 0.75,
+      "recall@10": 1.0,
+      "mrr": 0.8374537037037036,
+      "top1_errors": 30,
+      "n_cases": 120
+    },
+    "bm25": {
+      "recall@1": 0.5583333333333333,
+      "recall@10": 0.9833333333333333,
+      "mrr": 0.698912037037037,
+      "top1_errors": 53,
+      "n_cases": 120
+    },
+    "hybrid_rrf": {
+      "recall@1": 0.725,
+      "recall@10": 1.0,
+      "mrr": 0.8187367724867725,
+      "top1_errors": 33,
+      "n_cases": 120
+    },
+    "hybrid_rrf_rerank": {
+      "recall@1": 0.65,
+      "recall@10": 0.9833333333333333,
+      "mrr": 0.7640906084656084,
+      "top1_errors": 42,
+      "n_cases": 120
+    }
+  },
+  "legacy_634_clean_A_calibration": {
+    "n_claims_complete": 634,
+    "label_leakage_msa_A": {
+      "supported": {
+        "mean": 0.9789,
+        "std": 0.1437,
+        "min": 0.0,
+        "max": 1.0,
+        "count": 570
+      },
+      "unsupported": {
+        "mean": 0.2656,
+        "std": 0.4452,
+        "min": 0.0,
+        "max": 1.0,
+        "count": 64
+      }
+    },
+    "group_by_query_M+S": {
+      "accuracy": 1.0,
+      "f1_macro": 1.0,
+      "brier": 0.004306649825894555,
+      "ece": 0.037331828385170164
+    }
+  },
+  "judge_human_validation": {
+    "sample_manifest": {
+      "mode": "judge_human_validation_sample",
+      "source_judge": "Evaluation/data/post_fix/benchmark_56/judge_eval_post_fix.json",
+      "source_claims_csv": "Evaluation/data/post_fix/benchmark_56/claim_annotations.csv",
+      "seed": 17,
+      "sample_size": 50,
+      "label_counts": {
+        "supported": 25,
+        "unsupported": 25
+      },
+      "instructions": "Fill `human_label` with supported or unsupported for each row.",
+      "output_csv": "Evaluation/data/post_fix/benchmark_56/judge_human_validation_sample.csv"
+    },
+    "report": {
+      "mode": "judge_human_validation_score",
+      "sample_csv": "Evaluation/data/post_fix/benchmark_56/judge_human_validation_sample.csv",
+      "n_rows_total": 50,
+      "n_rows_scored": 50,
+      "n_rows_missing_human_label": 0,
+      "confusion_matrix": {
+        "tp": 23,
+        "tn": 20,
+        "fp": 2,
+        "fn": 5
+      },
+      "metrics": {
+        "accuracy": 0.86,
+        "accuracy_ci_95": {
+          "mean": 0.86,
+          "lo": 0.76,
+          "hi": 0.94
+        },
+        "precision_supported": 0.92,
+        "recall_supported": 0.8214285714285714,
+        "f1_supported": 0.8679245283018867,
+        "cohen_kappa": 0.72
+      }
+    },
+    "status": "complete"
+  },
+  "figure_paths": {
+    "faithfulness_hist": "Evaluation/figures/post_fix/benchmark_56_strict/faithfulness_hist.png",
+    "faithfulness_by_stratum": "Evaluation/figures/post_fix/benchmark_56_strict/faithfulness_by_stratum.png",
+    "pr_group_by_query": "Evaluation/figures/post_fix/benchmark_56_strict/pr_group_by_query.png",
+    "pr_group_by_paper": "Evaluation/figures/post_fix/benchmark_56_strict/pr_group_by_paper.png",
+    "reliability_MpS_group_by_query": "Evaluation/figures/post_fix/benchmark_56_strict/reliability_MpS_group_by_query.png",
+    "reliability_MpS_group_by_paper": "Evaluation/figures/post_fix/benchmark_56_strict/reliability_MpS_group_by_paper.png",
+    "retrieval_ablation_120q": "Evaluation/figures/post_fix/retrieval_ablation_120q.png"
+  }
+}

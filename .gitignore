@@ -34,3 +34,4 @@ eval_papers/
 .cursor/
 .vscode/
 .idea/
+.claude/

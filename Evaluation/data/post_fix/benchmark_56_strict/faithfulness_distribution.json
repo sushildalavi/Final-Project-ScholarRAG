@@ -1,0 +1,155 @@
+{
+  "source": "Evaluation/data/post_fix/benchmark_56_strict/judge_eval_post_fix.json",
+  "overall": {
+    "n_queries": 56,
+    "n_queries_with_sentence_claims": 55,
+    "n_claims": 202,
+    "claim_support_rate": 0.8564356435643564,
+    "query_level_bootstrap_ci_95": {
+      "mean": 0.6159013605442177,
+      "lo": 0.4889392006802721,
+      "hi": 0.7319727891156462,
+      "n": 56
+    },
+    "query_level_quantiles": {
+      "min": 0.0,
+      "p10": 0.0,
+      "p25": 0.0,
+      "median": 0.8333333333333334,
+      "p75": 1.0,
+      "p90": 1.0
+    }
+  },
+  "by_stratum": {
+    "factual": {
+      "n_queries": 7,
+      "bootstrap_ci_95": {
+        "mean": 0.39999999999999997,
+        "lo": 0.1142857142857143,
+        "hi": 0.7714285714285714,
+        "n": 7
+      },
+      "quantiles": {
+        "min": 0.0,
+        "p10": 0.0,
+        "p25": 0.0,
+        "median": 0.0,
+        "p75": 0.9,
+        "p90": 1.0
+      }
+    },
+    "methodology": {
+      "n_queries": 22,
+      "bootstrap_ci_95": {
+        "mean": 0.7116883116883117,
+        "lo": 0.5207792207792208,
+        "hi": 0.8935064935064936,
+        "n": 22
+      },
+      "quantiles": {
+        "min": 0.0,
+        "p10": 0.0,
+        "p25": 0.2,
+        "median": 1.0,
+        "p75": 1.0,
+        "p90": 1.0
+      }
+    },
+    "other": {
+      "n_queries": 22,
+      "bootstrap_ci_95": {
+        "mean": 0.5742424242424243,
+        "lo": 0.3772727272727273,
+        "hi": 0.7591666666666662,
+        "n": 22
+      },
+      "quantiles": {
+        "min": 0.0,
+        "p10": 0.0,
+        "p25": 0.0,
+        "median": 0.8333333333333334,
+        "p75": 1.0,
+        "p90": 1.0
+      }
+    },
+    "synthesis/comparison": {
+      "n_queries": 5,
+      "bootstrap_ci_95": {
+        "mean": 0.68,
+        "lo": 0.32,
+        "hi": 0.9199999999999999,
+        "n": 5
+      },
+      "quantiles": {
+        "min": 0.0,
+        "p10": 0.32000000000000006,
+        "p25": 0.8,
+        "median": 0.8,
+        "p75": 0.8,
+        "p90": 0.92
+      }
+    }
+  },
+  "worst_decile_queries": [
+    {
+      "query_id": "q1",
+      "query": "What is the main idea introduced in Attention Is All You Need?",
+      "support_rate": 0.0,
+      "n_claims": 1
+    },
+    {
+      "query_id": "q12",
+      "query": "How does RAG differ from a standard seq2seq model without retrieval?",
+      "support_rate": 0.0,
+      "n_claims": 1
+    },
+    {
+      "query_id": "q15",
+      "query": "Why does CLIP not need a fixed label set during pretraining?",
+      "support_rate": 0.0,
+      "n_claims": 1
+    },
+    {
+      "query_id": "q23",
+      "query": "Why do deeper plain networks suffer from degradation according to the paper?",
+      "support_rate": 0.0,
+      "n_claims": 1
+    },
+    {
+      "query_id": "q26",
+      "query": "What is the purpose of the skip connections in U-Net?",
+      "support_rate": 0.0,
+      "n_claims": 1
+    },
+    {
+      "query_id": "q29",
+      "query": "How does YOLOv3 perform object detection in a single-stage manner?",
+      "support_rate": 0.0,
+      "n_claims": 1
+    },
+    {
+      "query_id": "q31",
+      "query": "How does YOLOv3 balance speed and detection accuracy?",
+      "support_rate": 0.0,
+      "n_claims": 1
+    },
+    {
+      "query_id": "q32",
+      "query": "Why does YOLOv3 predict at multiple scales?",
+      "support_rate": 0.0,
+      "n_claims": 1
+    },
+    {
+      "query_id": "q34",
+      "query": "Why does the ViT paper argue that convolutions are not strictly necessary for image classification?",
+      "support_rate": 0.0,
+      "n_claims": 1
+    },
+    {
+      "query_id": "q38",
+      "query": "What role does Q-learning play in the DQN paper?",
+      "support_rate": 0.0,
+      "n_claims": 1
+    }
+  ]
+}

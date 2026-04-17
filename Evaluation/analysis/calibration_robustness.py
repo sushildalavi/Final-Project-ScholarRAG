@@ -212,10 +212,16 @@ def main() -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
     fig_dir.mkdir(parents=True, exist_ok=True)
 
-    df = pd.read_csv(args.claims)
-    df = df[df["support_label"].isin(["supported", "unsupported"])].copy()
+    raw_df = pd.read_csv(args.claims)
+    labeled_df = raw_df[raw_df["support_label"].isin(["supported", "unsupported"])].copy()
+    missing_feature_mask = labeled_df[["msa_M", "msa_S", "msa_A"]].isna().any(axis=1)
+    skipped_incomplete = int(missing_feature_mask.sum())
+    df = labeled_df.loc[~missing_feature_mask].copy()
     df["y"] = (df["support_label"] == "supported").astype(int)
     df["doc_id"] = df["evidence_ids"].apply(extract_doc_id)
+
+    if df.empty:
+        raise SystemExit("No labeled claims with complete M/S/A features were found.")
 
     # Label-leakage check: is msa_A constant within each class?
     leakage = (
@@ -233,7 +239,10 @@ def main() -> None:
 
     report: dict = {
         "source": args.claims,
-        "n_claims": int(len(df)),
+        "n_claims_raw": int(len(raw_df)),
+        "n_claims_labeled": int(len(labeled_df)),
+        "n_claims_complete": int(len(df)),
+        "n_claims_skipped_incomplete_features": skipped_incomplete,
         "n_supported": int(df["y"].sum()),
         "n_unsupported": int(len(df) - df["y"].sum()),
         "n_queries": int(df["query_id"].nunique()),

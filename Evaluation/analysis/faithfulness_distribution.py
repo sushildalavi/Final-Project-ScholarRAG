@@ -77,6 +77,68 @@ def quantiles(values: np.ndarray) -> dict:
     }
 
 
+def extract_claim_rows(data: dict) -> list[dict]:
+    details = data.get("details") or []
+    rows: list[dict] = []
+    for detail in details:
+        query = detail.get("query")
+        query_id = detail.get("query_id")
+        faithfulness = detail.get("faithfulness")
+        if not query or not isinstance(faithfulness, dict):
+            continue
+        for claim in faithfulness.get("claims") or []:
+            supported = claim.get("supported")
+            if supported is None:
+                continue
+            rows.append(
+                {
+                    "query_id": query_id,
+                    "query": query,
+                    "supported": bool(supported),
+                }
+            )
+    if rows:
+        return rows
+
+    fallback = []
+    for item in data.get("claims") or []:
+        if item.get("query") and item.get("supported") is not None:
+            fallback.append(
+                {
+                    "query_id": item.get("query_id"),
+                    "query": item.get("query", ""),
+                    "supported": bool(item.get("supported", False)),
+                }
+            )
+    return fallback
+
+
+def extract_query_rows(data: dict) -> list[dict]:
+    rows: list[dict] = []
+    for detail in data.get("details") or []:
+        query = detail.get("query")
+        query_id = detail.get("query_id")
+        faithfulness = detail.get("faithfulness")
+        if not query or not isinstance(faithfulness, dict):
+            continue
+        score = faithfulness.get("overall_score")
+        if score is None:
+            continue
+        try:
+            score_value = float(score)
+        except Exception:
+            continue
+        rows.append(
+            {
+                "query_id": query_id,
+                "query": query,
+                "support_rate": score_value,
+                "n_claims": len(faithfulness.get("claims") or []),
+            }
+        )
+    return rows
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--judge", required=True)
@@ -90,39 +152,22 @@ def main() -> None:
     fig_dir.mkdir(parents=True, exist_ok=True)
 
     data = json.loads(Path(args.judge).read_text())
-    rows = data.get("claims") or data.get("details") or []
-
-    # `claims` is per-sentence with `supported` boolean + query text
-    claims = pd.DataFrame([
-        {
-            "query_id": d.get("query_id"),
-            "query": d.get("query", ""),
-            "supported": bool(d.get("supported", False)),
-        }
-        for d in rows
-        if d.get("query") and d.get("supported") is not None
-    ])
-    if claims.empty:
-        raise SystemExit("No claim rows found in judge file.")
-
-    per_query = (
-        claims.groupby("query_id")
-        .agg(
-            query=("query", "first"),
-            support_rate=("supported", "mean"),
-            n_claims=("supported", "size"),
-        )
-        .reset_index()
-    )
+    query_rows = extract_query_rows(data)
+    if not query_rows:
+        raise SystemExit("No query-level faithfulness rows found in judge file.")
+    per_query = pd.DataFrame(query_rows)
     per_query["stratum"] = per_query["query"].apply(classify)
 
     worst = per_query.nsmallest(10, "support_rate")[["query_id", "query", "support_rate", "n_claims"]]
 
+    claim_rows = extract_claim_rows(data)
+    claims = pd.DataFrame(claim_rows)
     rates = per_query["support_rate"].to_numpy()
     overall = {
         "n_queries": int(len(per_query)),
+        "n_queries_with_sentence_claims": int((per_query["n_claims"] > 0).sum()),
         "n_claims": int(len(claims)),
-        "claim_support_rate": float(claims["supported"].mean()),
+        "claim_support_rate": float(claims["supported"].mean()) if not claims.empty else None,
         "query_level_bootstrap_ci_95": bootstrap_ci(rates),
         "query_level_quantiles": quantiles(rates),
     }

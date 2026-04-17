@@ -1,0 +1,357 @@
+query_id,query,generated_answer,answer_level_notes
+q1,What is the main idea introduced in Attention Is All You Need?,"I only found `Main Idea Introduced In Attention Is All You Need` mentioned in profile/course context in your uploaded files (for example, `15_LLMasJudge.pdf`), not as a general reference source. I don’t have enough reliable evidence here to give a broad definition. [S1]",
+q2,How does the Transformer avoid recurrence and convolution?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.11): [S11] Tri Dao, Dan Fu, Stefano Ermon, Atri Rudra, and Christopher Ré. [S1]
+14_InstructGPT.pdf (p.4): lower performance on certain tasks that we may care about. [S2]
+13_ChainOfThought.pdf (p.10): Acknowledgements We thank Jacob Devlin, Claire Cui, Andrew Dai, and Ellie Pavlick for providing feedback on the paper. [S3]
+12_Attention.pdf (p.2): 1 Introduction Recurrent neural networks, long short-term memory [ 13] and gated recurrent [ 7] neural networks in particular, have been firmly established as state of the art appr [S4]
+11_BERT.pdf (p.13): BERT (Ours) Trm Trm Trm Trm Trm Trm... [S5]
+10_FActScore.pdf (p.14): Shiyue Zhang and Mohit Bansal. [S6]",
+q3,What is multi-head attention and why is it useful in this paper?,"Here is a grounded summary from the uploaded documents:
+15_LLMasJudge.pdf (p.11): [S11] Tri Dao, Dan Fu, Stefano Ermon, Atri Rudra, and Christopher Ré. [S1]
+14_InstructGPT.pdf (p.5): a normative prior (Nahian et al., 2021). [S2]
+13_ChainOfThought.pdf (p.9): experiments on commonsense reasoning underscored how the linguistic nature of chain-of-thought reasoning makes it generally applicable (Section 4). [S3]
+12_Attention.pdf (p.1): Provided proper attribution is provided, Google hereby grants permission to reproduce the tables and figures in this paper solely for use in journalistic or scholarly works. [S4]
+11_BERT.pdf (p.12): for natural language understanding. [S5]
+10_FActScore.pdf (p.7): Evaluator retrvSUBJ: InstGPT SUBJ: ChatGPT SUBJ: PPLAIranking ER FS ER FS ER FS Human 42.5 58.3 71.5TrivialAlwaysSupported 57.5 100.0 + 41.7 100.0 + 28.5 100.0 + ✗ AlwaysNot-sup [S6]",
+q4,Why are positional encodings needed in the Transformer architecture?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.12): [S31] Long Ouyang, Jeffrey Wu, Xu Jiang, Diogo Almeida, Carroll Wainwright, Pamela Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, et al. [S1]
+14_InstructGPT.pdf (p.17): We show some examples of these behaviors in Figure 9. [S2]
+13_ChainOfThought.pdf (p.10): Acknowledgements We thank Jacob Devlin, Claire Cui, Andrew Dai, and Ellie Pavlick for providing feedback on the paper. [S3]
+12_Attention.pdf (p.2): 1 Introduction Recurrent neural networks, long short-term memory [ 13] and gated recurrent [ 7] neural networks in particular, have been firmly established as state of the art appr [S4]
+11_BERT.pdf (p.13): BERT (Ours) Trm Trm Trm Trm Trm Trm... [S5]
+10_FActScore.pdf (p.14): Shiyue Zhang and Mohit Bansal. [S6]",
+q5,What are the two main pretraining objectives used in BERT?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.1): Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena Lianmin Zheng1∗Wei-Lin Chiang1∗Ying Sheng4∗Siyuan Zhuang1 Zhanghao Wu1Yonghao Zhuang3Zi Lin2Zhuohan Li1Dacheng Li13 Eric P. [S1]
+14_InstructGPT.pdf (p.5): a normative prior (Nahian et al., 2021). [S2]
+13_ChainOfThought.pdf (p.25): Perhaps the most-related work here is Recchia (2021), which shows that ﬁnetuning enables longhand module operations, which has previously been difﬁcult for performers. [S3]
+12_Attention.pdf (p.12): [S25] Mitchell P Marcus, Mary Ann Marcinkiewicz, and Beatrice Santorini. [S4]
+11_BERT.pdf (p.3): BERT BERT E[CLS] E1 E[SEP]... [S5]
+10_FActScore.pdf (p.14): Shiyue Zhang and Mohit Bansal. [S6]",
+q6,Why is BERT called a bidirectional language model?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.12): [S31] Long Ouyang, Jeffrey Wu, Xu Jiang, Diogo Almeida, Carroll Wainwright, Pamela Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, et al. [S1]
+14_InstructGPT.pdf (p.5): a normative prior (Nahian et al., 2021). [S2]
+13_ChainOfThought.pdf (p.11): Peter Clark, Oyvind Tafjord, and Kyle Richardson. [S3]
+12_Attention.pdf (p.2): 1 Introduction Recurrent neural networks, long short-term memory [ 13] and gated recurrent [ 7] neural networks in particular, have been firmly established as state of the art appr [S4]
+11_BERT.pdf (p.1): BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding Jacob Devlin Ming-Wei Chang Kenton Lee Kristina Toutanova Google AI Language fjacobdevlin,mingweich [S5]
+10_FActScore.pdf (p.11): Bernd Bohnet, Vinh Tran, Pat Verga, Roee Aha- roni, Daniel Andor, Livio Baldini Soares, Massimil- iano Ciaramita, Jacob Eisenstein, Kuzman Ganchev, Jonathan Herzig, Kai Hui, Tom Kw [S6]",
+q7,How does BERT get adapted to downstream NLP tasks?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.11): [S11] Tri Dao, Dan Fu, Stefano Ermon, Atri Rudra, and Christopher Ré. [S1]
+14_InstructGPT.pdf (p.5): a normative prior (Nahian et al., 2021). [S2]
+13_ChainOfThought.pdf (p.10): Acknowledgements We thank Jacob Devlin, Claire Cui, Andrew Dai, and Ellie Pavlick for providing feedback on the paper. [S3]
+12_Attention.pdf (p.10): Table 4: The Transformer generalizes well to English constituency parsing (Results are on Section 23 of WSJ) Parser Training WSJ 23 F1 Vinyals & Kaiser el al. [S4]
+11_BERT.pdf (p.5): [CLS] helikesplay## ing[SEP] mydogiscute[SEP]Input E[CLS] Ehe Elikes Eplay E## ing E[SEP] Emy Edog Eis Ecute E[SEP] Token Embeddings EA EB EB EB EB EB EA EA EA EA EASegment Embeddi [S5]
+10_FActScore.pdf (p.13): Fabio Petroni, Aleksandra Piktus, Angela Fan, Patrick Lewis, Majid Yazdani, Nicola De Cao, James Thorne, Yacine Jernite, Vladimir Karpukhin, Jean Maillard, Vassilis Plachouras, Tim [S6]",
+q8,What makes BERT different from earlier left-to-right language models?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.1): Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena Lianmin Zheng1∗Wei-Lin Chiang1∗Ying Sheng4∗Siyuan Zhuang1 Zhanghao Wu1Yonghao Zhuang3Zi Lin2Zhuohan Li1Dacheng Li13 Eric P. [S1]
+14_InstructGPT.pdf (p.4): lower performance on certain tasks that we may care about. [S2]
+13_ChainOfThought.pdf (p.10): Acknowledgements We thank Jacob Devlin, Claire Cui, Andrew Dai, and Ellie Pavlick for providing feedback on the paper. [S3]
+12_Attention.pdf (p.2): 1 Introduction Recurrent neural networks, long short-term memory [ 13] and gated recurrent [ 7] neural networks in particular, have been firmly established as state of the art appr [S4]
+11_BERT.pdf (p.2): word based only on its context. [S5]
+10_FActScore.pdf (p.11): Bernd Bohnet, Vinh Tran, Pat Verga, Roee Aha- roni, Daniel Andor, Livio Baldini Soares, Massimil- iano Ciaramita, Jacob Eisenstein, Kuzman Ganchev, Jonathan Herzig, Kai Hui, Tom Kw [S6]",
+q9,What problem is the RAG paper trying to solve?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.4): knowledge I (STEM), and knowledge II (humanities/social science). [S1]
+14_InstructGPT.pdf (p.6): Table 1: Distribution of use case categories from our API prompt dataset. [S2]
+13_ChainOfThought.pdf (p.12): Zhengzhong Liang, Steven Bethard, and Mihai Surdeanu. [S3]
+12_Attention.pdf (p.1): Provided proper attribution is provided, Google hereby grants permission to reproduce the tables and figures in this paper solely for use in journalistic or scholarly works. [S4]
+11_BERT.pdf (p.11): Mandar Joshi, Eunsol Choi, Daniel S Weld, and Luke Zettlemoyer. [S5]
+10_FActScore.pdf (p.13): Fabio Petroni, Aleksandra Piktus, Angela Fan, Patrick Lewis, Majid Yazdani, Nicola De Cao, James Thorne, Yacine Jernite, Vladimir Karpukhin, Jean Maillard, Vassilis Plachouras, Tim [S6]",
+q10,How does Retrieval-Augmented Generation combine retrieval and generation?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.11): [S11] Tri Dao, Dan Fu, Stefano Ermon, Atri Rudra, and Christopher Ré. [S1]
+14_InstructGPT.pdf (p.22): Böhm, F., Gao, Y., Meyer, C. [S2]
+13_ChainOfThought.pdf (p.12): Zhengzhong Liang, Steven Bethard, and Mihai Surdeanu. [S3]
+12_Attention.pdf (p.5): output values. [S4]
+11_BERT.pdf (p.11): Mandar Joshi, Eunsol Choi, Daniel S Weld, and Luke Zettlemoyer. [S5]
+10_FActScore.pdf (p.13): Fabio Petroni, Aleksandra Piktus, Angela Fan, Patrick Lewis, Majid Yazdani, Nicola De Cao, James Thorne, Yacine Jernite, Vladimir Karpukhin, Jean Maillard, Vassilis Plachouras, Tim [S6]",
+q11,Why is non-parametric memory useful in the RAG framework?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.11): [S11] Tri Dao, Dan Fu, Stefano Ermon, Atri Rudra, and Christopher Ré. [S1]
+14_InstructGPT.pdf (p.25): Solaiman, I., Brundage, M., Clark, J., Askell, A., Herbert-V oss, A., Wu, J., Radford, A., Krueger, G., Kim, J. [S2]
+13_ChainOfThought.pdf (p.13): Qiu Ran, Yankai Lin, Peng Li, Jie Zhou, and Zhiyuan Liu. [S3]
+12_Attention.pdf (p.5): output values. [S4]
+11_BERT.pdf (p.8): Dev Set Tasks MNLI-m QNLI MRPC SST-2 SQuAD (Acc) (Acc) (Acc) (Acc) (F1) BERT BASE 84.4 88.4 86.7 92.7 88.5 No NSP 83.9 84.9 86.5 92.6 87.9 LTR & No NSP 82.1 84.3 77.5 92.1 77.8 + B [S5]
+10_FActScore.pdf (p.18): Evaluator retrvLM SUBJ InstGPT ChatGPT PPLAI AlwaysSupported - 0.0 0.0 0.0 AlwaysNot-supported - 71.4 58.3 30.9 Random - 52.2 45.0 25.7 No-context LM ✗ 61.2 52.2 31.4 Self-check LM [S6]",
+q12,How does RAG differ from a standard seq2seq model without retrieval?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.4): knowledge I (STEM), and knowledge II (humanities/social science). [S1]
+14_InstructGPT.pdf (p.22): Böhm, F., Gao, Y., Meyer, C. [S2]
+13_ChainOfThought.pdf (p.25): Perhaps the most-related work here is Recchia (2021), which shows that ﬁnetuning enables longhand module operations, which has previously been difﬁcult for performers. [S3]
+12_Attention.pdf (p.2): 1 Introduction Recurrent neural networks, long short-term memory [ 13] and gated recurrent [ 7] neural networks in particular, have been firmly established as state of the art appr [S4]
+11_BERT.pdf (p.4): Input/Output Representations To make BERT handle a variety of down-stream tasks, our input representation is able to unambiguously represent both a single sentence and a pair of se [S5]
+10_FActScore.pdf (p.18): Evaluator retrvLM SUBJ InstGPT ChatGPT PPLAI AlwaysSupported - 0.0 0.0 0.0 AlwaysNot-supported - 71.4 58.3 30.9 Random - 52.2 45.0 25.7 No-context LM ✗ 61.2 52.2 31.4 Self-check LM [S6]",
+q13,How is CLIP trained using image-text pairs?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.11): [S11] Tri Dao, Dan Fu, Stefano Ermon, Atri Rudra, and Christopher Ré. [S1]
+14_InstructGPT.pdf (p.24): Nadeem, M., Bethke, A., and Reddy, S. [S2]
+13_ChainOfThought.pdf (p.13): Qiu Ran, Yankai Lin, Peng Li, Jie Zhou, and Zhiyuan Liu. [S3]
+12_Attention.pdf (p.7): length nis smaller than the representation dimensionality d, which is most often the case with sentence representations used by state-of-the-art models in machine translations, suc [S4]
+11_BERT.pdf (p.4): Input/Output Representations To make BERT handle a variety of down-stream tasks, our input representation is able to unambiguously represent both a single sentence and a pair of se [S5]
+10_FActScore.pdf (p.3): Model-based Evaluation. [S6]",
+q14,What does zero-shot transfer mean in the CLIP paper?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.29): F Exploring Vicuna as a judge In this paper, we mostly evaluate the ability of close-sourced models such as GPT-4 as a proxy for human evaluations. [S1]
+14_InstructGPT.pdf (p.51): E Additional results 10152025DROP (F1) PPO-ptx PPO SFT GPT0.50.60.70.8Hellaswag (acc) 30354045QuAC (F1) 0.50.60.7RTE v2 (acc) 0.60.70.80.9SST (acc) 405060Squad V2 (F1) 1.3B 6B 175B [S2]
+13_ChainOfThought.pdf (p.13): Qiu Ran, Yankai Lin, Peng Li, Jie Zhou, and Zhiyuan Liu. [S3]
+12_Attention.pdf (p.14): Input-Input Layer5 The Law will never be perfect, but its application should be just - this is what we are missing, in my opinion. [S4]
+11_BERT.pdf (p.5): [CLS] helikesplay## ing[SEP] mydogiscute[SEP]Input E[CLS] Ehe Elikes Eplay E## ing E[SEP] Emy Edog Eis Ecute E[SEP] Token Embeddings EA EB EB EB EB EB EA EA EA EA EASegment Embeddi [S5]
+10_FActScore.pdf (p.3): Model-based Evaluation. [S6]",
+q15,Why does CLIP not need a fixed label set during pretraining?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.12): [S31] Long Ouyang, Jeffrey Wu, Xu Jiang, Diogo Almeida, Carroll Wainwright, Pamela Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, et al. [S1]
+14_InstructGPT.pdf (p.51): E Additional results 10152025DROP (F1) PPO-ptx PPO SFT GPT0.50.60.70.8Hellaswag (acc) 30354045QuAC (F1) 0.50.60.7RTE v2 (acc) 0.60.70.80.9SST (acc) 405060Squad V2 (F1) 1.3B 6B 175B [S2]
+13_ChainOfThought.pdf (p.18): how to write the chain of thought annotations other than to simply write the step-by-step reasoning process that led to the ﬁnal answer. [S3]
+12_Attention.pdf (p.9): Table 3: Variations on the Transformer architecture. [S4]
+11_BERT.pdf (p.8): Dev Set Tasks MNLI-m QNLI MRPC SST-2 SQuAD (Acc) (Acc) (Acc) (Acc) (F1) BERT BASE 84.4 88.4 86.7 92.7 88.5 No NSP 83.9 84.9 86.5 92.6 87.9 LTR & No NSP 82.1 84.3 77.5 92.1 77.8 + B [S5]
+10_FActScore.pdf (p.7): Evaluator retrvSUBJ: InstGPT SUBJ: ChatGPT SUBJ: PPLAIranking ER FS ER FS ER FS Human 42.5 58.3 71.5TrivialAlwaysSupported 57.5 100.0 + 41.7 100.0 + 28.5 100.0 + ✗ AlwaysNot-sup [S6]",
+q16,What makes CLIP useful for general-purpose vision tasks?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.11): [S11] Tri Dao, Dan Fu, Stefano Ermon, Atri Rudra, and Christopher Ré. [S1]
+14_InstructGPT.pdf (p.25): Solaiman, I., Brundage, M., Clark, J., Askell, A., Herbert-V oss, A., Wu, J., Radford, A., Krueger, G., Kim, J. [S2]
+13_ChainOfThought.pdf (p.13): Qiu Ran, Yankai Lin, Peng Li, Jie Zhou, and Zhiyuan Liu. [S3]
+12_Attention.pdf (p.9): Table 3: Variations on the Transformer architecture. [S4]
+11_BERT.pdf (p.5): [CLS] helikesplay## ing[SEP] mydogiscute[SEP]Input E[CLS] Ehe Elikes Eplay E## ing E[SEP] Emy Edog Eis Ecute E[SEP] Token Embeddings EA EB EB EB EB EB EA EA EA EA EASegment Embeddi [S5]
+10_FActScore.pdf (p.18): Evaluator retrvLM SUBJ InstGPT ChatGPT PPLAI AlwaysSupported - 0.0 0.0 0.0 AlwaysNot-supported - 71.4 58.3 30.9 Random - 52.2 45.0 25.7 No-context LM ✗ 61.2 52.2 31.4 Self-check LM [S6]",
+q21,What problem do residual connections solve in deep neural networks?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.10): Societal impacts. [S1]
+14_InstructGPT.pdf (p.21): Acknowledgements First, we would like to thank Lilian Weng, Jason Kwon, Boris Power, Che Chang, Josh Achiam, Steven Adler, Gretchen Krueger, Miles Brundage, Tyna Eloundou, Gillian [S2]
+13_ChainOfThought.pdf (p.11): Peter Clark, Oyvind Tafjord, and Kyle Richardson. [S3]
+12_Attention.pdf (p.11): [S5]Kyunghyun Cho, Bart van Merrienboer, Caglar Gulcehre, Fethi Bougares, Holger Schwenk, and Yoshua Bengio. [S4]
+11_BERT.pdf (p.12): for natural language understanding. [S5]
+10_FActScore.pdf (p.11): Bernd Bohnet, Vinh Tran, Pat Verga, Roee Aha- roni, Daniel Andor, Livio Baldini Soares, Massimil- iano Ciaramita, Jacob Eisenstein, Kuzman Ganchev, Jonathan Herzig, Kai Hui, Tom Kw [S6]",
+q22,What is a residual block in the ResNet paper?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.11): [S11] Tri Dao, Dan Fu, Stefano Ermon, Atri Rudra, and Christopher Ré. [S1]
+14_InstructGPT.pdf (p.42): labeled completions, from which there were up toK 2 possible comparisons. [S2]
+13_ChainOfThought.pdf (p.10): Acknowledgements We thank Jacob Devlin, Claire Cui, Andrew Dai, and Ellie Pavlick for providing feedback on the paper. [S3]
+12_Attention.pdf (p.11): [S5]Kyunghyun Cho, Bart van Merrienboer, Caglar Gulcehre, Fethi Bougares, Holger Schwenk, and Yoshua Bengio. [S4]
+11_BERT.pdf (p.1): BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding Jacob Devlin Ming-Wei Chang Kenton Lee Kristina Toutanova Google AI Language fjacobdevlin,mingweich [S5]
+10_FActScore.pdf (p.11): Bernd Bohnet, Vinh Tran, Pat Verga, Roee Aha- roni, Daniel Andor, Livio Baldini Soares, Massimil- iano Ciaramita, Jacob Eisenstein, Kuzman Ganchev, Jonathan Herzig, Kai Hui, Tom Kw [S6]",
+q23,Why do deeper plain networks suffer from degradation according to the paper?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.9): Table 8: Evaluation results of several model variants. [S1]
+14_InstructGPT.pdf (p.21): Acknowledgements First, we would like to thank Lilian Weng, Jason Kwon, Boris Power, Che Chang, Josh Achiam, Steven Adler, Gretchen Krueger, Miles Brundage, Tyna Eloundou, Gillian [S2]
+13_ChainOfThought.pdf (p.25): Perhaps the most-related work here is Recchia (2021), which shows that ﬁnetuning enables longhand module operations, which has previously been difﬁcult for performers. [S3]
+12_Attention.pdf (p.1): Provided proper attribution is provided, Google hereby grants permission to reproduce the tables and figures in this paper solely for use in journalistic or scholarly works. [S4]
+11_BERT.pdf (p.14)
+10_FActScore.pdf (p.7): Evaluator retrvSUBJ: InstGPT SUBJ: ChatGPT SUBJ: PPLAIranking ER FS ER FS ER FS Human 42.5 58.3 71.5TrivialAlwaysSupported 57.5 100.0 + 41.7 100.0 + 28.5 100.0 + ✗ AlwaysNot-sup [S6]",
+q24,How does ResNet make optimization easier?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.12): [S31] Long Ouyang, Jeffrey Wu, Xu Jiang, Diogo Almeida, Carroll Wainwright, Pamela Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, et al. [S1]
+14_InstructGPT.pdf (p.42): labeled completions, from which there were up toK 2 possible comparisons. [S2]
+13_ChainOfThought.pdf (p.25): Perhaps the most-related work here is Recchia (2021), which shows that ﬁnetuning enables longhand module operations, which has previously been difﬁcult for performers. [S3]
+12_Attention.pdf (p.11): [S5]Kyunghyun Cho, Bart van Merrienboer, Caglar Gulcehre, Fethi Bougares, Holger Schwenk, and Yoshua Bengio. [S4]
+11_BERT.pdf (p.14)
+10_FActScore.pdf (p.7): Evaluator retrvSUBJ: InstGPT SUBJ: ChatGPT SUBJ: PPLAIranking ER FS ER FS ER FS Human 42.5 58.3 71.5TrivialAlwaysSupported 57.5 100.0 + 41.7 100.0 + 28.5 100.0 + ✗ AlwaysNot-sup [S6]",
+q25,Why is U-Net effective for biomedical image segmentation?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.11): [S11] Tri Dao, Dan Fu, Stefano Ermon, Atri Rudra, and Christopher Ré. [S1]
+14_InstructGPT.pdf (p.52): 253035DROP (F1) PPO-ptx PPO SFT GPT0.50.60.70.8Hellaswag (acc) 3035404550QuAC (F1) 0.50.60.70.8RTE v2 (acc) 0.800.850.900.95SST (acc) 455055606570Squad V2 (F1) 1.3B 6B 175B25303540 [S2]
+13_ChainOfThought.pdf (p.25): Perhaps the most-related work here is Recchia (2021), which shows that ﬁnetuning enables longhand module operations, which has previously been difﬁcult for performers. [S3]
+12_Attention.pdf (p.3): Figure 1: The Transformer - model architecture. [S4]
+11_BERT.pdf (p.9): mixed results on the downstream task impact of increasing the pre-trained bi-LM size from two to four layers and Melamud et al. [S5]
+10_FActScore.pdf (p.7): Evaluator retrvSUBJ: InstGPT SUBJ: ChatGPT SUBJ: PPLAIranking ER FS ER FS ER FS Human 42.5 58.3 71.5TrivialAlwaysSupported 57.5 100.0 + 41.7 100.0 + 28.5 100.0 + ✗ AlwaysNot-sup [S6]",
+q26,What is the purpose of the skip connections in U-Net?,"I only found `Purpose Of Skip Connections In U-Net` mentioned in profile/course context in your uploaded files (for example, `15_LLMasJudge.pdf`), not as a general reference source. I don’t have enough reliable evidence here to give a broad definition. [S1]",
+q27,How does the expanding path differ from the contracting path in U-Net?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.13): [S48] Can Xu, Qingfeng Sun, Kai Zheng, Xiubo Geng, Pu Zhao, Jiazhan Feng, Chongyang Tao, and Daxin Jiang. [S1]
+14_InstructGPT.pdf (p.21): Acknowledgements First, we would like to thank Lilian Weng, Jason Kwon, Boris Power, Che Chang, Josh Achiam, Steven Adler, Gretchen Krueger, Miles Brundage, Tyna Eloundou, Gillian [S2]
+13_ChainOfThought.pdf (p.15): Checklist 1. [S3]
+12_Attention.pdf (p.6): Table 1: Maximum path lengths, per-layer complexity and minimum number of sequential operations for different layer types. [S4]
+11_BERT.pdf (p.16): jority class. [S5]
+10_FActScore.pdf (p.11): Bernd Bohnet, Vinh Tran, Pat Verga, Roee Aha- roni, Daniel Andor, Livio Baldini Soares, Massimil- iano Ciaramita, Jacob Eisenstein, Kuzman Ganchev, Jonathan Herzig, Kai Hui, Tom Kw [S6]",
+q28,Why is U-Net especially useful when labeled data is limited?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.11): [S11] Tri Dao, Dan Fu, Stefano Ermon, Atri Rudra, and Christopher Ré. [S1]
+14_InstructGPT.pdf (p.33): Use Case Example other - I like to play Call of Duty - I like to play Call of Duty - I like to play Call of Duty - I like to play Call of Duty A.3 Dataset sizes In table 6, we repo [S2]
+13_ChainOfThought.pdf (p.25): Perhaps the most-related work here is Recchia (2021), which shows that ﬁnetuning enables longhand module operations, which has previously been difﬁcult for performers. [S3]
+12_Attention.pdf (p.7): length nis smaller than the representation dimensionality d, which is most often the case with sentence representations used by state-of-the-art models in machine translations, suc [S4]
+11_BERT.pdf (p.14)
+10_FActScore.pdf (p.7): Evaluator retrvSUBJ: InstGPT SUBJ: ChatGPT SUBJ: PPLAIranking ER FS ER FS ER FS Human 42.5 58.3 71.5TrivialAlwaysSupported 57.5 100.0 + 41.7 100.0 + 28.5 100.0 + ✗ AlwaysNot-sup [S6]",
+q29,How does YOLOv3 perform object detection in a single-stage manner?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.26): D.2 Few-shot judge We examine how few-shot examples improve LLM judges. [S1]
+14_InstructGPT.pdf (p.42): labeled completions, from which there were up toK 2 possible comparisons. [S2]
+13_ChainOfThought.pdf (p.25): Perhaps the most-related work here is Recchia (2021), which shows that ﬁnetuning enables longhand module operations, which has previously been difﬁcult for performers. [S3]
+12_Attention.pdf (p.4): Scaled Dot-Product Attention Multi-Head Attention Figure 2: (left) Scaled Dot-Product Attention. [S4]
+11_BERT.pdf (p.6): System MNLI-(m/mm) QQP QNLI SST-2 CoLA STS-B MRPC RTE Average 392k 363k 108k 67k 8.5k 5.7k 3.5k 2.5k - Pre-OpenAI SOTA 80.6/80.1 66.1 82.3 93.2 35.0 81.0 86.0 61.7 74.0 BiLSTM+ELMo [S5]
+10_FActScore.pdf (p.7): Evaluator retrvSUBJ: InstGPT SUBJ: ChatGPT SUBJ: PPLAIranking ER FS ER FS ER FS Human 42.5 58.3 71.5TrivialAlwaysSupported 57.5 100.0 + 41.7 100.0 + 28.5 100.0 + ✗ AlwaysNot-sup [S6]",
+q30,What changes or improvements are introduced in YOLOv3 compared to earlier versions?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.26): D.2 Few-shot judge We examine how few-shot examples improve LLM judges. [S1]
+14_InstructGPT.pdf (p.11): 0.250.500.75Win rate against SFT 175BGPT distribution GPTGPT (prompted)SFT PPO PPO-ptxInstruct distributionHeldout workers 1.3B 6B 175B0.250.500.75 1.3B 6B 175B Model sizeTraining [S2]
+13_ChainOfThought.pdf (p.30): E Additional Details Version Control V5!V6. [S3]
+12_Attention.pdf (p.9): Table 3: Variations on the Transformer architecture. [S4]
+11_BERT.pdf (p.7): System Dev Test EM F1 EM F1 Top Leaderboard Systems (Dec 10th, 2018) Human - - 82.3 91.2 #1 Ensemble - nlnet - - 86.0 91.7 #2 Ensemble - QANet - - 84.5 90.5 Published BiDAF+ELMo (S [S5]
+10_FActScore.pdf (p.9): 0 20 40 60 80 Est. [S6]",
+q31,How does YOLOv3 balance speed and detection accuracy?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.29): F Exploring Vicuna as a judge In this paper, we mostly evaluate the ability of close-sourced models such as GPT-4 as a proxy for human evaluations. [S1]
+14_InstructGPT.pdf (p.58): 3.544.551.3B Pretrain mix No pretrain mix6B 175BLikert 0.5e-5 1e-5 1.5e-5 2e-5 2.5e-50.50.60.70.8 0.5e-5 1e-5 1.5e-5 2e-5 2.5e-52.50e-6 2.75e-6 3e-6 3.25e-6 3.50e-6 3.75e-6 Learnin [S2]
+13_ChainOfThought.pdf (p.18): how to write the chain of thought annotations other than to simply write the step-by-step reasoning process that led to the ﬁnal answer. [S3]
+12_Attention.pdf (p.8): Table 2: The Transformer achieves better BLEU scores than previous state-of-the-art models on the English-to-German and English-to-French newstest2014 tests at a fraction of the tr [S4]
+11_BERT.pdf (p.16): jority class. [S5]
+10_FActScore.pdf (p.7): Evaluator retrvSUBJ: InstGPT SUBJ: ChatGPT SUBJ: PPLAIranking ER FS ER FS ER FS Human 42.5 58.3 71.5TrivialAlwaysSupported 57.5 100.0 + 41.7 100.0 + 28.5 100.0 + ✗ AlwaysNot-sup [S6]",
+q32,Why does YOLOv3 predict at multiple scales?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.11): [S11] Tri Dao, Dan Fu, Stefano Ermon, Atri Rudra, and Christopher Ré. [S1]
+14_InstructGPT.pdf (p.52): 253035DROP (F1) PPO-ptx PPO SFT GPT0.50.60.70.8Hellaswag (acc) 3035404550QuAC (F1) 0.50.60.70.8RTE v2 (acc) 0.800.850.900.95SST (acc) 455055606570Squad V2 (F1) 1.3B 6B 175B25303540 [S2]
+13_ChainOfThought.pdf (p.16): A Frequently Asked Questions A.1 Why does increasing model scale improve chain-of-thought prompting? [S3]
+12_Attention.pdf (p.6): Table 1: Maximum path lengths, per-layer complexity and minimum number of sequential operations for different layer types. [S4]
+11_BERT.pdf (p.12): for natural language understanding. [S5]
+10_FActScore.pdf (p.7): Evaluator retrvSUBJ: InstGPT SUBJ: ChatGPT SUBJ: PPLAIranking ER FS ER FS ER FS Human 42.5 58.3 71.5TrivialAlwaysSupported 57.5 100.0 + 41.7 100.0 + 28.5 100.0 + ✗ AlwaysNot-sup [S6]",
+q33,How does the Vision Transformer convert an image into tokens?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.9): Table 8: Evaluation results of several model variants. [S1]
+14_InstructGPT.pdf (p.52): 253035DROP (F1) PPO-ptx PPO SFT GPT0.50.60.70.8Hellaswag (acc) 3035404550QuAC (F1) 0.50.60.70.8RTE v2 (acc) 0.800.850.900.95SST (acc) 455055606570Squad V2 (F1) 1.3B 6B 175B25303540 [S2]
+13_ChainOfThought.pdf (p.25): Perhaps the most-related work here is Recchia (2021), which shows that ﬁnetuning enables longhand module operations, which has previously been difﬁcult for performers. [S3]
+12_Attention.pdf (p.5): output values. [S4]
+11_BERT.pdf (p.4): Input/Output Representations To make BERT handle a variety of down-stream tasks, our input representation is able to unambiguously represent both a single sentence and a pair of se [S5]
+10_FActScore.pdf (p.14): Shiyue Zhang and Mohit Bansal. [S6]",
+q34,Why does the ViT paper argue that convolutions are not strictly necessary for image classification?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.29): F Exploring Vicuna as a judge In this paper, we mostly evaluate the ability of close-sourced models such as GPT-4 as a proxy for human evaluations. [S1]
+14_InstructGPT.pdf (p.55): 1 10 1002030405060F1 (GPT)(GPT) Dataset aDROP aSQuAD v2 1 10 100 Pretraining loss coefficient1.6 1.4 1.2 1 0.8 0.6 Validation rewardFigure 33: Evaluation on public NLP datasets as [S2]
+13_ChainOfThought.pdf (p.10): Acknowledgements We thank Jacob Devlin, Claire Cui, Andrew Dai, and Ellie Pavlick for providing feedback on the paper. [S3]
+12_Attention.pdf (p.7): length nis smaller than the representation dimensionality d, which is most often the case with sentence representations used by state-of-the-art models in machine translations, suc [S4]
+11_BERT.pdf (p.1): BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding Jacob Devlin Ming-Wei Chang Kenton Lee Kristina Toutanova Google AI Language fjacobdevlin,mingweich [S5]
+10_FActScore.pdf (p.18): Evaluator retrvLM SUBJ InstGPT ChatGPT PPLAI AlwaysSupported - 0.0 0.0 0.0 AlwaysNot-supported - 71.4 58.3 30.9 Random - 52.2 45.0 25.7 No-context LM ✗ 61.2 52.2 31.4 Self-check LM [S6]",
+q35,What role do image patches play in Vision Transformer?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.11): [S11] Tri Dao, Dan Fu, Stefano Ermon, Atri Rudra, and Christopher Ré. [S1]
+14_InstructGPT.pdf (p.4): lower performance on certain tasks that we may care about. [S2]
+13_ChainOfThought.pdf (p.25): Perhaps the most-related work here is Recchia (2021), which shows that ﬁnetuning enables longhand module operations, which has previously been difﬁcult for performers. [S3]
+12_Attention.pdf (p.3): Figure 1: The Transformer - model architecture. [S4]
+11_BERT.pdf (p.3): BERT BERT E[CLS] E1 E[SEP]... [S5]
+10_FActScore.pdf (p.13): Fabio Petroni, Aleksandra Piktus, Angela Fan, Patrick Lewis, Majid Yazdani, Nicola De Cao, James Thorne, Yacine Jernite, Vladimir Karpukhin, Jean Maillard, Vassilis Plachouras, Tim [S6]",
+q36,Why is large-scale pretraining important for ViT performance?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.11): [S11] Tri Dao, Dan Fu, Stefano Ermon, Atri Rudra, and Christopher Ré. [S1]
+14_InstructGPT.pdf (p.53): 1.3B 6B 175B0.60.70.80.9PrevalenceAttempts correct instruction Model PPO-ptx PPO SFT GPT (prompted) GPT1.3B 6B 175B0.800.850.900.95Appropriate for customer assistant 1.3B 6B 175B0. [S2]
+13_ChainOfThought.pdf (p.25): Perhaps the most-related work here is Recchia (2021), which shows that ﬁnetuning enables longhand module operations, which has previously been difﬁcult for performers. [S3]
+12_Attention.pdf (p.8): Table 2: The Transformer achieves better BLEU scores than previous state-of-the-art models on the English-to-German and English-to-French newstest2014 tests at a fraction of the tr [S4]
+11_BERT.pdf (p.14)
+10_FActScore.pdf (p.13): Fabio Petroni, Aleksandra Piktus, Angela Fan, Patrick Lewis, Majid Yazdani, Nicola De Cao, James Thorne, Yacine Jernite, Vladimir Karpukhin, Jean Maillard, Vassilis Plachouras, Tim [S6]",
+q37,How does DQN learn to play Atari games directly from pixels?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.11): [S11] Tri Dao, Dan Fu, Stefano Ermon, Atri Rudra, and Christopher Ré. [S1]
+14_InstructGPT.pdf (p.43): 6.5 6 5.5 Reward meanLR = 4e-6 Model FLAN T0 250000 500000 750000 1000000 1250000 Elapsed examples6.5 6 5.5 LR = 6e-6Figure 13: Tuning FLAN and T0 based on reward model scores batc [S2]
+13_ChainOfThought.pdf (p.25): Perhaps the most-related work here is Recchia (2021), which shows that ﬁnetuning enables longhand module operations, which has previously been difﬁcult for performers. [S3]
+12_Attention.pdf (p.6): Table 1: Maximum path lengths, per-layer complexity and minimum number of sequential operations for different layer types. [S4]
+11_BERT.pdf (p.1): BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding Jacob Devlin Ming-Wei Chang Kenton Lee Kristina Toutanova Google AI Language fjacobdevlin,mingweich [S5]
+10_FActScore.pdf (p.8): LM SUBJ Base LM Use other LMs Open Release InstructGPT? [S6]",
+q38,What role does Q-learning play in the DQN paper?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.1): Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena Lianmin Zheng1∗Wei-Lin Chiang1∗Ying Sheng4∗Siyuan Zhuang1 Zhanghao Wu1Yonghao Zhuang3Zi Lin2Zhuohan Li1Dacheng Li13 Eric P. [S1]
+14_InstructGPT.pdf (p.9): Table 3: Labeler-collected metadata on the API distribution. [S2]
+13_ChainOfThought.pdf (p.10): Acknowledgements We thank Jacob Devlin, Claire Cui, Andrew Dai, and Ellie Pavlick for providing feedback on the paper. [S3]
+12_Attention.pdf (p.11): [S5]Kyunghyun Cho, Bart van Merrienboer, Caglar Gulcehre, Fethi Bougares, Holger Schwenk, and Yoshua Bengio. [S4]
+11_BERT.pdf (p.11): Mandar Joshi, Eunsol Choi, Daniel S Weld, and Luke Zettlemoyer. [S5]
+10_FActScore.pdf (p.9): 0 20 40 60 80 Est. [S6]",
+q39,Why was this paper important for deep reinforcement learning?,"Here is a grounded summary from the uploaded documents:
+15_LLMasJudge.pdf (p.1): Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena Lianmin Zheng1∗Wei-Lin Chiang1∗Ying Sheng4∗Siyuan Zhuang1 Zhanghao Wu1Yonghao Zhuang3Zi Lin2Zhuohan Li1Dacheng Li13 Eric P. [S1]
+14_InstructGPT.pdf (p.9): Table 3: Labeler-collected metadata on the API distribution. [S2]
+13_ChainOfThought.pdf (p.25): Perhaps the most-related work here is Recchia (2021), which shows that ﬁnetuning enables longhand module operations, which has previously been difﬁcult for performers. [S3]
+12_Attention.pdf (p.11): [S5]Kyunghyun Cho, Bart van Merrienboer, Caglar Gulcehre, Fethi Bougares, Holger Schwenk, and Yoshua Bengio. [S4]
+11_BERT.pdf (p.11): Mandar Joshi, Eunsol Choi, Daniel S Weld, and Luke Zettlemoyer. [S5]
+10_FActScore.pdf (p.11): Bernd Bohnet, Vinh Tran, Pat Verga, Roee Aha- roni, Daniel Andor, Livio Baldini Soares, Massimil- iano Ciaramita, Jacob Eisenstein, Kuzman Ganchev, Jonathan Herzig, Kai Hui, Tom Kw [S6]",
+q40,What kind of input representation is used for the Atari agent?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.29): F Exploring Vicuna as a judge In this paper, we mostly evaluate the ability of close-sourced models such as GPT-4 as a proxy for human evaluations. [S1]
+14_InstructGPT.pdf (p.3): Figure 2: A diagram illustrating the three steps of our method: (1) supervised ﬁne-tuning (SFT), (2) reward model (RM) training, and (3) reinforcement learning via proximal policy [S2]
+13_ChainOfThought.pdf (p.10): Acknowledgements We thank Jacob Devlin, Claire Cui, Andrew Dai, and Ellie Pavlick for providing feedback on the paper. [S3]
+12_Attention.pdf (p.2): 1 Introduction Recurrent neural networks, long short-term memory [ 13] and gated recurrent [ 7] neural networks in particular, have been firmly established as state of the art appr [S4]
+11_BERT.pdf (p.4): Input/Output Representations To make BERT handle a variety of down-stream tasks, our input representation is able to unambiguously represent both a single sentence and a pair of se [S5]
+10_FActScore.pdf (p.8): LM SUBJ Base LM Use other LMs Open Release InstructGPT? [S6]",
+q41,How does the GCN paper define convolution on graph-structured data?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.11): [S11] Tri Dao, Dan Fu, Stefano Ermon, Atri Rudra, and Christopher Ré. [S1]
+14_InstructGPT.pdf (p.22): Böhm, F., Gao, Y., Meyer, C. [S2]
+13_ChainOfThought.pdf (p.10): Acknowledgements We thank Jacob Devlin, Claire Cui, Andrew Dai, and Ellie Pavlick for providing feedback on the paper. [S3]
+12_Attention.pdf (p.7): length nis smaller than the representation dimensionality d, which is most often the case with sentence representations used by state-of-the-art models in machine translations, suc [S4]
+11_BERT.pdf (p.12): for natural language understanding. [S5]
+10_FActScore.pdf (p.11): Bernd Bohnet, Vinh Tran, Pat Verga, Roee Aha- roni, Daniel Andor, Livio Baldini Soares, Massimil- iano Ciaramita, Jacob Eisenstein, Kuzman Ganchev, Jonathan Herzig, Kai Hui, Tom Kw [S6]",
+q42,Why is the method in the GCN paper considered semi-supervised?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.3): human evaluations at an agreement rate exceeding 80%, achieving the same level of human-human agreement (§4.2, Table 4). [S1]
+14_InstructGPT.pdf (p.3): Figure 2: A diagram illustrating the three steps of our method: (1) supervised ﬁne-tuning (SFT), (2) reward model (RM) training, and (3) reinforcement learning via proximal policy [S2]
+13_ChainOfThought.pdf (p.10): Acknowledgements We thank Jacob Devlin, Claire Cui, Andrew Dai, and Ellie Pavlick for providing feedback on the paper. [S3]
+12_Attention.pdf (p.10): Table 4: The Transformer generalizes well to English constituency parsing (Results are on Section 23 of WSJ) Parser Training WSJ 23 F1 Vinyals & Kaiser el al. [S4]
+11_BERT.pdf (p.11): Mandar Joshi, Eunsol Choi, Daniel S Weld, and Luke Zettlemoyer. [S5]
+10_FActScore.pdf (p.12): of faithfulness in long-form summarization. [S6]",
+q43,How does neighborhood information influence node representations in GCNs?,,
+q44,What problem is the GCN paper mainly trying to solve?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.6): Limited capability in grading math and reasoning questions. [S1]
+14_InstructGPT.pdf (p.21): Acknowledgements First, we would like to thank Lilian Weng, Jason Kwon, Boris Power, Che Chang, Josh Achiam, Steven Adler, Gretchen Krueger, Miles Brundage, Tyna Eloundou, Gillian [S2]
+13_ChainOfThought.pdf (p.2): 1 Introduction Math Word Problems (GSM8K)020406080100 3355 1857Solve rate (%)Finetuned GPT-3 175B Prior best PaLM 540B: standard prompting PaLM 540B: chain-of-thought prompting Fig [S3]
+12_Attention.pdf (p.1): Provided proper attribution is provided, Google hereby grants permission to reproduce the tables and figures in this paper solely for use in journalistic or scholarly works. [S4]
+11_BERT.pdf (p.14)
+10_FActScore.pdf (p.6): tion to the generation, either at a word level (numbers, dates, or entities) or beyond. [S6]",
+q45,How does Neural Collaborative Filtering differ from traditional matrix factorization?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.1): Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena Lianmin Zheng1∗Wei-Lin Chiang1∗Ying Sheng4∗Siyuan Zhuang1 Zhanghao Wu1Yonghao Zhuang3Zi Lin2Zhuohan Li1Dacheng Li13 Eric P. [S1]
+14_InstructGPT.pdf (p.22): Böhm, F., Gao, Y., Meyer, C. [S2]
+13_ChainOfThought.pdf (p.11): Peter Clark, Oyvind Tafjord, and Kyle Richardson. [S3]
+12_Attention.pdf (p.2): 1 Introduction Recurrent neural networks, long short-term memory [ 13] and gated recurrent [ 7] neural networks in particular, have been firmly established as state of the art appr [S4]
+11_BERT.pdf (p.11): Mandar Joshi, Eunsol Choi, Daniel S Weld, and Luke Zettlemoyer. [S5]
+10_FActScore.pdf (p.7): Evaluator retrvSUBJ: InstGPT SUBJ: ChatGPT SUBJ: PPLAIranking ER FS ER FS ER FS Human 42.5 58.3 71.5TrivialAlwaysSupported 57.5 100.0 + 41.7 100.0 + 28.5 100.0 + ✗ AlwaysNot-sup [S6]",
+q46,How are nonlinear user-item interactions modeled in this paper?,"Here is a grounded summary from the uploaded documents:
+15_LLMasJudge.pdf (p.3): human evaluations at an agreement rate exceeding 80%, achieving the same level of human-human agreement (§4.2, Table 4). [S1]
+14_InstructGPT.pdf (p.25): Solaiman, I., Brundage, M., Clark, J., Askell, A., Herbert-V oss, A., Wu, J., Radford, A., Krueger, G., Kim, J. [S2]
+13_ChainOfThought.pdf (p.10): Acknowledgements We thank Jacob Devlin, Claire Cui, Andrew Dai, and Ellie Pavlick for providing feedback on the paper. [S3]
+12_Attention.pdf (p.1): Provided proper attribution is provided, Google hereby grants permission to reproduce the tables and figures in this paper solely for use in journalistic or scholarly works. [S4]
+11_BERT.pdf (p.5): [CLS] helikesplay## ing[SEP] mydogiscute[SEP]Input E[CLS] Ehe Elikes Eplay E## ing E[SEP] Emy Edog Eis Ecute E[SEP] Token Embeddings EA EB EB EB EB EB EA EA EA EA EASegment Embeddi [S5]
+10_FActScore.pdf (p.3): Model-based Evaluation. [S6]",
+q47,What type of recommendation setting does the paper focus on?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.3): human evaluations at an agreement rate exceeding 80%, achieving the same level of human-human agreement (§4.2, Table 4). [S1]
+14_InstructGPT.pdf (p.18): the real world with customers.10This enables an important feedback loop on the techniques’ effectiveness and limitations. [S2]
+13_ChainOfThought.pdf (p.15): Checklist 1. [S3]
+12_Attention.pdf (p.9): Table 3: Variations on the Transformer architecture. [S4]
+11_BERT.pdf (p.15): BERT E[CLS] E1 E[SEP]... [S5]
+10_FActScore.pdf (p.20): 0 50 100 Est. [S6]",
+q48,Why is neural modeling useful for collaborative filtering according to the paper?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.1): Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena Lianmin Zheng1∗Wei-Lin Chiang1∗Ying Sheng4∗Siyuan Zhuang1 Zhanghao Wu1Yonghao Zhuang3Zi Lin2Zhuohan Li1Dacheng Li13 Eric P. [S1]
+14_InstructGPT.pdf (p.18): the real world with customers.10This enables an important feedback loop on the techniques’ effectiveness and limitations. [S2]
+13_ChainOfThought.pdf (p.11): Peter Clark, Oyvind Tafjord, and Kyle Richardson. [S3]
+12_Attention.pdf (p.1): Provided proper attribution is provided, Google hereby grants permission to reproduce the tables and figures in this paper solely for use in journalistic or scholarly works. [S4]
+11_BERT.pdf (p.2): word based only on its context. [S5]
+10_FActScore.pdf (p.7): Evaluator retrvSUBJ: InstGPT SUBJ: ChatGPT SUBJ: PPLAIranking ER FS ER FS ER FS Human 42.5 58.3 71.5TrivialAlwaysSupported 57.5 100.0 + 41.7 100.0 + 28.5 100.0 + ✗ AlwaysNot-sup [S6]",
+q49,How does wav2vec 2.0 learn speech representations from unlabeled audio?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.11): [S11] Tri Dao, Dan Fu, Stefano Ermon, Atri Rudra, and Christopher Ré. [S1]
+14_InstructGPT.pdf (p.25): Solaiman, I., Brundage, M., Clark, J., Askell, A., Herbert-V oss, A., Wu, J., Radford, A., Krueger, G., Kim, J. [S2]
+13_ChainOfThought.pdf (p.10): Acknowledgements We thank Jacob Devlin, Claire Cui, Andrew Dai, and Ellie Pavlick for providing feedback on the paper. [S3]
+12_Attention.pdf (p.11): [S5]Kyunghyun Cho, Bart van Merrienboer, Caglar Gulcehre, Fethi Bougares, Holger Schwenk, and Yoshua Bengio. [S4]
+11_BERT.pdf (p.1): BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding Jacob Devlin Ming-Wei Chang Kenton Lee Kristina Toutanova Google AI Language fjacobdevlin,mingweich [S5]
+10_FActScore.pdf (p.11): Bernd Bohnet, Vinh Tran, Pat Verga, Roee Aha- roni, Daniel Andor, Livio Baldini Soares, Massimil- iano Ciaramita, Jacob Eisenstein, Kuzman Ganchev, Jonathan Herzig, Kai Hui, Tom Kw [S6]",
+q50,What gets masked during wav2vec 2.0 pretraining?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.11): [S11] Tri Dao, Dan Fu, Stefano Ermon, Atri Rudra, and Christopher Ré. [S1]
+14_InstructGPT.pdf (p.42): labeled completions, from which there were up toK 2 possible comparisons. [S2]
+13_ChainOfThought.pdf (p.25): Perhaps the most-related work here is Recchia (2021), which shows that ﬁnetuning enables longhand module operations, which has previously been difﬁcult for performers. [S3]
+12_Attention.pdf (p.8): Table 2: The Transformer achieves better BLEU scores than previous state-of-the-art models on the English-to-German and English-to-French newstest2014 tests at a fraction of the tr [S4]
+11_BERT.pdf (p.3): BERT BERT E[CLS] E1 E[SEP]... [S5]
+10_FActScore.pdf (p.13): Fabio Petroni, Aleksandra Piktus, Angela Fan, Patrick Lewis, Majid Yazdani, Nicola De Cao, James Thorne, Yacine Jernite, Vladimir Karpukhin, Jean Maillard, Vassilis Plachouras, Tim [S6]",
+q51,Why is self-supervised learning useful in the wav2vec 2.0 framework?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.12): [S31] Long Ouyang, Jeffrey Wu, Xu Jiang, Diogo Almeida, Carroll Wainwright, Pamela Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, et al. [S1]
+14_InstructGPT.pdf (p.42): labeled completions, from which there were up toK 2 possible comparisons. [S2]
+13_ChainOfThought.pdf (p.12): Zhengzhong Liang, Steven Bethard, and Mihai Surdeanu. [S3]
+12_Attention.pdf (p.7): length nis smaller than the representation dimensionality d, which is most often the case with sentence representations used by state-of-the-art models in machine translations, suc [S4]
+11_BERT.pdf (p.11): Mandar Joshi, Eunsol Choi, Daniel S Weld, and Luke Zettlemoyer. [S5]
+10_FActScore.pdf (p.18): Evaluator retrvLM SUBJ InstGPT ChatGPT PPLAI AlwaysSupported - 0.0 0.0 0.0 AlwaysNot-supported - 71.4 58.3 30.9 Random - 52.2 45.0 25.7 No-context LM ✗ 61.2 52.2 31.4 Self-check LM [S6]",
+q52,How is the pretrained wav2vec 2.0 model adapted for speech recognition?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.11): [S11] Tri Dao, Dan Fu, Stefano Ermon, Atri Rudra, and Christopher Ré. [S1]
+14_InstructGPT.pdf (p.5): a normative prior (Nahian et al., 2021). [S2]
+13_ChainOfThought.pdf (p.25): Perhaps the most-related work here is Recchia (2021), which shows that ﬁnetuning enables longhand module operations, which has previously been difﬁcult for performers. [S3]
+12_Attention.pdf (p.1): Provided proper attribution is provided, Google hereby grants permission to reproduce the tables and figures in this paper solely for use in journalistic or scholarly works. [S4]
+11_BERT.pdf (p.9): mixed results on the downstream task impact of increasing the pre-trained bi-LM size from two to four layers and Melamud et al. [S5]
+10_FActScore.pdf (p.13): Fabio Petroni, Aleksandra Piktus, Angela Fan, Patrick Lewis, Majid Yazdani, Nicola De Cao, James Thorne, Yacine Jernite, Vladimir Karpukhin, Jean Maillard, Vassilis Plachouras, Tim [S6]",
+q53,What is the main idea behind Autoformer for time-series forecasting?,"I only found `Main Idea Behind Autoformer For Time-Series Forecasting` mentioned in profile/course context in your uploaded files (for example, `15_LLMasJudge.pdf`), not as a general reference source. I don’t have enough reliable evidence here to give a broad definition. [S1]",
+q54,What is the Auto-Correlation mechanism in Autoformer?,"I only found `Auto-Correlation Mechanism In Autoformer` mentioned in profile/course context in your uploaded files (for example, `15_LLMasJudge.pdf`), not as a general reference source. I don’t have enough reliable evidence here to give a broad definition. [S1]",
+q55,Why does Autoformer use decomposition in forecasting?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.9): Table 8: Evaluation results of several model variants. [S1]
+14_InstructGPT.pdf (p.51): E Additional results 10152025DROP (F1) PPO-ptx PPO SFT GPT0.50.60.70.8Hellaswag (acc) 30354045QuAC (F1) 0.50.60.7RTE v2 (acc) 0.60.70.80.9SST (acc) 405060Squad V2 (F1) 1.3B 6B 175B [S2]
+13_ChainOfThought.pdf (p.10): Acknowledgements We thank Jacob Devlin, Claire Cui, Andrew Dai, and Ellie Pavlick for providing feedback on the paper. [S3]
+12_Attention.pdf (p.8): Table 2: The Transformer achieves better BLEU scores than previous state-of-the-art models on the English-to-German and English-to-French newstest2014 tests at a fraction of the tr [S4]
+11_BERT.pdf (p.3): BERT BERT E[CLS] E1 E[SEP]... [S5]
+10_FActScore.pdf (p.18): Evaluator retrvLM SUBJ InstGPT ChatGPT PPLAI AlwaysSupported - 0.0 0.0 0.0 AlwaysNot-supported - 71.4 58.3 30.9 Random - 52.2 45.0 25.7 No-context LM ✗ 61.2 52.2 31.4 Self-check LM [S6]",
+q56,What challenge in long-term forecasting is Autoformer trying to address?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.12): [S31] Long Ouyang, Jeffrey Wu, Xu Jiang, Diogo Almeida, Carroll Wainwright, Pamela Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, et al. [S1]
+14_InstructGPT.pdf (p.53): 1.3B 6B 175B0.60.70.80.9PrevalenceAttempts correct instruction Model PPO-ptx PPO SFT GPT (prompted) GPT1.3B 6B 175B0.800.850.900.95Appropriate for customer assistant 1.3B 6B 175B0. [S2]
+13_ChainOfThought.pdf (p.12): Zhengzhong Liang, Steven Bethard, and Mihai Surdeanu. [S3]
+12_Attention.pdf (p.2): 1 Introduction Recurrent neural networks, long short-term memory [ 13] and gated recurrent [ 7] neural networks in particular, have been firmly established as state of the art appr [S4]
+11_BERT.pdf (p.8): Dev Set Tasks MNLI-m QNLI MRPC SST-2 SQuAD (Acc) (Acc) (Acc) (Acc) (F1) BERT BASE 84.4 88.4 86.7 92.7 88.5 No NSP 83.9 84.9 86.5 92.6 87.9 LTR & No NSP 82.1 84.3 77.5 92.1 77.8 + B [S5]
+10_FActScore.pdf (p.3): Model-based Evaluation. [S6]",
+q57,How do the generator and discriminator interact in GAN training?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.12): [S31] Long Ouyang, Jeffrey Wu, Xu Jiang, Diogo Almeida, Carroll Wainwright, Pamela Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, et al. [S1]
+14_InstructGPT.pdf (p.3): Figure 2: A diagram illustrating the three steps of our method: (1) supervised ﬁne-tuning (SFT), (2) reward model (RM) training, and (3) reinforcement learning via proximal policy [S2]
+13_ChainOfThought.pdf (p.25): Perhaps the most-related work here is Recchia (2021), which shows that ﬁnetuning enables longhand module operations, which has previously been difﬁcult for performers. [S3]
+12_Attention.pdf (p.11): [S5]Kyunghyun Cho, Bart van Merrienboer, Caglar Gulcehre, Fethi Bougares, Holger Schwenk, and Yoshua Bengio. [S4]
+11_BERT.pdf (p.4): Input/Output Representations To make BERT handle a variety of down-stream tasks, our input representation is able to unambiguously represent both a single sentence and a pair of se [S5]
+10_FActScore.pdf (p.11): Bernd Bohnet, Vinh Tran, Pat Verga, Roee Aha- roni, Daniel Andor, Livio Baldini Soares, Massimil- iano Ciaramita, Jacob Eisenstein, Kuzman Ganchev, Jonathan Herzig, Kai Hui, Tom Kw [S6]",
+q58,What minimax objective is introduced in the original GAN paper?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.1): Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena Lianmin Zheng1∗Wei-Lin Chiang1∗Ying Sheng4∗Siyuan Zhuang1 Zhanghao Wu1Yonghao Zhuang3Zi Lin2Zhuohan Li1Dacheng Li13 Eric P. [S1]
+14_InstructGPT.pdf (p.9): Table 3: Labeler-collected metadata on the API distribution. [S2]
+13_ChainOfThought.pdf (p.10): Acknowledgements We thank Jacob Devlin, Claire Cui, Andrew Dai, and Ellie Pavlick for providing feedback on the paper. [S3]
+12_Attention.pdf (p.1): Provided proper attribution is provided, Google hereby grants permission to reproduce the tables and figures in this paper solely for use in journalistic or scholarly works. [S4]
+11_BERT.pdf (p.1): BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding Jacob Devlin Ming-Wei Chang Kenton Lee Kristina Toutanova Google AI Language fjacobdevlin,mingweich [S5]
+10_FActScore.pdf (p.7): Evaluator retrvSUBJ: InstGPT SUBJ: ChatGPT SUBJ: PPLAIranking ER FS ER FS ER FS Human 42.5 58.3 71.5TrivialAlwaysSupported 57.5 100.0 + 41.7 100.0 + 28.5 100.0 + ✗ AlwaysNot-sup [S6]",
+q59,Why can GAN training be unstable?,"Here is a grounded summary from the selected uploaded evidence:
+15_LLMasJudge.pdf (p.12): [S31] Long Ouyang, Jeffrey Wu, Xu Jiang, Diogo Almeida, Carroll Wainwright, Pamela Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, et al. [S1]
+14_InstructGPT.pdf (p.3): Figure 2: A diagram illustrating the three steps of our method: (1) supervised ﬁne-tuning (SFT), (2) reward model (RM) training, and (3) reinforcement learning via proximal policy [S2]
+13_ChainOfThought.pdf (p.25): Perhaps the most-related work here is Recchia (2021), which shows that ﬁnetuning enables longhand module operations, which has previously been difﬁcult for performers. [S3]
+12_Attention.pdf (p.11): [S5]Kyunghyun Cho, Bart van Merrienboer, Caglar Gulcehre, Fethi Bougares, Holger Schwenk, and Yoshua Bengio. [S4]
+11_BERT.pdf (p.14)
+10_FActScore.pdf (p.7): Evaluator retrvSUBJ: InstGPT SUBJ: ChatGPT SUBJ: PPLAIranking ER FS ER FS ER FS Human 42.5 58.3 71.5TrivialAlwaysSupported 57.5 100.0 + 41.7 100.0 + 28.5 100.0 + ✗ AlwaysNot-sup [S6]",
+q60,What is the key idea that makes adversarial learning effective for generation?,"I only found `Key Idea That Makes Adversarial Learning Effective For Generation` mentioned in profile/course context in your uploaded files (for example, `15_LLMasJudge.pdf`), not as a general reference source. I don’t have enough reliable evidence here to give a broad definition. [S1]",

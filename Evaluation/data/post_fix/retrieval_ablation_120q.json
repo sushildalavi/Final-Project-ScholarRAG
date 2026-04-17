@@ -1,0 +1,1645 @@
+{
+  "mode": "retrieval_baseline_ablation",
+  "created_at": "2026-04-17T06:14:52+00:00",
+  "eval_set": "Evaluation/data/retrieval/golden_set.json",
+  "k": 10,
+  "n_ready_docs": 16,
+  "n_cases_total": 120,
+  "n_cases_used": 120,
+  "n_cases_skipped": 0,
+  "skipped_cases": [],
+  "modes": {
+    "dense": {
+      "n_cases": 120,
+      "metrics": {
+        "recall@1": {
+          "mean": 0.75,
+          "lo": 0.6666666666666666,
+          "hi": 0.8333333333333334
+        },
+        "recall@5": {
+          "mean": 0.9833333333333333,
+          "lo": 0.9583333333333334,
+          "hi": 1.0
+        },
+        "recall@10": {
+          "mean": 1.0,
+          "lo": 1.0,
+          "hi": 1.0
+        },
+        "mrr": {
+          "mean": 0.8374537037037036,
+          "lo": 0.7835185185185185,
+          "hi": 0.8910648148148148
+        },
+        "ndcg@10": {
+          "mean": 0.8774854874280265,
+          "lo": 0.8364545989774804,
+          "hi": 0.9178331117765204
+        }
+      },
+      "top1_errors": 30,
+      "top1_error_examples": [
+        {
+          "case_id": "case_36",
+          "query": "What is the scale and composition of the SQuAD dataset?",
+          "paper": "SQuAD: 100,000+ Questions for Machine Comprehension of Text",
+          "gold_doc_id": 6,
+          "pred_doc_ids": [
+            10,
+            15,
+            12,
+            5,
+            6,
+            7,
+            9,
+            11,
+            13,
+            14
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.2,
+            "ndcg@10": 0.38685280723454163
+          }
+        },
+        {
+          "case_id": "case_38",
+          "query": "How do baseline models in SQuAD compare to human performance on the reading comprehension task?",
+          "paper": "SQuAD: 100,000+ Questions for Machine Comprehension of Text",
+          "gold_doc_id": 6,
+          "pred_doc_ids": [
+            10,
+            6,
+            12,
+            9,
+            11,
+            13,
+            7,
+            15,
+            14,
+            4
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.5,
+            "ndcg@10": 0.6309297535714575
+          }
+        },
+        {
+          "case_id": "case_40",
+          "query": "What evaluation metrics are used in SQuAD and why were they chosen?",
+          "paper": "SQuAD: 100,000+ Questions for Machine Comprehension of Text",
+          "gold_doc_id": 6,
+          "pred_doc_ids": [
+            12,
+            11,
+            15,
+            10,
+            6,
+            9,
+            7,
+            14,
+            13,
+            4
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.2,
+            "ndcg@10": 0.38685280723454163
+          }
+        },
+        {
+          "case_id": "case_41",
+          "query": "What problem does 'Natural Questions: A Benchmark for Question Answering Research' address compared to prior QA benchmarks?",
+          "paper": "Natural Questions: A Benchmark for Question Answering Research",
+          "gold_doc_id": 7,
+          "pred_doc_ids": [
+            6,
+            2,
+            4,
+            5,
+            7,
+            11,
+            15,
+            3,
+            14,
+            10
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.2,
+            "ndcg@10": 0.38685280723454163
+          }
+        },
+        {
+          "case_id": "case_42",
+          "query": "What is the unique contribution of the Natural Questions dataset to open-domain QA research?",
+          "paper": "Natural Questions: A Benchmark for Question Answering Research",
+          "gold_doc_id": 7,
+          "pred_doc_ids": [
+            4,
+            6,
+            7,
+            2,
+            15,
+            5,
+            11,
+            14,
+            12,
+            3
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@10": 0.5
+          }
+        },
+        {
+          "case_id": "case_43",
+          "query": "How was the Natural Questions dataset collected and what annotation process was used?",
+          "paper": "Natural Questions: A Benchmark for Question Answering Research",
+          "gold_doc_id": 7,
+          "pred_doc_ids": [
+            4,
+            6,
+            7,
+            15,
+            11,
+            2,
+            5,
+            14,
+            13,
+            12
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@10": 0.5
+          }
+        },
+        {
+          "case_id": "case_44",
+          "query": "What distinguishes Natural Questions from SQuAD and other prior reading comprehension datasets?",
+          "paper": "Natural Questions: A Benchmark for Question Answering Research",
+          "gold_doc_id": 7,
+          "pred_doc_ids": [
+            6,
+            7,
+            2,
+            4,
+            10,
+            15,
+            5,
+            9,
+            12,
+            11
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.5,
+            "ndcg@10": 0.6309297535714575
+          }
+        },
+        {
+          "case_id": "case_45",
+          "query": "What baseline models are evaluated on Natural Questions and what are their performance scores?",
+          "paper": "Natural Questions: A Benchmark for Question Answering Research",
+          "gold_doc_id": 7,
+          "pred_doc_ids": [
+            11,
+            6,
+            4,
+            15,
+            5,
+            2,
+            10,
+            14,
+            7,
+            12
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 0.0,
+            "recall@10": 1.0,
+            "mrr": 0.1111111111111111,
+            "ndcg@10": 0.3010299956639812
+          }
+        },
+        {
+          "case_id": "case_46",
+          "query": "What are the main findings about QA model performance reported in 'Natural Questions: A Benchmark for Question Answering Research'?",
+          "paper": "Natural Questions: A Benchmark for Question Answering Research",
+          "gold_doc_id": 7,
+          "pred_doc_ids": [
+            6,
+            4,
+            15,
+            11,
+            2,
+            7,
+            5,
+            10,
+            14,
+            12
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 0.0,
+            "recall@10": 1.0,
+            "mrr": 0.16666666666666666,
+            "ndcg@10": 0.3562071871080222
+          }
+        },
+        {
+          "case_id": "case_47",
+          "query": "What annotation challenges and limitations are discussed in 'Natural Questions: A Benchmark for Question Answering Research'?",
+          "paper": "Natural Questions: A Benchmark for Question Answering Research",
+          "gold_doc_id": 7,
+          "pred_doc_ids": [
+            4,
+            6,
+            2,
+            5,
+            7,
+            15,
+            11,
+            13,
+            10,
+            12
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.2,
+            "ndcg@10": 0.38685280723454163
+          }
+        },
+        {
+          "case_id": "case_48",
+          "query": "How does 'Natural Questions' define and evaluate short and long answer responses?",
+          "paper": "Natural Questions: A Benchmark for Question Answering Research",
+          "gold_doc_id": 7,
+          "pred_doc_ids": [
+            6,
+            4,
+            15,
+            7,
+            11,
+            14,
+            2,
+            5,
+            9,
+            3
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.25,
+            "ndcg@10": 0.43067655807339306
+          }
+        },
+        {
+          "case_id": "case_49",
+          "query": "What open-domain QA challenge does DrQA in 'Reading Wikipedia to Answer Open-Domain Questions' aim to solve?",
+          "paper": "Reading Wikipedia to Answer Open-Domain Questions",
+          "gold_doc_id": 7,
+          "pred_doc_ids": [
+            6,
+            7,
+            4,
+            2,
+            11,
+            14,
+            5,
+            15,
+            3,
+            12
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.5,
+            "ndcg@10": 0.6309297535714575
+          }
+        },
+        {
+          "case_id": "case_53",
+          "query": "What are the quantitative results reported for DrQA on open-domain QA benchmarks?",
+          "paper": "Reading Wikipedia to Answer Open-Domain Questions",
+          "gold_doc_id": 7,
+          "pred_doc_ids": [
+            4,
+            7,
+            2,
+            15,
+            6,
+            12,
+            11,
+            14,
+            5,
+            13
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.5,
+            "ndcg@10": 0.6309297535714575
+          }
+        },
+        {
+          "case_id": "case_54",
+          "query": "How does DrQA compare to alternative open-domain QA systems in 'Reading Wikipedia to Answer Open-Domain Questions'?",
+          "paper": "Reading Wikipedia to Answer Open-Domain Questions",
+          "gold_doc_id": 7,
+          "pred_doc_ids": [
+            6,
+            4,
+            7,
+            11,
+            2,
+            5,
+            14,
+            15,
+            12,
+            3
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@10": 0.5
+          }
+        },
+        {
+          "case_id": "case_105",
+          "query": "What alignment problem does 'Training language models to follow instructions with human feedback' aim to solve?",
+          "paper": "Training language models to follow instructions with human feedback",
+          "gold_doc_id": 14,
+          "pred_doc_ids": [
+            15,
+            14,
+            6,
+            12,
+            10,
+            13,
+            4,
+            7,
+            9,
+            2
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.5,
+            "ndcg@10": 0.6309297535714575
+          }
+        }
+      ]
+    },
+    "bm25": {
+      "n_cases": 120,
+      "metrics": {
+        "recall@1": {
+          "mean": 0.5583333333333333,
+          "lo": 0.4666666666666667,
+          "hi": 0.6416666666666667
+        },
+        "recall@5": {
+          "mean": 0.8916666666666667,
+          "lo": 0.8333333333333334,
+          "hi": 0.9416666666666667
+        },
+        "recall@10": {
+          "mean": 0.9833333333333333,
+          "lo": 0.9583333333333334,
+          "hi": 1.0
+        },
+        "mrr": {
+          "mean": 0.698912037037037,
+          "lo": 0.6373148148148148,
+          "hi": 0.7584027777777779
+        },
+        "ndcg@10": {
+          "mean": 0.7678323277209645,
+          "lo": 0.7179078487587119,
+          "hi": 0.8143292359469901
+        }
+      },
+      "top1_errors": 53,
+      "top1_error_examples": [
+        {
+          "case_id": "case_1",
+          "query": "What problem does 'Dense Passage Retrieval for Open-Domain Question Answering' address and why is it significant?",
+          "paper": "Dense Passage Retrieval for Open-Domain Question Answering",
+          "gold_doc_id": 2,
+          "pred_doc_ids": [
+            4,
+            11,
+            5,
+            2,
+            7,
+            3,
+            13,
+            15,
+            6,
+            9
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.25,
+            "ndcg@10": 0.43067655807339306
+          }
+        },
+        {
+          "case_id": "case_5",
+          "query": "What are the quantitative results reported in 'Dense Passage Retrieval for Open-Domain Question Answering'?",
+          "paper": "Dense Passage Retrieval for Open-Domain Question Answering",
+          "gold_doc_id": 2,
+          "pred_doc_ids": [
+            11,
+            2,
+            5,
+            3,
+            4,
+            15,
+            7,
+            12,
+            9,
+            6
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.5,
+            "ndcg@10": 0.6309297535714575
+          }
+        },
+        {
+          "case_id": "case_6",
+          "query": "How does 'Dense Passage Retrieval for Open-Domain Question Answering' compare to BM25 and other sparse retrieval baselines?",
+          "paper": "Dense Passage Retrieval for Open-Domain Question Answering",
+          "gold_doc_id": 2,
+          "pred_doc_ids": [
+            5,
+            2,
+            4,
+            11,
+            7,
+            3,
+            15,
+            6,
+            12,
+            14
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.5,
+            "ndcg@10": 0.6309297535714575
+          }
+        },
+        {
+          "case_id": "case_7",
+          "query": "What limitations or failure cases does 'Dense Passage Retrieval for Open-Domain Question Answering' acknowledge?",
+          "paper": "Dense Passage Retrieval for Open-Domain Question Answering",
+          "gold_doc_id": 2,
+          "pred_doc_ids": [
+            11,
+            5,
+            2,
+            4,
+            15,
+            7,
+            3,
+            14,
+            6,
+            9
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@10": 0.5
+          }
+        },
+        {
+          "case_id": "case_8",
+          "query": "How does the training objective in 'Dense Passage Retrieval for Open-Domain Question Answering' differ from earlier retrieval approaches?",
+          "paper": "Dense Passage Retrieval for Open-Domain Question Answering",
+          "gold_doc_id": 2,
+          "pred_doc_ids": [
+            11,
+            5,
+            2,
+            7,
+            4,
+            3,
+            15,
+            6,
+            9,
+            12
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@10": 0.5
+          }
+        },
+        {
+          "case_id": "case_10",
+          "query": "What is the key innovation introduced in 'ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT'?",
+          "paper": "ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT",
+          "gold_doc_id": 3,
+          "pred_doc_ids": [
+            5,
+            3,
+            2,
+            9,
+            13,
+            12,
+            7,
+            10,
+            11,
+            4
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.5,
+            "ndcg@10": 0.6309297535714575
+          }
+        },
+        {
+          "case_id": "case_14",
+          "query": "How does ColBERT compare to dense single-vector models like DPR and to BM25?",
+          "paper": "ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT",
+          "gold_doc_id": 3,
+          "pred_doc_ids": [
+            5,
+            3,
+            2,
+            4,
+            7,
+            11,
+            12,
+            10,
+            9,
+            15
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.5,
+            "ndcg@10": 0.6309297535714575
+          }
+        },
+        {
+          "case_id": "case_15",
+          "query": "What are the efficiency trade-offs or limitations discussed in ColBERT?",
+          "paper": "ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT",
+          "gold_doc_id": 3,
+          "pred_doc_ids": [
+            15,
+            5,
+            11,
+            3,
+            13,
+            14,
+            9,
+            6,
+            2,
+            7
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.25,
+            "ndcg@10": 0.43067655807339306
+          }
+        },
+        {
+          "case_id": "case_17",
+          "query": "What is the core problem that 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks' addresses?",
+          "paper": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "gold_doc_id": 4,
+          "pred_doc_ids": [
+            11,
+            4,
+            3,
+            5,
+            2,
+            7,
+            9,
+            12,
+            14,
+            10
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.5,
+            "ndcg@10": 0.6309297535714575
+          }
+        },
+        {
+          "case_id": "case_33",
+          "query": "What is the research motivation behind creating the SQuAD dataset for machine comprehension?",
+          "paper": "SQuAD: 100,000+ Questions for Machine Comprehension of Text",
+          "gold_doc_id": 6,
+          "pred_doc_ids": [
+            12,
+            2,
+            6,
+            15,
+            5,
+            14,
+            9,
+            11,
+            4,
+            7
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@10": 0.5
+          }
+        },
+        {
+          "case_id": "case_34",
+          "query": "What does 'SQuAD: 100,000+ Questions for Machine Comprehension of Text' contribute to reading comprehension research?",
+          "paper": "SQuAD: 100,000+ Questions for Machine Comprehension of Text",
+          "gold_doc_id": 6,
+          "pred_doc_ids": [
+            15,
+            4,
+            3,
+            2,
+            7,
+            6,
+            9,
+            12,
+            11,
+            5
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 0.0,
+            "recall@10": 1.0,
+            "mrr": 0.16666666666666666,
+            "ndcg@10": 0.3562071871080222
+          }
+        },
+        {
+          "case_id": "case_36",
+          "query": "What is the scale and composition of the SQuAD dataset?",
+          "paper": "SQuAD: 100,000+ Questions for Machine Comprehension of Text",
+          "gold_doc_id": 6,
+          "pred_doc_ids": [
+            15,
+            9,
+            7,
+            6,
+            2,
+            11,
+            4,
+            12,
+            10,
+            14
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.25,
+            "ndcg@10": 0.43067655807339306
+          }
+        },
+        {
+          "case_id": "case_37",
+          "query": "What human and model performance baselines are reported in 'SQuAD: 100,000+ Questions for Machine Comprehension of Text'?",
+          "paper": "SQuAD: 100,000+ Questions for Machine Comprehension of Text",
+          "gold_doc_id": 6,
+          "pred_doc_ids": [
+            11,
+            3,
+            12,
+            9,
+            6,
+            15,
+            7,
+            13,
+            4,
+            2
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.2,
+            "ndcg@10": 0.38685280723454163
+          }
+        },
+        {
+          "case_id": "case_38",
+          "query": "How do baseline models in SQuAD compare to human performance on the reading comprehension task?",
+          "paper": "SQuAD: 100,000+ Questions for Machine Comprehension of Text",
+          "gold_doc_id": 6,
+          "pred_doc_ids": [
+            12,
+            10,
+            4,
+            15,
+            7,
+            6,
+            11,
+            2,
+            9,
+            5
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 0.0,
+            "recall@10": 1.0,
+            "mrr": 0.16666666666666666,
+            "ndcg@10": 0.3562071871080222
+          }
+        },
+        {
+          "case_id": "case_39",
+          "query": "What limitations or challenging question types does SQuAD acknowledge in its evaluation?",
+          "paper": "SQuAD: 100,000+ Questions for Machine Comprehension of Text",
+          "gold_doc_id": 6,
+          "pred_doc_ids": [
+            15,
+            5,
+            14,
+            11,
+            9,
+            6,
+            10,
+            2,
+            7,
+            4
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 0.0,
+            "recall@10": 1.0,
+            "mrr": 0.16666666666666666,
+            "ndcg@10": 0.3562071871080222
+          }
+        }
+      ]
+    },
+    "hybrid_rrf": {
+      "n_cases": 120,
+      "metrics": {
+        "recall@1": {
+          "mean": 0.725,
+          "lo": 0.6416666666666667,
+          "hi": 0.8
+        },
+        "recall@5": {
+          "mean": 0.95,
+          "lo": 0.9083333333333333,
+          "hi": 0.9833333333333333
+        },
+        "recall@10": {
+          "mean": 1.0,
+          "lo": 1.0,
+          "hi": 1.0
+        },
+        "mrr": {
+          "mean": 0.8187367724867725,
+          "lo": 0.7644642857142857,
+          "hi": 0.8708564814814815
+        },
+        "ndcg@10": {
+          "mean": 0.8627781783904556,
+          "lo": 0.821218775150984,
+          "hi": 0.9025927564813716
+        }
+      },
+      "top1_errors": 33,
+      "top1_error_examples": [
+        {
+          "case_id": "case_36",
+          "query": "What is the scale and composition of the SQuAD dataset?",
+          "paper": "SQuAD: 100,000+ Questions for Machine Comprehension of Text",
+          "gold_doc_id": 6,
+          "pred_doc_ids": [
+            15,
+            9,
+            7,
+            6,
+            10,
+            12,
+            11,
+            5,
+            2,
+            4
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.25,
+            "ndcg@10": 0.43067655807339306
+          }
+        },
+        {
+          "case_id": "case_38",
+          "query": "How do baseline models in SQuAD compare to human performance on the reading comprehension task?",
+          "paper": "SQuAD: 100,000+ Questions for Machine Comprehension of Text",
+          "gold_doc_id": 6,
+          "pred_doc_ids": [
+            10,
+            12,
+            6,
+            15,
+            7,
+            11,
+            4,
+            9,
+            13,
+            2
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@10": 0.5
+          }
+        },
+        {
+          "case_id": "case_39",
+          "query": "What limitations or challenging question types does SQuAD acknowledge in its evaluation?",
+          "paper": "SQuAD: 100,000+ Questions for Machine Comprehension of Text",
+          "gold_doc_id": 6,
+          "pred_doc_ids": [
+            15,
+            6,
+            14,
+            5,
+            11,
+            4,
+            10,
+            12,
+            7,
+            9
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.5,
+            "ndcg@10": 0.6309297535714575
+          }
+        },
+        {
+          "case_id": "case_40",
+          "query": "What evaluation metrics are used in SQuAD and why were they chosen?",
+          "paper": "SQuAD: 100,000+ Questions for Machine Comprehension of Text",
+          "gold_doc_id": 6,
+          "pred_doc_ids": [
+            15,
+            9,
+            10,
+            11,
+            12,
+            13,
+            6,
+            14,
+            5,
+            4
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 0.0,
+            "recall@10": 1.0,
+            "mrr": 0.14285714285714285,
+            "ndcg@10": 0.3333333333333333
+          }
+        },
+        {
+          "case_id": "case_41",
+          "query": "What problem does 'Natural Questions: A Benchmark for Question Answering Research' address compared to prior QA benchmarks?",
+          "paper": "Natural Questions: A Benchmark for Question Answering Research",
+          "gold_doc_id": 7,
+          "pred_doc_ids": [
+            2,
+            5,
+            4,
+            15,
+            6,
+            11,
+            14,
+            7,
+            12,
+            3
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 0.0,
+            "recall@10": 1.0,
+            "mrr": 0.125,
+            "ndcg@10": 0.31546487678572877
+          }
+        },
+        {
+          "case_id": "case_42",
+          "query": "What is the unique contribution of the Natural Questions dataset to open-domain QA research?",
+          "paper": "Natural Questions: A Benchmark for Question Answering Research",
+          "gold_doc_id": 7,
+          "pred_doc_ids": [
+            2,
+            6,
+            4,
+            5,
+            15,
+            7,
+            9,
+            11,
+            12,
+            3
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 0.0,
+            "recall@10": 1.0,
+            "mrr": 0.16666666666666666,
+            "ndcg@10": 0.3562071871080222
+          }
+        },
+        {
+          "case_id": "case_43",
+          "query": "How was the Natural Questions dataset collected and what annotation process was used?",
+          "paper": "Natural Questions: A Benchmark for Question Answering Research",
+          "gold_doc_id": 7,
+          "pred_doc_ids": [
+            11,
+            4,
+            15,
+            5,
+            6,
+            2,
+            14,
+            7,
+            13,
+            9
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 0.0,
+            "recall@10": 1.0,
+            "mrr": 0.125,
+            "ndcg@10": 0.31546487678572877
+          }
+        },
+        {
+          "case_id": "case_44",
+          "query": "What distinguishes Natural Questions from SQuAD and other prior reading comprehension datasets?",
+          "paper": "Natural Questions: A Benchmark for Question Answering Research",
+          "gold_doc_id": 7,
+          "pred_doc_ids": [
+            6,
+            7,
+            4,
+            9,
+            2,
+            15,
+            10,
+            12,
+            5,
+            11
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.5,
+            "ndcg@10": 0.6309297535714575
+          }
+        },
+        {
+          "case_id": "case_45",
+          "query": "What baseline models are evaluated on Natural Questions and what are their performance scores?",
+          "paper": "Natural Questions: A Benchmark for Question Answering Research",
+          "gold_doc_id": 7,
+          "pred_doc_ids": [
+            5,
+            15,
+            11,
+            2,
+            4,
+            6,
+            14,
+            3,
+            7,
+            9
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 0.0,
+            "recall@10": 1.0,
+            "mrr": 0.1111111111111111,
+            "ndcg@10": 0.3010299956639812
+          }
+        },
+        {
+          "case_id": "case_46",
+          "query": "What are the main findings about QA model performance reported in 'Natural Questions: A Benchmark for Question Answering Research'?",
+          "paper": "Natural Questions: A Benchmark for Question Answering Research",
+          "gold_doc_id": 7,
+          "pred_doc_ids": [
+            11,
+            15,
+            4,
+            14,
+            6,
+            12,
+            2,
+            5,
+            7,
+            9
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 0.0,
+            "recall@10": 1.0,
+            "mrr": 0.1111111111111111,
+            "ndcg@10": 0.3010299956639812
+          }
+        },
+        {
+          "case_id": "case_47",
+          "query": "What annotation challenges and limitations are discussed in 'Natural Questions: A Benchmark for Question Answering Research'?",
+          "paper": "Natural Questions: A Benchmark for Question Answering Research",
+          "gold_doc_id": 7,
+          "pred_doc_ids": [
+            5,
+            15,
+            4,
+            7,
+            2,
+            11,
+            6,
+            14,
+            13,
+            10
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.25,
+            "ndcg@10": 0.43067655807339306
+          }
+        },
+        {
+          "case_id": "case_48",
+          "query": "How does 'Natural Questions' define and evaluate short and long answer responses?",
+          "paper": "Natural Questions: A Benchmark for Question Answering Research",
+          "gold_doc_id": 7,
+          "pred_doc_ids": [
+            4,
+            11,
+            15,
+            6,
+            7,
+            14,
+            5,
+            10,
+            9,
+            2
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.2,
+            "ndcg@10": 0.38685280723454163
+          }
+        },
+        {
+          "case_id": "case_53",
+          "query": "What are the quantitative results reported for DrQA on open-domain QA benchmarks?",
+          "paper": "Reading Wikipedia to Answer Open-Domain Questions",
+          "gold_doc_id": 7,
+          "pred_doc_ids": [
+            2,
+            7,
+            4,
+            15,
+            11,
+            12,
+            6,
+            3,
+            14,
+            5
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.5,
+            "ndcg@10": 0.6309297535714575
+          }
+        },
+        {
+          "case_id": "case_65",
+          "query": "What is the research problem that BART addresses in natural language generation and comprehension?",
+          "paper": "BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension",
+          "gold_doc_id": 10,
+          "pred_doc_ids": [
+            4,
+            10,
+            9,
+            14,
+            3,
+            11,
+            6,
+            13,
+            15,
+            12
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.5,
+            "ndcg@10": 0.6309297535714575
+          }
+        },
+        {
+          "case_id": "case_68",
+          "query": "What tasks and datasets are used to evaluate BART across generation and comprehension?",
+          "paper": "BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension",
+          "gold_doc_id": 10,
+          "pred_doc_ids": [
+            4,
+            10,
+            9,
+            15,
+            6,
+            14,
+            11,
+            13,
+            5,
+            12
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.5,
+            "ndcg@10": 0.6309297535714575
+          }
+        }
+      ]
+    },
+    "hybrid_rrf_rerank": {
+      "n_cases": 120,
+      "metrics": {
+        "recall@1": {
+          "mean": 0.65,
+          "lo": 0.5666666666666667,
+          "hi": 0.7333333333333333
+        },
+        "recall@5": {
+          "mean": 0.9333333333333333,
+          "lo": 0.8833333333333333,
+          "hi": 0.975
+        },
+        "recall@10": {
+          "mean": 0.9833333333333333,
+          "lo": 0.9583333333333334,
+          "hi": 1.0
+        },
+        "mrr": {
+          "mean": 0.7640906084656084,
+          "lo": 0.7029662698412698,
+          "hi": 0.8190707671957671
+        },
+        "ndcg@10": {
+          "mean": 0.8176214044055004,
+          "lo": 0.7693934421954445,
+          "hi": 0.8614964816625711
+        }
+      },
+      "top1_errors": 42,
+      "top1_error_examples": [
+        {
+          "case_id": "case_1",
+          "query": "What problem does 'Dense Passage Retrieval for Open-Domain Question Answering' address and why is it significant?",
+          "paper": "Dense Passage Retrieval for Open-Domain Question Answering",
+          "gold_doc_id": 2,
+          "pred_doc_ids": [
+            5,
+            4,
+            2,
+            11,
+            7,
+            3,
+            13,
+            6,
+            15,
+            9
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@10": 0.5
+          }
+        },
+        {
+          "case_id": "case_7",
+          "query": "What limitations or failure cases does 'Dense Passage Retrieval for Open-Domain Question Answering' acknowledge?",
+          "paper": "Dense Passage Retrieval for Open-Domain Question Answering",
+          "gold_doc_id": 2,
+          "pred_doc_ids": [
+            11,
+            5,
+            2,
+            4,
+            7,
+            15,
+            3,
+            14,
+            6,
+            9
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@10": 0.5
+          }
+        },
+        {
+          "case_id": "case_10",
+          "query": "What is the key innovation introduced in 'ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT'?",
+          "paper": "ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT",
+          "gold_doc_id": 3,
+          "pred_doc_ids": [
+            5,
+            3,
+            2,
+            9,
+            12,
+            13,
+            10,
+            4,
+            7,
+            11
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.5,
+            "ndcg@10": 0.6309297535714575
+          }
+        },
+        {
+          "case_id": "case_14",
+          "query": "How does ColBERT compare to dense single-vector models like DPR and to BM25?",
+          "paper": "ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT",
+          "gold_doc_id": 3,
+          "pred_doc_ids": [
+            5,
+            3,
+            2,
+            4,
+            7,
+            11,
+            10,
+            12,
+            9,
+            13
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.5,
+            "ndcg@10": 0.6309297535714575
+          }
+        },
+        {
+          "case_id": "case_15",
+          "query": "What are the efficiency trade-offs or limitations discussed in ColBERT?",
+          "paper": "ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT",
+          "gold_doc_id": 3,
+          "pred_doc_ids": [
+            15,
+            5,
+            3,
+            11,
+            14,
+            13,
+            9,
+            6,
+            2,
+            7
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@10": 0.5
+          }
+        },
+        {
+          "case_id": "case_33",
+          "query": "What is the research motivation behind creating the SQuAD dataset for machine comprehension?",
+          "paper": "SQuAD: 100,000+ Questions for Machine Comprehension of Text",
+          "gold_doc_id": 6,
+          "pred_doc_ids": [
+            12,
+            6,
+            2,
+            5,
+            9,
+            15,
+            14,
+            11,
+            4,
+            7
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.5,
+            "ndcg@10": 0.6309297535714575
+          }
+        },
+        {
+          "case_id": "case_36",
+          "query": "What is the scale and composition of the SQuAD dataset?",
+          "paper": "SQuAD: 100,000+ Questions for Machine Comprehension of Text",
+          "gold_doc_id": 6,
+          "pred_doc_ids": [
+            15,
+            9,
+            7,
+            6,
+            2,
+            10,
+            12,
+            11,
+            4,
+            5
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.25,
+            "ndcg@10": 0.43067655807339306
+          }
+        },
+        {
+          "case_id": "case_37",
+          "query": "What human and model performance baselines are reported in 'SQuAD: 100,000+ Questions for Machine Comprehension of Text'?",
+          "paper": "SQuAD: 100,000+ Questions for Machine Comprehension of Text",
+          "gold_doc_id": 6,
+          "pred_doc_ids": [
+            11,
+            6,
+            3,
+            12,
+            9,
+            7,
+            15,
+            13,
+            4,
+            2
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.5,
+            "ndcg@10": 0.6309297535714575
+          }
+        },
+        {
+          "case_id": "case_38",
+          "query": "How do baseline models in SQuAD compare to human performance on the reading comprehension task?",
+          "paper": "SQuAD: 100,000+ Questions for Machine Comprehension of Text",
+          "gold_doc_id": 6,
+          "pred_doc_ids": [
+            10,
+            12,
+            6,
+            15,
+            4,
+            7,
+            11,
+            2,
+            9,
+            5
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@10": 0.5
+          }
+        },
+        {
+          "case_id": "case_39",
+          "query": "What limitations or challenging question types does SQuAD acknowledge in its evaluation?",
+          "paper": "SQuAD: 100,000+ Questions for Machine Comprehension of Text",
+          "gold_doc_id": 6,
+          "pred_doc_ids": [
+            15,
+            14,
+            5,
+            6,
+            11,
+            9,
+            10,
+            2,
+            7,
+            4
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.25,
+            "ndcg@10": 0.43067655807339306
+          }
+        },
+        {
+          "case_id": "case_40",
+          "query": "What evaluation metrics are used in SQuAD and why were they chosen?",
+          "paper": "SQuAD: 100,000+ Questions for Machine Comprehension of Text",
+          "gold_doc_id": 6,
+          "pred_doc_ids": [
+            15,
+            9,
+            5,
+            13,
+            4,
+            14,
+            10,
+            11,
+            6,
+            7
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 0.0,
+            "recall@10": 1.0,
+            "mrr": 0.1111111111111111,
+            "ndcg@10": 0.3010299956639812
+          }
+        },
+        {
+          "case_id": "case_41",
+          "query": "What problem does 'Natural Questions: A Benchmark for Question Answering Research' address compared to prior QA benchmarks?",
+          "paper": "Natural Questions: A Benchmark for Question Answering Research",
+          "gold_doc_id": 7,
+          "pred_doc_ids": [
+            5,
+            2,
+            15,
+            4,
+            14,
+            11,
+            7,
+            12,
+            6,
+            3
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 0.0,
+            "recall@10": 1.0,
+            "mrr": 0.14285714285714285,
+            "ndcg@10": 0.3333333333333333
+          }
+        },
+        {
+          "case_id": "case_42",
+          "query": "What is the unique contribution of the Natural Questions dataset to open-domain QA research?",
+          "paper": "Natural Questions: A Benchmark for Question Answering Research",
+          "gold_doc_id": 7,
+          "pred_doc_ids": [
+            2,
+            5,
+            6,
+            15,
+            9,
+            4,
+            7,
+            12,
+            3,
+            11
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 0.0,
+            "recall@10": 1.0,
+            "mrr": 0.14285714285714285,
+            "ndcg@10": 0.3333333333333333
+          }
+        },
+        {
+          "case_id": "case_43",
+          "query": "How was the Natural Questions dataset collected and what annotation process was used?",
+          "paper": "Natural Questions: A Benchmark for Question Answering Research",
+          "gold_doc_id": 7,
+          "pred_doc_ids": [
+            11,
+            5,
+            15,
+            14,
+            4,
+            2,
+            9,
+            13,
+            6,
+            3
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 0.0,
+            "recall@10": 0.0,
+            "mrr": 0.0,
+            "ndcg@10": 0.0
+          }
+        },
+        {
+          "case_id": "case_44",
+          "query": "What distinguishes Natural Questions from SQuAD and other prior reading comprehension datasets?",
+          "paper": "Natural Questions: A Benchmark for Question Answering Research",
+          "gold_doc_id": 7,
+          "pred_doc_ids": [
+            9,
+            6,
+            7,
+            4,
+            2,
+            15,
+            12,
+            10,
+            11,
+            5
+          ],
+          "metrics": {
+            "recall@1": 0.0,
+            "recall@5": 1.0,
+            "recall@10": 1.0,
+            "mrr": 0.3333333333333333,
+            "ndcg@10": 0.5
+          }
+        }
+      ]
+    }
+  }
+}

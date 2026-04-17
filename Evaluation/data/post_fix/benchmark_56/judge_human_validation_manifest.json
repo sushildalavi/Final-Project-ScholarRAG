@@ -1,0 +1,13 @@
+{
+  "mode": "judge_human_validation_sample",
+  "source_judge": "Evaluation/data/post_fix/benchmark_56/judge_eval_post_fix.json",
+  "source_claims_csv": "Evaluation/data/post_fix/benchmark_56/claim_annotations.csv",
+  "seed": 17,
+  "sample_size": 50,
+  "label_counts": {
+    "supported": 25,
+    "unsupported": 25
+  },
+  "instructions": "Fill `human_label` with supported or unsupported for each row.",
+  "output_csv": "Evaluation/data/post_fix/benchmark_56/judge_human_validation_sample.csv"
+}
