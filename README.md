@@ -55,7 +55,9 @@ It aggregates **7 live scholarly APIs** (OpenAlex, arXiv, Semantic Scholar, Cros
 - **LLM-as-Judge Faithfulness Evaluation** — sentence-level claim verification via GPT-4o-mini with heuristic fallback; results persisted to `evaluation_judge_runs`
 - **Embedding Versioning Contract** — `provider`, `model`, `version`, `dim` stored per chunk; query-time retrieval filters on active contract to prevent silent vector mixing
 - **Multi-Document Retrieval** — equitable chunk rebalancing across user-selected document IDs; multi-doc summary prompts
-- **Query Sense Disambiguation** — curated ambiguous-term lexicon with WSD pass before generation
+- **Query Sense Disambiguation** — 55+ curated ambiguous-term lexicon covering ML paper names (ColBERT, RAG, BART, PEGASUS, CLIP, Adam, Whisper, LLaMA, PaLM, Gemini, Claude, …); pre-retrieval query rewriting boosts the ML sense for short ambiguous queries so "tell me about Colbert" retrieves the ColBERT paper, not Stephen Colbert
+- **Uploaded-first Hybrid Routing** — the uploaded corpus is always consulted; public-search fallback is blended only when it adds signal, and off-topic public hits (wrong-sense talk-show / fruit / animal papers) are dropped by a domain prior
+- **Abstention Guard** — when post-filter lexical overlap with the query is vanishing and no document is pinned, the system returns a clear "insufficient evidence" response instead of producing a confident hallucination
 - **Retrieval Evaluation Harness** — `scripts/eval_retrieval.py` computes Recall@K, MRR, nDCG@K against a JSON-defined golden eval set
 - **Local-First Full Stack** — React/Vite frontend + FastAPI backend + local Postgres + local Ollama
 
@@ -65,59 +67,58 @@ It aggregates **7 live scholarly APIs** (OpenAlex, arXiv, Semantic Scholar, Cros
 
 Evaluated on a corpus of **15 landmark NLP/ML papers** (DPR, ColBERT, RAG, BEIR, SQuAD, BERT, Attention Is All You Need, etc.) with **120 expert-crafted queries** spanning factual recall, cross-document synthesis, and methodology comparison.
 
-### Retrieval (Cross-Document, No doc_id Constraint)
+> ### ⚠️ Important caveats on these numbers
+> These benchmarks test the easy case — every query explicitly references a paper by title or includes unique discriminating terminology, and retrieval is evaluated at document level. They do NOT measure short ambiguous queries ("tell me about Colbert"), sense-collision failures, or open-corpus retrieval. Harder benchmark sets live in [`Evaluation/queries/queries_adversarial.json`](Evaluation/queries/queries_adversarial.json) (overlapping-terminology distractors) and [`Evaluation/queries/queries_abstention.json`](Evaluation/queries/queries_abstention.json) (queries the system should refuse).
 
-| Metric | Retrieval Only | + Reranker | Δ |
-|--------|---------------|------------|---|
-| **Recall@1** | 0.900 | 0.883 | -1.9% |
-| **Recall@5** | 0.917 | 0.933 | +1.7% |
-| **Recall@10** | 0.942 | 0.933 | -0.9% |
-| **MRR** | 0.908 | 0.907 | -0.1% |
+### Retrieval (Cross-Document, Paper-Title-Bearing Queries)
 
-> High baseline recall indicates strong embedding quality from `mxbai-embed-large` + pgvector HNSW. Reranker provides marginal gains on Recall@5 while maintaining near-equivalent MRR, suggesting the dense retriever already surfaces highly relevant chunks.
+Source: [`Evaluation/data/retrieval/retrieval_eval_120q_final.json`](Evaluation/data/retrieval/retrieval_eval_120q_final.json). 120 queries, each explicitly naming its gold paper. **Expect saturated recall on this set — these numbers prove the pipeline is wired, not that the retriever discriminates.**
 
-### Faithfulness (LLM-as-Judge)
+| Metric | Retrieval Only | + Reranker |
+|--------|---------------|------------|
+| Recall@1 / 5 / 10 | 1.000 | 1.000 |
+| MRR | 1.000 | 1.000 |
 
-| Metric | Value |
-|--------|-------|
-| Total claims extracted | 638 |
-| Queries evaluated | 113 |
-| Claims per query (avg) | 5.6 |
-| **Supported claims** | **580 (90.9%)** |
-| Unsupported claims | 58 (9.1%) |
-| Mean M-score (supported) | 0.806 |
-| Mean M-score (unsupported) | 0.090 |
+> **Reconciling the earlier "0.942" number**: the prior README row came from an open-corpus 120q sweep that has been superseded by `retrieval_eval_120q_final` (which pins `doc_id`). Both JSON artifacts are kept under [`Evaluation/data/retrieval/`](Evaluation/data/retrieval/) for traceability.
+>
+> Use the adversarial set for the real comparison — it has overlapping terminology across papers (DPR vs. ColBERT, BART vs. PEGASUS, etc.) where the retriever must actually discriminate. Chunk-level / BM25 / dense / hybrid / rerank baselines are scripted but need an active backend to populate.
 
-> LLM judge decomposes each generated answer into atomic claims, then verifies each against retrieved evidence. The 90.9% support rate indicates strong citation grounding.
+### Faithfulness (LLM-as-Judge) — claim-level vs. query-level
 
-### MSA Calibration & Ablation Study
+Claim-level and query-level views tell different stories. The 90.9% headline is accurate as a claim rate but masks per-query variance.
 
-Calibration dataset: **1,272 labeled claims** (634 human-annotated + 638 LLM-judged), 70/30 train/test split (grouped by query to prevent leakage).
+| Aggregation | Metric | Value | 95% CI |
+|-------------|--------|-------|--------|
+| Claim-level | Support rate | 90.9% (580/638) | — |
+| **Query-level** | **Mean per-query support rate** | **81.4%** | **[74.8%, 87.4%]** |
+| Query-level | Median | 1.00 | — |
+| Query-level | p10 / p25 | 0.00 / 0.80 | — |
+| Query-level | Worst-decile count at 0% support | 10 queries | — |
+| Stratum | Factual | 65.8% | [45.8%, 83.3%] |
+| Stratum | Methodology | 81.3% | [68.5%, 92.6%] |
+| Stratum | Synthesis / comparison | 75.3% | [59.9%, 88.5%] |
+| Stratum | Other | 96.0% | [92.0%, 99.1%] |
 
-| Model | Test Accuracy | Test Brier | Test ECE | Macro F1 |
-|-------|--------------|------------|----------|----------|
-| **M+S+A (full)** | **1.000** | **0.001** | **0.019** | **1.000** |
-| M+A | 1.000 | 0.001 | 0.020 | 1.000 |
-| M+S | 0.996 | 0.007 | 0.041 | 0.993 |
-| S+A | 1.000 | 0.002 | 0.025 | 1.000 |
-| M-only | 0.996 | 0.009 | 0.046 | 0.993 |
-| A-only | 1.000 | 0.002 | 0.027 | 1.000 |
-| S-only | 0.877 | 0.069 | 0.101 | 0.821 |
-| Heuristic baseline | 0.852 | 0.122 | 0.338 | 0.783 |
+> **Factual queries are the weakest stratum**, not methodology. 10 queries out of 113 have literally zero supported claims. See [`Evaluation/data/robustness/faithfulness_distribution.json`](Evaluation/data/robustness/faithfulness_distribution.json) and [`Evaluation/figures/robustness/faithfulness_hist.png`](Evaluation/figures/robustness/faithfulness_hist.png). Regenerate with `python Evaluation/analysis/faithfulness_distribution.py`.
 
-**Learned logistic weights:** `sigmoid(-3.43 + 3.76·M + 1.01·S + 4.89·A)`
+### MSA Calibration — Leakage Warning & Leakage-Free Benchmark
 
-**Why is accuracy so high?** The MSA features are by design highly discriminative. Feature separability analysis shows zero overlap between classes:
+> **⚠️ The original ablation table reporting M+S+A accuracy = 1.000 was not meaningful.** The `A` feature in the calibration dataset is constant within each class — **mean = 1.0, std = 0** for every supported claim and **mean = 0.0, std = 0** for every unsupported claim. Any model that uses A trivially scores 100%. M is nearly the same shape (ranges 0.66–0.96 vs 0.04–0.20, no overlap). Bottom line: the feature leaks the label; the accuracy claim was measuring pipeline plumbing, not discrimination. See [`Evaluation/data/robustness/calibration_robustness.json → label_leakage_msa_A`](Evaluation/data/robustness/calibration_robustness.json).
 
-| Feature | Supported Range | Unsupported Range | Overlap |
-|---------|----------------|-------------------|---------|
-| M (entailment) | [0.66, 0.96] | [0.04, 0.20] | None |
-| S (stability) | [0.58, 1.00] | [0.19, 0.82] | Partial |
-| A (agreement) | [1.00, 1.00] | [0.00, 0.00] | None |
+**Leakage-free benchmark** — 5-fold `GroupKFold` split twice (by query and by paper), bootstrap 95% CIs on each fold metric:
 
-M and A are near-perfectly separable because they directly measure evidence quality — M captures whether evidence entails the claim, A captures cross-source corroboration. The real contribution of the logistic calibration is not just binary classification (trivially solvable) but **well-calibrated probability estimates** (Brier 0.001, ECE 0.019) for the user-facing confidence display.
+| Feature set | Accuracy | F1 Macro | Brier | ECE | ROC-AUC |
+|-------------|----------|----------|-------|-----|---------|
+| **S-only** (honest baseline) | 0.905 [0.87, 0.94] | **0.52 [0.49, 0.57]** | 0.057 [0.04, 0.07] | 0.105 [0.09, 0.12] | 1.00 |
+| M-only | 1.00 | 1.00 | 0.005 [0.003, 0.01] | 0.042 [0.03, 0.05] | 1.00 |
+| M+S | 1.00 | 1.00 | 0.004 [0.002, 0.01] | 0.037 [0.03, 0.05] | 1.00 |
+| M+S+A *(leaks)* | 1.00 | 1.00 | 0.001 | 0.018 | 1.00 |
 
-> **Class imbalance note:** The dataset is 90.4% supported / 9.6% unsupported (9.4:1 ratio). Despite this, the minority-class (unsupported) F1 is 1.000 for M+S+A, confirming the model is not simply predicting the majority class. The heuristic baseline drops to 0.783 macro F1 under the same imbalance.
+Reliability diagrams and PR curves for each split are in [`Evaluation/figures/robustness/`](Evaluation/figures/robustness/). The one number that is meaningful is the **S-only F1 of 0.52** — when we evaluate the only feature that is not strongly correlated with the label, the minority class collapses.
+
+**Code fix applied**: `_compute_agreement_score` in [`backend/services/assistant_utils.py`](backend/services/assistant_utils.py) was redefined to compute lexical multi-source agreement across distinct doc sources rather than NLI-over-sources, so the live-runtime signal is no longer perfectly correlated with the support label. Older calibration records in `claim_scores_scored.csv` retain the leaky A values for audit purposes.
+
+Regenerate with `python Evaluation/analysis/calibration_robustness.py`.
 
 ### Inter-Annotator Agreement
 

@@ -1,0 +1,78 @@
+{
+  "description": "Abstention queries: the corpus does NOT contain enough evidence to answer these. A well-calibrated system must return a low confidence and either refuse or clearly flag insufficient evidence. Scoring: the system 'passes' if confidence < 0.5 OR the answer contains an explicit insufficient-evidence marker. The system 'fails' if it produces a confident, citation-backed answer anyway (hallucination).",
+  "notes": "Three kinds of traps: (a) topic outside the 15-paper corpus, (b) plausible-sounding but never-defined terminology, (c) counterfactual/paper-attribution flips.",
+  "queries": [
+    {
+      "id": "abs1",
+      "query": "What are the main findings of the paper 'Sparse Attention for Protein Folding' from 2024?",
+      "trap_type": "nonexistent_paper",
+      "rationale": "No such paper in the corpus. Should return insufficient evidence."
+    },
+    {
+      "id": "abs2",
+      "query": "What F1 score does ColBERT report on the MS MARCO dev set?",
+      "trap_type": "out_of_scope_number",
+      "rationale": "Specific metric may not be present in the corpus copy of the ColBERT paper; must not fabricate a number."
+    },
+    {
+      "id": "abs3",
+      "query": "Describe the contrastive loss formulation used in the ScholarRAG retriever.",
+      "trap_type": "self_reference_trap",
+      "rationale": "ScholarRAG is the system itself, not a paper in the corpus. Answering substantively means hallucination."
+    },
+    {
+      "id": "abs4",
+      "query": "What does the 'Chain of Density' paper recommend for hierarchical summarization?",
+      "trap_type": "nonexistent_paper",
+      "rationale": "Chain of Density is not in the 15-paper corpus; easy to confuse with Chain of Thought."
+    },
+    {
+      "id": "abs5",
+      "query": "How does the 2023 paper by Vaswani et al. update the original Transformer architecture?",
+      "trap_type": "counterfactual",
+      "rationale": "There is no such 2023 update by Vaswani. The only Vaswani paper in corpus is 2017."
+    },
+    {
+      "id": "abs6",
+      "query": "What benchmark score does BERT achieve on BIG-Bench Hard?",
+      "trap_type": "anachronism",
+      "rationale": "BIG-Bench did not exist when BERT was evaluated; this number cannot be in the corpus."
+    },
+    {
+      "id": "abs7",
+      "query": "In DPR, what is the exact value of the top-20 retrieval accuracy on the WebQuestions benchmark?",
+      "trap_type": "specific_number_trap",
+      "rationale": "A specific number may or may not be in the corpus; the system must not hallucinate a plausible value."
+    },
+    {
+      "id": "abs8",
+      "query": "What is the difference between Alpha-LoRA and Beta-LoRA as described in the corpus?",
+      "trap_type": "fabricated_terms",
+      "rationale": "Neither term exists. Answering means pattern-matching without evidence."
+    },
+    {
+      "id": "abs9",
+      "query": "How does the corpus describe mixture-of-experts training of GPT-4?",
+      "trap_type": "out_of_scope_topic",
+      "rationale": "Neither MoE training nor GPT-4 is discussed in the 15-paper corpus."
+    },
+    {
+      "id": "abs10",
+      "query": "What is the fine-grained factuality score threshold recommended by the InstructGPT paper?",
+      "trap_type": "cross_paper_confusion",
+      "rationale": "Factuality scoring is FActScore's topic, not InstructGPT's. A system that blends topics will hallucinate."
+    },
+    {
+      "id": "abs11",
+      "query": "Quote the exact sentence where the Attention Is All You Need paper introduces rotary positional embeddings.",
+      "trap_type": "anachronism",
+      "rationale": "Rotary embeddings are from RoFormer (Su et al., 2021), not the 2017 Transformer paper."
+    },
+    {
+      "id": "abs12",
+      "query": "What does the PEGASUS paper conclude about in-context learning with few-shot exemplars?",
+      "trap_type": "topic_mismatch",
+      "rationale": "PEGASUS is a summarization pretraining paper; in-context learning is a GPT-3 topic, outside the corpus."
+    }
+  ]
+}

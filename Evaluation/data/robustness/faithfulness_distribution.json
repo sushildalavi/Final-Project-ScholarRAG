@@ -1,0 +1,154 @@
+{
+  "source": "Evaluation/data/llm_judge/judge_eval_final.json",
+  "overall": {
+    "n_queries": 113,
+    "n_claims": 638,
+    "claim_support_rate": 0.9090909090909091,
+    "query_level_bootstrap_ci_95": {
+      "mean": 0.8135833684506251,
+      "lo": 0.7483260464952942,
+      "hi": 0.8740061806433488,
+      "n": 113
+    },
+    "query_level_quantiles": {
+      "min": 0.0,
+      "p10": 0.0,
+      "p25": 0.8,
+      "median": 1.0,
+      "p75": 1.0,
+      "p90": 1.0
+    }
+  },
+  "by_stratum": {
+    "factual": {
+      "n_queries": 24,
+      "bootstrap_ci_95": {
+        "mean": 0.6583333333333333,
+        "lo": 0.4583333333333333,
+        "hi": 0.8333333333333334,
+        "n": 24
+      },
+      "quantiles": {
+        "min": 0.0,
+        "p10": 0.0,
+        "p25": 0.0,
+        "median": 1.0,
+        "p75": 1.0,
+        "p90": 1.0
+      }
+    },
+    "methodology": {
+      "n_queries": 31,
+      "bootstrap_ci_95": {
+        "mean": 0.8129928315412187,
+        "lo": 0.6846774193548387,
+        "hi": 0.9258086917562723,
+        "n": 31
+      },
+      "quantiles": {
+        "min": 0.0,
+        "p10": 0.0,
+        "p25": 0.7638888888888888,
+        "median": 1.0,
+        "p75": 1.0,
+        "p90": 1.0
+      }
+    },
+    "other": {
+      "n_queries": 35,
+      "bootstrap_ci_95": {
+        "mean": 0.9600793650793652,
+        "lo": 0.9199940476190477,
+        "hi": 0.9914285714285715,
+        "n": 35
+      },
+      "quantiles": {
+        "min": 0.5,
+        "p10": 0.8400000000000001,
+        "p25": 1.0,
+        "median": 1.0,
+        "p75": 1.0,
+        "p90": 1.0
+      }
+    },
+    "synthesis/comparison": {
+      "n_queries": 23,
+      "bootstrap_ci_95": {
+        "mean": 0.7534506556245688,
+        "lo": 0.5986180124223603,
+        "hi": 0.8848697377501726,
+        "n": 23
+      },
+      "quantiles": {
+        "min": 0.0,
+        "p10": 0.0,
+        "p25": 0.788888888888889,
+        "median": 0.8571428571428571,
+        "p75": 1.0,
+        "p90": 1.0
+      }
+    }
+  },
+  "worst_decile_queries": [
+    {
+      "query_id": "jq10",
+      "query": "What is the key innovation introduced in 'ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT'?",
+      "support_rate": 0.0,
+      "n_claims": 1
+    },
+    {
+      "query_id": "jq11",
+      "query": "Explain the late interaction mechanism described in ColBERT and how it differs from single-vector retrieval.",
+      "support_rate": 0.0,
+      "n_claims": 1
+    },
+    {
+      "query_id": "jq114",
+      "query": "What is the LLM-as-judge framework introduced in 'Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena'?",
+      "support_rate": 0.0,
+      "n_claims": 1
+    },
+    {
+      "query_id": "jq18",
+      "query": "What does 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks' contribute to knowledge-intensive NLP?",
+      "support_rate": 0.0,
+      "n_claims": 1
+    },
+    {
+      "query_id": "jq24",
+      "query": "How does 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks' handle the integration of retrieved documents during generation?",
+      "support_rate": 0.0,
+      "n_claims": 1
+    },
+    {
+      "query_id": "jq33",
+      "query": "What is the research motivation behind creating the SQuAD dataset for machine comprehension?",
+      "support_rate": 0.0,
+      "n_claims": 1
+    },
+    {
+      "query_id": "jq34",
+      "query": "What does 'SQuAD: 100,000+ Questions for Machine Comprehension of Text' contribute to reading comprehension research?",
+      "support_rate": 0.0,
+      "n_claims": 1
+    },
+    {
+      "query_id": "jq36",
+      "query": "What is the scale and composition of the SQuAD dataset?",
+      "support_rate": 0.0,
+      "n_claims": 1
+    },
+    {
+      "query_id": "jq42",
+      "query": "What is the unique contribution of the Natural Questions dataset to open-domain QA research?",
+      "support_rate": 0.0,
+      "n_claims": 1
+    },
+    {
+      "query_id": "jq50",
+      "query": "What is the main technical contribution of DrQA in 'Reading Wikipedia to Answer Open-Domain Questions'?",
+      "support_rate": 0.0,
+      "n_claims": 1
+    }
+  ]
+}

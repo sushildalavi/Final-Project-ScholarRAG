@@ -1,0 +1,147 @@
+{
+  "description": "Adversarial retrieval queries: terminology deliberately overlaps between 2+ papers in the 15-paper corpus. A naive dense retriever that scores on topic similarity alone will retrieve the wrong paper. Each query has an explicit gold target and named distractor papers; the evaluator should check both document-level accuracy and whether the wrong-paper distractors appear in the top-k.",
+  "notes": "paper keys reference the file names in Evaluation/papers/. doc_id fields must be populated by Evaluation/queries/fill_doc_ids.py after ingest.",
+  "queries": [
+    {
+      "id": "adv1",
+      "query": "Which paper introduces late interaction between query and passage token embeddings?",
+      "gold_paper_key": "02_ColBERT",
+      "distractor_paper_keys": ["01_DPR"],
+      "rationale": "Both DPR and ColBERT are dense retrieval papers; only ColBERT uses late interaction. A model that keys on 'dense retrieval' tokens may prefer DPR.",
+      "expected_topk_must_exclude_from_rank_1": ["01_DPR"]
+    },
+    {
+      "id": "adv2",
+      "query": "Which paper first uses a dual encoder with in-batch negatives for open-domain QA retrieval?",
+      "gold_paper_key": "01_DPR",
+      "distractor_paper_keys": ["02_ColBERT"],
+      "rationale": "DPR is the dual encoder; ColBERT uses late interaction, not a simple dual encoder."
+    },
+    {
+      "id": "adv3",
+      "query": "Which paper proposes a parametric + non-parametric memory for knowledge-intensive generation?",
+      "gold_paper_key": "03_RAG",
+      "distractor_paper_keys": ["01_DPR", "09_BART"],
+      "rationale": "RAG combines a BART-style generator with a DPR-style retriever. Generic retrieval queries will confuse these."
+    },
+    {
+      "id": "adv4",
+      "query": "Which benchmark evaluates retrieval models across 18 heterogeneous IR tasks without supervised training on each?",
+      "gold_paper_key": "04_BEIR",
+      "distractor_paper_keys": ["01_DPR", "06_NaturalQuestions", "05_SQuAD"],
+      "rationale": "BEIR is the zero-shot eval benchmark. Other retrieval/QA datasets (NQ, SQuAD) are not zero-shot benchmarks."
+    },
+    {
+      "id": "adv5",
+      "query": "Which paper introduces a reading comprehension dataset built from Wikipedia articles with crowd-sourced questions?",
+      "gold_paper_key": "05_SQuAD",
+      "distractor_paper_keys": ["06_NaturalQuestions", "07_DrQA"],
+      "rationale": "SQuAD is crowd-sourced on Wikipedia. Natural Questions uses real Google queries. DrQA is a model built on SQuAD."
+    },
+    {
+      "id": "adv6",
+      "query": "Which dataset pairs real Google search queries with long-form answers from Wikipedia?",
+      "gold_paper_key": "06_NaturalQuestions",
+      "distractor_paper_keys": ["05_SQuAD", "07_DrQA"],
+      "rationale": "Natural Questions uses real queries; SQuAD does not."
+    },
+    {
+      "id": "adv7",
+      "query": "Which paper proposes a gap-sentence objective for abstractive summarization pretraining?",
+      "gold_paper_key": "08_PEGASUS",
+      "distractor_paper_keys": ["09_BART", "11_BERT"],
+      "rationale": "PEGASUS uses gap-sentence generation. BART uses denoising. BERT uses MLM."
+    },
+    {
+      "id": "adv8",
+      "query": "Which paper trains an encoder-decoder by corrupting text and reconstructing it?",
+      "gold_paper_key": "09_BART",
+      "distractor_paper_keys": ["08_PEGASUS", "11_BERT"],
+      "rationale": "BART uses denoising autoencoder objective on corrupted text."
+    },
+    {
+      "id": "adv9",
+      "query": "Which paper decomposes long-form generations into atomic facts and scores each against a knowledge source?",
+      "gold_paper_key": "10_FActScore",
+      "distractor_paper_keys": ["15_LLMasJudge", "03_RAG"],
+      "rationale": "FActScore = atomic fact decomposition + evidence check. LLM-as-Judge evaluates answers holistically."
+    },
+    {
+      "id": "adv10",
+      "query": "Which paper introduces masked language modeling as a pretraining objective?",
+      "gold_paper_key": "11_BERT",
+      "distractor_paper_keys": ["08_PEGASUS", "09_BART", "14_InstructGPT"],
+      "rationale": "BERT introduces MLM. Others use different objectives."
+    },
+    {
+      "id": "adv11",
+      "query": "Which paper dispenses with recurrence entirely in favor of scaled dot-product attention?",
+      "gold_paper_key": "12_Attention",
+      "distractor_paper_keys": ["11_BERT"],
+      "rationale": "Attention Is All You Need introduces the Transformer. BERT uses Transformers but doesn't introduce them."
+    },
+    {
+      "id": "adv12",
+      "query": "Which paper elicits multi-step reasoning by asking the model to produce intermediate reasoning steps before the final answer?",
+      "gold_paper_key": "13_ChainOfThought",
+      "distractor_paper_keys": ["14_InstructGPT"],
+      "rationale": "CoT prompting is the 2022 paper. InstructGPT uses RLHF, a different technique."
+    },
+    {
+      "id": "adv13",
+      "query": "Which paper aligns a language model using reinforcement learning from human feedback and demonstrations?",
+      "gold_paper_key": "14_InstructGPT",
+      "distractor_paper_keys": ["13_ChainOfThought", "15_LLMasJudge"],
+      "rationale": "InstructGPT = RLHF. CoT is prompting technique. LLM-as-Judge is evaluation."
+    },
+    {
+      "id": "adv14",
+      "query": "Which paper shows that strong LLMs can approximate human judgment on open-ended model evaluations?",
+      "gold_paper_key": "15_LLMasJudge",
+      "distractor_paper_keys": ["10_FActScore", "14_InstructGPT"],
+      "rationale": "LLM-as-Judge is the MT-Bench / Chatbot Arena paper."
+    },
+    {
+      "id": "adv15",
+      "query": "Which paper builds an open-domain QA system from Wikipedia with a TF-IDF retriever and a neural reader?",
+      "gold_paper_key": "07_DrQA",
+      "distractor_paper_keys": ["01_DPR", "05_SQuAD", "03_RAG"],
+      "rationale": "DrQA is the original TF-IDF + reader system. DPR replaces TF-IDF with dense retrieval."
+    },
+    {
+      "id": "adv16",
+      "query": "Which paper's retrieval step relies on sparse BM25-style term matching rather than dense vectors?",
+      "gold_paper_key": "07_DrQA",
+      "distractor_paper_keys": ["01_DPR", "02_ColBERT"],
+      "rationale": "DrQA uses sparse retrieval; DPR and ColBERT are explicitly dense."
+    },
+    {
+      "id": "adv17",
+      "query": "Which retrieval paper argues that a single fine-tuned dual encoder beats BM25 across open-domain QA benchmarks?",
+      "gold_paper_key": "01_DPR",
+      "distractor_paper_keys": ["02_ColBERT", "04_BEIR"],
+      "rationale": "This is DPR's headline claim. ColBERT is late-interaction; BEIR actually shows BM25 is often competitive zero-shot."
+    },
+    {
+      "id": "adv18",
+      "query": "Which paper demonstrates that BM25 is surprisingly competitive with dense models under zero-shot evaluation?",
+      "gold_paper_key": "04_BEIR",
+      "distractor_paper_keys": ["01_DPR"],
+      "rationale": "BEIR's main finding contradicts DPR when generalization is tested. A model that over-keys on 'dense retrieval' will wrongly return DPR."
+    },
+    {
+      "id": "adv19",
+      "query": "Which paper verifies generated claims by decomposing answers into atomic facts and checking each against Wikipedia?",
+      "gold_paper_key": "10_FActScore",
+      "distractor_paper_keys": ["03_RAG", "15_LLMasJudge"],
+      "rationale": "FActScore explicitly does atomic-fact verification."
+    },
+    {
+      "id": "adv20",
+      "query": "Which paper proposes chain-of-thought as a prompting technique, rather than as model training?",
+      "gold_paper_key": "13_ChainOfThought",
+      "distractor_paper_keys": ["14_InstructGPT"],
+      "rationale": "CoT is prompting, not training. InstructGPT is a training method."
+    }
+  ]
+}
