@@ -1228,39 +1228,69 @@ def _compute_stability_scores(query: str, k: int, scope: str, doc_id: int | None
 
 
 def _compute_agreement_score(sentence: str, context_map: dict[int, dict], evidence_id: str) -> float:
-    if not sentence:
-        return 0.0
-    if not context_map:
+    # A: multi-source agreement. Intended to be independent of M (NLI entailment)
+    # so the calibration benchmark does not degenerate to label = feature.
+    #
+    # Prior definition used entailment_prob over distinct sources; for single-paper
+    # queries this collapsed to 1.0 when any evidence entailed and 0.0 otherwise,
+    # leaving A perfectly correlated with the support label.
+    #
+    # Redefined as lexical corroboration across distinct doc sources:
+    #   A = (# distinct doc_ids whose snippet shares >= MIN_OVERLAP tokens with
+    #        the claim sentence) / min(DISTINCT_SOURCE_CAP, total distinct docs)
+    # MIN_OVERLAP is tuned to "at least two non-trivial content words match".
+    # This yields a continuous signal that is orthogonal to NLI and does not
+    # use any label information.
+    if not sentence or not context_map:
         return 0.0
 
-    candidates = []
+    MIN_OVERLAP = 2
+    DISTINCT_SOURCE_CAP = 4
+    STOPWORDS = {
+        "the", "a", "an", "and", "or", "of", "to", "in", "on", "for", "with",
+        "is", "are", "was", "were", "be", "been", "being", "that", "this",
+        "these", "those", "it", "its", "as", "at", "by", "from", "but", "not",
+        "what", "which", "who", "whom", "whose", "how", "why", "when", "where",
+        "do", "does", "did", "has", "have", "had", "can", "could", "should",
+        "would", "may", "might", "will", "shall", "about", "into", "than",
+        "then", "so", "if", "also",
+    }
+
+    def tokens(text: str) -> set[str]:
+        out: set[str] = set()
+        for raw in re.findall(r"[A-Za-z][A-Za-z0-9\-]{2,}", (text or "").lower()):
+            if raw in STOPWORDS:
+                continue
+            out.add(raw)
+        return out
+
+    claim_tokens = tokens(sentence)
+    if not claim_tokens:
+        return 0.0
+
+    # group snippets by distinct doc source
+    by_source: dict = {}
     for c in context_map.values():
         text = c.get("snippet") or c.get("title") or ""
         if not text:
             continue
         src = c.get("doc_id") or c.get("source") or c.get("title") or c.get("chunk_id")
-        candidates.append((src, text))
+        if src is None:
+            continue
+        by_source.setdefault(src, []).append(text)
 
-    if not candidates:
+    if not by_source:
         return 0.0
 
-    by_source = []
-    seen = set()
-    for src, text in candidates:
-        if src in seen:
-            continue
-        seen.add(src)
-        by_source.append(text)
-        if len(by_source) >= 6:
-            break
+    corroborating = 0
+    for snippets in by_source.values():
+        merged = " ".join(snippets)
+        overlap = len(claim_tokens & tokens(merged))
+        if overlap >= MIN_OVERLAP:
+            corroborating += 1
 
-    support = 0
-    total = max(1, len(by_source))
-    for text in by_source:
-        if entailment_prob(sentence, text) >= 0.70:
-            support += 1
-
-    return round(support / total, 4)
+    denom = min(DISTINCT_SOURCE_CAP, len(by_source))
+    return round(min(1.0, corroborating / max(1, denom)), 4)
 
 
 def _compute_citation_msa(

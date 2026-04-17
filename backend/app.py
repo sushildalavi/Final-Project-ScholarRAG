@@ -24,7 +24,12 @@ from backend.eval_metrics import aggregate_metrics
 from backend.pdf_ingest import search_chunks as search_uploaded_chunks
 from backend.public_search import public_live_search
 from backend.public_web import public_web_search
-from backend.sense_resolver import filter_citations_by_sense, resolve_sense
+from backend.sense_resolver import (
+    expand_query_for_ml_sense,
+    filter_citations_by_sense,
+    is_offtopic_public_result,
+    resolve_sense,
+)
 from backend.services.assistant_utils import (
     _append_public_source_links,
     _apply_usage_boost,
@@ -439,18 +444,16 @@ def assistant_answer(
             "retrieval_policy": {"mode": "chat-bypass", "uploaded_hits": 0, "public_hits": 0, "uploaded_strength": 0.0, "uploaded_overlap": 0.0, "used_public_fallback": False},
         }
 
-    if scope == "uploaded" and not doc_id and not doc_ids and not allow_general_background:
-        if not _is_doc_intent_query(qnorm) and not doc_summary_intent and not related_work_intent:
-            return {
-                "answer": (
-                    "No uploaded document is selected. Select one or more documents for document-grounded answers, "
-                    "or switch to Public research for general questions."
-                ),
-                "citations": [],
-                "why_answer": {"rerank_changed_order": False, "top_chunks": []},
-                "latency_breakdown_ms": {"retrieve": 0.0, "rerank": 0.0, "generate": 0.0, "total": int((time.time() - started) * 1000)},
-                "retrieval_policy": {"mode": "selection-required", "uploaded_hits": 0, "public_hits": 0, "uploaded_strength": 0.0, "uploaded_overlap": 0.0, "used_public_fallback": False},
-            }
+    # NOTE: we used to block here when scope=="uploaded" and no doc_id was selected.
+    # That forced short/ambiguous queries ("tell me about Colbert") off the uploaded
+    # corpus entirely, producing unrelated public-search hits. We now always search
+    # the uploaded corpus across all docs and only surface a selection prompt when
+    # the user really is asking for a UI-level doc action.
+
+    # --- Query sense expansion (runs BEFORE retrieval).
+    # Prevents "Colbert" / "RAG" / "BART" from being retrieved as the wrong sense.
+    sense_expansion = expand_query_for_ml_sense(query, scholarly_default=True)
+    effective_query = sense_expansion["expanded_query"]
 
     retrieval_ms = 0.0
     rerank_ms = 0.0
@@ -578,7 +581,7 @@ def assistant_answer(
             for sq in subqs:
                 citations.extend(fetch_context(sq, "uploaded"))
         else:
-            citations.extend(fetch_context(query, "uploaded"))
+            citations.extend(fetch_context(effective_query, "uploaded"))
 
         # Dedicated recall boost for "related/similar work" requests on uploaded docs.
         if related_work_intent:
@@ -590,10 +593,11 @@ def assistant_answer(
 
         explicit_uploaded_summary = _is_explicit_uploaded_summary_request(query)
         if allow_general_background and not explicit_uploaded_summary and (_is_general_knowledge_query(query) or _is_company_intent_query(query)):
-            public_citations = fetch_context(query, "public")
+            public_citations = fetch_context(effective_query, "public")
             public_citations = _prune_public_citations(query, public_citations)
+            public_citations = [c for c in public_citations if not is_offtopic_public_result(query, c)]
             if not public_citations and ENABLE_WEB_FALLBACK:
-                public_citations = fetch_context(query, "web")
+                public_citations = fetch_context(effective_query, "web")
             if public_citations:
                 used_public_fallback = True
                 public_hits = len(public_citations)
@@ -613,41 +617,95 @@ def assistant_answer(
         )
         if weak_uploaded and allow_general_background and not explicit_uploaded_summary and answer_mode in {"research_synthesis", "source_listing"}:
             used_public_fallback = True
-            public_citations = fetch_context(query, "public")
+            public_citations = fetch_context(effective_query, "public")
             public_citations = _prune_public_citations(query, public_citations)
+            public_citations = [c for c in public_citations if not is_offtopic_public_result(query, c)]
             public_hits = len(public_citations)
             if public_hits > 0:
                 # Keep uploaded citations first in uploaded mode.
                 citations = citations + public_citations
     else:
+        # Public scope: ALWAYS consult uploaded corpus first as well — if the
+        # user uploaded a ColBERT paper, it should surface for "tell me about
+        # Colbert" even when the UI scope is set to public.
+        uploaded_probe = fetch_context(effective_query, "uploaded")
+        uploaded_hits = len(uploaded_probe)
+        uploaded_strength = _uploaded_evidence_strength(uploaded_probe)
+        uploaded_overlap = _query_overlap_strength(query, uploaded_probe)
+
         if multi_hop and (" and " in query or ";" in query or "," in query):
             subqs = [q.strip() for q in re.split(r"and|;|,", query) if q.strip()]
             for sq in subqs:
                 citations.extend(fetch_context(sq, "public"))
         else:
-            citations.extend(fetch_context(query, "public"))
+            citations.extend(fetch_context(effective_query, "public"))
+
+        # Domain prior: drop public hits that are obviously the wrong sense
+        # (e.g., Stephen Colbert TV-talk-show papers when the user asked
+        # about ColBERT the retrieval model).
+        citations = [c for c in citations if not is_offtopic_public_result(query, c)]
         public_hits = len(citations)
+
+        # Merge uploaded hits in front of public ones when they look relevant.
+        if uploaded_probe and (uploaded_overlap >= 0.22 or uploaded_strength >= 0.52):
+            citations = uploaded_probe + citations
+            used_public_fallback = True  # signals that we blended scopes
 
     retrieval_ms = (time.perf_counter() - t0) * 1000
 
-    if not citations:
-        # No retrieval: return a lightweight response without calling LLM on junk
+    # Abstention guard: if after sense-expansion + domain-prior filtering we have
+    # either no citations, or only citations whose lexical overlap with the
+    # query is vanishingly low, refuse instead of producing a confident
+    # hallucination. This is the behavior we want for ambiguous queries like
+    # "tell me about Colbert" when neither the uploaded corpus nor public
+    # sources surface a ColBERT-the-model match.
+    if citations:
+        post_filter_overlap = _query_overlap_strength(query, citations)
+    else:
+        post_filter_overlap = 0.0
+
+    if not citations or (post_filter_overlap < 0.05 and not doc_id and not doc_ids):
         evidence_label = _scope_evidence_label(scope)
+        sense_hint = ""
+        if sense_expansion.get("term") and sense_expansion.get("ml_sense"):
+            sense_hint = (
+                f" If you meant **{sense_expansion['ml_sense']}**, try asking with "
+                f"more context (for example the paper title, model architecture, or a "
+                f"related term like 'retrieval', 'BERT', or 'dual encoder')."
+            )
         if requested_public_source and scope != "uploaded":
             provider = requested_public_source.upper()
             return {
                 "answer": (
-                    f"I couldn't find relevant material from {provider} for that query. "
-                    "Try a more specific topic (keywords, year range, or exact paper title)."
+                    f"I couldn't find relevant material from {provider} for that query."
+                    f"{sense_hint} Try a more specific topic (keywords, year range, or exact paper title)."
                 ),
                 "citations": [],
+                "confidence": {"score": 0.15, "label": "Abstained (insufficient evidence)", "needs_clarification": True},
+                "retrieval_policy": {
+                    "mode": "abstention",
+                    "reason": "no-relevant-match",
+                    "uploaded_hits": uploaded_hits,
+                    "public_hits": public_hits,
+                    "post_filter_overlap": round(post_filter_overlap, 3),
+                    "sense_expansion": sense_expansion,
+                },
             }
         return {
             "answer": (
-                f"I couldn't find relevant material in the selected {evidence_label} for that query. "
-                "Try a more specific research question."
+                f"I couldn't find reliable matching evidence in your {evidence_label} for that query."
+                f"{sense_hint} Rather than guess, I'll wait for a clearer question."
             ),
             "citations": [],
+            "confidence": {"score": 0.15, "label": "Abstained (insufficient evidence)", "needs_clarification": True},
+            "retrieval_policy": {
+                "mode": "abstention",
+                "reason": "no-relevant-match" if not citations else "low-lexical-overlap",
+                "uploaded_hits": uploaded_hits,
+                "public_hits": public_hits,
+                "post_filter_overlap": round(post_filter_overlap, 3),
+                "sense_expansion": sense_expansion,
+            },
         }
 
     entity_query = _is_entity_level_query(query) and not doc_summary_intent
