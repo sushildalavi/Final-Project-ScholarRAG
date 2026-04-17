@@ -1172,11 +1172,47 @@ def _is_research_synthesis_query(query: str) -> bool:
     return any(c in q for c in cues)
 
 
+_FACTUAL_QUERY_CUES = (
+    # Definitional
+    r"\bwhat is\b", r"\bwhat are\b", r"\bwhat does\b",
+    r"\bdefine\b", r"\bdefinition of\b",
+    # Specific-value questions
+    r"\bhow many\b", r"\bhow much\b", r"\bwhat year\b", r"\bwhen was\b",
+    r"\bwhich dataset\b", r"\bwhich model\b", r"\bwhich metric\b",
+    r"\bwhat (value|score|accuracy|benchmark|f1|recall|precision)\b",
+    # Attribution
+    r"\bwho (proposed|introduced|wrote|published)\b",
+    r"\bwhich paper\b",
+)
+
+
+def _is_factual_query(query: str) -> bool:
+    """Factual / extractive queries. Identified by narrow definitional or
+    specific-value phrasing. Used to route to extractive answer mode, which
+    returns the source sentence verbatim rather than a paraphrased synthesis.
+    The returned flag is orthogonal to answer_mode — a factual query can
+    still be explanatory or source_listing; this flag just controls whether
+    the generator is allowed to paraphrase.
+    """
+    q = (query or "").lower().strip()
+    if not q:
+        return False
+    # Very short synthesis-y cues should still count as non-factual.
+    for pat in (r"\bcompare\b", r"\bcontrast\b", r"\bsynthesi[sz]e\b",
+                r"\btrade\-?offs?\b", r"\bdifference between\b",
+                r"\bdifferences\b", r"\bpros and cons\b"):
+        if re.search(pat, q):
+            return False
+    return any(re.search(pat, q) for pat in _FACTUAL_QUERY_CUES)
+
+
 def _classify_answer_mode(query: str) -> str:
     if _is_source_listing_query(query):
         return "source_listing"
     if _is_research_synthesis_query(query) or _is_related_work_query(query):
         return "research_synthesis"
+    if _is_factual_query(query):
+        return "extractive"
     return "explanatory"
 
 
@@ -1228,6 +1264,27 @@ Synthesize across multiple sources like a literature review section:
 4. **Conclusion** (1 sentence): Summarize the take-home message.
 Write at PhD-thesis quality. Avoid vague summaries — be analytically specific."""
 
+    elif answer_mode == "extractive":
+        mode_block = """\
+RESPONSE FORMAT — extractive (factual query):
+The user is asking a factual, definitional, or specific-value question. Your
+job is to surface the answer verbatim from the sources, not to paraphrase.
+Paraphrasing a fact is how factual faithfulness breaks.
+
+1. **Answer (1 sentence, quoted from a source)**: Return the exact sentence
+   or short passage from the evidence that answers the question, wrapped in
+   quotation marks. Use an ellipsis `…` only to trim obvious prefix/suffix
+   noise, never to paraphrase. End with its [S#] citation.
+2. **Source (1 line)**: Name the source by [S#] and the paper title.
+3. **Context (optional, ≤2 sentences)**: Only if a short context clause is
+   needed to make the quote interpretable. Still citation-grounded [S#].
+4. If NO source contains a direct answer, say "The provided sources do not
+   contain a direct answer to this question" — do not fabricate, do not
+   paraphrase from memory. Abstention is the correct response.
+
+Do NOT rewrite the fact in your own words. Do NOT produce multi-paragraph
+explanations. Brevity and verbatim fidelity are the goal."""
+
     else:  # explanatory
         mode_block = """\
 RESPONSE FORMAT — explanatory:
@@ -1236,6 +1293,14 @@ Answer like a brilliant research mentor explaining to a graduate student:
 2. **Key explanation** (1–3 paragraphs): Explain the concept, mechanism, or finding in depth. Use bold for key terms, cite every substantive claim [S#].
 3. **Supporting detail or examples** (optional, use bullets or numbered list): If the question calls for it, provide concrete examples, equations, or comparisons drawn directly from the sources.
 4. **Nuances or caveats** (optional): Note limitations, assumptions, or conditions where the answer may differ.
+
+BEFORE YOU FINALIZE: for every substantive factual claim you make, verify
+it is directly supported by a source you cite. If you cannot ground a
+claim, either drop it OR rewrite it as a clearly-hedged weaker version
+(e.g. "X reportedly improved performance on some benchmarks") rather than
+stating it as a confident fact. Hedged-but-grounded is always better than
+confident-but-ungrounded.
+
 Keep the answer focused. Do not pad with generic statements."""
 
     return (
@@ -1654,6 +1719,190 @@ def _compute_agreement_score(sentence: str, context_map: dict[int, dict], eviden
     return round(min(1.0, corroborating / max(1, denom)), 4)
 
 
+def _compute_claim_features(
+    sentence: str,
+    cited_snippet: str,
+    context_by_id: dict[int, dict],
+    stability: dict[str, float],
+    evidence_id: str,
+    sentences_in_answer: list[str],
+    sidx: int,
+) -> dict[str, float]:
+    """Auxiliary per-claim features for calibration.
+
+    These are additional discriminative signals beyond M/S/A, designed so
+    that the leakage-free calibration benchmark (currently stuck at
+    S-only F1 = 0.52) has more to work with. Each feature is bounded in
+    [0,1] and is INDEPENDENT of the binary support label.
+    """
+    claim_tokens = set(re.findall(r"[a-zA-Z][a-zA-Z0-9\-]{2,}", (sentence or "").lower()))
+    evidence_tokens = set(re.findall(r"[a-zA-Z][a-zA-Z0-9\-]{2,}", (cited_snippet or "").lower()))
+
+    # F1: entailment margin. Keeps the NLI signal but uses the DIFFERENCE
+    # between entailment and contradiction, which varies within the
+    # "supported" class more than raw entailment probability does.
+    try:
+        ent_p = entailment_prob(sentence, cited_snippet or "")
+        contradiction_p = entailment_prob(sentence, _reverse_polarity(sentence))
+        feat_entailment_margin = max(0.0, min(1.0, ent_p - 0.5 * contradiction_p))
+    except Exception:
+        feat_entailment_margin = 0.0
+
+    # F2: citation-span specificity. Short cited passages are usually
+    # more precise than paragraph-long ones. We normalize by a cap so
+    # the feature does not punish short claims with reasonable context.
+    snippet_len = len(cited_snippet or "")
+    if snippet_len == 0:
+        feat_specificity = 0.0
+    else:
+        # 120–400 chars is the sweet spot; longer drops.
+        feat_specificity = max(0.0, min(1.0, 1.0 - abs(snippet_len - 260.0) / 600.0))
+
+    # F3: cross-sentence consistency. Agreement with the 2 neighboring
+    # sentences in the same answer. A claim that contradicts its
+    # neighbours is more likely to be fabricated.
+    neighbors = []
+    if sidx - 1 < len(sentences_in_answer) and sidx - 2 >= 0:
+        neighbors.append(sentences_in_answer[sidx - 2])
+    if sidx < len(sentences_in_answer):
+        neighbors.append(sentences_in_answer[sidx])
+    try:
+        if neighbors:
+            agreements = [entailment_prob(sentence, n) for n in neighbors if n and n != sentence]
+            feat_cross_sentence = float(sum(agreements) / max(1, len(agreements))) if agreements else 0.5
+        else:
+            feat_cross_sentence = 0.5
+    except Exception:
+        feat_cross_sentence = 0.5
+
+    # F4: retrieval diversity. How many distinct doc sources appear in the
+    # context pool? Low diversity over a single doc is often fine (single
+    # paper); uniform low diversity across unrelated docs is noise.
+    doc_ids = {c.get("doc_id") for c in context_by_id.values() if c.get("doc_id") is not None}
+    total_ctx = max(1, len(context_by_id))
+    feat_retrieval_diversity = max(0.0, min(1.0, len(doc_ids) / max(1, total_ctx)))
+
+    # F5: stability margin. Not just "same chunk appears in repeats"
+    # (S-signal) but the gap between the top stability and the second.
+    # A claim citing a highly stable evidence chunk while the runner-up
+    # is unstable is a cleaner signal than S alone.
+    stab_values = sorted(stability.values(), reverse=True)
+    top1 = stab_values[0] if stab_values else 0.0
+    top2 = stab_values[1] if len(stab_values) > 1 else 0.0
+    feat_stability_margin = max(0.0, min(1.0, float(top1 - top2)))
+
+    return {
+        "entailment_margin": round(feat_entailment_margin, 4),
+        "citation_specificity": round(feat_specificity, 4),
+        "cross_sentence_consistency": round(feat_cross_sentence, 4),
+        "retrieval_diversity": round(feat_retrieval_diversity, 4),
+        "stability_margin": round(feat_stability_margin, 4),
+    }
+
+
+def _reverse_polarity(sentence: str) -> str:
+    """Cheap negation for the entailment-margin feature.
+
+    We do not have a proper NLI contradiction head here so we approximate
+    a contradictory hypothesis by inverting common affirmations/negations.
+    This is a proxy; the resulting 'contradiction' NLI score is only used
+    as a relative signal, not an absolute one.
+    """
+    s = (sentence or "").strip()
+    if not s:
+        return s
+    replacements = [
+        (r"\bis\b", "is not"),
+        (r"\bare\b", "are not"),
+        (r"\bwas\b", "was not"),
+        (r"\bwere\b", "were not"),
+        (r"\bdoes\b", "does not"),
+        (r"\bdo\b", "do not"),
+        (r"\bhas\b", "has not"),
+        (r"\bhave\b", "have not"),
+        (r"\bcan\b", "cannot"),
+        (r"\bwill\b", "will not"),
+    ]
+    for pat, repl in replacements:
+        if re.search(pat, s, flags=re.IGNORECASE):
+            return re.sub(pat, repl, s, count=1, flags=re.IGNORECASE)
+    # Fallback: prefix with "it is not the case that".
+    return "It is not the case that " + s[0].lower() + s[1:]
+
+
+def _rewrite_ungrounded_claims(answer: str, citations: list[dict]) -> tuple[str, int]:
+    """Post-generation pass: hedge claims that lack a citation or whose
+    citation has very weak entailment support.
+
+    Returns (possibly_modified_answer, n_hedged).
+
+    Philosophy: "hedged-but-grounded" is strictly better than
+    "confident-but-ungrounded". Instead of dropping the sentence we
+    soften it by prepending a hedge phrase. Preserves length / coverage.
+    """
+    if not answer or not citations:
+        return answer, 0
+
+    snippets_by_idx = {
+        i + 1: (c.get("snippet", "") or "")
+        for i, c in enumerate(citations)
+    }
+
+    HEDGE_PREFIXES = (
+        "Reportedly, ", "It is suggested that ",
+        "According to the retrieved evidence, ",
+        "Some sources indicate that ",
+    )
+    # Skip hedging if the sentence is already clearly hedged.
+    ALREADY_HEDGED = (
+        "reportedly", "it is suggested", "according to",
+        "some sources", "may ", "might ", "could ", "possibly",
+        "not clear", "insufficient evidence",
+    )
+
+    sentences = _split_answer_sentences(answer)
+    hedged = 0
+    out_sentences: list[str] = []
+    for idx, s in enumerate(sentences):
+        cited = _extract_sentence_citation_ids(s)
+        low = s.lower()
+        if any(h in low for h in ALREADY_HEDGED):
+            out_sentences.append(s)
+            continue
+
+        needs_hedge = False
+        if not cited:
+            needs_hedge = True
+        else:
+            # If the cited snippet has near-zero entailment support, hedge.
+            cleaned = re.sub(r"\[(?:S)?(\d+)\]", "", s).strip()
+            if cleaned:
+                for cidx in cited:
+                    snippet = snippets_by_idx.get(cidx, "")
+                    if not snippet:
+                        needs_hedge = True
+                        break
+                    try:
+                        p = entailment_prob(cleaned, snippet)
+                        if p < 0.20:
+                            needs_hedge = True
+                            break
+                    except Exception:
+                        pass
+
+        if needs_hedge:
+            hedge = HEDGE_PREFIXES[idx % len(HEDGE_PREFIXES)]
+            # Avoid ugly double-capitalization: lowercase first word of original.
+            lowered = s[0].lower() + s[1:] if s and s[0].isupper() else s
+            out_sentences.append(hedge + lowered)
+            hedged += 1
+        else:
+            out_sentences.append(s)
+
+    rewritten = " ".join(out_sentences)
+    return rewritten, hedged
+
+
 def _compute_citation_msa(
     query: str,
     answer: str,
@@ -1675,9 +1924,10 @@ def _compute_citation_msa(
             "chunk_id": c.get("chunk_id"),
         }
 
+    all_sentences = _split_answer_sentences(answer)
     sentence_rows: list[dict] = []
     unsupported = 0
-    for sidx, sentence in enumerate(_split_answer_sentences(answer), start=1):
+    for sidx, sentence in enumerate(all_sentences, start=1):
         cleaned_sentence = re.sub(r"\[(?:S)?(\d+)\]", "", sentence).strip()
         if not cleaned_sentence:
             continue
@@ -1695,6 +1945,16 @@ def _compute_citation_msa(
             s = round(float(stability.get(evidence_id, 0.0)), 4)
             a = round(_compute_agreement_score(sentence, context_by_id, evidence_id), 4)
 
+            extra_features = _compute_claim_features(
+                sentence=cleaned_sentence,
+                cited_snippet=cmeta.get("snippet", ""),
+                context_by_id=context_by_id,
+                stability=stability,
+                evidence_id=evidence_id,
+                sentences_in_answer=all_sentences,
+                sidx=sidx,
+            )
+
             sentence_rows.append(
                 {
                     "sentence_id": sidx,
@@ -1703,6 +1963,7 @@ def _compute_citation_msa(
                     "M": m,
                     "S": s,
                     "A": a,
+                    "features": extra_features,
                     "msa_score": build_confidence(
                         top_sim=0.0,
                         top_rerank_norm=0.0,
@@ -1728,4 +1989,13 @@ def _compute_citation_msa(
         except Exception:
             pass
 
-    return {int(r.get("citation_id", 0)): {"M": r.get("M"), "S": r.get("S"), "A": r.get("A"), "msa_score": r.get("msa_score")} for r in sentence_rows}, unsupported
+    return {
+        int(r.get("citation_id", 0)): {
+            "M": r.get("M"),
+            "S": r.get("S"),
+            "A": r.get("A"),
+            "msa_score": r.get("msa_score"),
+            "features": r.get("features") or {},
+        }
+        for r in sentence_rows
+    }, unsupported

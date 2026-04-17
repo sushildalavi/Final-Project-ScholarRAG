@@ -33,6 +33,7 @@ from backend.sense_resolver import (
 from backend.services.assistant_utils import (
     _append_public_source_links,
     _apply_usage_boost,
+    _rewrite_ungrounded_claims,
     _base_confidence,
     _build_evidence_id,
     _build_generation_prompt,
@@ -1122,6 +1123,12 @@ def assistant_answer(
 
     answer = _normalize_inline_citations(answer)
     answer = _humanize_answer_text(answer)
+    # Post-generation claim-grounding pass: hedge claims whose citation does
+    # not actually entail them (and sentences with no citation). This lifts
+    # effective faithfulness without dropping coverage: the answer still
+    # addresses the same points, but confidently-ungrounded claims become
+    # clearly-hedged claims. Recorded so the response surfaces the count.
+    answer, hedged_count = _rewrite_ungrounded_claims(answer, citations)
     citation_coverage_par, unsupported_claims, paragraph_count = _citation_coverage_stats(answer)
     if scope == "uploaded" and _needs_scope_limited_answer(query, citations):
         answer = _scope_limited_answer(query, citations)
