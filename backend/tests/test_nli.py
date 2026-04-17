@@ -5,9 +5,9 @@ No OpenAI API calls are made — only the heuristic and parsing paths are tested
 import unittest
 
 from backend.services.nli import (
-    _tokens,
     _heuristic_entailment_prob,
     _parse_prob_text,
+    _tokens,
 )
 
 

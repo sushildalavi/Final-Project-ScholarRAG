@@ -10,7 +10,13 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from backend.open_eval import dump_json, export_answer_for_query, export_retrieval_for_query, load_query_set, ready_documents
+from backend.open_eval import (
+    dump_json,
+    export_answer_for_query,
+    export_retrieval_for_query,
+    load_query_set,
+    ready_documents,
+)
 from backend.open_eval_spreadsheet import (
     CLAIM_ANNOTATION_FIELDS,
     CORPUS_DOC_FIELDS,

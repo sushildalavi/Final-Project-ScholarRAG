@@ -6,7 +6,6 @@ from typing import Dict, List, Optional
 
 import requests
 
-
 OPENALEX_BASE_URL = "https://api.openalex.org/works"
 MAX_PER_PAGE = 200
 RATE_LIMIT_DELAY = 0.4  # seconds between requests to respect rate limits

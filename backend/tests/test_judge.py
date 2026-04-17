@@ -5,11 +5,11 @@ No OpenAI API calls are made.
 import unittest
 
 from backend.services.judge import (
-    _split_sentences,
-    _safe_int,
-    _safe_float,
-    _parse_judge_json,
     _fallback_report,
+    _parse_judge_json,
+    _safe_float,
+    _safe_int,
+    _split_sentences,
 )
 
 

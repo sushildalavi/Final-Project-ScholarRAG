@@ -9,7 +9,6 @@ from typing import Any
 
 import requests
 
-
 logger = logging.getLogger(__name__)
 
 OPENALEX_BASE_URL = "https://api.openalex.org/works"

@@ -3,7 +3,6 @@ from __future__ import annotations
 import math
 from typing import Any
 
-
 _GAIN_BY_LABEL = {
     "relevant": 2.0,
     "partially_relevant": 1.0,

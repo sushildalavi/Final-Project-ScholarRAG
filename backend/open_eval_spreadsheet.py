@@ -6,7 +6,6 @@ from typing import Any, Iterable
 
 from backend.open_eval_metrics import relevance_gain
 
-
 QUERY_SUMMARY_FIELDS = [
     "query_id",
     "query",

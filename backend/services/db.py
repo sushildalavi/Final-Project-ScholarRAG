@@ -1,11 +1,12 @@
-import os
 import logging
+import os
 from typing import Any, Iterable, List, Optional, Tuple
 
 import psycopg2
-import psycopg2.pool
 import psycopg2.extras
+import psycopg2.pool
 from psycopg2.extensions import connection as PGConnection
+
 from backend.utils.config import _load_dotenv_if_available
 
 logger = logging.getLogger(__name__)

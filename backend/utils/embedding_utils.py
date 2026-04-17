@@ -12,7 +12,6 @@ import numpy as np
 
 from backend.services import embeddings as emb_service
 
-
 EMBED_MODEL = emb_service.get_embedding_model()
 
 

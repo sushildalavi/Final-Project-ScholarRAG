@@ -1,6 +1,6 @@
 import unittest
 
-from backend.eval_metrics import aggregate_metrics, recall_at_k, mrr, ndcg_at_k
+from backend.eval_metrics import aggregate_metrics, mrr, ndcg_at_k, recall_at_k
 
 
 class EvalMetricsTests(unittest.TestCase):

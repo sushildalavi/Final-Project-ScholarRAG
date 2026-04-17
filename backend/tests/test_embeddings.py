@@ -8,10 +8,10 @@ import unittest
 
 import backend.services.embeddings as embeddings_module
 from backend.services.embeddings import (
-    _trim_or_pad,
-    _prepare_text,
-    _validate_embedding_payload,
     _is_context_length_error,
+    _prepare_text,
+    _trim_or_pad,
+    _validate_embedding_payload,
 )
 
 

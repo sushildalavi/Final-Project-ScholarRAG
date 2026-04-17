@@ -42,7 +42,13 @@ jobs:
           PGPASSWORD=scholarrag psql -h 127.0.0.1 -U scholarrag -d scholarrag_db -f db/init.sql
 
       - name: Lint (ruff)
-        run: ruff check backend/ utils/ scripts/ --select E,F,W
+        # Rule selection + ignores live in pyproject.toml [tool.ruff.lint].
+        # Do not pass --select here: it would override the project ignores
+        # (E402 / E501 / F401 / W291 / W293) and make CI fail on intentional
+        # patterns (e.g. sys.path manipulation before local imports).
+        # Previously this also listed a top-level utils/ directory that no
+        # longer exists (it is now backend/utils/, already linted via backend/).
+        run: ruff check backend/ scripts/
 
       - name: Run tests
         env:

@@ -4,7 +4,7 @@ the aggregate_metrics() aggregation logic.
 """
 import unittest
 
-from backend.eval_metrics import recall_at_k, mrr, ndcg_at_k, aggregate_metrics
+from backend.eval_metrics import aggregate_metrics, mrr, ndcg_at_k, recall_at_k
 
 
 class RecallAtKTests(unittest.TestCase):

@@ -1,14 +1,14 @@
 import hashlib
 import io
+import logging
+import math
 import os
 import re
 import time
-import math
-import logging
 from pathlib import Path
 from typing import List, Optional, Tuple
 
-from fastapi import APIRouter, File, UploadFile, HTTPException, BackgroundTasks
+from fastapi import APIRouter, BackgroundTasks, File, HTTPException, UploadFile
 from fastapi.responses import JSONResponse
 from openai import OpenAI
 from PyPDF2 import PdfReader
@@ -422,7 +422,7 @@ def _ingest_document(doc_id: int, data: bytes, mime: str, filename: str, title: 
                 execute("UPDATE documents SET status='error' WHERE id=%s", [doc_id])
         else:
             execute("UPDATE documents SET status='error' WHERE id=%s", [doc_id])
-    except Exception as exc:
+    except Exception:
         execute("UPDATE documents SET status='error' WHERE id=%s", [doc_id])
         raise
 

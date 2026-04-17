@@ -1,22 +1,22 @@
+import json
 import os
 import time
-import json
 from pathlib import Path
-from typing import Optional, List, Dict, Any
+from typing import Any, Dict, List, Optional
 
-from fastapi import APIRouter, HTTPException, UploadFile, File
+from fastapi import APIRouter, File, HTTPException, UploadFile
 from openai import OpenAI
 
-from backend.services.db import execute, fetchall, fetchone
 from backend.pdf_ingest import (
-    _extract_pdf_text,
     _chunk_text,
     _embed_and_store_chunks,
+    _extract_pdf_text,
     _is_supported_upload,
     _sanitize_text,
 )
-from backend.public_search import public_live_search
 from backend.pdf_ingest import search_chunks as search_uploaded_chunks
+from backend.public_search import public_live_search
+from backend.services.db import execute, fetchall, fetchone
 
 router = APIRouter(prefix="/assistant/chat", tags=["chat"])
 
