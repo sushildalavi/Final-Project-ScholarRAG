@@ -9,7 +9,7 @@ from typing import Any, Iterable
 from backend.pdf_ingest import search_chunks
 from backend.services.assistant_utils import _build_evidence_id, _extract_sentence_citation_ids
 from backend.services.db import fetchall
-from backend.services.judge import _split_sentences
+from backend.services.judge import _split_sentences, evaluate_faithfulness
 
 
 def utc_now_iso() -> str:
@@ -311,6 +311,7 @@ def _assistant_payload(
     k: int,
     compute_msa: bool,
     run_judge_llm: bool,
+    strict_grounding: bool = False,
     all_docs: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     payload = {
@@ -328,6 +329,8 @@ def _assistant_payload(
     if compute_msa:
         payload["run_judge"] = True
         payload["run_judge_llm"] = bool(run_judge_llm)
+    if strict_grounding:
+        payload["strict_grounding"] = True
     return payload
 
 
@@ -337,6 +340,7 @@ def run_answer_for_query(
     k: int,
     compute_msa: bool = False,
     run_judge_llm: bool = False,
+    strict_grounding: bool = False,
     all_docs: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     from backend.app import assistant_answer
@@ -347,6 +351,7 @@ def run_answer_for_query(
             k=k,
             compute_msa=compute_msa,
             run_judge_llm=run_judge_llm,
+            strict_grounding=strict_grounding,
             all_docs=all_docs,
         )
     )
@@ -366,7 +371,7 @@ def export_citations(citations: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 "chunk_id": _coerce_int(citation.get("chunk_id")),
                 "page": _coerce_int(citation.get("page")),
                 "source": citation.get("source"),
-                "snippet": citation.get("snippet", ""),
+                "snippet": citation.get("snippet") or citation.get("text") or "",
                 "used_in_answer": bool(citation.get("used_in_answer")),
                 "msa": citation.get("msa") if isinstance(citation.get("msa"), dict) else None,
             }
@@ -378,6 +383,9 @@ def build_claim_rows(query_id: str, answer: str, exported_citations: list[dict[s
     citation_index = {int(c.get("citation_index") or idx): c for idx, c in enumerate(exported_citations, start=1)}
     claims: list[dict[str, Any]] = []
 
+    def _tokens(text: str) -> set[str]:
+        return {t for t in re.findall(r"[a-z0-9]+", (text or "").lower()) if len(t) > 2}
+
     for sentence_index, sentence in enumerate(_split_sentences(answer), start=1):
         clean_text = re.sub(r"\[(?:S)?(\d+)\]", "", sentence).strip()
         clean_text = re.sub(r"\s+", " ", clean_text).strip()
@@ -385,6 +393,21 @@ def build_claim_rows(query_id: str, answer: str, exported_citations: list[dict[s
             continue
 
         cited_ids = _extract_sentence_citation_ids(sentence)
+        if not cited_ids and citation_index:
+            sentence_tokens = _tokens(clean_text)
+            best_idx = None
+            best_score = 0.0
+            for idx, c in citation_index.items():
+                hay = f"{c.get('title','')} {c.get('snippet','')}"
+                hay_tokens = _tokens(hay)
+                if not hay_tokens:
+                    continue
+                score = len(sentence_tokens & hay_tokens) / max(1, len(sentence_tokens))
+                if score > best_score:
+                    best_score = score
+                    best_idx = idx
+            if best_idx is not None and best_score >= 0.08:
+                cited_ids = [best_idx]
         citation_ids: list[str] = []
         evidence_ids: list[str] = []
         evidence_parts: list[str] = []
@@ -431,12 +454,45 @@ def build_claim_rows(query_id: str, answer: str, exported_citations: list[dict[s
     return claims
 
 
+def _apply_faithfulness_labels_to_claims(claims: list[dict[str, Any]], faithfulness: Any) -> list[dict[str, Any]]:
+    if not claims or not isinstance(faithfulness, dict):
+        return claims
+    judge_claims = faithfulness.get("claims")
+    if not isinstance(judge_claims, list) or not judge_claims:
+        return claims
+
+    def _norm(text: Any) -> str:
+        return re.sub(r"\s+", " ", str(text or "").strip()).lower()
+
+    by_text: dict[str, list[dict[str, Any]]] = {}
+    for item in judge_claims:
+        key = _norm(item.get("sentence"))
+        if key:
+            by_text.setdefault(key, []).append(item)
+
+    for idx, claim in enumerate(claims):
+        key = _norm(claim.get("text"))
+        judge_item = None
+        if key and by_text.get(key):
+            judge_item = by_text[key].pop(0)
+        elif idx < len(judge_claims):
+            judge_item = judge_claims[idx]
+        if not isinstance(judge_item, dict):
+            continue
+        supported = judge_item.get("supported")
+        if supported is None:
+            continue
+        claim["label"] = "supported" if bool(supported) else "unsupported"
+    return claims
+
+
 def export_answer_for_query(
     query_entry: dict[str, Any],
     *,
     k: int,
     compute_msa: bool = False,
     run_judge_llm: bool = False,
+    strict_grounding: bool = False,
     all_docs: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     result = run_answer_for_query(
@@ -444,10 +500,20 @@ def export_answer_for_query(
         k=k,
         compute_msa=compute_msa,
         run_judge_llm=run_judge_llm,
+        strict_grounding=strict_grounding,
         all_docs=all_docs,
     )
     citations = export_citations(result.get("citations") or [])
+    faithfulness = result.get("faithfulness")
+    if not isinstance(faithfulness, dict) or faithfulness.get("overall_score") is None:
+        faithfulness = evaluate_faithfulness(
+            query_entry["query"],
+            result.get("answer") or "",
+            result.get("citations") or [],
+            use_llm=False,
+        )
     claims = build_claim_rows(query_entry["query_id"], result.get("answer") or "", citations)
+    claims = _apply_faithfulness_labels_to_claims(claims, faithfulness)
     return {
         "query_id": query_entry["query_id"],
         "query": query_entry["query"],
@@ -458,6 +524,7 @@ def export_answer_for_query(
         "answer_scope": result.get("answer_scope"),
         "citations": citations,
         "claims": claims,
+        "faithfulness": faithfulness,
     }
 
 

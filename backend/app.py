@@ -39,10 +39,13 @@ from backend.services.assistant_utils import (
     _build_multi_doc_uploaded_summary,
     _build_public_source_listing_answer,
     _build_public_synthesis_fallback,
+    _build_strict_grounded_answer,
     _build_uploaded_evidence_fallback,
     _build_uploaded_related_work_fallback,
     _chunk_query_overlap,
     _citation_coverage_stats,
+    _citations_support_entity_benchmark_pair,
+    _citations_support_requested_metric,
     _clamp01,
     _classify_answer_mode,
     _compute_citation_msa,
@@ -61,6 +64,7 @@ from backend.services.assistant_utils import (
     _is_uploaded_doc_summary_query,
     _is_uploaded_key_concepts_query,
     _load_latest_calibration_weights,
+    _named_paper_targets_supported,
     _needs_scope_limited_answer,
     _normalize_forward,
     _normalize_inline_citations,
@@ -68,12 +72,15 @@ from backend.services.assistant_utils import (
     _primary_anchor_term,
     _prune_public_citations,
     _prune_uploaded_citations,
+    _query_mentions_unseen_system,
+    _query_mentions_unseen_terms,
     _query_mentions_missing_uploaded_paper,
     _query_requires_specific_grounding,
     _specific_target_phrases,
     _query_overlap_strength,
     _rank_and_trim_citations,
     _rebalance_uploaded_multi_doc_citations,
+    _rerank_uploaded_by_query_prior,
     _requested_public_source,
     _resolve_effective_doc_id,
     _scope_evidence_label,
@@ -115,6 +122,7 @@ app.include_router(pdf_ingest.router)
 app.include_router(chat.router)
 
 RESEARCH_CHAT_MODEL = os.getenv("RESEARCH_CHAT_MODEL", "gpt-4o-mini")
+OPENAI_CHAT_TIMEOUT_SECONDS = float(os.getenv("OPENAI_CHAT_TIMEOUT_SECONDS", "90") or 90)
 ENABLE_WEB_FALLBACK = os.getenv("ENABLE_WEB_FALLBACK", "false").strip().lower() == "true"
 
 # Fallback thresholds: only replace the LLM answer with a template when citation
@@ -216,6 +224,7 @@ def _chat_answer(query: str) -> str:
             {"role": "user", "content": query},
         ],
         temperature=0.4,
+        timeout=OPENAI_CHAT_TIMEOUT_SECONDS,
     )
     return (completion.choices[0].message.content or "").strip()
 
@@ -331,6 +340,7 @@ def assistant_answer(
     debug_confidence = bool(payload.get("debug_confidence"))
     run_judge = bool(payload.get("run_judge"))
     run_judge_llm = bool(payload.get("run_judge_llm", True))
+    strict_grounding = bool(payload.get("strict_grounding"))
     allow_general_background = bool(payload.get("allow_general_background"))
     chosen_sense = payload.get("sense")
     compare_senses = bool(payload.get("compare_senses"))
@@ -471,7 +481,11 @@ def assistant_answer(
     def fetch_context(q: str, mode: str):
         local_citations = []
         if mode == "uploaded":
-            results = search_uploaded_chunks({"q": q, "k": k, "doc_id": doc_id, "doc_ids": doc_ids})["results"]
+            # Over-fetch uploaded candidates, then rerank locally. This is critical for
+            # concept-heavy queries where the right paper is not in the vector top-k
+            # but is present slightly lower in the candidate list.
+            candidate_k = max(int(k), min(120, int(k) * 10))
+            results = search_uploaded_chunks({"q": q, "k": candidate_k, "doc_id": doc_id, "doc_ids": doc_ids})["results"]
             distances = [float(r.get("distance", 1.0) or 1.0) for r in results] or [1.0]
             cosines = [max(-1.0, min(1.0, 1.0 - d)) for d in distances] or [0.0]
             min_s, max_s = min(cosines), max(cosines)
@@ -503,7 +517,9 @@ def assistant_answer(
                         "snippet": r.get("text", ""),
                     }
                 )
+            local_citations = _rerank_uploaded_by_query_prior(q, local_citations)
             local_citations = _prune_uploaded_citations(q, local_citations, doc_ids=doc_ids)
+            local_citations = _rerank_uploaded_by_query_prior(q, local_citations)
         elif mode == "public":
             nonlocal public_provider_status
             public_resp = public_live_search(q, k=min(k, 8), source_only=requested_public_source, return_metadata=True)
@@ -698,12 +714,30 @@ def assistant_answer(
         and bool(specific_targets)
         and not _citations_cover_specific_targets(citations, specific_targets)
     )
+    lacks_named_paper_target_support = (
+        bool(specific_targets)
+        and not _named_paper_targets_supported(query, citations, specific_targets)
+    )
+    missing_exact_metric = not _citations_support_requested_metric(query, citations)
+    missing_entity_benchmark_pair = not _citations_support_entity_benchmark_pair(query, citations)
+    unseen_system_reference = _query_mentions_unseen_system(query, citations)
+    unseen_term_reference = _query_mentions_unseen_terms(query, citations)
+    strict_exact_metric_query = (
+        "benchmark" in query.lower()
+        and ("exact value" in query.lower() or "exact score" in query.lower())
+    )
 
     if (
         not citations
         or (post_filter_overlap < 0.05 and not doc_id and not doc_ids)
         or (missing_named_paper and not doc_id and not doc_ids)
         or (lacks_specific_support and not doc_id and not doc_ids)
+        or (lacks_named_paper_target_support and not doc_id and not doc_ids)
+        or (missing_exact_metric and not doc_id and not doc_ids)
+        or (missing_entity_benchmark_pair and not doc_id and not doc_ids)
+        or (strict_exact_metric_query and not doc_id and not doc_ids)
+        or (unseen_system_reference and not doc_id and not doc_ids)
+        or (unseen_term_reference and not doc_id and not doc_ids)
     ):
         evidence_label = _scope_evidence_label(scope)
         sense_hint = ""
@@ -743,6 +777,18 @@ def assistant_answer(
                 "reason": (
                     "missing-named-paper"
                     if missing_named_paper
+                    else "unseen-system-reference"
+                    if unseen_system_reference
+                    else "missing-exact-metric"
+                    if missing_exact_metric
+                    else "missing-named-paper-target-support"
+                    if lacks_named_paper_target_support
+                    else "missing-entity-benchmark-pair"
+                    if missing_entity_benchmark_pair
+                    else "strict-exact-metric-query"
+                    if strict_exact_metric_query
+                    else "missing-unseen-term-reference"
+                    if unseen_term_reference
                     else "missing-specific-support"
                     if lacks_specific_support
                     else "no-relevant-match"
@@ -1051,23 +1097,28 @@ def assistant_answer(
         compare_instruction=compare_instruction,
     )
 
-    if client is None:
-        raise HTTPException(
-            status_code=503,
-            detail="OpenAI client not configured. Set OPENAI_API_KEY (and install python-dotenv if relying on .env).",
-        )
+    if strict_grounding:
+        answer = _build_strict_grounded_answer(query, citations, scope, answer_mode)
+        generate_ms = 0.0
+    else:
+        if client is None:
+            raise HTTPException(
+                status_code=503,
+                detail="OpenAI client not configured. Set OPENAI_API_KEY (and install python-dotenv if relying on .env).",
+            )
 
-    gen_start = time.perf_counter()
-    try:
-        completion = client.chat.completions.create(
-            model=RESEARCH_CHAT_MODEL,
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0.2,
-        )
-        answer = completion.choices[0].message.content or ""
-    except Exception as exc:
-        raise HTTPException(status_code=500, detail=f"LLM error: {exc}") from exc
-    generate_ms = (time.perf_counter() - gen_start) * 1000
+        gen_start = time.perf_counter()
+        try:
+            completion = client.chat.completions.create(
+                model=RESEARCH_CHAT_MODEL,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.2,
+                timeout=OPENAI_CHAT_TIMEOUT_SECONDS,
+            )
+            answer = completion.choices[0].message.content or ""
+        except Exception as exc:
+            raise HTTPException(status_code=500, detail=f"LLM error: {exc}") from exc
+        generate_ms = (time.perf_counter() - gen_start) * 1000
 
     answer = _normalize_inline_citations(answer)
     answer = _humanize_answer_text(answer)
@@ -1339,7 +1390,7 @@ def assistant_answer(
         },
     )
 
-    citations_out = [{k: v for k, v in c.items() if k != "snippet"} for c in citations]
+    citations_out = [dict(c) for c in citations]
     for c in citations_out:
         if "confidence_obj" not in c:
             c["confidence_obj"] = build_confidence(

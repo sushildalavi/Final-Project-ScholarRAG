@@ -264,6 +264,8 @@ def resolve_sense(query: str, top_chunks: List[Dict], chosen_sense: str | None =
 
     sense_scores = [(opt, _score_sense(opt, snippets)) for opt in options]
     sense_scores.sort(key=lambda x: x[1], reverse=True)
+    evidence_top = sense_scores[0][0] if sense_scores else None
+    evidence_top_score = sense_scores[0][1] if sense_scores else 0.0
 
     if chosen_sense and chosen_sense in options:
         return {
@@ -281,6 +283,30 @@ def resolve_sense(query: str, top_chunks: List[Dict], chosen_sense: str | None =
             "options": options,
             "rationale": "Only one sense configured.",
             "recommended_option": options[0] if options else None,
+        }
+
+    ml_sense = options[0]
+    query_scores = [(opt, _score_sense(opt, [query.lower()])) for opt in options]
+    query_scores.sort(key=lambda x: x[1], reverse=True)
+    query_top = query_scores[0][0] if query_scores else None
+    query_top_score = query_scores[0][1] if query_scores else 0.0
+    query_second_score = query_scores[1][1] if len(query_scores) > 1 else 0.0
+
+    # If the query itself clearly signals the scholarly / ML sense, do not bounce
+    # the user into a clarification loop just because the evidence snippets are
+    # sparse or the alternative sense is generic.
+    if (
+        query_top == ml_sense
+        and (_query_has_ml_context(query) or query_top_score >= 2.0)
+        and (evidence_top == ml_sense or evidence_top_score <= 0.0)
+    ):
+        return {
+            "is_ambiguous": False,
+            "term": term,
+            "options": options,
+            "rationale": f"Query text itself strongly favors the scholarly sense '{ml_sense}'.",
+            "recommended_option": ml_sense,
+            "sense_scores": [{"sense": s, "score": float(sc)} for s, sc in sense_scores],
         }
 
     nonzero = [sc for _, sc in sense_scores if sc > 0]

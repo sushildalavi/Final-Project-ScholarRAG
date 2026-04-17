@@ -60,14 +60,32 @@ def _parse_judge_json(raw: str) -> Dict:
 def _fallback_report(sentences: List[str], citations: List[Dict]) -> Dict:
     cited_count = 0
     supported = 0
+    claims = []
     unsupported = []
     for idx, s in enumerate(sentences):
         ids = re.findall(r"\[S(\d+)\]", s)
         if ids:
             cited_count += 1
             supported += 1
+            claims.append(
+                {
+                    "sentence_id": idx + 1,
+                    "sentence": s,
+                    "supported": True,
+                    "evidence_ids": [f"S{x}" for x in ids],
+                    "reason": "citation_present",
+                }
+            )
         else:
-            unsupported.append({"sentence_id": idx + 1, "sentence": s, "supported": False, "reason": "missing_citation"})
+            item = {
+                "sentence_id": idx + 1,
+                "sentence": s,
+                "supported": False,
+                "evidence_ids": [],
+                "reason": "missing_citation",
+            }
+            claims.append(item)
+            unsupported.append(item)
 
     if not sentences:
         coverage = 0.0
@@ -87,6 +105,7 @@ def _fallback_report(sentences: List[str], citations: List[Dict]) -> Dict:
         "unsupported_count": len(unsupported),
         "supported_count": supported,
         "sentence_count": len(sentences),
+        "claims": claims,
         "unsupported": unsupported,
         "method": "heuristic",
         # Backward-compatible key expected by tests and downstream consumers.
@@ -169,6 +188,14 @@ def evaluate_faithfulness(query: str, answer: str, citations: List[Dict], use_ll
             cleaned_claims.append(item)
             if not supported:
                 unsupported.append(item)
+
+        # Some judge responses return aggregate scores but omit per-sentence claims.
+        # Fall back to deterministic sentence-level labeling so downstream
+        # evaluation coverage remains stable across runs.
+        if not cleaned_claims and sentences:
+            fb = _fallback_report(sentences, citations)
+            fb["method"] = "llm_empty_fallback"
+            return fb
 
         total = max(1, _safe_int(payload.get("sentence_count"), len(sentences)))
         return {

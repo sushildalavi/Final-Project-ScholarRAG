@@ -155,8 +155,47 @@ def build_corpus_doc_rows(retrieval_rows: list[dict[str, Any]]) -> list[dict[str
 def build_claim_annotation_rows(answer_rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for answer_row in answer_rows:
+        citation_msa: dict[str, dict[str, float]] = {}
+        for c in answer_row.get("citations") or []:
+            cid = str(c.get("citation_id") or "").strip()
+            msa_obj = c.get("msa") if isinstance(c.get("msa"), dict) else None
+            if not cid or not msa_obj:
+                continue
+            try:
+                citation_msa[cid] = {
+                    "M": float(msa_obj.get("M", 0.0)),
+                    "S": float(msa_obj.get("S", 0.0)),
+                    "A": float(msa_obj.get("A", 0.0)),
+                }
+            except Exception:
+                continue
+
+        default_msa = None
+        if citation_msa:
+            all_rows = list(citation_msa.values())
+            default_msa = {
+                "M": sum(x["M"] for x in all_rows) / len(all_rows),
+                "S": sum(x["S"] for x in all_rows) / len(all_rows),
+                "A": sum(x["A"] for x in all_rows) / len(all_rows),
+            }
+
         for claim in answer_row.get("claims") or []:
             msa = claim.get("msa") if isinstance(claim.get("msa"), dict) else {}
+            if not msa:
+                cited_ids = [str(x).strip() for x in (claim.get("citation_ids") or []) if str(x).strip()]
+                cited_rows = [citation_msa[cid] for cid in cited_ids if cid in citation_msa]
+                if cited_rows:
+                    msa = {
+                        "M": sum(x["M"] for x in cited_rows) / len(cited_rows),
+                        "S": sum(x["S"] for x in cited_rows) / len(cited_rows),
+                        "A": sum(x["A"] for x in cited_rows) / len(cited_rows),
+                    }
+                elif default_msa:
+                    msa = default_msa
+                else:
+                    no_evidence = not (claim.get("citation_ids") or claim.get("evidence_ids"))
+                    if no_evidence:
+                        msa = {"M": 0.0, "S": 0.0, "A": 0.0}
             rows.append(
                 {
                     "query_id": answer_row.get("query_id"),

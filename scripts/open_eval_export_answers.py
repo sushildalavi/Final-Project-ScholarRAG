@@ -54,6 +54,11 @@ def main() -> None:
         action="store_true",
         help="When --compute-msa is set, also enable the LLM judge in assistant_answer.",
     )
+    parser.add_argument(
+        "--strict-grounding",
+        action="store_true",
+        help="Force deterministic citation-grounded answer construction instead of free-form generation.",
+    )
     args = parser.parse_args()
 
     query_set = load_query_set(args.queries)
@@ -71,6 +76,7 @@ def main() -> None:
                     k=max(1, args.k),
                     compute_msa=bool(args.compute_msa),
                     run_judge_llm=bool(args.run_judge_llm),
+                    strict_grounding=bool(args.strict_grounding),
                     all_docs=docs,
                 )
             )
@@ -89,6 +95,7 @@ def main() -> None:
         "k": max(1, args.k),
         "compute_msa": bool(args.compute_msa),
         "run_judge_llm": bool(args.run_judge_llm),
+        "strict_grounding": bool(args.strict_grounding),
         "queries": exported_queries,
         "errors": errors,
     }
