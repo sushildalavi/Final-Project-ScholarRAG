@@ -1,0 +1,41 @@
+{
+  "mode": "simulate_rewrite_impact",
+  "source": "Evaluation/data/post_fix/benchmark_56_baseline_before_strict/judge_eval_post_fix.json",
+  "n_claims_total": 544,
+  "n_claims_hedgable": 37,
+  "n_claims_rescued": 21,
+  "rescue_rate_assumed": 0.65,
+  "baseline": {
+    "claim_support_rate": 0.4485,
+    "query_level_mean_95ci": {
+      "mean": 0.5081389111062748,
+      "lo": 0.39713117332083997,
+      "hi": 0.6204091586735387,
+      "n": 55
+    }
+  },
+  "rewrite_simulated": {
+    "claim_support_rate": 0.4871,
+    "query_level_mean_95ci": {
+      "mean": 0.5591594376291937,
+      "lo": 0.45713536210114575,
+      "hi": 0.6629232205467354,
+      "n": 55
+    }
+  },
+  "delta": {
+    "claim_level_absolute": 0.0386,
+    "query_level_absolute_mean_95ci": {
+      "mean": 0.051020526522918865,
+      "lo": 0.017443067033976124,
+      "hi": 0.09766288828130927,
+      "n": 55
+    }
+  },
+  "coverage_vs_strict_grounding": {
+    "strict_n_claims_kept": 202,
+    "rewrite_n_claims_kept": 544,
+    "coverage_ratio_vs_baseline": 1.0,
+    "coverage_ratio_vs_strict": 2.693
+  }
+}

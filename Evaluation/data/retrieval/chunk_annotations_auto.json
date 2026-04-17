@@ -1,0 +1,1207 @@
+{
+  "mode": "chunk_level_annotation_template",
+  "auto_derived_from": "Evaluation/data/retrieval/retrieval_eval_120q_final.json",
+  "n_queries": 120,
+  "n_queries_with_multi_gold": 119,
+  "avg_gold_chunks_per_query": 2.9833333333333334,
+  "queries": [
+    {
+      "query": "What problem does 'Dense Passage Retrieval for Open-Domain Question Answering' address and why is it significant?",
+      "gold_doc_id": 2,
+      "gold_chunk_ids": [
+        43,
+        42,
+        41
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What is the main contribution of 'Dense Passage Retrieval for Open-Domain Question Answering'?",
+      "gold_doc_id": 2,
+      "gold_chunk_ids": [
+        42,
+        41,
+        46
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does the dense retrieval method in 'Dense Passage Retrieval for Open-Domain Question Answering' work?",
+      "gold_doc_id": 2,
+      "gold_chunk_ids": [
+        42,
+        41,
+        46
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What datasets and benchmarks does 'Dense Passage Retrieval for Open-Domain Question Answering' use to evaluate performance?",
+      "gold_doc_id": 2,
+      "gold_chunk_ids": [
+        41,
+        42,
+        50
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What are the quantitative results reported in 'Dense Passage Retrieval for Open-Domain Question Answering'?",
+      "gold_doc_id": 2,
+      "gold_chunk_ids": [
+        42,
+        41,
+        46
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does 'Dense Passage Retrieval for Open-Domain Question Answering' compare to BM25 and other sparse retrieval baselines?",
+      "gold_doc_id": 2,
+      "gold_chunk_ids": [
+        41,
+        42,
+        46
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What limitations or failure cases does 'Dense Passage Retrieval for Open-Domain Question Answering' acknowledge?",
+      "gold_doc_id": 2,
+      "gold_chunk_ids": [
+        42,
+        41,
+        46
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does the training objective in 'Dense Passage Retrieval for Open-Domain Question Answering' differ from earlier retrieval approaches?",
+      "gold_doc_id": 2,
+      "gold_chunk_ids": [
+        42,
+        41,
+        46
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What retrieval problem does ColBERT set out to solve, and what are its motivating challenges?",
+      "gold_doc_id": 3,
+      "gold_chunk_ids": [
+        80,
+        81,
+        97
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What is the key innovation introduced in 'ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT'?",
+      "gold_doc_id": 3,
+      "gold_chunk_ids": [
+        80,
+        81,
+        82
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "Explain the late interaction mechanism described in ColBERT and how it differs from single-vector retrieval.",
+      "gold_doc_id": 3,
+      "gold_chunk_ids": [
+        97,
+        81,
+        80
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What benchmarks are used to evaluate ColBERT, and what metrics are reported?",
+      "gold_doc_id": 3,
+      "gold_chunk_ids": [
+        81,
+        80,
+        97
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What are the quantitative retrieval effectiveness results reported in ColBERT?",
+      "gold_doc_id": 3,
+      "gold_chunk_ids": [
+        97,
+        96,
+        91
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does ColBERT compare to dense single-vector models like DPR and to BM25?",
+      "gold_doc_id": 3,
+      "gold_chunk_ids": [
+        85,
+        97,
+        96
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What are the efficiency trade-offs or limitations discussed in ColBERT?",
+      "gold_doc_id": 3,
+      "gold_chunk_ids": [
+        97,
+        96,
+        88
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does the indexing strategy in ColBERT enable scalable retrieval while preserving contextualized representations?",
+      "gold_doc_id": 3,
+      "gold_chunk_ids": [
+        89,
+        88,
+        80
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What is the core problem that 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks' addresses?",
+      "gold_doc_id": 4,
+      "gold_chunk_ids": [
+        169,
+        191,
+        170
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What does 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks' contribute to knowledge-intensive NLP?",
+      "gold_doc_id": 4,
+      "gold_chunk_ids": [
+        169,
+        191,
+        170
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does the RAG model combine retrieval and generation in 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks'?",
+      "gold_doc_id": 4,
+      "gold_chunk_ids": [
+        169,
+        172,
+        191
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What datasets does 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks' use for evaluation?",
+      "gold_doc_id": 4,
+      "gold_chunk_ids": [
+        191,
+        169,
+        194
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What quantitative improvements does RAG achieve over closed-book and non-retrieval baselines?",
+      "gold_doc_id": 4,
+      "gold_chunk_ids": [
+        194
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does RAG compare to closed-book generation models in 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks'?",
+      "gold_doc_id": 4,
+      "gold_chunk_ids": [
+        169,
+        191,
+        171
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What limitations of the RAG approach are acknowledged in 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks'?",
+      "gold_doc_id": 4,
+      "gold_chunk_ids": [
+        191,
+        169,
+        172
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks' handle the integration of retrieved documents during generation?",
+      "gold_doc_id": 4,
+      "gold_chunk_ids": [
+        191,
+        169,
+        171
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What gap in IR evaluation does the BEIR benchmark aim to fill?",
+      "gold_doc_id": 5,
+      "gold_chunk_ids": [
+        405,
+        429,
+        407
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What is the main contribution of 'BEIR: A Heterogeneous Benchmark for Zero-shot Evaluation of Information Retrieval Models' to the IR research community?",
+      "gold_doc_id": 5,
+      "gold_chunk_ids": [
+        429,
+        405,
+        407
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How is the BEIR benchmark structured and what domains does it cover?",
+      "gold_doc_id": 5,
+      "gold_chunk_ids": [
+        429,
+        406,
+        407
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What datasets are included in the BEIR benchmark and what retrieval tasks do they represent?",
+      "gold_doc_id": 5,
+      "gold_chunk_ids": [
+        407,
+        429,
+        406
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "Which retrieval models are evaluated in BEIR and what are the key performance findings?",
+      "gold_doc_id": 5,
+      "gold_chunk_ids": [
+        405,
+        419,
+        407
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How do dense retrieval models compare to BM25 in zero-shot settings according to BEIR?",
+      "gold_doc_id": 5,
+      "gold_chunk_ids": [
+        405,
+        419,
+        418
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What limitations does 'BEIR: A Heterogeneous Benchmark for Zero-shot Evaluation of Information Retrieval Models' acknowledge about its evaluation scope?",
+      "gold_doc_id": 5,
+      "gold_chunk_ids": [
+        429,
+        405,
+        407
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What conclusions does BEIR draw about the generalization ability of neural retrieval models across diverse domains?",
+      "gold_doc_id": 5,
+      "gold_chunk_ids": [
+        407,
+        405,
+        406
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What is the research motivation behind creating the SQuAD dataset for machine comprehension?",
+      "gold_doc_id": 6,
+      "gold_chunk_ids": [
+        13,
+        14,
+        15
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What does 'SQuAD: 100,000+ Questions for Machine Comprehension of Text' contribute to reading comprehension research?",
+      "gold_doc_id": 6,
+      "gold_chunk_ids": [
+        13,
+        14,
+        15
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How was the SQuAD dataset collected and annotated using crowdworkers?",
+      "gold_doc_id": 6,
+      "gold_chunk_ids": [
+        18,
+        17,
+        14
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What is the scale and composition of the SQuAD dataset?",
+      "gold_doc_id": 6,
+      "gold_chunk_ids": [
+        14,
+        15,
+        13
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What human and model performance baselines are reported in 'SQuAD: 100,000+ Questions for Machine Comprehension of Text'?",
+      "gold_doc_id": 6,
+      "gold_chunk_ids": [
+        13,
+        14,
+        15
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How do baseline models in SQuAD compare to human performance on the reading comprehension task?",
+      "gold_doc_id": 6,
+      "gold_chunk_ids": [
+        15,
+        13,
+        24
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What limitations or challenging question types does SQuAD acknowledge in its evaluation?",
+      "gold_doc_id": 6,
+      "gold_chunk_ids": [
+        15,
+        13,
+        24
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What evaluation metrics are used in SQuAD and why were they chosen?",
+      "gold_doc_id": 6,
+      "gold_chunk_ids": [
+        15,
+        14,
+        24
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What problem does 'Natural Questions: A Benchmark for Question Answering Research' address compared to prior QA benchmarks?",
+      "gold_doc_id": 7,
+      "gold_chunk_ids": [
+        64,
+        65,
+        63
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What is the unique contribution of the Natural Questions dataset to open-domain QA research?",
+      "gold_doc_id": 7,
+      "gold_chunk_ids": [
+        72,
+        65,
+        64
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How was the Natural Questions dataset collected and what annotation process was used?",
+      "gold_doc_id": 7,
+      "gold_chunk_ids": [
+        72,
+        78,
+        77
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What distinguishes Natural Questions from SQuAD and other prior reading comprehension datasets?",
+      "gold_doc_id": 7,
+      "gold_chunk_ids": [
+        64,
+        72,
+        73
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What baseline models are evaluated on Natural Questions and what are their performance scores?",
+      "gold_doc_id": 7,
+      "gold_chunk_ids": [
+        73,
+        74,
+        72
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What are the main findings about QA model performance reported in 'Natural Questions: A Benchmark for Question Answering Research'?",
+      "gold_doc_id": 7,
+      "gold_chunk_ids": [
+        64,
+        65,
+        72
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What annotation challenges and limitations are discussed in 'Natural Questions: A Benchmark for Question Answering Research'?",
+      "gold_doc_id": 7,
+      "gold_chunk_ids": [
+        77,
+        78,
+        79
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does 'Natural Questions' define and evaluate short and long answer responses?",
+      "gold_doc_id": 7,
+      "gold_chunk_ids": [
+        64,
+        65,
+        72
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What open-domain QA challenge does DrQA in 'Reading Wikipedia to Answer Open-Domain Questions' aim to solve?",
+      "gold_doc_id": 8,
+      "gold_chunk_ids": [
+        27,
+        28,
+        26
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What is the main technical contribution of DrQA in 'Reading Wikipedia to Answer Open-Domain Questions'?",
+      "gold_doc_id": 8,
+      "gold_chunk_ids": [
+        27,
+        28,
+        26
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does DrQA combine document retrieval and reading comprehension in 'Reading Wikipedia to Answer Open-Domain Questions'?",
+      "gold_doc_id": 8,
+      "gold_chunk_ids": [
+        27,
+        28,
+        26
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What datasets are used to evaluate DrQA in 'Reading Wikipedia to Answer Open-Domain Questions'?",
+      "gold_doc_id": 8,
+      "gold_chunk_ids": [
+        27,
+        28,
+        26
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What are the quantitative results reported for DrQA on open-domain QA benchmarks?",
+      "gold_doc_id": 8,
+      "gold_chunk_ids": [
+        38,
+        27,
+        28
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does DrQA compare to alternative open-domain QA systems in 'Reading Wikipedia to Answer Open-Domain Questions'?",
+      "gold_doc_id": 8,
+      "gold_chunk_ids": [
+        35,
+        27,
+        28
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What limitations of the DrQA pipeline are acknowledged in 'Reading Wikipedia to Answer Open-Domain Questions'?",
+      "gold_doc_id": 8,
+      "gold_chunk_ids": [
+        28,
+        27,
+        26
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does DrQA handle the trade-off between retrieval recall and reader precision in 'Reading Wikipedia to Answer Open-Domain Questions'?",
+      "gold_doc_id": 8,
+      "gold_chunk_ids": [
+        27,
+        28,
+        35
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What summarization challenge motivates the PEGASUS pre-training approach?",
+      "gold_doc_id": 9,
+      "gold_chunk_ids": [
+        465,
+        448,
+        447
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What is the key pre-training innovation introduced in PEGASUS?",
+      "gold_doc_id": 9,
+      "gold_chunk_ids": [
+        453,
+        452,
+        462
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does the gap-sentence generation pre-training objective work in PEGASUS?",
+      "gold_doc_id": 9,
+      "gold_chunk_ids": [
+        454,
+        455,
+        449
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What summarization benchmarks are used to evaluate PEGASUS?",
+      "gold_doc_id": 9,
+      "gold_chunk_ids": [
+        465,
+        451,
+        450
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What ROUGE scores does PEGASUS achieve compared to prior state-of-the-art summarization models?",
+      "gold_doc_id": 9,
+      "gold_chunk_ids": [
+        453,
+        451,
+        452
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does PEGASUS compare to BART and other seq2seq models on summarization benchmarks?",
+      "gold_doc_id": 9,
+      "gold_chunk_ids": [
+        450,
+        451,
+        443
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What limitations does PEGASUS acknowledge regarding its pre-training objective or evaluation?",
+      "gold_doc_id": 9,
+      "gold_chunk_ids": [
+        453,
+        452,
+        462
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does the choice of pre-training corpus affect performance in PEGASUS?",
+      "gold_doc_id": 9,
+      "gold_chunk_ids": [
+        448,
+        447,
+        452
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What is the research problem that BART addresses in natural language generation and comprehension?",
+      "gold_doc_id": 10,
+      "gold_chunk_ids": [
+        212,
+        211,
+        223
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What is the main innovation of the BART denoising pre-training approach?",
+      "gold_doc_id": 10,
+      "gold_chunk_ids": [
+        212,
+        211,
+        217
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does the denoising pre-training objective in BART differ from BERT and GPT pre-training?",
+      "gold_doc_id": 10,
+      "gold_chunk_ids": [
+        217,
+        218,
+        213
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What tasks and datasets are used to evaluate BART across generation and comprehension?",
+      "gold_doc_id": 10,
+      "gold_chunk_ids": [
+        222,
+        224,
+        223
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What are the quantitative results for BART on summarization, translation, and QA tasks?",
+      "gold_doc_id": 10,
+      "gold_chunk_ids": [
+        224,
+        223,
+        220
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does BART compare to T5, RoBERTa, and other pre-trained models?",
+      "gold_doc_id": 10,
+      "gold_chunk_ids": [
+        217,
+        218,
+        222
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What limitations or failure cases does BART acknowledge in its pre-training or fine-tuning?",
+      "gold_doc_id": 10,
+      "gold_chunk_ids": [
+        217,
+        218,
+        224
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does BART handle different noise functions and which is most effective for generation tasks?",
+      "gold_doc_id": 10,
+      "gold_chunk_ids": [
+        213,
+        211,
+        212
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What problem with existing factuality evaluation does FActScore set out to solve?",
+      "gold_doc_id": 11,
+      "gold_chunk_ids": [
+        118,
+        117,
+        100
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What is the atomic claim decomposition approach introduced in FActScore?",
+      "gold_doc_id": 11,
+      "gold_chunk_ids": [
+        104,
+        105,
+        118
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does the FActScore metric work and how is it computed over long-form generation?",
+      "gold_doc_id": 11,
+      "gold_chunk_ids": [
+        100,
+        101,
+        104
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What models and generation tasks are evaluated using FActScore?",
+      "gold_doc_id": 11,
+      "gold_chunk_ids": [
+        104,
+        105,
+        100
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What are the main quantitative findings reported in FActScore about LLM factual precision?",
+      "gold_doc_id": 11,
+      "gold_chunk_ids": [
+        104,
+        105,
+        136
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does FActScore compare to ROUGE, BERTScore, and other automatic evaluation metrics for factuality?",
+      "gold_doc_id": 11,
+      "gold_chunk_ids": [
+        118,
+        117,
+        105
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What limitations of the FActScore approach are discussed in its evaluation framework?",
+      "gold_doc_id": 11,
+      "gold_chunk_ids": [
+        104,
+        105,
+        117
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does FActScore handle knowledge source selection and what impact does this have on factuality scores?",
+      "gold_doc_id": 11,
+      "gold_chunk_ids": [
+        118,
+        117,
+        105
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What limitation of prior language model pre-training does BERT address?",
+      "gold_doc_id": 12,
+      "gold_chunk_ids": [
+        144,
+        158,
+        146
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What are the main technical contributions of 'BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding'?",
+      "gold_doc_id": 12,
+      "gold_chunk_ids": [
+        144,
+        145,
+        146
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does the masked language model pre-training objective in BERT work?",
+      "gold_doc_id": 12,
+      "gold_chunk_ids": [
+        147,
+        145,
+        146
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What benchmarks and fine-tuning tasks are used to evaluate BERT?",
+      "gold_doc_id": 12,
+      "gold_chunk_ids": [
+        166,
+        165,
+        147
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What GLUE and SQuAD scores does BERT achieve compared to prior models?",
+      "gold_doc_id": 12,
+      "gold_chunk_ids": [
+        151,
+        152,
+        154
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does BERT compare to ELMo, GPT, and other pre-training approaches?",
+      "gold_doc_id": 12,
+      "gold_chunk_ids": [
+        166,
+        165,
+        164
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What limitations or negative results are acknowledged in 'BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding'?",
+      "gold_doc_id": 12,
+      "gold_chunk_ids": [
+        144,
+        158,
+        146
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does BERT's bidirectional context differ from unidirectional language models and why does it matter?",
+      "gold_doc_id": 12,
+      "gold_chunk_ids": [
+        144,
+        146,
+        145
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What problem with recurrent and convolutional sequence models does 'Attention Is All You Need' identify?",
+      "gold_doc_id": 13,
+      "gold_chunk_ids": [
+        195,
+        202,
+        196
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What is the Transformer architecture introduced in 'Attention Is All You Need'?",
+      "gold_doc_id": 13,
+      "gold_chunk_ids": [
+        198,
+        196,
+        197
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does the multi-head self-attention mechanism work in 'Attention Is All You Need'?",
+      "gold_doc_id": 13,
+      "gold_chunk_ids": [
+        200,
+        198,
+        208
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What translation tasks and datasets are used to evaluate the Transformer in 'Attention Is All You Need'?",
+      "gold_doc_id": 13,
+      "gold_chunk_ids": [
+        195,
+        204,
+        205
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What BLEU scores does the Transformer achieve in 'Attention Is All You Need' compared to prior sequence-to-sequence models?",
+      "gold_doc_id": 13,
+      "gold_chunk_ids": [
+        204,
+        195,
+        205
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does the Transformer in 'Attention Is All You Need' compare to recurrent and convolutional architectures?",
+      "gold_doc_id": 13,
+      "gold_chunk_ids": [
+        196,
+        197,
+        195
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What limitations or open questions does 'Attention Is All You Need' discuss regarding the Transformer model?",
+      "gold_doc_id": 13,
+      "gold_chunk_ids": [
+        200,
+        197,
+        196
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does positional encoding work in the Transformer described in 'Attention Is All You Need'?",
+      "gold_doc_id": 13,
+      "gold_chunk_ids": [
+        196,
+        197,
+        200
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What reasoning failure in large language models motivates chain-of-thought prompting?",
+      "gold_doc_id": 14,
+      "gold_chunk_ids": [
+        349,
+        363,
+        362
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What is chain-of-thought prompting as defined in 'Chain-of-Thought Prompting Elicits Reasoning in Large Language Models'?",
+      "gold_doc_id": 14,
+      "gold_chunk_ids": [
+        349,
+        380,
+        381
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How is chain-of-thought prompting implemented and what does a chain-of-thought exemplar look like?",
+      "gold_doc_id": 14,
+      "gold_chunk_ids": [
+        353,
+        352,
+        349
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What reasoning benchmarks are used to evaluate chain-of-thought prompting?",
+      "gold_doc_id": 14,
+      "gold_chunk_ids": [
+        359,
+        358,
+        357
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What accuracy improvements does chain-of-thought prompting achieve on arithmetic and commonsense reasoning?",
+      "gold_doc_id": 14,
+      "gold_chunk_ids": [
+        359,
+        349,
+        379
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does chain-of-thought prompting compare to standard few-shot prompting in 'Chain-of-Thought Prompting Elicits Reasoning in Large Language Models'?",
+      "gold_doc_id": 14,
+      "gold_chunk_ids": [
+        349,
+        362,
+        363
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What limitations of chain-of-thought prompting are identified in 'Chain-of-Thought Prompting Elicits Reasoning in Large Language Models'?",
+      "gold_doc_id": 14,
+      "gold_chunk_ids": [
+        363,
+        362,
+        349
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "For what model scales does chain-of-thought prompting provide meaningful gains according to 'Chain-of-Thought Prompting Elicits Reasoning'?",
+      "gold_doc_id": 14,
+      "gold_chunk_ids": [
+        362,
+        363,
+        353
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What alignment problem does 'Training language models to follow instructions with human feedback' aim to solve?",
+      "gold_doc_id": 15,
+      "gold_chunk_ids": [
+        264,
+        293,
+        292
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What is RLHF and what does 'Training language models to follow instructions with human feedback' contribute to alignment research?",
+      "gold_doc_id": 15,
+      "gold_chunk_ids": [
+        293,
+        292,
+        270
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does the reinforcement learning from human feedback pipeline work in InstructGPT?",
+      "gold_doc_id": 15,
+      "gold_chunk_ids": [
+        268,
+        267,
+        264
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What evaluation setup does 'Training language models to follow instructions with human feedback' use to measure instruction following?",
+      "gold_doc_id": 15,
+      "gold_chunk_ids": [
+        265,
+        264,
+        269
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What are the key results reported in 'Training language models to follow instructions with human feedback'?",
+      "gold_doc_id": 15,
+      "gold_chunk_ids": [
+        264,
+        287,
+        286
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does InstructGPT compare to GPT-3 in terms of human preference and helpfulness?",
+      "gold_doc_id": 15,
+      "gold_chunk_ids": [
+        268,
+        267,
+        266
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What safety and alignment limitations are acknowledged in 'Training language models to follow instructions with human feedback'?",
+      "gold_doc_id": 15,
+      "gold_chunk_ids": [
+        264,
+        292,
+        293
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How are human labelers recruited and quality-controlled in 'Training language models to follow instructions with human feedback'?",
+      "gold_doc_id": 15,
+      "gold_chunk_ids": [
+        290,
+        264,
+        311
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What challenge in evaluating conversational AI does 'Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena' address?",
+      "gold_doc_id": 16,
+      "gold_chunk_ids": [
+        230,
+        233,
+        243
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What is the LLM-as-judge framework introduced in 'Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena'?",
+      "gold_doc_id": 16,
+      "gold_chunk_ids": [
+        230,
+        233,
+        240
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does the MT-Bench evaluation protocol work in 'Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena'?",
+      "gold_doc_id": 16,
+      "gold_chunk_ids": [
+        230,
+        233,
+        239
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What models and task categories are covered in 'Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena'?",
+      "gold_doc_id": 16,
+      "gold_chunk_ids": [
+        230,
+        233,
+        234
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What are the quantitative findings about LLM judge agreement with human evaluators in 'Judging LLM-as-a-Judge'?",
+      "gold_doc_id": 16,
+      "gold_chunk_ids": [
+        233,
+        240,
+        239
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How does LLM-as-judge compare to human evaluation in terms of cost and reliability in 'Judging LLM-as-a-Judge'?",
+      "gold_doc_id": 16,
+      "gold_chunk_ids": [
+        230,
+        233,
+        240
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "What biases or limitations of LLM-as-judge are identified in 'Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena'?",
+      "gold_doc_id": 16,
+      "gold_chunk_ids": [
+        230,
+        243,
+        233
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    },
+    {
+      "query": "How is position bias handled in the judge evaluation described in 'Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena'?",
+      "gold_doc_id": 16,
+      "gold_chunk_ids": [
+        240,
+        239,
+        236
+      ],
+      "notes": "auto-derived from top-3, min-overlap=0.15"
+    }
+  ]
+}
