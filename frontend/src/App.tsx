@@ -741,7 +741,11 @@ Try one of these:
 }
 
 // ── Eval page ─────────────────────────────────────────────────────────────────
+type EvalTab = 'retrieval' | 'judge' | 'calibration';
+
 function EvalPage({ onBack }: { onBack: () => void }) {
+  const [activeTab, setActiveTab] = useState<EvalTab>('retrieval');
+
   const [name, setName] = useState('Local eval run');
   const [k, setK] = useState(10);
   const [rawCases, setRawCases] = useState('[\n  {"query":"DES key size", "expected_doc_id": 48}\n]');
@@ -844,106 +848,217 @@ function EvalPage({ onBack }: { onBack: () => void }) {
     finally { setCalibRunning(false); }
   };
 
+  // Derived KPIs for the hero strip.
+  const bestR5 = runs.reduce<number | null>((best, r) => {
+    const v = r.metrics_retrieval_rerank?.recall_at?.['5'];
+    if (typeof v === 'number' && (best === null || v > best)) return v;
+    return best;
+  }, null);
+  const latestJudgeMean = judgeRuns.length
+    ? Math.round((judgeRuns[0]?.metrics?.mean_overall_score || 0) * 100)
+    : null;
+  const tabDef: Array<{ id: EvalTab; label: string; hint: string }> = [
+    { id: 'retrieval', label: 'Retrieval', hint: 'Recall @ K, MRR, nDCG on a pinned test set' },
+    { id: 'judge', label: 'LLM Judge', hint: 'Per-sentence faithfulness against retrieved evidence' },
+    { id: 'calibration', label: 'M/S/A Calibration', hint: 'Fit a logistic confidence blend on labeled claims' },
+  ];
+  const fmt = (v: number | null | undefined, digits = 3) =>
+    typeof v === 'number' ? v.toFixed(digits) : '—';
+  const fmtDate = (raw?: string) => {
+    if (!raw) return '—';
+    try {
+      const d = new Date(raw);
+      return `${d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })} ${d.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' })}`;
+    } catch {
+      return raw.slice(0, 16);
+    }
+  };
+
   return (
     <div className="eval-page">
-      <div className="eval-topbar">
-        <h1>Evaluation Studio</h1>
-        <button className="btn btn-ghost btn-sm" onClick={onBack}>← Back to Chat</button>
-      </div>
+      <header className="eval-hero">
+        <div className="eval-hero-left">
+          <span className="eval-eyebrow">Evaluation Studio</span>
+          <h1>Run, inspect, and compare retrieval, judge, and calibration runs.</h1>
+          <p>Configure a test set, kick off a run, and review metrics side-by-side without leaving the page.</p>
+        </div>
+        <button className="btn btn-ghost btn-sm eval-back" onClick={onBack}>← Back to Chat</button>
+      </header>
 
-      <div className="eval-grid">
-        <div className="eval-card">
-          <h3>LLM Judge Evaluation</h3>
-          <label>Scope</label>
-          <select value={judgeScope} onChange={(e) => setJudgeScope(e.target.value as 'uploaded' | 'public')}>
-            <option value="uploaded">Uploaded</option>
-            <option value="public">Public</option>
-          </select>
-          <label>Top K</label>
-          <input type="number" value={judgeK} onChange={(e) => setJudgeK(Number(e.target.value) || 10)} />
-          <label>Test cases JSON</label>
-          <div className="eval-actions">
-            <button className="btn btn-ghost btn-sm" onClick={loadJudgePreset} disabled={judgeRunning || judgePresetLoading}>
-              {judgePresetLoading ? 'Loading preset…' : `Load ${DEFAULT_EVAL_PRESET_COUNT}-query synthesis preset`}
-            </button>
-            <span className="eval-hint">Builds uploaded-scope single-doc and multi-doc synthesis prompts from ready docs.</span>
+      <section className="eval-stats">
+        <div className="eval-stat">
+          <span className="eval-stat-label">Retrieval runs</span>
+          <span className="eval-stat-value">{runs.length}</span>
+          <span className="eval-stat-sub">Stored on this backend</span>
+        </div>
+        <div className="eval-stat">
+          <span className="eval-stat-label">Judge runs</span>
+          <span className="eval-stat-value">{judgeRuns.length}</span>
+          <span className="eval-stat-sub">{latestJudgeMean !== null ? `Latest mean ${latestJudgeMean}%` : 'No runs yet'}</span>
+        </div>
+        <div className="eval-stat">
+          <span className="eval-stat-label">Best Recall@5</span>
+          <span className="eval-stat-value">{bestR5 !== null ? bestR5.toFixed(3) : '—'}</span>
+          <span className="eval-stat-sub">With reranker</span>
+        </div>
+        <div className="eval-stat">
+          <span className="eval-stat-label">Calibration set</span>
+          <span className="eval-stat-value">{calibLatest?.dataset_size ?? '—'}</span>
+          <span className="eval-stat-sub">{calibLatest ? `${calibLatest.model_name}` : 'No calibration yet'}</span>
+        </div>
+      </section>
+
+      <section className="eval-workspace">
+        <div className="eval-panel">
+          <div className="eval-tabs" role="tablist">
+            {tabDef.map((t) => (
+              <button
+                key={t.id}
+                role="tab"
+                aria-selected={activeTab === t.id}
+                className={`eval-tab${activeTab === t.id ? ' is-active' : ''}`}
+                onClick={() => setActiveTab(t.id)}
+              >
+                <span className="eval-tab-label">{t.label}</span>
+                <span className="eval-tab-hint">{t.hint}</span>
+              </button>
+            ))}
           </div>
-          <textarea rows={8} value={judgeRaw} onChange={(e) => setJudgeRaw(e.target.value)} />
-          <button className="btn btn-primary btn-sm" onClick={runJudge} disabled={judgeRunning || judgePresetLoading}>
-            {judgeRunning ? 'Running…' : 'Run judge eval'}
-          </button>
-          {judgeError && <div className="alert">{judgeError}</div>}
-          {judgeResult && (
-            <div style={{ fontSize: 12, color: 'var(--text-2)', marginTop: 4, lineHeight: 1.8 }}>
-              Mean score: <strong style={{ color: 'var(--text)' }}>{Math.round((judgeResult.metrics.mean_overall_score || 0) * 100)}%</strong>
-              {' · '}Unsupported: <strong style={{ color: 'var(--text)' }}>{judgeResult.metrics.unsupported_total || 0}</strong>
+
+          {activeTab === 'retrieval' && (
+            <div className="eval-form">
+              <div className="eval-field-row">
+                <div className="eval-field">
+                  <label>Run name</label>
+                  <input value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. main-120q" />
+                </div>
+                <div className="eval-field eval-field-compact">
+                  <label>Top K</label>
+                  <input type="number" value={k} onChange={(e) => setK(Number(e.target.value) || 10)} />
+                </div>
+              </div>
+              <div className="eval-field">
+                <div className="eval-field-head">
+                  <label>Test cases JSON</label>
+                  <button className="btn btn-ghost btn-xs" onClick={loadEvalPreset} disabled={running || presetLoading}>
+                    {presetLoading ? 'Loading…' : `Load ${DEFAULT_EVAL_PRESET_COUNT}-query preset`}
+                  </button>
+                </div>
+                <p className="eval-hint">Anchors each query to an uploaded document title and its expected doc_id.</p>
+                <textarea rows={8} value={rawCases} onChange={(e) => setRawCases(e.target.value)} spellCheck={false} />
+              </div>
+              {error && <div className="eval-alert">{error}</div>}
+              <div className="eval-actions">
+                <button className="btn btn-primary" onClick={runEval} disabled={running || presetLoading}>
+                  {running ? 'Running…' : 'Run retrieval evaluation'}
+                </button>
+                <span className="eval-hint">Runs against the pinned uploaded corpus using the active embedding contract.</span>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'judge' && (
+            <div className="eval-form">
+              <div className="eval-field-row">
+                <div className="eval-field">
+                  <label>Scope</label>
+                  <select value={judgeScope} onChange={(e) => setJudgeScope(e.target.value as 'uploaded' | 'public')}>
+                    <option value="uploaded">Uploaded</option>
+                    <option value="public">Public</option>
+                  </select>
+                </div>
+                <div className="eval-field eval-field-compact">
+                  <label>Top K</label>
+                  <input type="number" value={judgeK} onChange={(e) => setJudgeK(Number(e.target.value) || 10)} />
+                </div>
+              </div>
+              <div className="eval-field">
+                <div className="eval-field-head">
+                  <label>Test cases JSON</label>
+                  <button className="btn btn-ghost btn-xs" onClick={loadJudgePreset} disabled={judgeRunning || judgePresetLoading}>
+                    {judgePresetLoading ? 'Loading…' : `Load ${DEFAULT_EVAL_PRESET_COUNT}-query synthesis preset`}
+                  </button>
+                </div>
+                <p className="eval-hint">Builds single-doc and multi-doc synthesis prompts from ready uploaded documents.</p>
+                <textarea rows={8} value={judgeRaw} onChange={(e) => setJudgeRaw(e.target.value)} spellCheck={false} />
+              </div>
+              {judgeError && <div className="eval-alert">{judgeError}</div>}
+              <div className="eval-actions">
+                <button className="btn btn-primary" onClick={runJudge} disabled={judgeRunning || judgePresetLoading}>
+                  {judgeRunning ? 'Running…' : 'Run judge eval'}
+                </button>
+                {judgeResult && (
+                  <span className="eval-inline-result">
+                    Mean score <strong>{Math.round((judgeResult.metrics.mean_overall_score || 0) * 100)}%</strong>
+                    <span className="eval-dot">·</span>
+                    Unsupported <strong>{judgeResult.metrics.unsupported_total || 0}</strong>
+                  </span>
+                )}
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'calibration' && (
+            <div className="eval-form">
+              <div className="eval-field">
+                <label>Calibration records JSON</label>
+                <p className="eval-hint">Each record needs <code>M</code>, <code>S</code>, <code>A</code>, and a <code>label</code>. The server fits a logistic model and stores it as the active calibration.</p>
+                <textarea rows={12} value={calibRaw} onChange={(e) => setCalibRaw(e.target.value)} spellCheck={false} />
+              </div>
+              {calibError && <div className="eval-alert">{calibError}</div>}
+              <div className="eval-actions">
+                <button className="btn btn-primary" onClick={runCalib} disabled={calibRunning}>
+                  {calibRunning ? 'Calibrating…' : 'Fit MSA calibration'}
+                </button>
+                {calibResult && (
+                  <span className="eval-inline-result">
+                    {calibResult.model_name}
+                    <span className="eval-dot">·</span>
+                    {calibResult.records_used} records
+                    <span className="eval-dot">·</span>
+                    Brier <strong>{calibResult.metrics.brier}</strong>
+                    <span className="eval-dot">·</span>
+                    Acc <strong>{calibResult.metrics.accuracy}</strong>
+                  </span>
+                )}
+              </div>
+              {calibLatest && (
+                <div className="eval-foot-note">
+                  Active: {calibLatest.model_name} ({calibLatest.label}) · {calibLatest.dataset_size} records
+                </div>
+              )}
             </div>
           )}
         </div>
 
-        <div className="eval-card">
-          <h3>M/S/A Calibration</h3>
-          <label>Calibration records JSON</label>
-          <textarea rows={12} value={calibRaw} onChange={(e) => setCalibRaw(e.target.value)} />
-          <button className="btn btn-primary btn-sm" onClick={runCalib} disabled={calibRunning}>
-            {calibRunning ? 'Calibrating…' : 'Fit MSA calibration'}
-          </button>
-          {calibError && <div className="alert">{calibError}</div>}
-          {calibResult && (
-            <div style={{ fontSize: 12, color: 'var(--text-2)', lineHeight: 1.8 }}>
-              <div>{calibResult.model_name} · {calibResult.records_used} records used</div>
-              <div>Brier: {calibResult.metrics.brier} · Accuracy: {calibResult.metrics.accuracy}</div>
-            </div>
-          )}
-          {calibLatest && (
-            <div style={{ fontSize: 11, color: 'var(--text-3)', borderTop: '1px solid var(--border)', paddingTop: 8 }}>
-              Latest: {calibLatest.model_name} ({calibLatest.label}) · {calibLatest.dataset_size} records
-            </div>
-          )}
-        </div>
-
-        <div className="eval-card">
-          <h3>Retrieval Evaluation</h3>
-          <label>Run name</label>
-          <input value={name} onChange={(e) => setName(e.target.value)} />
-          <label>Top K</label>
-          <input type="number" value={k} onChange={(e) => setK(Number(e.target.value) || 10)} />
-          <label>Test cases JSON</label>
-          <div className="eval-actions">
-            <button className="btn btn-ghost btn-sm" onClick={loadEvalPreset} disabled={running || presetLoading}>
-              {presetLoading ? 'Loading preset…' : `Load ${DEFAULT_EVAL_PRESET_COUNT}-query retrieval preset`}
-            </button>
-            <span className="eval-hint">Anchors each query to the uploaded document title and expected doc id.</span>
+        <aside className="eval-side">
+          <div className="eval-side-head">
+            <h3>Latest retrieval result</h3>
+            {result && <span className="eval-chip">R@5 {fmt(result.metrics_retrieval_rerank.recall_at['5'])}</span>}
           </div>
-          <textarea rows={8} value={rawCases} onChange={(e) => setRawCases(e.target.value)} />
-          <button className="btn btn-primary btn-sm" onClick={runEval} disabled={running || presetLoading}>
-            {running ? 'Running…' : 'Run evaluation'}
-          </button>
-          {error && <div className="alert">{error}</div>}
-        </div>
-
-        <div className="eval-card">
-          <h3>Latest result</h3>
           {!result ? (
-            <p style={{ color: 'var(--text-3)', fontSize: 13 }}>No run yet.</p>
+            <div className="eval-empty">
+              <div className="eval-empty-icon">◇</div>
+              <p>Run a retrieval evaluation to see Recall@K, MRR and latency here.</p>
+            </div>
           ) : (
             <>
               <table className="eval-table">
                 <thead>
-                  <tr><th>Metric</th><th>Retrieval</th><th>+Rerank</th></tr>
+                  <tr><th>Metric</th><th>Retrieval</th><th>+ Rerank</th></tr>
                 </thead>
                 <tbody>
                   {(['1', '3', '5', '10'] as const).map((n) => (
                     <tr key={n}>
                       <td>Recall@{n}</td>
-                      <td>{result.metrics_retrieval_only.recall_at[n]?.toFixed(3) ?? '–'}</td>
-                      <td>{result.metrics_retrieval_rerank.recall_at[n]?.toFixed(3) ?? '–'}</td>
+                      <td>{fmt(result.metrics_retrieval_only.recall_at[n])}</td>
+                      <td>{fmt(result.metrics_retrieval_rerank.recall_at[n])}</td>
                     </tr>
                   ))}
                   <tr>
                     <td>MRR</td>
-                    <td>{result.metrics_retrieval_only.mrr.toFixed(3)}</td>
-                    <td>{result.metrics_retrieval_rerank.mrr.toFixed(3)}</td>
+                    <td>{fmt(result.metrics_retrieval_only.mrr)}</td>
+                    <td>{fmt(result.metrics_retrieval_rerank.mrr)}</td>
                   </tr>
                 </tbody>
               </table>
@@ -954,7 +1069,7 @@ function EvalPage({ onBack }: { onBack: () => void }) {
                   ['Generate', result.latency_breakdown.generate_ms_avg],
                 ] as [string, number][]).map(([label, val]) => (
                   <div key={label} className="lat-row">
-                    <span className="lat-label">{label} {Math.round(val)} ms</span>
+                    <span className="lat-label">{label} <span className="lat-val">{Math.round(val)} ms</span></span>
                     <div className="lat-bar">
                       <div className="lat-fill" style={{ width: `${Math.min(100, val / 3000 * 100)}%` }} />
                     </div>
@@ -963,40 +1078,62 @@ function EvalPage({ onBack }: { onBack: () => void }) {
               </div>
             </>
           )}
-        </div>
-      </div>
+        </aside>
+      </section>
 
-      <div className="eval-card" style={{ marginBottom: 16 }}>
-        <h3>Stored eval runs</h3>
-        <div className="run-list">
-          {runs.length === 0
-            ? <div style={{ color: 'var(--text-3)', fontSize: 13 }}>No runs yet.</div>
-            : runs.map((r) => (
-              <div key={`${r.run_id}-${r.created_at}`} className="run-item">
-                <strong>{r.name}</strong>
-                <span>{r.created_at}</span>
-                <span>{r.case_count} cases</span>
-                <span>R@5 {r.metrics_retrieval_rerank?.recall_at?.['5'] ?? '–'}</span>
-              </div>
-            ))}
+      <section className="eval-history">
+        <div className="eval-history-card">
+          <div className="eval-history-head">
+            <h3>Retrieval runs</h3>
+            <span className="eval-history-count">{runs.length}</span>
+          </div>
+          {runs.length === 0 ? (
+            <div className="eval-empty eval-empty-row">No retrieval runs yet.</div>
+          ) : (
+            <table className="eval-history-table">
+              <thead>
+                <tr><th>Run</th><th>When</th><th>Cases</th><th className="eval-right">R@5</th></tr>
+              </thead>
+              <tbody>
+                {runs.map((r) => (
+                  <tr key={`${r.run_id}-${r.created_at}`}>
+                    <td className="eval-history-name">{r.name}</td>
+                    <td className="eval-history-dim">{fmtDate(r.created_at)}</td>
+                    <td className="eval-history-dim">{r.case_count}</td>
+                    <td className="eval-right eval-mono">{fmt(r.metrics_retrieval_rerank?.recall_at?.['5'])}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </div>
-      </div>
 
-      <div className="eval-card">
-        <h3>Judge runs</h3>
-        <div className="run-list">
-          {judgeRuns.length === 0
-            ? <div style={{ color: 'var(--text-3)', fontSize: 13 }}>No judge runs yet.</div>
-            : judgeRuns.map((r, idx) => (
-              <div key={`${r.id}-${idx}`} className="run-item">
-                <strong>{r.scope || judgeScope}</strong>
-                <span>Run {r.id}</span>
-                <span>{r.query_count || 0} queries</span>
-                <span>Mean {Math.round(((r.metrics?.mean_overall_score) || 0) * 100)}%</span>
-              </div>
-            ))}
+        <div className="eval-history-card">
+          <div className="eval-history-head">
+            <h3>Judge runs</h3>
+            <span className="eval-history-count">{judgeRuns.length}</span>
+          </div>
+          {judgeRuns.length === 0 ? (
+            <div className="eval-empty eval-empty-row">No judge runs yet.</div>
+          ) : (
+            <table className="eval-history-table">
+              <thead>
+                <tr><th>Scope</th><th>Run</th><th>Queries</th><th className="eval-right">Mean</th></tr>
+              </thead>
+              <tbody>
+                {judgeRuns.map((r, idx) => (
+                  <tr key={`${r.id}-${idx}`}>
+                    <td><span className="eval-scope-tag">{r.scope || judgeScope}</span></td>
+                    <td className="eval-history-dim">#{r.id}</td>
+                    <td className="eval-history-dim">{r.query_count || 0}</td>
+                    <td className="eval-right eval-mono">{Math.round(((r.metrics?.mean_overall_score) || 0) * 100)}%</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </div>
-      </div>
+      </section>
     </div>
   );
 }
