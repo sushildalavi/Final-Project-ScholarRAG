@@ -334,6 +334,12 @@ def assistant_answer(
         raise HTTPException(status_code=400, detail="query is required")
 
     qnorm = query.strip().lower()
+    # Detect ambiguous scholarly terms before any chat bypass. Without this,
+    # short queries like "tell me about Colbert" in public scope were routed to
+    # generic chat and never reached retrieval, sense expansion, or filtering.
+    sense_expansion = expand_query_for_ml_sense(query, scholarly_default=True)
+    effective_query = sense_expansion["expanded_query"]
+    ambiguous_scholarly_term = bool(sense_expansion.get("term"))
     answer_mode = _classify_answer_mode(query)
     doc_summary_intent = _is_uploaded_doc_summary_query(query)
     related_work_intent = _is_related_work_query(query)
@@ -412,7 +418,7 @@ def assistant_answer(
         return {"answer": answer, "citations": []}
 
     # Keep uploaded-doc questions in retrieval mode even when short/colloquial.
-    if not is_research and not is_public_lookup and scope != "uploaded":
+    if not is_research and not is_public_lookup and scope != "uploaded" and not ambiguous_scholarly_term:
         try:
             answer = _chat_answer(query)
         except Exception as exc:
@@ -452,8 +458,6 @@ def assistant_answer(
 
     # --- Query sense expansion (runs BEFORE retrieval).
     # Prevents "Colbert" / "RAG" / "BART" from being retrieved as the wrong sense.
-    sense_expansion = expand_query_for_ml_sense(query, scholarly_default=True)
-    effective_query = sense_expansion["expanded_query"]
 
     retrieval_ms = 0.0
     rerank_ms = 0.0

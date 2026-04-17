@@ -4,10 +4,27 @@ from unittest.mock import patch
 
 from psycopg2 import OperationalError
 
+import backend.services.db as db_module
 from backend.services.db import get_connection
 
 
 class DatabaseConnectionTests(unittest.TestCase):
+    def setUp(self):
+        if db_module._pool is not None:
+            try:
+                db_module._pool.closeall()
+            except Exception:
+                pass
+        db_module._pool = None
+
+    def tearDown(self):
+        if db_module._pool is not None:
+            try:
+                db_module._pool.closeall()
+            except Exception:
+                pass
+        db_module._pool = None
+
     def test_tenant_or_user_not_found_error_has_local_dev_hint(self):
         database_url = "postgresql://wrong-user:pw@127.0.0.1:5432/postgres"
         old = os.environ.get("DATABASE_URL")
