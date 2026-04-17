@@ -108,6 +108,82 @@ class AssistantAnswerRoutingTests(unittest.TestCase):
         self.assertEqual(resp["answer"], "hello there")
         self.assertEqual(resp["citations"], [])
 
+    def test_public_scope_with_pinned_doc_does_not_leak_pinned_doc_citations(self):
+        """Regression: user pinned 15_LLMasJudge.pdf, switched to public
+        scope, and asked about RAG. Previously we probed the uploaded
+        corpus with doc_id pinned and flooded the answer with chunks from
+        the pinned paper. Now the probe must be skipped entirely.
+        """
+        search_calls: list[dict] = []
+
+        def _spy_search(payload):
+            search_calls.append(dict(payload))
+            return {
+                "results": [
+                    {
+                        "id": 300,
+                        "document_id": 15,
+                        "title": "15_LLMasJudge.pdf",
+                        "doc_type": "research_paper",
+                        "text": "This paper is about LLM-as-a-Judge evaluation on MT-Bench.",
+                        "page_no": 1,
+                        "distance": 0.10,
+                    }
+                ]
+            }
+
+        public_results = {
+            "results": [
+                {
+                    "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP",
+                    "source": "arxiv",
+                    "abstract": "RAG combines a parametric seq2seq model with a DPR retriever.",
+                    "_sim": 0.88,
+                    "url": "https://example.com/rag",
+                }
+            ],
+            "provider_status": {},
+        }
+
+        with (
+            patch.object(app_module, "_chat_answer", side_effect=AssertionError("chat bypass should not run")),
+            patch.object(app_module, "search_uploaded_chunks", side_effect=_spy_search),
+            patch.object(app_module, "public_live_search", return_value=public_results),
+            patch.object(app_module, "_rank_and_trim_citations", side_effect=lambda query, citations, k, **kwargs: citations[:k]),
+            patch.object(app_module, "_build_generation_prompt", return_value="prompt"),
+            patch.object(app_module, "_compute_citation_msa", return_value=({}, 0)),
+            patch.object(app_module, "_has_official_company_docs", return_value=True),
+            patch.object(app_module, "client", _dummy_client("RAG is a retrieval-augmented generation approach [S1].")),
+            patch.object(app_module, "log_json", return_value=None),
+        ):
+            resp = app_module.assistant_answer(
+                {
+                    "query": "Find recent papers on retrieval-augmented generation",
+                    "scope": "public",
+                    "doc_id": 15,
+                    "k": 4,
+                }
+            )
+
+        # The uploaded corpus must NOT be probed when a doc is pinned + public scope.
+        self.assertEqual(
+            search_calls,
+            [],
+            f"Uploaded probe should be skipped when doc_id is pinned in public scope. Got calls: {search_calls}",
+        )
+        self.assertTrue(resp["citations"], "expected public citations")
+        for c in resp["citations"]:
+            self.assertNotEqual(
+                (c.get("source") or "").lower(),
+                "uploaded",
+                f"Pinned doc leaked into citations: {c}",
+            )
+            self.assertNotIn(
+                "llmasjudge",
+                (c.get("title") or "").lower().replace(" ", "").replace("-", ""),
+                f"Pinned doc title leaked: {c.get('title')}",
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

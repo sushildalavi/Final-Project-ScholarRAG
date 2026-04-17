@@ -47,6 +47,8 @@ from backend.services.assistant_utils import (
     _classify_answer_mode,
     _compute_citation_msa,
     _confidence_breakdown,
+    _citations_cover_specific_targets,
+    _extract_named_paper_reference,
     _has_official_company_docs,
     _humanize_answer_text,
     _is_company_intent_query,
@@ -66,6 +68,9 @@ from backend.services.assistant_utils import (
     _primary_anchor_term,
     _prune_public_citations,
     _prune_uploaded_citations,
+    _query_mentions_missing_uploaded_paper,
+    _query_requires_specific_grounding,
+    _specific_target_phrases,
     _query_overlap_strength,
     _rank_and_trim_citations,
     _rebalance_uploaded_multi_doc_citations,
@@ -629,13 +634,28 @@ def assistant_answer(
                 # Keep uploaded citations first in uploaded mode.
                 citations = citations + public_citations
     else:
-        # Public scope: ALWAYS consult uploaded corpus first as well — if the
-        # user uploaded a ColBERT paper, it should surface for "tell me about
-        # Colbert" even when the UI scope is set to public.
-        uploaded_probe = fetch_context(effective_query, "uploaded")
-        uploaded_hits = len(uploaded_probe)
-        uploaded_strength = _uploaded_evidence_strength(uploaded_probe)
-        uploaded_overlap = _query_overlap_strength(query, uploaded_probe)
+        # Public scope. The uploaded corpus is probed ONLY when the user has
+        # not pinned a specific document. Rationale:
+        #
+        #   * With no doc pinned, a short query like "tell me about Colbert"
+        #     on public scope should still surface the uploaded ColBERT paper
+        #     because it is the most relevant evidence in the workspace.
+        #
+        #   * With a doc pinned (e.g. 15_LLMasJudge.pdf), the user has
+        #     explicitly selected public-search as the answer scope. Probing
+        #     the pinned doc in that case returns its top-K chunks (trivially
+        #     above any strength/overlap threshold because they are the best
+        #     chunks WITHIN that doc) and floods the answer with irrelevant
+        #     citations from a paper the user did not ask about. Respect the
+        #     scope switch and do not blend uploaded evidence in.
+        probe_uploaded = not doc_id and not doc_ids
+        if probe_uploaded:
+            uploaded_probe = fetch_context(effective_query, "uploaded")
+            uploaded_hits = len(uploaded_probe)
+            uploaded_strength = _uploaded_evidence_strength(uploaded_probe)
+            uploaded_overlap = _query_overlap_strength(query, uploaded_probe)
+        else:
+            uploaded_probe = []
 
         if multi_hop and (" and " in query or ";" in query or "," in query):
             subqs = [q.strip() for q in re.split(r"and|;|,", query) if q.strip()]
@@ -651,6 +671,9 @@ def assistant_answer(
         public_hits = len(citations)
 
         # Merge uploaded hits in front of public ones when they look relevant.
+        # `or` is safe here because the pinned-doc leak that previously
+        # motivated a stricter `and` is already prevented upstream by the
+        # `probe_uploaded` gate above.
         if uploaded_probe and (uploaded_overlap >= 0.22 or uploaded_strength >= 0.52):
             citations = uploaded_probe + citations
             used_public_fallback = True  # signals that we blended scopes
@@ -668,7 +691,20 @@ def assistant_answer(
     else:
         post_filter_overlap = 0.0
 
-    if not citations or (post_filter_overlap < 0.05 and not doc_id and not doc_ids):
+    missing_named_paper = _query_mentions_missing_uploaded_paper(query)
+    specific_targets = _specific_target_phrases(query)
+    lacks_specific_support = (
+        _query_requires_specific_grounding(query)
+        and bool(specific_targets)
+        and not _citations_cover_specific_targets(citations, specific_targets)
+    )
+
+    if (
+        not citations
+        or (post_filter_overlap < 0.05 and not doc_id and not doc_ids)
+        or (missing_named_paper and not doc_id and not doc_ids)
+        or (lacks_specific_support and not doc_id and not doc_ids)
+    ):
         evidence_label = _scope_evidence_label(scope)
         sense_hint = ""
         if sense_expansion.get("term") and sense_expansion.get("ml_sense"):
@@ -704,10 +740,20 @@ def assistant_answer(
             "confidence": {"score": 0.15, "label": "Abstained (insufficient evidence)", "needs_clarification": True},
             "retrieval_policy": {
                 "mode": "abstention",
-                "reason": "no-relevant-match" if not citations else "low-lexical-overlap",
+                "reason": (
+                    "missing-named-paper"
+                    if missing_named_paper
+                    else "missing-specific-support"
+                    if lacks_specific_support
+                    else "no-relevant-match"
+                    if not citations
+                    else "low-lexical-overlap"
+                ),
                 "uploaded_hits": uploaded_hits,
                 "public_hits": public_hits,
                 "post_filter_overlap": round(post_filter_overlap, 3),
+                "specific_targets": specific_targets,
+                "named_paper_reference": _extract_named_paper_reference(query),
                 "sense_expansion": sense_expansion,
             },
         }
