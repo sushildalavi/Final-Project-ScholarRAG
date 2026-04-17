@@ -1,0 +1,179 @@
+{
+  "generated_for": "research-grade audit follow-up",
+  "disclosure_required_in_any_publication": "Annotators B and C are LLM/algorithmic passes, not independent humans. The pairwise-kappa numbers below are LLM-ENSEMBLE AGREEMENT used as a proxy for IAA. Do not report them as human inter-annotator agreement.",
+  "ensemble_agreement_claims": {
+    "n_claims": 50,
+    "label_balance": {
+      "A_supported": 28,
+      "B_supported": 27,
+      "C_supported": 30,
+      "ensemble_majority_supported": 30
+    },
+    "disclosure": "Annotator A is the rubric-based baseline over the existing human-labeled set. Annotator B is deterministic-lexical (flip heuristic). Annotator C is NLI+content-overlap blended. All three are LLM/algorithmic, not independent human raters. Numbers below are LLM-ensemble agreement as a PROXY FOR IAA, not IAA itself.",
+    "pairwise_kappa_95ci": {
+      "A_vs_B": {
+        "mean": 0.7172859450726979,
+        "lo": 0.5081930555148244,
+        "hi": 0.8803827751196172,
+        "n": 50
+      },
+      "A_vs_C": {
+        "mean": 0.180327868852459,
+        "lo": -0.10091743119266061,
+        "hi": 0.44271939136588795,
+        "n": 50
+      },
+      "B_vs_C": {
+        "mean": 0.06504065040650409,
+        "lo": -0.20977528969621048,
+        "hi": 0.33333333333333337,
+        "n": 50
+      }
+    },
+    "ensemble_vs_judge_kappa_95ci": {
+      "mean": 0.64,
+      "lo": 0.41860465116279066,
+      "hi": 0.8387096774193549,
+      "n": 50
+    }
+  },
+  "ensemble_agreement_retrieval": {
+    "n_rows": 1200,
+    "pairwise_kappa_95ci": {
+      "A_vs_B": {
+        "mean": 0.4612776346127764,
+        "lo": 0.4135724538763132,
+        "hi": 0.5042996136249499,
+        "n": 1200
+      },
+      "A_vs_C": {
+        "mean": 0.07729179149191134,
+        "lo": 0.06676699853434774,
+        "hi": 0.08805732628883736,
+        "n": 1200
+      },
+      "B_vs_C": {
+        "mean": 0.09060736807168934,
+        "lo": 0.07842031842415984,
+        "hi": 0.10441383877252178,
+        "n": 1200
+      }
+    }
+  },
+  "strict_grounding_tradeoff": {
+    "baseline": {
+      "n_claims": 546,
+      "claim_support_rate": 0.4542,
+      "query_level_mean": 0.5052467937860488,
+      "query_level_ci_95": {
+        "mean": 0.5052467937860488,
+        "lo": 0.3973905758030508,
+        "hi": 0.6178506524603518,
+        "n": 56
+      }
+    },
+    "strict": {
+      "n_claims": 202,
+      "claim_support_rate": 0.8564,
+      "query_level_mean": 0.6159013605442177,
+      "query_level_ci_95": {
+        "mean": 0.6159013605442177,
+        "lo": 0.4889392006802721,
+        "hi": 0.7319727891156462,
+        "n": 56
+      }
+    },
+    "coverage_ratio_strict_over_baseline": 0.37,
+    "effective_support_rate_baseline": 0.4542,
+    "effective_support_rate_strict": 0.3168,
+    "interpretation": "Strict grounding reduced claims from 546 to 202 (coverage 37%). Per-claim support rate went from 0.454 to 0.856. Correcting for the lost coverage, the EFFECTIVE support rate (support_rate \u00d7 coverage) moves from 0.454 to 0.317. Report both columns."
+  },
+  "retrieval_120q_bootstrap_cis": {
+    "n_queries": 120,
+    "retrieval_only": {
+      "mrr_95ci": {
+        "mean": 1.0,
+        "lo": 1.0,
+        "hi": 1.0,
+        "n": 120
+      },
+      "recall_at_1_95ci": {
+        "mean": 1.0,
+        "lo": 1.0,
+        "hi": 1.0,
+        "n": 120
+      },
+      "recall_at_3_95ci": {
+        "mean": 1.0,
+        "lo": 1.0,
+        "hi": 1.0,
+        "n": 120
+      },
+      "recall_at_5_95ci": {
+        "mean": 1.0,
+        "lo": 1.0,
+        "hi": 1.0,
+        "n": 120
+      },
+      "recall_at_10_95ci": {
+        "mean": 1.0,
+        "lo": 1.0,
+        "hi": 1.0,
+        "n": 120
+      }
+    },
+    "retrieval_rerank": {
+      "mrr_95ci": {
+        "mean": 1.0,
+        "lo": 1.0,
+        "hi": 1.0,
+        "n": 120
+      },
+      "recall_at_1_95ci": {
+        "mean": 1.0,
+        "lo": 1.0,
+        "hi": 1.0,
+        "n": 120
+      },
+      "recall_at_3_95ci": {
+        "mean": 1.0,
+        "lo": 1.0,
+        "hi": 1.0,
+        "n": 120
+      },
+      "recall_at_5_95ci": {
+        "mean": 1.0,
+        "lo": 1.0,
+        "hi": 1.0,
+        "n": 120
+      },
+      "recall_at_10_95ci": {
+        "mean": 1.0,
+        "lo": 1.0,
+        "hi": 1.0,
+        "n": 120
+      }
+    }
+  },
+  "iaa_bootstrap_cis": {
+    "note": "Bootstrap CI on pairwise kappa between LLM-ensemble annotators (proxy for IAA).",
+    "A_vs_B_kappa_95ci": {
+      "mean": 0.7172859450726979,
+      "lo": 0.5081930555148244,
+      "hi": 0.8803827751196172,
+      "n": 50
+    },
+    "A_vs_C_kappa_95ci": {
+      "mean": 0.180327868852459,
+      "lo": -0.10091743119266061,
+      "hi": 0.44271939136588795,
+      "n": 50
+    },
+    "B_vs_C_kappa_95ci": {
+      "mean": 0.06504065040650409,
+      "lo": -0.20977528969621048,
+      "hi": 0.33333333333333337,
+      "n": 50
+    }
+  }
+}
