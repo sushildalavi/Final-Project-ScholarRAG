@@ -1,0 +1,20 @@
+{
+  "model_name": "msa_logistic_public",
+  "label": "public_mode",
+  "weights": {
+    "w1": 2.168363,
+    "w2": 0.0,
+    "w3": 0.928912,
+    "b": -2.300233
+  },
+  "metrics": {
+    "n": 64,
+    "accuracy": 0.8594,
+    "auc": 0.9018,
+    "pr_auc": 0.8532,
+    "brier": 0.1354,
+    "ece": 0.1317
+  },
+  "dataset_size": 319,
+  "ship": true
+}

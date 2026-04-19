@@ -1,0 +1,120 @@
+{
+  "source_csv": "Evaluation/data/calibration/uploaded_mode/human_labels_raw/claim_annotations_shipped.csv",
+  "n_rows_raw": 859,
+  "n_rows_usable": 849,
+  "n_train": 679,
+  "n_test": 170,
+  "chosen_model": "M+A (S=0)",
+  "fitted_weights": {
+    "w1": 1.290253,
+    "w2": 0.0,
+    "w3": 0.571947,
+    "b": -1.371641
+  },
+  "default_weights": {
+    "w1": 0.58,
+    "w2": 0.22,
+    "w3": 0.2,
+    "b": 0.0
+  },
+  "bootstrap_weight_cis": {
+    "w1": {
+      "mean": 1.264588,
+      "lo": 0.286614,
+      "hi": 2.086012,
+      "n": 1000
+    },
+    "w2": {
+      "mean": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n": 0
+    },
+    "w3": {
+      "mean": 0.578367,
+      "lo": 0.128975,
+      "hi": 1.055523,
+      "n": 1000
+    },
+    "b": {
+      "mean": -1.379276,
+      "lo": -1.811882,
+      "hi": -0.980965,
+      "n": 1000
+    }
+  },
+  "ablation": {
+    "M+S+A": {
+      "weights": {
+        "w1": 1.32165,
+        "w2": -0.68864,
+        "w3": 0.632734,
+        "b": -1.350588
+      },
+      "holdout": {
+        "n": 170,
+        "accuracy": 0.7,
+        "auc": 0.6975,
+        "pr_auc": 0.4778,
+        "brier": 0.2003,
+        "ece": 0.0988
+      }
+    },
+    "M+A_S_zeroed": {
+      "weights": {
+        "w1": 1.290253,
+        "w2": 0.0,
+        "w3": 0.571947,
+        "b": -1.371641
+      },
+      "holdout": {
+        "n": 170,
+        "accuracy": 0.7,
+        "auc": 0.7025,
+        "pr_auc": 0.4622,
+        "brier": 0.2008,
+        "ece": 0.0718
+      }
+    },
+    "defaults": {
+      "weights": {
+        "w1": 0.58,
+        "w2": 0.22,
+        "w3": 0.2,
+        "b": 0.0
+      },
+      "holdout": {
+        "n": 170,
+        "accuracy": 0.3,
+        "auc": 0.668,
+        "pr_auc": 0.4218,
+        "brier": 0.2701,
+        "ece": 0.2549
+      }
+    }
+  },
+  "holdout_metrics": {
+    "fitted": {
+      "n": 170,
+      "accuracy": 0.7,
+      "auc": 0.7025,
+      "pr_auc": 0.4622,
+      "brier": 0.2008,
+      "ece": 0.0718
+    },
+    "defaults": {
+      "n": 170,
+      "accuracy": 0.3,
+      "auc": 0.668,
+      "pr_auc": 0.4218,
+      "brier": 0.2701,
+      "ece": 0.2549
+    },
+    "auc_delta": 0.0345,
+    "brier_improvement": 0.0693
+  },
+  "recommendation": {
+    "ship": true,
+    "reason": "M+A (S=0) beats defaults on both AUC and Brier; recommend shipping."
+  }
+}

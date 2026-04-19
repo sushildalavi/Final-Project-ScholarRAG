@@ -1,0 +1,52 @@
+{
+  "coders_completed": [
+    "A",
+    "B",
+    "C"
+  ],
+  "n_claims": 315,
+  "fleiss_kappa_3rater": 0.6546,
+  "pairwise": [
+    {
+      "pair": "A_vs_B",
+      "n": 315,
+      "raw_agreement": 0.9841,
+      "cohen_kappa": 0.7287,
+      "confusion": {
+        "X_sup_Y_sup": 7,
+        "X_sup_Y_unsup": 3,
+        "X_unsup_Y_sup": 2,
+        "X_unsup_Y_unsup": 303
+      }
+    },
+    {
+      "pair": "A_vs_C",
+      "n": 315,
+      "raw_agreement": 0.9746,
+      "cohen_kappa": 0.6538,
+      "confusion": {
+        "X_sup_Y_sup": 8,
+        "X_sup_Y_unsup": 2,
+        "X_unsup_Y_sup": 6,
+        "X_unsup_Y_unsup": 299
+      }
+    },
+    {
+      "pair": "B_vs_C",
+      "n": 315,
+      "raw_agreement": 0.9714,
+      "cohen_kappa": 0.5946,
+      "confusion": {
+        "X_sup_Y_sup": 7,
+        "X_sup_Y_unsup": 2,
+        "X_unsup_Y_sup": 7,
+        "X_unsup_Y_unsup": 299
+      }
+    }
+  ],
+  "consensus_counts": {
+    "unsupported": 305,
+    "supported": 10
+  },
+  "unanimous_rows": 304
+}

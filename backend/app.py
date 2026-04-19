@@ -521,6 +521,8 @@ def assistant_answer(
             local_citations = _rerank_uploaded_by_query_prior(q, local_citations)
             local_citations = _prune_uploaded_citations(q, local_citations, doc_ids=doc_ids)
             local_citations = _rerank_uploaded_by_query_prior(q, local_citations)
+            for c in local_citations:
+                c["source_origin"] = "uploaded"
         elif mode == "public":
             nonlocal public_provider_status
             public_resp = public_live_search(q, k=min(k, 8), source_only=requested_public_source, return_metadata=True)
@@ -564,6 +566,8 @@ def assistant_answer(
                 local_citations = [
                     c for c in local_citations if (c.get("source") or "").lower() == requested_public_source
                 ]
+            for c in local_citations:
+                c["source_origin"] = "public"
         elif mode == "web":
             docs = public_web_search(q, k=min(k, 8))
             sims = [float(d.get("_sim", 0.0) or 0.0) for d in docs] or [0.0]
@@ -589,6 +593,8 @@ def assistant_answer(
                         "snippet": d.get("snippet") or "",
                     }
                 )
+            for c in local_citations:
+                c["source_origin"] = "web"
         else:
             raise HTTPException(status_code=400, detail=f"Unknown retrieval mode: {mode}")
         return local_citations
@@ -651,28 +657,34 @@ def assistant_answer(
                 # Keep uploaded citations first in uploaded mode.
                 citations = citations + public_citations
     else:
-        # Public scope. The uploaded corpus is probed ONLY when the user has
-        # not pinned a specific document. Rationale:
+        # Public scope with adaptive hybrid. The uploaded corpus is ALWAYS
+        # probed when the user has not pinned a specific document. Each
+        # uploaded chunk is kept only if it has plausible per-chunk overlap
+        # with the query (>= UPLOADED_CHUNK_OVERLAP_FLOOR). The merged pool
+        # (kept uploaded chunks + public chunks) is capped at k*2 candidates
+        # and downstream scoring in _rank_and_trim_citations handles final
+        # ordering via source prior + semantic sim + query overlap.
         #
-        #   * With no doc pinned, a short query like "tell me about Colbert"
-        #     on public scope should still surface the uploaded ColBERT paper
-        #     because it is the most relevant evidence in the workspace.
-        #
-        #   * With a doc pinned (e.g. 15_LLMasJudge.pdf), the user has
-        #     explicitly selected public-search as the answer scope. Probing
-        #     the pinned doc in that case returns its top-K chunks (trivially
-        #     above any strength/overlap threshold because they are the best
-        #     chunks WITHIN that doc) and floods the answer with irrelevant
-        #     citations from a paper the user did not ask about. Respect the
-        #     scope switch and do not blend uploaded evidence in.
-        probe_uploaded = not doc_id and not doc_ids
+        # Pinned-doc guard: if the user pinned a specific doc_id, we respect
+        # the public scope switch and do NOT probe the pinned doc (it would
+        # trivially beat any floor and flood the answer with irrelevant
+        # citations from a paper the user did not ask about).
+        UPLOADED_CHUNK_OVERLAP_FLOOR = 0.08
+
+        probe_uploaded = not doc_id
+        uploaded_probe: list[dict] = []
         if probe_uploaded:
-            uploaded_probe = fetch_context(effective_query, "uploaded")
+            raw_uploaded = fetch_context(effective_query, "uploaded")
+            # Per-chunk overlap floor: keep only chunks that plausibly match
+            # the query. This replaces the prior aggregate-threshold gate
+            # that silently dropped borderline-relevant uploaded papers.
+            uploaded_probe = [
+                c for c in raw_uploaded
+                if _chunk_query_overlap(query, c) >= UPLOADED_CHUNK_OVERLAP_FLOOR
+            ]
             uploaded_hits = len(uploaded_probe)
             uploaded_strength = _uploaded_evidence_strength(uploaded_probe)
             uploaded_overlap = _query_overlap_strength(query, uploaded_probe)
-        else:
-            uploaded_probe = []
 
         if multi_hop and (" and " in query or ";" in query or "," in query):
             subqs = [q.strip() for q in re.split(r"and|;|,", query) if q.strip()]
@@ -687,12 +699,16 @@ def assistant_answer(
         citations = [c for c in citations if not is_offtopic_public_result(query, c)]
         public_hits = len(citations)
 
-        # Merge uploaded hits in front of public ones when they look relevant.
-        # `or` is safe here because the pinned-doc leak that previously
-        # motivated a stricter `and` is already prevented upstream by the
-        # `probe_uploaded` gate above.
-        if uploaded_probe and (uploaded_overlap >= 0.22 or uploaded_strength >= 0.52):
-            citations = uploaded_probe + citations
+        # Merge uploaded candidates into the pool. Cap at k*3 (was k*2) for
+        # public scope so the downstream ranker has more candidates to work
+        # with — public retrieval now fetches ~3x more per provider, and the
+        # old k*2 cap was starving the reranker. Uploaded chunks are placed
+        # first so ranker ties break toward the user's own corpus, but final
+        # order comes from _rank_and_trim_citations.
+        if uploaded_probe:
+            merged = uploaded_probe + citations
+            pool_cap = max(int(k) * 3, len(uploaded_probe) + int(k) * 2)
+            citations = merged[:pool_cap]
             used_public_fallback = True  # signals that we blended scopes
 
     retrieval_ms = (time.perf_counter() - t0) * 1000
@@ -1206,7 +1222,7 @@ def assistant_answer(
                 "M": float(msa.get("M", 0.0)),
                 "S": float(msa.get("S", 0.0)),
                 "A": float(msa.get("A", 0.0)),
-                "weights": _load_latest_calibration_weights(),
+                "weights": _load_latest_calibration_weights(scope),
             }
             c["msa"] = {
                 **msa_payload,
@@ -1315,7 +1331,7 @@ def assistant_answer(
                 "M": sum(m * w for m, _, _, w in weighted_rows) / total_weight,
                 "S": sum(s * w for _, s, _, w in weighted_rows) / total_weight,
                 "A": sum(a * w for _, _, a, w in weighted_rows) / total_weight,
-                "weights": _load_latest_calibration_weights(),
+                "weights": _load_latest_calibration_weights(scope),
             }
     grounded_minimum_score = 0.0
     if (

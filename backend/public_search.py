@@ -15,14 +15,16 @@ from backend.utils.openalex_utils import fetch_candidates_from_openalex
 from backend.utils.semanticscholar_utils import fetch_from_s2
 from backend.utils.springer_utils import fetch_from_springer
 
-OPENALEX_LIMIT = int(os.getenv("PUBLIC_OPENALEX_LIMIT", "15")) or 15
-ARXIV_LIMIT = int(os.getenv("PUBLIC_ARXIV_LIMIT", "15")) or 15
-CROSSREF_LIMIT = int(os.getenv("PUBLIC_CROSSREF_LIMIT", "10")) or 10
-S2_LIMIT = int(os.getenv("PUBLIC_S2_LIMIT", "10")) or 10
-SPRINGER_LIMIT = int(os.getenv("PUBLIC_SPRINGER_LIMIT", "10")) or 10
-ELSEVIER_LIMIT = int(os.getenv("PUBLIC_ELSEVIER_LIMIT", "10")) or 10
-IEEE_LIMIT = int(os.getenv("PUBLIC_IEEE_LIMIT", "10")) or 10
-PUBLIC_SPARSE_WEIGHT = float(os.getenv("PUBLIC_SPARSE_WEIGHT", "0.25"))
+OPENALEX_LIMIT = int(os.getenv("PUBLIC_OPENALEX_LIMIT", "30")) or 30
+ARXIV_LIMIT = int(os.getenv("PUBLIC_ARXIV_LIMIT", "30")) or 30
+CROSSREF_LIMIT = int(os.getenv("PUBLIC_CROSSREF_LIMIT", "20")) or 20
+S2_LIMIT = int(os.getenv("PUBLIC_S2_LIMIT", "25")) or 25
+SPRINGER_LIMIT = int(os.getenv("PUBLIC_SPRINGER_LIMIT", "20")) or 20
+ELSEVIER_LIMIT = int(os.getenv("PUBLIC_ELSEVIER_LIMIT", "20")) or 20
+IEEE_LIMIT = int(os.getenv("PUBLIC_IEEE_LIMIT", "20")) or 20
+PUBLIC_SPARSE_WEIGHT = float(os.getenv("PUBLIC_SPARSE_WEIGHT", "0.35"))
+PUBLIC_CORROB_MAX = float(os.getenv("PUBLIC_CORROB_MAX", "0.10"))
+PUBLIC_CORROB_STEP = float(os.getenv("PUBLIC_CORROB_STEP", "0.035"))
 logger = logging.getLogger(__name__)
 _DISABLED_PROVIDERS: set[str] = set()
 _PUBLIC_SEARCH_CACHE: dict[tuple[str, str, int], tuple[float, dict]] = {}
@@ -91,15 +93,28 @@ def _normalize_public_query(query: str) -> str:
 
 
 def _query_variants(query: str) -> list[str]:
+    """Produce search-ready variants of a user query.
+
+    Variants (deduped, in priority order):
+      1. Normalized core: stopwords stripped, noise phrases removed.
+      2. Raw query as typed — preserves multi-word phrases and acronyms.
+      3. Top-content-tokens only — aggressive keyword view for sparse engines.
+    """
     core = _normalize_public_query(query)
-    variants = []
+    variants: list[str] = []
     if core:
         variants.append(core)
     raw = (query or "").strip()
     if raw and raw not in variants:
         variants.append(raw)
-    # Keep bounded to avoid over-calling providers.
-    return variants[:2] if variants else []
+    # Keyword-only variant: top content tokens from the normalized query.
+    # Helps recall on BM25/title-match providers (CrossRef, Springer).
+    kw_tokens = _tokenize_for_sparse(core)
+    if kw_tokens:
+        keyword_variant = " ".join(kw_tokens[:8])
+        if keyword_variant and keyword_variant not in variants:
+            variants.append(keyword_variant)
+    return variants[:3] if variants else []
 
 
 def _tokenize_for_sparse(text: str) -> list[str]:
@@ -245,11 +260,17 @@ def public_live_search(query: str, k: int = 8, source_only: str | None = None, r
             }
             for future in as_completed(future_map):
                 p = future_map[future]
+                err = None
                 try:
                     rows = future.result() or []
-                except Exception:
+                except Exception as exc:
                     rows = []
-                provider_status[p].update({"queried": True, "variant": primary_query, "fetched": len(rows)})
+                    err = f"{type(exc).__name__}: {exc}"
+                    logger.warning("public_search provider=%s error: %s", p, err)
+                status_update = {"queried": True, "variant": primary_query, "fetched": len(rows)}
+                if err:
+                    status_update["error"] = err
+                provider_status[p].update(status_update)
                 candidates += rows
 
     # dedupe by DOI/id/title
@@ -293,7 +314,7 @@ def public_live_search(query: str, k: int = 8, source_only: str | None = None, r
             continue
         sim = float(np.dot(qv, vec.T)[0][0])
         sparse = float(sparse_vals[i])
-        corroboration = min(0.03, 0.015 * max(0, len(c.get("_source_providers", [])) - 1))
+        corroboration = min(PUBLIC_CORROB_MAX, PUBLIC_CORROB_STEP * max(0, len(c.get("_source_providers", [])) - 1))
         c["_sim"] = sim
         c["_sparse"] = sparse
         c["_hybrid"] = round(((1.0 - PUBLIC_SPARSE_WEIGHT) * sim + PUBLIC_SPARSE_WEIGHT * sparse + corroboration), 6)

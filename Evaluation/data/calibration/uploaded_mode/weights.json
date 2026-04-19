@@ -1,0 +1,20 @@
+{
+  "model_name": "msa_logistic_uploaded",
+  "label": "uploaded_mode",
+  "weights": {
+    "w1": 1.290253,
+    "w2": 0.0,
+    "w3": 0.571947,
+    "b": -1.371641
+  },
+  "metrics": {
+    "n": 170,
+    "accuracy": 0.7,
+    "auc": 0.7025,
+    "pr_auc": 0.4622,
+    "brier": 0.2008,
+    "ece": 0.0718
+  },
+  "dataset_size": 849,
+  "ship": true
+}

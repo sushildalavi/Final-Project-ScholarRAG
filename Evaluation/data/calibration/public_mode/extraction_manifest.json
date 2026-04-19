@@ -1,0 +1,10 @@
+{
+  "mode": "public_mode_calibration_extraction",
+  "queries_run": 30,
+  "queries_ok": 30,
+  "queries_error": 0,
+  "claim_rows": 327,
+  "elapsed_sec": 1065.7,
+  "output_csv": "Evaluation/data/calibration/public_mode/claim_annotations.csv",
+  "errors": []
+}

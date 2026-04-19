@@ -12,7 +12,42 @@ from backend.services.db import execute, fetchall, fetchone
 from backend.services.nli import entailment_prob
 
 
-def _load_latest_calibration_weights() -> dict:
+_DEFAULT_CALIBRATION_WEIGHTS = {"w1": 0.58, "w2": 0.22, "w3": 0.20, "b": 0.0}
+
+
+def _coerce_weights(weights) -> dict:
+    if not isinstance(weights, dict):
+        return dict(_DEFAULT_CALIBRATION_WEIGHTS)
+    return {
+        "w1": float(weights.get("w1", 0.58)),
+        "w2": float(weights.get("w2", 0.22)),
+        "w3": float(weights.get("w3", 0.20)),
+        "b": float(weights.get("b", 0.0)),
+    }
+
+
+def _load_latest_calibration_weights(scope: str | None = None) -> dict:
+    """Load the most recent calibration weights, optionally filtered by scope.
+
+    Weights are tagged in the DB by `label` (e.g., "uploaded_mode", "public_mode").
+    If a scope is provided and a matching row exists, return those weights.
+    Otherwise fall back to the most recent row overall, then to fixed defaults.
+    """
+    if scope in ("uploaded", "public"):
+        label = f"{scope}_mode"
+        row = fetchone(
+            """
+            SELECT weights
+            FROM confidence_calibration
+            WHERE label = %s
+            ORDER BY created_at DESC
+            LIMIT 1
+            """,
+            [label],
+        )
+        if row:
+            return _coerce_weights(row.get("weights"))
+
     row = fetchone(
         """
         SELECT weights
@@ -22,16 +57,8 @@ def _load_latest_calibration_weights() -> dict:
         """
     )
     if not row:
-        return {"w1": 0.58, "w2": 0.22, "w3": 0.20, "b": 0.0}
-    weights = row.get("weights") or {}
-    if not isinstance(weights, dict):
-        return {"w1": 0.58, "w2": 0.22, "w3": 0.20, "b": 0.0}
-    return {
-        "w1": float(weights.get("w1", 0.58)),
-        "w2": float(weights.get("w2", 0.22)),
-        "w3": float(weights.get("w3", 0.20)),
-        "b": float(weights.get("b", 0.0)),
-    }
+        return dict(_DEFAULT_CALIBRATION_WEIGHTS)
+    return _coerce_weights(row.get("weights"))
 
 
 def _clamp01(x: float) -> float:
@@ -1971,7 +1998,7 @@ def _compute_citation_msa(
                         evidence_margin=0.0,
                         ambiguity_penalty=0.0,
                         insufficiency_penalty=0.0,
-                        msa={"M": m, "S": s, "A": a, "weights": _load_latest_calibration_weights()},
+                        msa={"M": m, "S": s, "A": a, "weights": _load_latest_calibration_weights(scope)},
                     )["factors"].get("msa", {}).get("msa_score", 0.0),
                 }
             )

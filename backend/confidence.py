@@ -43,7 +43,26 @@ def build_confidence(
     needs_clarification: bool = False,
     msa: Optional[Dict[str, float]] = None,
     minimum_score: float = 0.0,
+    scope: Optional[str] = None,
 ) -> Dict:
+    """Compute a per-citation confidence score (MSA-only).
+
+    When MSA features (M/S/A) are provided, confidence = `sigmoid(b + w1·M + w2·S + w3·A)`
+    using the currently-loaded calibration weights. This matches what the logistic
+    is fit against — the previous `0.62·retrieval_score + 0.38·msa_score` blend
+    used an uncalibrated fixed coefficient and is no longer applied.
+
+    If no MSA is supplied (legacy callers, smoke tests), the function falls back
+    to the pre-existing retrieval-only score computed from sim, rerank, coverage,
+    margin and penalised by ambiguity/insufficiency/scope. This fallback is NOT
+    a validated calibration — it exists only so callers without MSA features
+    still receive a numeric score.
+
+    `scope` is accepted for symmetry with `_load_latest_calibration_weights(scope)`
+    upstream; it is no longer used for branching here now that both modes are
+    MSA-only. `needs_clarification` and `minimum_score` still apply as global
+    sanity bounds.
+    """
     sim = clamp01(top_sim)
     rerank = clamp01(top_rerank_norm)
     coverage = clamp01(citation_coverage)
@@ -52,14 +71,18 @@ def build_confidence(
     ins_pen = clamp01(insufficiency_penalty)
     scope_pen = clamp01(scope_penalty)
 
+    # Retrieval-side score is kept only as a legacy fallback when no MSA is supplied.
     base = clamp01((0.35 * sim) + (0.25 * rerank) + (0.25 * coverage) + (0.15 * margin))
-    score = clamp01(base - (0.45 * amb_pen) - (0.4 * ins_pen) - (0.5 * scope_pen))
+    retrieval_score = clamp01(base - (0.45 * amb_pen) - (0.4 * ins_pen) - (0.5 * scope_pen))
 
     msa_score = None
     if isinstance(msa, dict):
         msa_score = compute_msa_score(msa.get("M", 0.0), msa.get("S", 0.0), msa.get("A", 0.0), msa.get("weights"))
-        # Blend retrieval-score with MSA score to stay backward-compatible yet evidence-aware.
-        score = clamp01(0.62 * score + 0.38 * msa_score)
+
+    if msa_score is not None:
+        score = clamp01(msa_score)
+    else:
+        score = retrieval_score
 
     min_score = clamp01(minimum_score)
     if min_score > 0.0 and not needs_clarification:
@@ -69,10 +92,11 @@ def build_confidence(
         score = min(score, 0.25)
 
     explanation = (
-        "Confidence reflects evidence strength (cosine/rerank), citation coverage, and evidence separation; "
-        "it is reduced by ambiguity, insufficiency, and scope limitations. "
-        "Per-citation calibration uses M/S/A where M = entailment probability, "
-        "S = retrieval stability rate, and A = multi-source agreement."
+        "Per-citation confidence is the calibrated MSA logistic: "
+        "sigmoid(b + w1·M + w2·S + w3·A). "
+        "M = entailment probability between claim and evidence, "
+        "S = retrieval-stability rate, "
+        "A = multi-source lexical corroboration."
     )
 
     factors = {
